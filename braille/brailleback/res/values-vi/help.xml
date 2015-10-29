@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Xoay phải"</item>
+    <item msgid="992384288929754258">"Xoay trái"</item>
+    <item msgid="2311009411708911700">"Điều hướng đến mục tiếp theo"</item>
+    <item msgid="4868322620432152139">"Điều hướng đến mục trước"</item>
+    <item msgid="713256521059720189">"Điều hướng đến dòng tiếp theo"</item>
+    <item msgid="7111316948614107646">"Điều hướng đến dòng trước"</item>
+    <item msgid="1092717670413169154">"Cuộn tiến"</item>
+    <item msgid="2672802569950877806">"Cuộn lùi"</item>
+    <item msgid="6858389246595464611">"Điều hướng lên đầu trang"</item>
+    <item msgid="6077703163925348890">"Điều hướng xuống cuối trang"</item>
+    <item msgid="880847480793051862">"Kích hoạt mục bằng ngón tay"</item>
+    <item msgid="2643484595828025643">"Nhấn và giữ mục bằng ngón tay"</item>
+    <item msgid="2225564744515622940">"Kích hoạt mục hiện tại"</item>
+    <item msgid="2039335960797511513">"Nhấn và giữ mục hiện tại"</item>
+    <item msgid="5703473744103522479">"Nhập một ký tự chữ nổi"</item>
+    <item msgid="397805118186944475">"Kích hoạt nút quay lại"</item>
+    <item msgid="2057979808256674943">"Kích hoạt nút home"</item>
+    <item msgid="3851017077578326256">"Mở cửa sổ thông báo"</item>
+    <item msgid="7100928240716386910">"Mở cửa sổ ứng dụng gần đây"</item>
+    <item msgid="1288748126248312152">"Kích hoạt phím enter khi chỉnh sửa văn bản"</item>
+    <item msgid="6030744298808090187">"Xóa lùi khi chỉnh sửa văn bản"</item>
+    <item msgid="4072293104009433677">"Xóa tiến khi chỉnh sửa văn bản"</item>
+    <item msgid="5307038145607249298">"Điều hướng tới phần tiếp theo trong nội dung web"</item>
+    <item msgid="8804572703982019495">"Điều hướng về phần trước trong nội dung web"</item>
+    <item msgid="5442875833766760122">"Điều hướng tới trường liên kết/điều khiển/biểu mẫu tiếp theo trong nội dung web"</item>
+    <item msgid="65542415754308243">"Điều hướng về trường liên kết/điều khiển/biểu mẫu trước trong nội dung web"</item>
+    <item msgid="8658175115960567526">"Điều hướng tới danh sách tiếp theo trong nội dung web"</item>
+    <item msgid="561134957068368670">"Điều hướng về danh sách trước trong nội dung web"</item>
+    <item msgid="4431278105955644176">"Chuyển đổi chế độ tìm kiếm trên màn hình"</item>
+    <item msgid="1541653246718288681">"Chuyển đổi menu gắn nhãn"</item>
+    <item msgid="3070189781205215458">"Mở trợ giúp bàn phím BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Nhấn và giữ <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Sử dụng các phím điều hướng để di chuyển tiêu điểm trên màn hình."\n"Sử dụng phím chữ nổi để nhập văn bản vào hộp chỉnh sửa."\n"Bên dưới là danh sách đầy đủ các lệnh phím được thiết bị của bạn hỗ trợ."</string>
+</resources>

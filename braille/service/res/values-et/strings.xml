@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="connprog_trying" msgid="7797192234223253644">"Otsing: <xliff:g id="DISPLAY_NAME">%s</xliff:g>"</string>
+    <string name="connprog_initializing" msgid="5044079965458505762">"Lähtestamine: <xliff:g id="DISPLAY_NAME">%s</xliff:g>"</string>
+    <string name="connprog_failed_to_initialize" msgid="8415918957583060436">"Lähtestamine ebaõnnestus: <xliff:g id="DISPLAY_NAME">%s</xliff:g>"</string>
+    <string name="connprog_no_devices" msgid="2532622651138767831">"Pole ühtegi teadaolevate seadmete seotud paari"</string>
+</resources>

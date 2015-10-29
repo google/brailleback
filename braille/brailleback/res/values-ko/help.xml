@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"우측으로 이동"</item>
+    <item msgid="992384288929754258">"좌측으로 이동"</item>
+    <item msgid="2311009411708911700">"다음 항목으로 이동"</item>
+    <item msgid="4868322620432152139">"이전 항목으로 이동"</item>
+    <item msgid="713256521059720189">"다음 행으로 이동"</item>
+    <item msgid="7111316948614107646">"이전 행으로 이동"</item>
+    <item msgid="1092717670413169154">"앞으로 스크롤"</item>
+    <item msgid="2672802569950877806">"뒤로 스크롤"</item>
+    <item msgid="6858389246595464611">"페이지 맨 위로 이동"</item>
+    <item msgid="6077703163925348890">"페이지 맨 아래로 이동"</item>
+    <item msgid="880847480793051862">"손가락 아래의 항목 활성화"</item>
+    <item msgid="2643484595828025643">"손가락 아래 항목 길게 누름"</item>
+    <item msgid="2225564744515622940">"현재 항목 활성화"</item>
+    <item msgid="2039335960797511513">"현재 항목 길게 누름"</item>
+    <item msgid="5703473744103522479">"점자 입력"</item>
+    <item msgid="397805118186944475">"뒤로 버튼 활성화"</item>
+    <item msgid="2057979808256674943">"홈 버튼 활성화"</item>
+    <item msgid="3851017077578326256">"알림 창 열기"</item>
+    <item msgid="7100928240716386910">"최근에 사용한 앱 창 열기"</item>
+    <item msgid="1288748126248312152">"텍스트를 수정할 때 Enter 키 활성화"</item>
+    <item msgid="6030744298808090187">"텍스트를 수정할 때 뒤로 삭제"</item>
+    <item msgid="4072293104009433677">"텍스트를 수정할 때 앞으로 삭제"</item>
+    <item msgid="5307038145607249298">"웹 콘텐츠에서 다음 섹션으로 이동"</item>
+    <item msgid="8804572703982019495">"웹 콘텐츠에서 이전 섹션으로 이동"</item>
+    <item msgid="5442875833766760122">"웹 콘텐츠에서 다음 링크/컨트롤/양식 필드로 이동"</item>
+    <item msgid="65542415754308243">"웹 콘텐츠에서 이전 링크/컨트롤/양식 필드로 이동"</item>
+    <item msgid="8658175115960567526">"웹 콘텐츠에서 다음 목록으로 이동"</item>
+    <item msgid="561134957068368670">"웹 콘텐츠에서 이전 목록으로 이동"</item>
+    <item msgid="4431278105955644176">"화면 검색 모드 전환"</item>
+    <item msgid="1541653246718288681">"라벨 메뉴 전환"</item>
+    <item msgid="3070189781205215458">"점자 지원 키보드 도움말 열기"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"<xliff:g id="KEY_LIST">%s</xliff:g> 길게 누름"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"화면의 커서를 이동하려면 탐색 키를 사용합니다."\n"입력란에 텍스트를 입력하려면 점자 키를 사용합니다."\n"다음은 기기에서 지원되는 키 명령의 전체 목록입니다."</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" translatable="false">BrailleService</string>
+    <string name="service_label" translatable="false">Braille Service</string>
+    <!-- Displayed to the user when trying to connect to a braille display. Contains the bluetooth name of the display. -->
+    <string name="connprog_trying">Looking for: <xliff:g id="display_name">%s</xliff:g></string>
+    <!-- Displayed to the user when a braile device was found and the display driver is being initialized. Contains the bluetooth name of the display. -->
+    <string name="connprog_initializing">Initializing: <xliff:g id="display_name">%s</xliff:g></string>
+    <!-- Displayed to the user after failing to initialize a braille display. The service was able to establish a connection to the device, but then, the driver failed to initialize. Contains the bluetooth name of the display.-->
+    <string name="connprog_failed_to_initialize">Failed to initialize: <xliff:g id="display_name">%s</xliff:g></string>
+    <!-- Displayed to the user when there are no bonded devices that brailleback recognizes as braille display. -->
+    <string name="connprog_no_devices">No recognized paired devices</string>
+</resources>

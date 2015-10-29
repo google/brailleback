@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"เมื่อเปิดใช้ BrailleBack อุปกรณ์ของคุณจะเชื่อมต่อกับจอภาพอักษรเบรลล์ที่จับคู่ผ่านบลูทูธ และแสดงเนื้อหาของหน้าจอเป็นอักษรเบรลล์ คุณสามารถใช้แป้นบนจอภาพอักษรเบรลล์ควบคุมการเดินทางไปยังส่วนต่างๆ ในหน้าจอ เปิดใช้งานรายการ และป้อนข้อความได้ สำหรับข้อมูลเพิ่มเติม กด Space และจุด 1, 2 และ 3 (ตัวอักษร l ในอักษรเบรลล์) บนจอภาพเมื่อเชื่อมต่อแล้ว"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"แป้นพิมพ์อักษรเบรลล์"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"วิซาร์ดแป้นพิมพ์อักษรเบรลล์"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"เปิดใช้งานแป้นพิมพ์อักษรเบรลล์"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"คุณต้องเปิดใช้งานแป้นพิมพ์ในการตั้งค่าวิธีการป้อนข้อมูล โดยเลือกเป็นวิธีการป้อนข้อมูลเริ่มต้น"</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"ข้าม"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"เปิดการตั้งค่าวิธีการป้อนข้อมูล"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"ตั้งค่าวิธีการป้อนข้อมูลเริ่มต้น"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"คุณต้องเปิดใช้งานแป้นพิมพ์ในการตั้งค่าวิธีการป้อนข้อมูล โดยเลือกเป็นวิธีการป้อนข้อมูลเริ่มต้น"</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"เปิดเครื่องมือเลือกวิธีการป้อนข้อมูล"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"เชื่อมต่อไปยังจอแสดงผลอักษรเบรลล์"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"อนุญาตให้แอปพลิเคชันเขียนเอาต์พุตออกไปยังและอ่านอินพุตแป้นพิมพ์จากจอแสดงผลอักษรเบรลล์"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"ตารางที่ว่างเปล่า"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"ตาราง"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"รายการที่ว่างเปล่า"</string>
+    <string name="type_listview" msgid="195039477703126884">"รายการ"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"เนื้อหาที่เลื่อนได้ว่างเปล่า"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"เนื้อหาที่เลื่อนได้"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"ช่องแก้ไข"</string>
+    <string name="type_image" msgid="3688576211222019626">"ภาพ"</string>
+    <string name="type_button" msgid="3639574187835564558">"ปุ่ม"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"ตัวควบคุมการค้นหา"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"รายชื่อติดต่อ"</string>
+    <string name="preferences_title" msgid="368535298674637475">"ค่ากำหนด BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"อุปกรณ์"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"สถานะ"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"ความช่วยเหลือแป้นพิมพ์"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"อักษรเบรลล์"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"ประเภทของอักษรเบรลล์"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"ตารางอักษรเบรลล์ทั่วไป"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"ตารางอักษรเบรลล์คอมฯ"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"ไม่ได้เชื่อมต่อ"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"เชื่อมต่อแล้ว"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"ไม่พร้อมใช้งาน"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"อักษรเบรลล์ทั่วไป"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"อักษรเบรลล์คอมฯ"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"อัตโนมัติ (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"อัตโนมัติ (ไม่มี)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"เบ็ดเตล็ด"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"ตัวเลือกของนักพัฒนา"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"การซ้อนทับบนหน้าจอ"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"แสดงอักษรเบรลล์บนหน้าจอ"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"เปิดบทแนะนำ"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"ใบอนุญาตโอเพนซอร์ส"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"ระดับของการบันทึกเอาต์พุต"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"ความช่วยเหลือแป้นพิมพ์ BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback เปิด"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback ปิด"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"แป้นพิมพ์ BrailleBack พร้อมใช้งาน"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"แตะเพื่อสลับไปยังแป้นพิมพ์เริ่มต้น"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - ระดับ <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - เกรด <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"แพนซ้าย"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"แพนขวา"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"บทแนะนำการซ้อนทับ"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"เสร็จสิ้น"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"การซ้อนทับอักษรเบรลล์จำลองการทำงานของจอแสดงผลอักษรเบรลล์แบบรีเฟรชได้ โดยแสดงเซลล์อักษรเบรลล์พร้อมด้วยข้อความที่สอดคล้องกันซึ่งจะถูกแสดงบนจอแสดงผลของฮาร์ดแวร์ ขอแนะนำให้คุณเปิดใช้งาน TalkBack และแตะโหมดการสำรวจก่อนที่จะดำเนินการ"</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"การตั้งค่าการเข้าถึง"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"คุณสามารถแพนการแสดงผลอักษรเบรลล์โดยกดปุ่มการแพนปุ่มใดปุ่มหนึ่งที่อยู่ด้านข้างข้อความ"</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"อาจมีหลายองค์ประกอบปรากฏขึ้นพร้อมๆ กันบนจอแสดงผล คุณสามารถคลิกที่องค์ประกอบหนึ่งๆ ได้โดยแตะเซลล์อักษรเบรลล์เซลล์ใดเซลล์หนึ่งในข้อความ การกระทำนี้สอดคล้องกับการกดคีย์การกำหนดเส้นทางคีย์ใดคีย์หนึ่งบนจอแสดงผลอักษรเบรลล์"</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"หากการซ้อนทับปิดครอบองค์ประกอบอื่นบนหน้าจอ คุณสามารถย้ายออกไปให้พ้นทางได้ กดค้างที่การซ้อนทับ แล้วลากไป การซ้อนทับจะจัดเข้าพอดีกับส่วนบนหรือส่วนล่างของหน้าจอเมื่อคุณปล่อยนิ้ว"</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"แสดงบทแนะนำการซ้อนทับ"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"เราขอแนะนำให้คุณดูบทแนะนำสำหรับการซ้อนทับบนหน้าจอก่อนที่จะใช้"</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"ค:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"ค้นหา: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"บทแนะนำการค้นหาบนหน้าจอ"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"การค้นหาบนหน้าจอช่วยให้คุณข้ามไปยังรายการบนหน้าจอได้อย่างรวดเร็วโดยการพิมพ์รายละเอียดข้อความเพียงบางส่วน ในขณะที่คุณพิมพ์ โฟกัสจะย้ายไปยังรายการที่ตรงกันถัดไป"</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"ใช้ <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> เพื่อย้ายไปยังผลลัพธ์ถัดไปและ <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> เพื่อย้ายไปยังผลลัพธ์ก่อนหน้า กด <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> เพื่อออกจากโหมดการค้นหาโดยยังโฟกัสอยู่บนผลลัพธ์ กด <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> เพื่อย้ายกลับไปยังรายการที่โฟกัสก่อนหน้า"</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"ไม่ต้องแสดงอีก"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"ดำเนินการต่อ"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"เพิ่มป้ายกำกับที่กำหนดเอง"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"แก้ไขป้ายกำกับที่กำหนดเอง"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"นำป้ายกำกับที่กำหนดเองออก"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"ไม่สนับสนุนป้ายกำกับที่กำหนดเอง อัปเดต talkback"</string>
+</resources>

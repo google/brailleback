@@ -1,0 +1,97 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+all install uninstall install-documents:
+	cd $(PGM_DIR) && $(MAKE) $@
+
+install-messages uninstall-messages:
+	cd $(MSG_DIR) && $(MAKE) $(@:-messages=)
+
+ARCHIVE_NAME = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+TAR_EXTENSION = tar
+GZIP_EXTENSION = gz
+BZIP2_EXTENSION = bz2
+ZIP_EXTENSION = zip
+XZ_EXTENSION = xz
+
+SRC_TAR = $(ARCHIVE_NAME).$(TAR_EXTENSION)
+$(SRC_TAR):
+	$(SRC_TOP)mktar $(SRC_TOP) $(ARCHIVE_NAME) $@
+src-tar: $(SRC_TAR)
+
+SRC_TAR_GZIP = $(SRC_TAR).$(GZIP_EXTENSION)
+$(SRC_TAR_GZIP): $(SRC_TAR)
+	gzip -9 -c $(SRC_TAR) >$@
+src-tar-gzip: $(SRC_TAR_GZIP)
+
+SRC_TAR_BZIP2 = $(SRC_TAR).$(BZIP2_EXTENSION)
+$(SRC_TAR_BZIP2): $(SRC_TAR)
+	bzip2 -9 -c $(SRC_TAR) >$@
+src-tar-bzip2: $(SRC_TAR_BZIP2)
+
+SRC_TAR_XZ = $(SRC_TAR).$(XZ_EXTENSION)
+$(SRC_TAR_XZ): $(SRC_TAR)
+	xz -9 -c $(SRC_TAR) >$@
+src-tar-xz: $(SRC_TAR_XZ)
+
+rpm: $(SRC_TAR_GZIP)
+	$(SRC_TOP)mkrpm $(SRC_TAR_GZIP)
+
+SRC_ZIP = $(ARCHIVE_NAME).$(ZIP_EXTENSION)
+$(SRC_ZIP):
+	$(SRC_TOP)mkzip $(SRC_TOP) $(ARCHIVE_NAME) $@
+src-zip: $(SRC_ZIP)
+
+BIN_DIR = `pwd`/BinTree
+bin-tree:
+	$(INSTALL_DIRECTORY) $(BIN_DIR)
+	$(MAKE) install INSTALL_ROOT=$(BIN_DIR)
+
+BIN_TAR = $(ARCHIVE_NAME).$(HOST_OS).$(HOST_CPU).$(TAR_EXTENSION)
+$(BIN_TAR): bin-tree
+	tar -C $(BIN_DIR) -c -f $@ .
+bin-tar: $(BIN_TAR)
+
+BIN_TAR_GZIP = $(BIN_TAR).$(GZIP_EXTENSION)
+$(BIN_TAR_GZIP): $(BIN_TAR)
+	gzip -9 -c $(BIN_TAR) >$@
+bin-tar-gzip: $(BIN_TAR_GZIP)
+
+BIN_TAR_BZIP2 = $(BIN_TAR).$(BZIP2_EXTENSION)
+$(BIN_TAR_BZIP2): $(BIN_TAR)
+	bzip2 -9 -c $(BIN_TAR) >$@
+bin-tar-bzip2: $(BIN_TAR_BZIP2)
+
+BIN_TAR_XZ = $(BIN_TAR).$(XZ_EXTENSION)
+$(BIN_TAR_XZ): $(BIN_TAR)
+	xz -9 -c $(BIN_TAR) >$@
+bin-tar-xz: $(BIN_TAR_XZ)
+
+ITERATE = -for directory in $(PGM_DIR) $(MSG_DIR); do (cd $$directory && $(MAKE) $@); done
+clean::
+	$(ITERATE)
+	-rm -f -- *.$(TAR_EXTENSION) *.$(GZIP_EXTENSION) *.$(BZIP2_EXTENSION) *.$(XZ_EXTENSION) *.$(ZIP_EXTENSION) *.rpm
+	-rm -f -r -- $(BIN_DIR)
+distclean:: clean
+	-cd $(DOC_DIR) && $(MAKE) $@
+	$(ITERATE)
+	-rm -f brltty.spec
+	-rm -f config.log config.cache config.status
+	-rm -fr autom4te*.cache
+	-rm -f config.mk config.h
+	-rm -f forbuild.mk forbuild.h

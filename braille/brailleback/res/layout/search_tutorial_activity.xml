@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/overlay_tutorial_padding" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_tutorial_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/instructionsGeneral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_tutorial_instructions_general" />
+
+    <TextView
+        android:id="@+id/instructionsSpecific"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_weight="2" />
+
+    <CheckBox
+        android:id="@+id/doNotShowCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_tutorial_checkbox" />
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_tutorial_close_button"
+        android:onClick="onClickCloseButton" />
+
+</LinearLayout>

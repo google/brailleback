@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"向右平移"</item>
+    <item msgid="992384288929754258">"向左平移"</item>
+    <item msgid="2311009411708911700">"导航到下一项"</item>
+    <item msgid="4868322620432152139">"导航到上一项"</item>
+    <item msgid="713256521059720189">"导航到下一行"</item>
+    <item msgid="7111316948614107646">"导航到上一行"</item>
+    <item msgid="1092717670413169154">"向前滚动"</item>
+    <item msgid="2672802569950877806">"向后滚动"</item>
+    <item msgid="6858389246595464611">"导航至页面顶部"</item>
+    <item msgid="6077703163925348890">"导航至页面底部"</item>
+    <item msgid="880847480793051862">"激活手指触摸的内容"</item>
+    <item msgid="2643484595828025643">"长按手指触摸的内容"</item>
+    <item msgid="2225564744515622940">"激活当前内容"</item>
+    <item msgid="2039335960797511513">"长按当前内容"</item>
+    <item msgid="5703473744103522479">"输入盲文字符"</item>
+    <item msgid="397805118186944475">"激活返回按钮"</item>
+    <item msgid="2057979808256674943">"激活主屏幕按钮"</item>
+    <item msgid="3851017077578326256">"打开通知窗口"</item>
+    <item msgid="7100928240716386910">"打开“最近使用的应用”窗口"</item>
+    <item msgid="1288748126248312152">"编辑文本时激活 Enter 键"</item>
+    <item msgid="6030744298808090187">"编辑文本时向后删除内容"</item>
+    <item msgid="4072293104009433677">"编辑文本时向前删除内容"</item>
+    <item msgid="5307038145607249298">"导航至网页内容中的下一个部分"</item>
+    <item msgid="8804572703982019495">"导航至网页内容中的上一个部分"</item>
+    <item msgid="5442875833766760122">"导航至网页内容中的下一个链接/控件/表单字段"</item>
+    <item msgid="65542415754308243">"导航至网页内容中的上一个链接/控件/表单字段"</item>
+    <item msgid="8658175115960567526">"导航至网页内容中的下一个列表"</item>
+    <item msgid="561134957068368670">"导航至网页内容中的上一个列表"</item>
+    <item msgid="4431278105955644176">"切换“在屏幕上搜索”模式"</item>
+    <item msgid="1541653246718288681">"切换标签菜单"</item>
+    <item msgid="3070189781205215458">"打开盲文提示键盘帮助"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"长按 <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"使用导航键在屏幕上移动焦点。"\n"使用盲文键在编辑框中输入文字。"\n"以下是您的设备支持的键命令完整列表。"</string>
+</resources>

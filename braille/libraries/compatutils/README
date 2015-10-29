@@ -1,0 +1,5 @@
+This project contains Android compatibility libraries, including the official
+android-support-v4 library required for various projects.
+
+It must build against the latest version of Android, but can be included in
+projects that target as low as Donut (1.6).

@@ -1,0 +1,82 @@
+#!/bin/sh
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+. "`dirname "${0}"`/prologue.sh"
+
+packageName=""
+packageVersion=""
+outputFile=""
+bugsAddress=""
+copyrightHolder=""
+
+while getopts ":n:v:o:b:c:" option
+do
+   case "${option}"
+   in
+      n) packageName="${OPTARG}";;
+      v) packageVersion="${OPTARG}";;
+      o) outputFile="${OPTARG}";;
+      b) bugsAddress="${OPTARG}";;
+      c) copyrightHolder="${OPTARG}";;
+      :) syntaxError "missing operand: -${OPTARG}";;
+     \?) syntaxError "unknown option: -${OPTARG}";;
+      *) syntaxError "unimplemented option: -${option}";;
+   esac
+done
+shift `expr "${OPTIND}" - 1`
+
+[ "${#}" -gt 0 ] || syntaxError "missing source root."
+sourceRoot="${1}"
+shift 1
+
+if [ "${#}" -eq 0 ]
+then
+   buildRoot=""
+else
+   buildRoot="${1}"
+   shift 1
+fi
+
+[ "${#}" -eq 0 ] || syntaxError "too many parameters."
+
+sourceRoot=`cd "${sourceRoot}" && pwd` || semanticError
+buildRoot=`cd "${buildRoot}" && pwd` || semanticError
+[ "${buildRoot}" != "${sourceRoot}" ] || buildRoot=""
+
+[ -n "${packageName}" ] || packageName=`basename "${sourceRoot}"`
+[ -n "${outputFile}" ] || outputFile="${packageName}.pot"
+[ "${outputFile#/}" != "${outputFile}" ] || outputFile="${initialDirectory}/${outputFile}"
+
+xgettext --output - --force-po --no-wrap --sort-output --from-code utf-8 \
+   ${packageName:+--package-name "${packageName}"} \
+   ${packageVersion:+--package-version "${packageVersion}"} \
+   ${bugsAddress:+--msgid-bugs-address "${bugsAddress}"} \
+   ${copyrightHolder:+--copyright-holder "${copyrightHolder}"} \
+   --keyword=strtext:1 --flag=logMessage:2:c-format \
+   --add-comments \
+   -- `find ${sourceRoot} ${buildRoot} -name '*.c' -o -name '*.h'` |
+sed >"${outputFile}" -e "
+  s/PACKAGE/${packageName}/
+
+  /^#: /{
+    s% ${sourceRoot}/*% %
+    s% ${buildRoot}/*% %
+  }
+"
+exit "${?}"

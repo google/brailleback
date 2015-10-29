@@ -1,0 +1,17 @@
+URL: https://github.com/liblouis/liblouis/archive/v2.6.0.zip
+Version: 2.6.0
+License: LGPL v3
+License File: LICENSE
+
+Description:
+Liblouis is an open-source braille translator and back-translator. It
+features support for computer and literary braille, supports
+contracted and uncontracted translation for many languages.
+
+Note:
+The tools, python, gnulib and tests directories are not included because they
+are not needed.
+
+Local Modifications:
+* Add manually created liblouis.h (cl/85556777)
+

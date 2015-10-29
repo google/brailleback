@@ -1,0 +1,708 @@
+[Version]
+Signature = "$Chicago$"
+provider  = %manufacturer%
+DriverVer = 01/01/1995,0.1.12.1
+CatalogFile = brltty.cat
+CatalogFile.NT = brltty.cat
+CatalogFile.NTAMD64 = brltty_x64.cat
+
+Class = LibUsbDevices
+ClassGUID = {EB781AAF-9C70-4523-A5DF-642A87ECA567}
+
+[ClassInstall]
+AddReg=libusb_class_install_add_reg
+
+[ClassInstall32]
+AddReg=libusb_class_install_add_reg
+
+[libusb_class_install_add_reg]
+HKR,,,,"LibUSB-Win32 Devices"
+HKR,,Icon,,"-20"
+
+[Manufacturer]
+%manufacturer%=Devices,NT,NTAMD64
+
+;--------------------------------------------------------------------------
+; Files
+;--------------------------------------------------------------------------
+
+[SourceDisksNames]
+1 = "Libusb-Win32 Driver Installation Disk",,
+
+[SourceDisksFiles]
+libusb0.sys = 1,,
+libusb0.dll = 1,,
+libusb0_x64.sys = 1,,
+libusb0_x64.dll = 1,,
+
+[DestinationDirs]
+libusb_files_sys = 10,system32\drivers
+libusb_files_sys_x64 = 10,system32\drivers
+libusb_files_dll = 10,system32
+libusb_files_dll_wow64 = 10,syswow64
+libusb_files_dll_x64 = 10,system32
+
+[libusb_files_sys]
+libusb0.sys
+
+[libusb_files_sys_x64]
+libusb0.sys,libusb0_x64.sys
+
+[libusb_files_dll]
+libusb0.dll
+
+[libusb_files_dll_wow64]
+libusb0.dll
+
+[libusb_files_dll_x64]
+libusb0.dll,libusb0_x64.dll
+
+;--------------------------------------------------------------------------
+; Device driver
+;--------------------------------------------------------------------------
+
+[LIBUSB_DEV]
+CopyFiles = libusb_files_sys, libusb_files_dll
+AddReg    = libusb_add_reg
+
+[LIBUSB_DEV.NT]
+CopyFiles = libusb_files_sys, libusb_files_dll
+
+[LIBUSB_DEV.NTAMD64]
+CopyFiles = libusb_files_sys_x64, libusb_files_dll_wow64, libusb_files_dll_x64
+
+[LIBUSB_DEV.HW]
+DelReg = libusb_del_reg_hw
+AddReg = libusb_add_reg_hw
+
+[LIBUSB_DEV.NT.HW]
+DelReg = libusb_del_reg_hw
+AddReg = libusb_add_reg_hw
+
+[LIBUSB_DEV.NTAMD64.HW]
+DelReg = libusb_del_reg_hw
+AddReg = libusb_add_reg_hw
+
+[LIBUSB_DEV.NT.Services]
+AddService = libusb0, 0x00000002, libusb_add_service
+
+[LIBUSB_DEV.NTAMD64.Services]
+AddService = libusb0, 0x00000002, libusb_add_service
+
+[libusb_add_reg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,libusb0.sys
+
+; Older versions of this .inf file installed filter drivers. They are not
+; needed any more and must be removed
+[libusb_del_reg_hw]
+HKR,,LowerFilters
+HKR,,UpperFilters
+
+; Device properties
+[libusb_add_reg_hw]
+HKR,,SurpriseRemovalOK, 0x00010001, 1
+
+;--------------------------------------------------------------------------
+; Services
+;--------------------------------------------------------------------------
+
+[libusb_add_service]
+DisplayName    = "LibUsb-Win32 - Kernel Driver 03/31/2007, 0.1.12.1"
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 0
+ServiceBinary  = %12%\libusb0.sys
+
+;--------------------------------------------------------------------------
+; Devices
+;--------------------------------------------------------------------------
+
+[Devices]
+; BEGIN_USB_DEVICES LibUSB-Win32
+
+; Device: 0403:6001
+; Generic Identifier
+; Vendor: Future Technology Devices International, Ltd
+; Product: FT232 USB-Serial (UART) IC
+"LibUSB-Win32: Albatross [all models], Cebra [all models], HIMS [Sync Braille], HandyTech [FTDI chip]"=LIBUSB_DEV, USB\VID_0403&PID_6001
+
+; Device: 0403:F208
+"LibUSB-Win32: Papenmeier [all models]"=LIBUSB_DEV, USB\VID_0403&PID_F208
+
+; Device: 0403:FE70
+"LibUSB-Win32: Baum [Vario40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE70
+
+; Device: 0403:FE71
+"LibUSB-Win32: Baum [PocketVario (24 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE71
+
+; Device: 0403:FE72
+"LibUSB-Win32: Baum [SuperVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE72
+
+; Device: 0403:FE73
+"LibUSB-Win32: Baum [SuperVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE73
+
+; Device: 0403:FE74
+"LibUSB-Win32: Baum [SuperVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE74
+
+; Device: 0403:FE75
+"LibUSB-Win32: Baum [SuperVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE75
+
+; Device: 0403:FE76
+"LibUSB-Win32: Baum [VarioPro 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE76
+
+; Device: 0403:FE77
+"LibUSB-Win32: Baum [VarioPro 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE77
+
+; Device: 0452:0100
+"LibUSB-Win32: Metec [all models]"=LIBUSB_DEV, USB\VID_0452&PID_0100
+
+; Device: 045E:930A
+"LibUSB-Win32: HIMS [Braille Sense]"=LIBUSB_DEV, USB\VID_045E&PID_930A
+
+; Device: 045E:930B
+"LibUSB-Win32: HIMS [Braille Edge]"=LIBUSB_DEV, USB\VID_045E&PID_930B
+
+; Device: 06B0:0001
+"LibUSB-Win32: Alva [Satellite (5nn)]"=LIBUSB_DEV, USB\VID_06B0&PID_0001
+
+; Device: 0798:0001
+"LibUSB-Win32: Voyager [all models]"=LIBUSB_DEV, USB\VID_0798&PID_0001
+
+; Device: 0798:0624
+"LibUSB-Win32: Alva [BC624]"=LIBUSB_DEV, USB\VID_0798&PID_0624
+
+; Device: 0798:0640
+"LibUSB-Win32: Alva [BC640]"=LIBUSB_DEV, USB\VID_0798&PID_0640
+
+; Device: 0798:0680
+"LibUSB-Win32: Alva [BC680]"=LIBUSB_DEV, USB\VID_0798&PID_0680
+
+; Device: 0904:2000
+"LibUSB-Win32: Baum [VarioPro 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2000
+
+; Device: 0904:2001
+"LibUSB-Win32: Baum [EcoVario 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2001
+
+; Device: 0904:2002
+"LibUSB-Win32: Baum [EcoVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2002
+
+; Device: 0904:2007
+"LibUSB-Win32: Baum [VarioConnect 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2007
+
+; Device: 0904:2008
+"LibUSB-Win32: Baum [VarioConnect 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2008
+
+; Device: 0904:2009
+"LibUSB-Win32: Baum [VarioConnect 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2009
+
+; Device: 0904:2010
+"LibUSB-Win32: Baum [VarioConnect 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2010
+
+; Device: 0904:2011
+"LibUSB-Win32: Baum [VarioConnect 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2011
+
+; Device: 0904:2014
+"LibUSB-Win32: Baum [EcoVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2014
+
+; Device: 0904:2015
+"LibUSB-Win32: Baum [EcoVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2015
+
+; Device: 0904:2016
+"LibUSB-Win32: Baum [EcoVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2016
+
+; Device: 0904:3000
+"LibUSB-Win32: Baum [Refreshabraille 18 (18 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_3000
+
+; Device: 0921:1200
+"LibUSB-Win32: HandyTech [GoHubs chip]"=LIBUSB_DEV, USB\VID_0921&PID_1200
+
+; Device: 0F4E:0100
+"LibUSB-Win32: FreedomScientific [Focus 1]"=LIBUSB_DEV, USB\VID_0F4E&PID_0100
+
+; Device: 0F4E:0111
+"LibUSB-Win32: FreedomScientific [PAC Mate]"=LIBUSB_DEV, USB\VID_0F4E&PID_0111
+
+; Device: 0F4E:0112
+"LibUSB-Win32: FreedomScientific [Focus 2]"=LIBUSB_DEV, USB\VID_0F4E&PID_0112
+
+; Device: 0F4E:0114
+"LibUSB-Win32: FreedomScientific [Focus Blue]"=LIBUSB_DEV, USB\VID_0F4E&PID_0114
+
+; Device: 10C4:EA60
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge / myAVR mySmartUSB light
+"LibUSB-Win32: Seika [Braille Display]"=LIBUSB_DEV, USB\VID_10C4&PID_EA60
+
+; Device: 10C4:EA80
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge
+"LibUSB-Win32: Seika [Note Taker]"=LIBUSB_DEV, USB\VID_10C4&PID_EA80
+
+; Device: 1C71:C005
+"LibUSB-Win32: HumanWare [all models]"=LIBUSB_DEV, USB\VID_1C71&PID_C005
+
+; Device: 1FE4:0003
+"LibUSB-Win32: HandyTech [USB-HID adapter]"=LIBUSB_DEV, USB\VID_1FE4&PID_0003
+
+; Device: 1FE4:0044
+"LibUSB-Win32: HandyTech [Easy Braille (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0044
+
+; Device: 1FE4:0054
+"LibUSB-Win32: HandyTech [Active Braille]"=LIBUSB_DEV, USB\VID_1FE4&PID_0054
+
+; Device: 1FE4:0074
+"LibUSB-Win32: HandyTech [Braille Star 40 (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0074
+
+; Device: 4242:0001
+"LibUSB-Win32: Pegasus [all models]"=LIBUSB_DEV, USB\VID_4242&PID_0001
+
+; Device: C251:1122
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1122
+
+; Device: C251:1123
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1123
+
+; Device: C251:1124
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1124
+
+; Device: C251:1125
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1125
+
+; Device: C251:1126
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1126
+
+; Device: C251:1127
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1127
+
+; Device: C251:1128
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1128
+
+; Device: C251:1129
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1129
+
+; Device: C251:112A
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112A
+
+; Device: C251:112B
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112B
+
+; Device: C251:112C
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112C
+
+; Device: C251:112D
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112D
+
+; Device: C251:112E
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112E
+
+; Device: C251:112F
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112F
+
+; Device: C251:1130
+"LibUSB-Win32: EuroBraille [Esytime]"=LIBUSB_DEV, USB\VID_C251&PID_1130
+
+; Device: C251:1131
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1131
+
+; Device: C251:1132
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1132
+
+; END_USB_DEVICES
+
+[Devices.NT]
+; BEGIN_USB_DEVICES LibUSB-Win32
+
+; Device: 0403:6001
+; Generic Identifier
+; Vendor: Future Technology Devices International, Ltd
+; Product: FT232 USB-Serial (UART) IC
+"LibUSB-Win32: Albatross [all models], Cebra [all models], HIMS [Sync Braille], HandyTech [FTDI chip]"=LIBUSB_DEV, USB\VID_0403&PID_6001
+
+; Device: 0403:F208
+"LibUSB-Win32: Papenmeier [all models]"=LIBUSB_DEV, USB\VID_0403&PID_F208
+
+; Device: 0403:FE70
+"LibUSB-Win32: Baum [Vario40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE70
+
+; Device: 0403:FE71
+"LibUSB-Win32: Baum [PocketVario (24 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE71
+
+; Device: 0403:FE72
+"LibUSB-Win32: Baum [SuperVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE72
+
+; Device: 0403:FE73
+"LibUSB-Win32: Baum [SuperVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE73
+
+; Device: 0403:FE74
+"LibUSB-Win32: Baum [SuperVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE74
+
+; Device: 0403:FE75
+"LibUSB-Win32: Baum [SuperVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE75
+
+; Device: 0403:FE76
+"LibUSB-Win32: Baum [VarioPro 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE76
+
+; Device: 0403:FE77
+"LibUSB-Win32: Baum [VarioPro 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE77
+
+; Device: 0452:0100
+"LibUSB-Win32: Metec [all models]"=LIBUSB_DEV, USB\VID_0452&PID_0100
+
+; Device: 045E:930A
+"LibUSB-Win32: HIMS [Braille Sense]"=LIBUSB_DEV, USB\VID_045E&PID_930A
+
+; Device: 045E:930B
+"LibUSB-Win32: HIMS [Braille Edge]"=LIBUSB_DEV, USB\VID_045E&PID_930B
+
+; Device: 06B0:0001
+"LibUSB-Win32: Alva [Satellite (5nn)]"=LIBUSB_DEV, USB\VID_06B0&PID_0001
+
+; Device: 0798:0001
+"LibUSB-Win32: Voyager [all models]"=LIBUSB_DEV, USB\VID_0798&PID_0001
+
+; Device: 0798:0624
+"LibUSB-Win32: Alva [BC624]"=LIBUSB_DEV, USB\VID_0798&PID_0624
+
+; Device: 0798:0640
+"LibUSB-Win32: Alva [BC640]"=LIBUSB_DEV, USB\VID_0798&PID_0640
+
+; Device: 0798:0680
+"LibUSB-Win32: Alva [BC680]"=LIBUSB_DEV, USB\VID_0798&PID_0680
+
+; Device: 0904:2000
+"LibUSB-Win32: Baum [VarioPro 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2000
+
+; Device: 0904:2001
+"LibUSB-Win32: Baum [EcoVario 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2001
+
+; Device: 0904:2002
+"LibUSB-Win32: Baum [EcoVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2002
+
+; Device: 0904:2007
+"LibUSB-Win32: Baum [VarioConnect 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2007
+
+; Device: 0904:2008
+"LibUSB-Win32: Baum [VarioConnect 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2008
+
+; Device: 0904:2009
+"LibUSB-Win32: Baum [VarioConnect 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2009
+
+; Device: 0904:2010
+"LibUSB-Win32: Baum [VarioConnect 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2010
+
+; Device: 0904:2011
+"LibUSB-Win32: Baum [VarioConnect 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2011
+
+; Device: 0904:2014
+"LibUSB-Win32: Baum [EcoVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2014
+
+; Device: 0904:2015
+"LibUSB-Win32: Baum [EcoVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2015
+
+; Device: 0904:2016
+"LibUSB-Win32: Baum [EcoVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2016
+
+; Device: 0904:3000
+"LibUSB-Win32: Baum [Refreshabraille 18 (18 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_3000
+
+; Device: 0921:1200
+"LibUSB-Win32: HandyTech [GoHubs chip]"=LIBUSB_DEV, USB\VID_0921&PID_1200
+
+; Device: 0F4E:0100
+"LibUSB-Win32: FreedomScientific [Focus 1]"=LIBUSB_DEV, USB\VID_0F4E&PID_0100
+
+; Device: 0F4E:0111
+"LibUSB-Win32: FreedomScientific [PAC Mate]"=LIBUSB_DEV, USB\VID_0F4E&PID_0111
+
+; Device: 0F4E:0112
+"LibUSB-Win32: FreedomScientific [Focus 2]"=LIBUSB_DEV, USB\VID_0F4E&PID_0112
+
+; Device: 0F4E:0114
+"LibUSB-Win32: FreedomScientific [Focus Blue]"=LIBUSB_DEV, USB\VID_0F4E&PID_0114
+
+; Device: 10C4:EA60
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge / myAVR mySmartUSB light
+"LibUSB-Win32: Seika [Braille Display]"=LIBUSB_DEV, USB\VID_10C4&PID_EA60
+
+; Device: 10C4:EA80
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge
+"LibUSB-Win32: Seika [Note Taker]"=LIBUSB_DEV, USB\VID_10C4&PID_EA80
+
+; Device: 1C71:C005
+"LibUSB-Win32: HumanWare [all models]"=LIBUSB_DEV, USB\VID_1C71&PID_C005
+
+; Device: 1FE4:0003
+"LibUSB-Win32: HandyTech [USB-HID adapter]"=LIBUSB_DEV, USB\VID_1FE4&PID_0003
+
+; Device: 1FE4:0044
+"LibUSB-Win32: HandyTech [Easy Braille (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0044
+
+; Device: 1FE4:0054
+"LibUSB-Win32: HandyTech [Active Braille]"=LIBUSB_DEV, USB\VID_1FE4&PID_0054
+
+; Device: 1FE4:0074
+"LibUSB-Win32: HandyTech [Braille Star 40 (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0074
+
+; Device: 4242:0001
+"LibUSB-Win32: Pegasus [all models]"=LIBUSB_DEV, USB\VID_4242&PID_0001
+
+; Device: C251:1122
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1122
+
+; Device: C251:1123
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1123
+
+; Device: C251:1124
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1124
+
+; Device: C251:1125
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1125
+
+; Device: C251:1126
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1126
+
+; Device: C251:1127
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1127
+
+; Device: C251:1128
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1128
+
+; Device: C251:1129
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1129
+
+; Device: C251:112A
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112A
+
+; Device: C251:112B
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112B
+
+; Device: C251:112C
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112C
+
+; Device: C251:112D
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112D
+
+; Device: C251:112E
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112E
+
+; Device: C251:112F
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112F
+
+; Device: C251:1130
+"LibUSB-Win32: EuroBraille [Esytime]"=LIBUSB_DEV, USB\VID_C251&PID_1130
+
+; Device: C251:1131
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1131
+
+; Device: C251:1132
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1132
+
+; END_USB_DEVICES
+
+[Devices.NTAMD64]
+; BEGIN_USB_DEVICES LibUSB-Win32
+
+; Device: 0403:6001
+; Generic Identifier
+; Vendor: Future Technology Devices International, Ltd
+; Product: FT232 USB-Serial (UART) IC
+"LibUSB-Win32: Albatross [all models], Cebra [all models], HIMS [Sync Braille], HandyTech [FTDI chip]"=LIBUSB_DEV, USB\VID_0403&PID_6001
+
+; Device: 0403:F208
+"LibUSB-Win32: Papenmeier [all models]"=LIBUSB_DEV, USB\VID_0403&PID_F208
+
+; Device: 0403:FE70
+"LibUSB-Win32: Baum [Vario40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE70
+
+; Device: 0403:FE71
+"LibUSB-Win32: Baum [PocketVario (24 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE71
+
+; Device: 0403:FE72
+"LibUSB-Win32: Baum [SuperVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE72
+
+; Device: 0403:FE73
+"LibUSB-Win32: Baum [SuperVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE73
+
+; Device: 0403:FE74
+"LibUSB-Win32: Baum [SuperVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE74
+
+; Device: 0403:FE75
+"LibUSB-Win32: Baum [SuperVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE75
+
+; Device: 0403:FE76
+"LibUSB-Win32: Baum [VarioPro 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE76
+
+; Device: 0403:FE77
+"LibUSB-Win32: Baum [VarioPro 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0403&PID_FE77
+
+; Device: 0452:0100
+"LibUSB-Win32: Metec [all models]"=LIBUSB_DEV, USB\VID_0452&PID_0100
+
+; Device: 045E:930A
+"LibUSB-Win32: HIMS [Braille Sense]"=LIBUSB_DEV, USB\VID_045E&PID_930A
+
+; Device: 045E:930B
+"LibUSB-Win32: HIMS [Braille Edge]"=LIBUSB_DEV, USB\VID_045E&PID_930B
+
+; Device: 06B0:0001
+"LibUSB-Win32: Alva [Satellite (5nn)]"=LIBUSB_DEV, USB\VID_06B0&PID_0001
+
+; Device: 0798:0001
+"LibUSB-Win32: Voyager [all models]"=LIBUSB_DEV, USB\VID_0798&PID_0001
+
+; Device: 0798:0624
+"LibUSB-Win32: Alva [BC624]"=LIBUSB_DEV, USB\VID_0798&PID_0624
+
+; Device: 0798:0640
+"LibUSB-Win32: Alva [BC640]"=LIBUSB_DEV, USB\VID_0798&PID_0640
+
+; Device: 0798:0680
+"LibUSB-Win32: Alva [BC680]"=LIBUSB_DEV, USB\VID_0798&PID_0680
+
+; Device: 0904:2000
+"LibUSB-Win32: Baum [VarioPro 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2000
+
+; Device: 0904:2001
+"LibUSB-Win32: Baum [EcoVario 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2001
+
+; Device: 0904:2002
+"LibUSB-Win32: Baum [EcoVario 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2002
+
+; Device: 0904:2007
+"LibUSB-Win32: Baum [VarioConnect 40 (40 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2007
+
+; Device: 0904:2008
+"LibUSB-Win32: Baum [VarioConnect 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2008
+
+; Device: 0904:2009
+"LibUSB-Win32: Baum [VarioConnect 24 (24 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2009
+
+; Device: 0904:2010
+"LibUSB-Win32: Baum [VarioConnect 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2010
+
+; Device: 0904:2011
+"LibUSB-Win32: Baum [VarioConnect 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2011
+
+; Device: 0904:2014
+"LibUSB-Win32: Baum [EcoVario 32 (32 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2014
+
+; Device: 0904:2015
+"LibUSB-Win32: Baum [EcoVario 64 (64 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2015
+
+; Device: 0904:2016
+"LibUSB-Win32: Baum [EcoVario 80 (80 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_2016
+
+; Device: 0904:3000
+"LibUSB-Win32: Baum [Refreshabraille 18 (18 cells)]"=LIBUSB_DEV, USB\VID_0904&PID_3000
+
+; Device: 0921:1200
+"LibUSB-Win32: HandyTech [GoHubs chip]"=LIBUSB_DEV, USB\VID_0921&PID_1200
+
+; Device: 0F4E:0100
+"LibUSB-Win32: FreedomScientific [Focus 1]"=LIBUSB_DEV, USB\VID_0F4E&PID_0100
+
+; Device: 0F4E:0111
+"LibUSB-Win32: FreedomScientific [PAC Mate]"=LIBUSB_DEV, USB\VID_0F4E&PID_0111
+
+; Device: 0F4E:0112
+"LibUSB-Win32: FreedomScientific [Focus 2]"=LIBUSB_DEV, USB\VID_0F4E&PID_0112
+
+; Device: 0F4E:0114
+"LibUSB-Win32: FreedomScientific [Focus Blue]"=LIBUSB_DEV, USB\VID_0F4E&PID_0114
+
+; Device: 10C4:EA60
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge / myAVR mySmartUSB light
+"LibUSB-Win32: Seika [Braille Display]"=LIBUSB_DEV, USB\VID_10C4&PID_EA60
+
+; Device: 10C4:EA80
+; Generic Identifier
+; Vendor: Cygnal Integrated Products, Inc.
+; Product: CP210x UART Bridge
+"LibUSB-Win32: Seika [Note Taker]"=LIBUSB_DEV, USB\VID_10C4&PID_EA80
+
+; Device: 1C71:C005
+"LibUSB-Win32: HumanWare [all models]"=LIBUSB_DEV, USB\VID_1C71&PID_C005
+
+; Device: 1FE4:0003
+"LibUSB-Win32: HandyTech [USB-HID adapter]"=LIBUSB_DEV, USB\VID_1FE4&PID_0003
+
+; Device: 1FE4:0044
+"LibUSB-Win32: HandyTech [Easy Braille (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0044
+
+; Device: 1FE4:0054
+"LibUSB-Win32: HandyTech [Active Braille]"=LIBUSB_DEV, USB\VID_1FE4&PID_0054
+
+; Device: 1FE4:0074
+"LibUSB-Win32: HandyTech [Braille Star 40 (HID)]"=LIBUSB_DEV, USB\VID_1FE4&PID_0074
+
+; Device: 4242:0001
+"LibUSB-Win32: Pegasus [all models]"=LIBUSB_DEV, USB\VID_4242&PID_0001
+
+; Device: C251:1122
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1122
+
+; Device: C251:1123
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1123
+
+; Device: C251:1124
+"LibUSB-Win32: EuroBraille [Esys (version < 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1124
+
+; Device: C251:1125
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1125
+
+; Device: C251:1126
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, no SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1126
+
+; Device: C251:1127
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1127
+
+; Device: C251:1128
+"LibUSB-Win32: EuroBraille [Esys (version >= 3.0, with SD card)]"=LIBUSB_DEV, USB\VID_C251&PID_1128
+
+; Device: C251:1129
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1129
+
+; Device: C251:112A
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112A
+
+; Device: C251:112B
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112B
+
+; Device: C251:112C
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112C
+
+; Device: C251:112D
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112D
+
+; Device: C251:112E
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112E
+
+; Device: C251:112F
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_112F
+
+; Device: C251:1130
+"LibUSB-Win32: EuroBraille [Esytime]"=LIBUSB_DEV, USB\VID_C251&PID_1130
+
+; Device: C251:1131
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1131
+
+; Device: C251:1132
+"LibUSB-Win32: EuroBraille [reserved]"=LIBUSB_DEV, USB\VID_C251&PID_1132
+
+; END_USB_DEVICES
+
+;--------------------------------------------------------------------------
+; Strings
+;--------------------------------------------------------------------------
+
+[Strings]
+manufacturer = "BRLTTY"

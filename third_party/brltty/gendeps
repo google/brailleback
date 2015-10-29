@@ -1,0 +1,244 @@
+#!/usr/bin/env tclsh
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+source [file join [file dirname [info script]] "prologue.tcl"]
+
+proc getBuildDirectories {{root ""}} {
+   set directories [list]
+
+   if {[string length $root] == 0} {
+      set root .
+      set setPath {
+         set path $name
+      }
+   } else {
+      set setPath {
+         set path [file join $root $name]
+      }
+   }
+
+   if {[file exists [file join $root Makefile.in]]} {
+      lappend directories $root
+   }
+
+   foreach name [readdir $root] {
+      eval $setPath
+      set type [file type $path]
+
+      if {[string equal $type link]} {
+         continue
+      }
+
+      if {[string equal $type directory]} {
+         lvarcat directories [getBuildDirectories $path]
+      }
+   }
+
+   return $directories
+}
+
+proc generatedFile {file} {
+   set name [file tail $file]
+
+   if {[string equal [file extension [file rootname $name]] .auto]} {
+      return 1
+   }
+
+   if {[regexp {\.tab\.c$} $name]} {
+      return 1
+   }
+
+   if {[lsearch -exact {brlapi_constants.h} $name] >= 0} {
+      return 1
+   }
+
+   return 0
+}
+
+proc sourceFile {file} {
+   set name [lindex [set components [file split $file]] end]
+   regsub {^forbuild(\.)} $name {config\1} name
+   set path [eval file join [lreplace $components end end "$name.in"]]
+
+   if {[file exists $path]} {
+      return $path
+   }
+
+   return ""
+}
+
+proc dependencyExists {file} {
+   if {[file exists $file]} {
+      return 1
+   }
+
+   if {[string length [set source [sourceFile $file]]] > 0} {
+      if {[file exists $source]} {
+         return 1
+      }
+   }
+
+   return 0
+}
+
+proc getDependencies {file} {
+   upvar #0 dependencies($file) dependencies
+
+   if {![info exists dependencies]} {
+      lappend dependencies $file
+
+      if {[string length [set source [sourceFile $file]]] == 0} {
+         set source $file
+      }
+      set stream [open $source {RDONLY}]
+
+      set includes [list]
+      while {[gets $stream line] >= 0} {
+         if {[regexp {^ *# *include *"([^"]*)"} $line x header]} {
+            lappend includes $header
+         }
+      }
+      close $stream; unset stream
+
+      if {[string equal [set directory [file dirname $file]] .]} {
+         set directory ""
+      }
+
+      foreach include $includes {
+         if {[generatedFile $include]} {
+            if {[string first / $include] < 0} {
+               set include [file join $directory $include]
+            }
+
+            lappend dependencies $include
+         } else {
+            set found 0
+            foreach location [list $directory Programs ""] {
+               if {[dependencyExists [set path [file join $location $include]]]} {
+                  lvarcat dependencies [lindex [intersect3 $dependencies [getDependencies $path]] 2]
+                  set found 1
+                  break
+               }
+            }
+            if {!$found} {
+               writeProgramMessage "missing dependency: $file includes $include"
+            }
+         }
+      }
+   }
+
+   return $dependencies
+}
+
+set optionDefinitions {
+}
+
+if {![processOptions optionValues argv $optionDefinitions]} {
+   syntaxError
+}
+
+if {[llength $argv] == 0} {
+}
+
+if {[llength $argv] > 0} {
+   syntaxError "too many parameters"
+}
+
+set sourceExtensions {c cc y}
+set sourceExtensionsGlob "{[join $sourceExtensions ,]}"
+
+foreach buildDirectory [set buildDirectories [getBuildDirectories]] {
+   foreach sourceFile [glob -nocomplain [file join $buildDirectory "*.$sourceExtensionsGlob"]] {
+      regsub {^(\./)+} $sourceFile {} sourceFile
+      if {![generatedFile $sourceFile]} {
+         lappend sourceFiles($buildDirectory) $sourceFile
+         getDependencies $sourceFile
+      }
+   }
+}
+
+set generatedDependencies [list]
+set objectFiles [list]
+set absoluteStream [open absdeps.mk {WRONLY CREAT TRUNC}]
+foreach buildDirectory [lsort $buildDirectories] {
+   set relativeStream [open [file join $buildDirectory reldeps.mk] {WRONLY CREAT TRUNC}]
+
+   if {[info exists sourceFiles($buildDirectory)]} {
+      foreach sourceFile [lsort $sourceFiles($buildDirectory)] {
+         switch -exact -- [file extension $sourceFile] {
+            ".y" {
+               set objectExtension ".tab.c"
+            }
+
+            default {
+               set objectExtension ".\$O"
+            }
+         }
+
+         set objectFile "[file rootname $sourceFile]$objectExtension"
+         set objectName [file tail $objectFile]
+
+         puts $absoluteStream "# Dependencies for $objectFile:"
+         puts $relativeStream "# Dependencies for $objectName:"
+         lappend objectFiles $objectFile
+
+         foreach dependency $dependencies($sourceFile) {
+            if {[set generated [generatedFile $dependency]]} {
+               lappend generatedDependencies $dependency
+            }
+
+            if {$generated || ([string length [sourceFile $dependency]] > 0)} {
+               set tree BLD
+            } else {
+               set tree SRC
+            }
+
+            puts $absoluteStream "\$(BLD_TOP)$objectFile: \$(${tree}_TOP)$dependency"
+            puts -nonewline $relativeStream "$objectName: "
+
+            if {[string equal $buildDirectory [file dirname $dependency]]} {
+               if {![string equal $tree BLD]} {
+                  puts -nonewline $relativeStream "\$(${tree}_DIR)/"
+               }
+               puts $relativeStream [file tail $dependency]
+            } else {
+               puts $relativeStream "\$(${tree}_TOP)$dependency"
+            }
+         }
+
+         puts $absoluteStream "\tcd \$(@D) && \$(MAKE) \$(@F)"
+         puts $absoluteStream ""
+         puts $relativeStream ""
+      }
+   }
+
+   close $relativeStream; unset relativeStream
+}
+
+if {![lempty [set generatedDependencies [lindex [intersect3 [lrmdups $generatedDependencies] $objectFiles] 0]]]} {
+   puts $absoluteStream "# Generated dependencies:"
+   foreach dependency [lsort $generatedDependencies] {
+      puts $absoluteStream "\$(BLD_TOP)$dependency:"
+      puts $absoluteStream "\tcd \$(@D) && \$(MAKE) \$(@F)"
+   }
+   puts $absoluteStream ""
+}
+close $absoluteStream; unset absoluteStream
+
+exit 0

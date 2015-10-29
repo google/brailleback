@@ -1,0 +1,233 @@
+#!/bin/bash -p
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+. "`dirname "${0}"`/prologue.sh"
+
+set -e
+umask 022
+shopt -s nullglob
+
+declare -a documentLines
+addLine() {
+   local line="${1}"
+
+   documentLines[${#documentLines[*]}]="${line}"
+}
+
+beginDocument() {
+   local title="${1}"
+
+   headerLevel=0
+
+   addLine "<HTML>"
+   addLine "<HEAD>"
+   addLine "<TITLE>${title}</TITLE>"
+   addLine "</HEAD>"
+   addLine "<BODY>"
+}
+
+endDocument() {
+   local file="${1}"
+
+   addLine "</BODY>"
+   addLine "</HTML>"
+
+   local count="${#documentLines[*]}"
+   local index=0
+
+   exec 3>"${file}"
+   while ((index < count))
+   do
+      echo >&3 "${documentLines[index++]}"
+   done
+   exec 3>&-
+}
+
+beginSection() {
+   local title="${1}"
+
+   headerLevel=$((headerLevel + 1))
+   addLine "<H${headerLevel}>${title}</H${headerLevel}>"
+}
+
+endSection() {
+   headerLevel=$((headerLevel - 1))
+}
+
+beginLayoutList() {
+   layoutListed=false
+}
+
+endLayoutList() {
+   ! "${layoutListed}" || {
+      addLine "</UL>"
+   }
+}
+
+beginLayoutEntry() {
+   local prefix="${1}"
+
+   local layout="${inputFile##*/}"
+   layout="${layout%.*}"
+   layout="${layout##*-}"
+
+   outputFile="${outputRoot}/${prefix}-${layout}.${plainTextExtension}"
+}
+
+endLayoutEntry() {
+   local category="${1}"
+
+   exec 4<"${outputFile}"
+   local description
+   read -r -u 4 description
+   exec 4<&-
+
+   description="${description} "
+   description="${description#*: }"
+   [ -z "${category}" ] || description="${description#${category} }"
+   description="${description% }"
+
+   local prefix="All Models"
+   [ -z "${description}" ] || {
+      if [ "${description}" = "${description#(}" ]
+      then
+         prefix=""
+      else
+         prefix="${prefix} "
+      fi
+   }
+   description="${prefix}${description}"
+
+   "${layoutListed}" || {
+      layoutListed=true
+      addLine "<UL>"
+   }
+
+   addLine "<LI><A HREF=\"${outputFile##*/}\">${description}</A>"
+}
+
+translateKeyTable() {
+   local program="${buildRoot}/Programs/ktbtest"
+   [ -x "${program}" ] || make -C "${program%/*}" -s "${program##*/}"
+   "${program}" -D"${buildRoot}/lib" -T"${sourceRoot}/${tablesSubdirectory}" -l "${inputFile##*/}" >"${outputFile}"
+}
+
+sourceRoot="$(dirname "${0}")"
+outputRoot="doc-ktb"
+buildRoot="${sourceRoot}"
+
+while getopts ":o:s:b:" option
+do
+   case "${option}"
+   in
+      o) outputRoot="${OPTARG}";;
+      s) sourceRoot="${OPTARG}";;
+      b) buildRoot="${OPTARG}";;
+      :) syntaxError "missing value: -${OPTARG}";;
+     \?) syntaxError "unknown option: -${OPTARG}";;
+      *) syntaxError "unimplemented option: -${option}";;
+   esac
+done
+
+shift $((OPTIND - 1))
+[ "${#}" -eq 0 ] || syntaxError "too many parameters"
+
+verifyInputDirectory "${sourceRoot}"
+verifyOutputDirectory "${outputRoot}"
+
+sourceRoot="$(cd "${sourceRoot}" && pwd)"
+buildRoot="$(cd "${buildRoot}" && pwd)"
+
+driversSubdirectory="Drivers/Braille"
+driversDirectory="${sourceRoot}/${driversSubdirectory}"
+
+tablesSubdirectory="Tables"
+tablesDirectory="${sourceRoot}/${tablesSubdirectory}"
+
+braillePrefix="brl"
+keyboardPrefix="kbd"
+
+plainTextExtension="txt"
+hypertextExtension="html"
+keyTableExtension="ktb"
+
+documentTitle="Key Tables"
+beginDocument "${documentTitle}"
+beginSection "${documentTitle}"
+
+beginSection "Keyboards"
+beginLayoutList
+set -- "${tablesDirectory}/${keyboardPrefix}-"*".${keyTableExtension}"
+for inputFile
+do
+   beginLayoutEntry "${keyboardPrefix}"
+   translateKeyTable
+   endLayoutEntry
+done
+endLayoutList
+addLine "<HR>"
+endSection
+
+beginSection "Braille Drivers"
+addLine "<DL>"
+for driverDirectory in "${driversDirectory}/"*
+do
+   [ -d "${driverDirectory}" ] || continue
+
+   driverName="${driverDirectory##*/}"
+   driverCode="$(sed -n '/^DRIVER_CODE *=/s/^.*= *\([^ ]*\).*$/\1/p' "${driverDirectory}/Makefile.in")"
+
+   header="${driverName}"
+   inputFile="${driverDirectory}/README"
+   [ ! -f "${inputFile}" ] || {
+      outputFile="${outputRoot}/${braillePrefix}-${driverCode}.${plainTextExtension}"
+      cp -a -- "${inputFile}" "${outputFile}"
+      header="<A HREF=\"${outputFile##*/}\">${header}</A>"
+   }
+   addLine "<DT>${header}<DD>"
+
+   beginLayoutList
+   set -- "${tablesDirectory}/${braillePrefix}-${driverCode}-"*".${keyTableExtension}"
+   if [ "${#}" -gt 0 ]
+   then
+      for inputFile
+      do
+         beginLayoutEntry "${braillePrefix}-${driverCode}"
+         translateKeyTable
+         endLayoutEntry "${driverName}"
+      done
+   else
+      set -- "${tablesDirectory}/${braillePrefix}-${driverCode}-"*".${plainTextExtension}"
+      for inputFile
+      do
+         beginLayoutEntry "${braillePrefix}-${driverCode}"
+         cp -a -- "${inputFile}" "${outputFile}"
+         endLayoutEntry "${driverName}"
+      done
+   fi
+
+   endLayoutList
+done
+addLine "</DL>"
+addLine "<HR>"
+endSection
+
+endSection
+endDocument "${outputRoot}/index.${hypertextExtension}"
+exit 0

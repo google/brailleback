@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Когато приложението BrailleBack е включено, устройството ви ще се свърже със сдвоен брайлов дисплей и ще представя съдържанието на екрана с брайлова азбука. Клавишите на брайловия дисплей могат да се ползват за навигация на екрана, активиране на елементи и въвеждане на текст. За повече информация натиснете интервал и точки 1, 2 и 3 (буквата l в брайлова азбука) на дисплея, когато е свързан."</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Брайлова хардуерна клавиатура"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Съветник за брайловата хардуерна клавиатура"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Активиране на брайловата хардуерна клавиатура"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"За да използвате брайловата хардуерна клавиатура, трябва да я активирате в настройките за метода на въвеждане и след това да я зададете като метод по подразбиране."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Пропускане"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Отваряне на настройките"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Задаване на метод на въвеждане по подразбиране"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"За да използвате брайловата хардуерна клавиатура, трябва да я зададете като метод на въвеждане по подразбиране."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Отваряне на инструмента за избор на метод на въвеждане"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Свързване с брайлов дисплей"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Разрешава на приложение да пише върху брайлов дисплей и да чете от него въведени с клавиатурата данни"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Празна таблица"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Таблица"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Празен списък"</string>
+    <string name="type_listview" msgid="195039477703126884">"Списък"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Празен превъртащ се изглед"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Превъртащ се изглед със съдържание"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Поле за редактиране"</string>
+    <string name="type_image" msgid="3688576211222019626">"Изображение"</string>
+    <string name="type_button" msgid="3639574187835564558">"Бутон"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Контрола плъзгач"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Контакт"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Предпочитания за BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Устройство"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Състояние"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Помощ за клавиатурата"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Брайлово писмо"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Тип брайлово писмо"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Литерат. брайлова таблица"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Компют. брайлова таблица"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Няма връзка"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Установена е връзка"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Не е налице"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Литературно брайлово писмо"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Компютърно брайлово писмо"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Автоматично (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Автоматично (няма)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Други"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Опции за програмисти"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Наслагване върху екрана"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Изх. брайл. писмо да се вижда"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Стартиране на урока"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Лицензи за отворен код"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Ниво на регистрация"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Помощ за клавиатурата на BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback вкл."</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback изкл"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Клавиатурата на BrailleBack е активна"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Докоснете, за да превключите към клавиатурата по подразбиране"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> – клас <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) – клас <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Панор. прем. наляво"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Панор. прем. надясно"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Урок за наслагването"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Край"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Брайловото наслагване симулира опресняващ се брайлов дисплей. То показва брайловите клетки заедно със съответния текст, който ще бъде представен на хардуерен екран. Препоръчва се да активирате TalkBack и режима за изследване с докосване, преди да продължите."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Настройки за достъпност"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Можете да преместите панорамно брайловия дисплей, като натиснете един от съответните бутони до текста."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"На дисплея може да се показват няколко елемента едновременно. В състояние сте да кликнете върху един от тях, като докоснете някоя от брайловите клетки в текста. Това съответства на натискането на един от клавишите за насочване на брайлов дисплей."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Ако наслагването покрива други елементи на екрана, можете да го преместите, като преди това го натиснете и задържите. То ще се подравни по горната или долната му част, когато освободите пръста си."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Урок за наслагването: Показв."</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Преди да използвате наслагването върху екрана, ви препоръчваме да прегледате урока за него."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"Р:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Търсене на: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Урок за търсене на екрана"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Търсенето на екрана ви дава възможност бързо да преминавате към елементи на екрана, като въвеждате част от текстовото им описание. Докато пишете, фокусът ще се премества към следващия съответстващ елемент."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Ползвайте <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> за преминаване към следващия резултат и <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> за преминаване към предишния. Натиснете <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>, за да излезете от режима на търсене и да оставите фокуса върху резултата. Натиснете <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>, за да се върнете към елемента, върху който е бил фокусът преди това."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Никога да не се показва отново"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Напред"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Добавяне на персонализиран етикет"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Редактиране на персонализиран етикет"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Премахване на персонализиран етикет"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Персонализираните етикети не се поддържат. Актуализирайте TalkBack"</string>
+</resources>

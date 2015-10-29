@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--
+    Source: A brief description of BrailleBack.
+    Description: This is presented to the user on the Google Play Sore default view. [CHAR LIMIT="80"]
+  -->
+  <string name="googlePlay_shortDescription">
+    Use your braille display with your Android device
+  </string>
+
+  <!--
+    Source: Full description of Brailleback.
+    Description: the BrailleBack app description in the Google Play Store. [CHAR LIMIT="4000"]
+   -->
+  <string name="googlePlay_appDescription">
+"BrailleBack is an Accessibility Service that helps blind users make use of braille devices. It works together with the TalkBack app to give a combined braille and speech experience.
+This app lets you connect a supported refreshable braille display to your device via Bluetooth. Screen content will be presented on the braille display and you can navigate and interact with your device using the keys on the display. It is possible to input text using the braille keyboard.
+
+Devices supported in this version:
+• APH Refreshabraille
+• Baum VarioConnect
+• Esys EuroBraille
+• Freedom Scientific Focus Blue (14 and 40 cell models) 
+• HandyTech (Basic Braille, Active Braille, Braille Star, Braille Wave, Braillino, Easy Braille)
+• Harpo (Braillepen 12, Braillepen 12 Touch)
+• HIMS (BrailleSense, Braille EDGE) 
+• Humanware Brailliant (1st generation and BI models)
+• Optelec Alva (BC640, BC680), Easylink 12 touch
+• Papenmeier Braillex Trio
+• Seika (notetaker and 40 cell display)
+
+This app is not active by default.
+Steps to activate this app:
+• Go to Settings
+• Select Accessibility
+• Select BrailleBack, and turn on the switch
+• Go back to Settings
+• Select Bluetooth
+• If your Bluetooth braille display is not listed, make sure the display is in pairing mode and select Search For Devices
+• Select the name of your braille display to make sure that it is paired
+For further instructions, press the space bar and dots 1, 2 and 3 on the display at the same time. If your display doesn't have braille input keys, choose Keyboard help in BrailleBack settings."
+  </string>
+  <!--
+    Source: Information specific to recent updates of BrailleBack.
+    Description: List of changes in the latest BrailleBack release. Displayed in 'What's new' section in the Google Play Store BrailleBack app page. [CHAR LIMIT="500"]
+  -->
+  <string name="googlePlay_appChanges">
+"• You can now display and add Talkback custom labels for unlabeled buttons and images using only the braille display.
+
+• Automatically scroll when navigating in lists.
+
+• The Optelec Easylink 12 Touch and Harpo Braillepen 12 Touch braille displays are now supported.
+
+• Chorded commands are supported on the Optelec BC models.
+
+• The size of the HIMS BrailleSense Onhand display is correctly detected.
+
+• Added several new braille tables, including Unified English Braille.
+</string>
+</resources>

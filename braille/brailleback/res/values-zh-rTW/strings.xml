@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"開啟 BrailleBack 時，系統會將您的裝置連接到已配對的藍牙點字顯示器，並以點字顯示螢幕內容。您可以使用點字顯示器上的按鍵，來瀏覽螢幕、啟用項目及輸入文字。如需詳細資訊，請將裝置連接到點字顯示器後，按住點字顯示器上的空格鍵，然後同時按下第一、第二和第三點 (即英文字母「l」的點字按鍵組合)。"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"實體點字鍵盤"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"實體點字鍵盤精靈"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"啟用實體點字鍵盤"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"如要使用實體點字鍵盤，您必須先前往輸入法設定中啟用實體點字鍵盤，然後將其設為預設輸入法。"</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"略過"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"開啟輸入法設定"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"設定預設輸入法"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"如要使用實體點字鍵盤，您必須先將實體點字鍵盤設為預設輸入法。"</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"開啟輸入法選取工具"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"連接到點字顯示器"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"允許應用程式以點字顯示器為介面，寫入輸出內容及讀取鍵盤輸入內容"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"空白格狀檢視"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"格狀檢視"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"空白清單檢視"</string>
+    <string name="type_listview" msgid="195039477703126884">"清單檢視"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"空白可捲動內容檢視"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"可捲動內容檢視"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"編輯框"</string>
+    <string name="type_image" msgid="3688576211222019626">"圖片"</string>
+    <string name="type_button" msgid="3639574187835564558">"按鈕"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"搜尋控制介面"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"聯絡人"</string>
+    <string name="preferences_title" msgid="368535298674637475">"BrailleBack 偏好設定"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"裝置"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"狀態"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"鍵盤說明"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"點字"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"點字類型"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"文書點字參考表"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"電腦點字參考表"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"尚未連接"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"已連接"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"不支援"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"文書點字"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"電腦點字"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"自動選取 (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"自動選取 (無)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"其他"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"開發人員選項"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"螢幕疊層"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"在螢幕上顯示點字輸出"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"啟動教學課程"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"開放原始碼授權"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"紀錄輸出等級"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBack 鍵盤說明"</string>
+    <string name="display_connected" msgid="2008600513914815101">"BrlBack 開啟"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"BrlBack 關閉"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"已啟用 BrailleBack 鍵盤"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"輕觸即可切換預設鍵盤"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - <xliff:g id="GRADE_NUMBER">%2$d</xliff:g> 級點字"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - 第 <xliff:g id="GRADE_NUMBER">%3$d</xliff:g> 級"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"向左平移"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"向右平移"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"疊層教學課程"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"完成"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"點字疊層功能的用途是模擬點字顯示器，讓硬體顯示器在畫面上出現文字時，顯示相對應的點字格。使用前，建議您啟用 TalkBack 和觸控探索模式。"</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"協助工具設定"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"只需按下文字旁邊的平移按鈕，即可平移點字疊層。"</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"畫面上可能會一次顯示多個元素。只要輕按任一文字當中的點字格即可點選，效果等同於按下點字顯示器中的 Routing 鍵。"</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"如果疊層蓋到了畫面中的其他元素，您可以將疊層移開，方法是按住並拖曳疊層。放開手指後，疊層即會移至螢幕頂端或底部。"</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"顯示疊層教學課程"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"建議您在使用螢幕疊層功能之前，先觀看該功能的教學課程。"</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"結果："</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"搜尋：<xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"搜尋畫面內容教學課程"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"在「搜尋畫面內容」模式中，只要輸入畫面上任一項目的部分文字說明，即可快速移至該項目。在您輸入文字時，游標會自動移至下一個相符項目。"</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"您可使用 <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> 移至下一個搜尋結果，或使用 <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> 移至上一個搜尋結果。按下 <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> 可結束搜尋模式，並將游標置於搜尋結果上方；按下 <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> 則可返回游標停留的上一個項目。"</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"不再顯示教學課程"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"繼續"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"新增自訂標籤"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"編輯自訂標籤"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"移除自訂標籤"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"系統不支援自訂標籤，請更新 TalkBack 功能。"</string>
+</resources>

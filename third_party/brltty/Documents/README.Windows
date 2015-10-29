@@ -1,0 +1,303 @@
+System Requirements
+===================
+
+The earliest release of Windows which is supported by BRLTTY is Windows 98.
+
+Pre-built versions of brltty are available for download on
+http://mielke.cc/brltty or on http://youpibouh.thefreecat.org/brltty/
+
+In order to build BRLTTY yourself from a supplied tarball, you
+need either Cygwin (see [http://www.cygwin.com/]) or MinGW (see
+[http://mingw.sourceforge.net/]). In both cases, you also need the following
+additional packages:
+*  gcc
+*  make
+*  w32api (version 3.6 or later)
+
+If you'd like to build BRLTTY from its source repository rather than from one
+of the supplied tarballs then you'll also need these additional packages:
+*  autoconf
+*  tcltk
+
+If you'd like to prepare the documentation (do make within the Documents/
+subdirectory) you'll need these packages:
+*  linuxdoc-tools (not pre-packaged in cygwin unfortunately)
+*  doxygen
+
+If you are using MSYS for running configure and make, you should always use
+Windows paths (like c:/brltty), not MSYS paths (like /c/brltty), because brltty
+does _not_ understand MSYS paths.
+
+------------------------------------------------------------------------------
+
+Windows 98 and Me Limitation
+============================
+
+On Windows versions 2000, XP, 2003, and later, BRLTTY automatically accesses
+the Windows terminal which you're currently using as you switch between them.
+This isn't possible on earlier versions. One way to still achieve this
+functionality, however, is to run one BRLTTY (which directly accesses your
+braille display) on the root window and another one (which indirectly accesses
+your braille display via BrlAPI) on each terminal. This scheme may sound
+complicated, but it can be easily set up to run automatically.
+
+The first (or root) BRLTTY should be run as part of Windows startup. It must be
+given those options which are necessary to access your braille display, e.g.
+-b, -d, and all other options you'd normally specify. It must also be given the
+-Xroot=yes option, which attaches it to the root window. 
+
+An additional BRLTTY should then be run for each new terminal. It should be
+invoked like this:
+
+   brltty -bba -N
+
+The -bba option tells it to access the root BRLTTY via BrlAPI, and the -N
+option tells it not to start a BrlAPI server of its own.
+
+These BRLTTYs can be started automatically by, for example, adding this line to
+your .bashrc script. Each of these BRLTTYs takes care of the terminal it's
+running in, and connects, via BrlAPI, to the root BRLTTY in order to access
+your braille display.
+
+If you're not concerned with security, and would rather not fiddle with the
+brlapi.key file, then add the -Aauth=none option to the command line which
+invokes the root BRLTTY. You don't need to worry about unauthorized access over
+the network since the default is that only locally running programs can connect
+to BrlAPI.
+
+------------------------------------------------------------------------------
+
+USB Support
+===========
+
+USB devices are supported thanks to the libusb-win32 or libusb-1.0
+packages.
+
+Pre-built versions of brltty have USB support compiled in, and the required
+drivers are shipped, you just need to let the installer set them up.
+
+In order to build BRLTTY yourself with USB support enabled, _before_ compiling
+BRLTTY, you need to install at least one of libusb-win32 or libusb-1.0.
+
+At the time of this writing, libusb-win32 binaries can be found on
+[http://libusb-win32.sourceforge.net/]. The file will be called something
+like "libusb-win32-bin-<version>.exe", and should be available on
+[http://sourceforge.net/project/showfiles.php?group_id=78138].
+Unpack it in some place.
+
+As of the time of this writing, the libusb-1.0 binary snapshots can be found on
+http://www.libusb.org/wiki/windows_backend . The file will be called something
+like "libusb_<date>.7z". Unpack it in some place.
+
+The Cygwin or mingw toolchain then needs to get aware of the presence of
+libusb-win32 or libusb1.0-devel.
+
+For Cygwin:
+
+* Just install the libusb-win32 or libusb1.0-devel package.
+
+For mingw:
+
+  For libusb-win32:
+
+    Symlink the header and library files into MinGW installation, run:
+
+       +  ln -s "/path/to/LibUSB-Win32/include/lusb0_usb.h" /mingw/include/
+       +  ln -s "/path/to/LibUSB-Win32/lib/gcc/libusb.a" /mingw/lib/
+       +  ln -s "/path/to/LibUSB-Win32/bin/x86/libusb0_x86.dll" /mingw/bin/libusb0.dll
+
+    Then you can configure, compile, install, and run BRLTTY as usual.
+  
+  For libusb-1.0:
+
+    1) Symlink the header and library files into MinGW installation, run:
+
+       + ln -s "/path/to/Libusb-1.0/include/libusb-1.0" /mingw/include/
+       + ln -s "/path/to/Libusb-1.0/MinGW32/dll/libusb-1.0.dll.a" /mingw/lib/
+       + ln -s "/path/to/Libusb-1.0/MinGW32/dll/libusb-1.0.dll" /mingw/bin/
+
+    2) Create a /mingw/lib/pkgconfig/libusb-1.0.pc file containing
+
+prefix=/mingw
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libusb-1.0
+Description: C API for USB device access from Windows userspace
+Version: 1.0
+Libs: -L${libdir} -lusb-1.0
+Cflags: -I${includedir}/libusb-1.0
+
+    Then you can configure, compile, install, and run BRLTTY as usual.
+
+To actually be able to use the libusb-win32 driver, you need to copy the
+runtime files in the brltty source.
+
+   +  cp "/path/to/LibUSB-Win32/bin/x86/libusb0.sys" brltty/hotplug/libusb0.sys
+   +  cp "/path/to/LibUSB-Win32/bin/x86/libusb0_x86.dll" brltty/hotplug/libusb0.dll
+   +  cp "/path/to/LibUSB-Win32/bin/amd64/libusb0.sys" brltty/hotplug/libusb0_x64.sys
+   +  cp "/path/to/LibUSB-Win32/bin/amd64/libusb0.dll" brltty/hotplug/libusb0_x64.dll
+
+and then right-click on brltty/hotplug/brltty.inf and select install, or on
+braille device plug, point at the brltty/hotplug/brltty.inf file.
+
+To actually be able to use the libusb-1.0 driver, right-click on
+brltty/hotplug/brltty-libusb-1.0.inf and select install, or on braille
+device plug, point at the brltty/hotplug/brltty-libusb-1.0.inf file.
+
+------------------------------------------------------------------------------
+
+Configuring BRLTTY
+==================
+
+Some of BRLTTY's configure options are of particular interest to users of the 
+Windows platform:
+
+--enable-relocatable-install: The default is for BRLTTY to refer to its
+components via absolute paths. On the Windows platform, however, the convention
+is for a package to use relative paths so that it can be installed into an
+arbitrary directory and so that it can be moved around thereafter as well. This
+option builds BRLTTY such that relative paths are used.
+
+------------------------------------------------------------------------------
+
+Sticking to a console
+=====================
+
+It may be useful to have BRLTTY only review the console it is started in, i.e. 
+for it not to follow the keyboard focus. To achieve this, set the FollowFocus 
+parameter of the Windows screen driver to no. This can be done either on the 
+command line (-XFollowFocus=no) or in brltty.conf (screen-parameter 
+FollowFocus=no).
+
+------------------------------------------------------------------------------
+
+Sharing the Braille Display with Other Screen Readers
+=====================================================
+
+When you're not on a window which BRLTTY can handle its default action is to
+retain control of the braille display and to present a brief message explaining
+the problem. If you have another braille-capable screen reader and would like
+it to take over instead then both BRLTTY and that other screen reader must be
+instructed to share the braille display.
+
+BRLTTY can be instructed to share the braille display via its --release-device
+option; the short form of this option is -r. When this option is in effect
+BRLTTY releases the braille display when you move onto a window which it cannot
+handle and tries to regain control of the braille display when you move onto a
+window which it can handle. Note that these actions take a noticeable amount of
+time so you should only use this option if it's actually needed.
+
+------------------------------------------------------------------------------
+
+Sharing BRLTTY with JAWS
+========================
+
+A common case wherein a JAWS user might want BRLTTY to be in control of the
+braille display is when using Cygwin.
+
+There are two phases to configuring JAWS to run in the background while BRLTTY
+controls the braille display. First, the window title must be established and
+stable. Second, JAWS braille must be put to sleep.
+
+What is a window title?
+-----------------------
+
+Every window in Windows has a title bar that contains the name of the
+application which is running in it as well as some controls to do things like
+move and resize it. BRLTTY does not show this title bar.
+
+For a program window, JAWS uses the name of the program's executable as the
+name of the configuration files to load when that program gains focus. For a
+console application such as Cygwin, however, it uses the title of the window
+instead. We must, therefore, tell JAWS within the window title that this is a
+Cygwin window.
+
+Setting the Window Title
+------------------------
+
+JAWS uses one of the words in the window title as the name of the configuration
+files to load. This file set is what tells JAWS the specifics of how to handle
+the application. It is, therefore, where JAWS must be instructed to put its
+braille component to sleep.
+
+At this writing, it appears that JAWS uses the following algorithm for choosing
+which word in the title to use as the name of the file set:
+1) If there are no slashes (/) or backslashes (\) in the title then JAWS uses 
+   the first word. Thus, if the title is "Cygwin Bash Shell" then JAWS will 
+   load the Cygwin configuration files.
+2) If there is at least one slash (/) or backslash (\) in the title then JAWS 
+   uses the last word. Thus, if the title is "$PWD - Cygwin" then JAWS will 
+   similarly load the Cygwin configuration files.
+Setting Cygwin's Window Title
+-----------------------------
+
+First, it is imperative that you replace, or at least modify, the default PS1
+(primary shell prompt) setting. The default for this setting, as distributed by
+Cygwin, places $PWD (the path to the current working directory) in the window
+title, thus requiring you to have a separate JAWS configuration for every
+directory on the system! One possible way to resolve this problem is to
+uncomment the `settitle' function which can be found near the end of `.bashrc'.
+This function allows you to place a string of your own choice in the title. You
+can use this function, therefore, as follows:
+
+   export PROMPT_COMMAND='settitle "$PWD - Cygwin"'
+   export PS1='$ '
+
+The first of these lines causes the window title to be set just before each
+shell prompt. Since $PWD always contains at least one slash (/), the operative
+word is `Cygwin' (the last word), and JAWS will load any Cygwin configuration
+files that it finds. The second of these lines sets the primary shell prompt to
+the customary dollar sign ($). More importantly, though, it replaces Cygwin's
+default PS1 setting which contains escape sequences that overwrite the window
+title with just $PWD thus not presenting any permanent text for JAWS to
+recognize.
+
+Putting JAWS Braille to Sleep
+-----------------------------
+
+Now that a stable window title has been established, JAWS braille can finally
+be put to sleep. While in Cygwin and with BRLTTY not running, do the following:
+1) Press Insert+F2 to bring up the Run JAWS Manager dialog.
+2) Down-Arrow to Configuration Manager and press Enter. Verify that the title 
+   on the top line contains "Cygwin.jcf".
+3) Press Alt+S for Set Options.
+4) Press B for Braille.
+5) Press S for Braille Sleep Mode.
+6) Verify that the box is checked (it should look like <x> instead of < >). 
+   Press Space to toggle the setting if the x isn't there.
+7) Press Enter to leave the menu.
+8) Press Control+S to save the file.
+9) Press Alt+F4 to exit the configuration manager.
+
+Putting JAWS Speech to Sleep
+----------------------------
+
+If you want to use JAWS speech in Windows but not in Cygwin, you can do the
+following:
+
+1) Press Insert+F2 to bring up the Run JAWS Manager dialog.
+2) Down-Arrow to Configuration Manager and press Enter. Verify that the title 
+   on the top line contains "Cygwin.jcf".
+3) Press Alt+S for Set Options.
+4) Press A for Advanced.
+5) You should be on an item labelled "Sleep Mode Enable" with an empty check
+   box (< >). Press Space to check it (<x>). 
+6) Press Enter to leave the menu.
+7) Press Control+S to save the file.
+8) Press Alt+F4 to exit the configuration manager.
+
+Performance
+-----------
+
+You'll always be able to switch to Cygwin, and BRLTTY, if running, will take
+control of the braille display automatically. Switching back to Windows and
+JAWS may be a bit more problematic, though ... the degree of success seems to
+depend on the type of braille display being used. Sometimes it works properly.
+Sometimes, with a USB display, the cable must be unplugged/replugged to allow
+JAWS to regain control. In extreme cases you may need to exit BRLTTY before
+going to Windows.
+
+------------------------------------------------------------------------------
+

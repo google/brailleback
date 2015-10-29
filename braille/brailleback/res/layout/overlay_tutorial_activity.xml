@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/overlay_tutorial_padding" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overlay_tutorial_introduction"
+                android:layout_marginBottom="@dimen/overlay_tutorial_small_margin" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overlay_tutorial_accessibility_settings_button"
+                android:onClick="onClickAccessibilitySettingsButton" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overlay_tutorial_pan"
+                android:layout_marginTop="@dimen/overlay_tutorial_margin"
+                android:layout_marginBottom="@dimen/overlay_tutorial_small_margin" />
+
+            <include
+                layout="@layout/overlay"
+                android:id="@+id/pan_demo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overlay_tutorial_routing_keys"
+                android:layout_marginTop="@dimen/overlay_tutorial_margin"
+                android:layout_marginBottom="@dimen/overlay_tutorial_small_margin" />
+
+            <include
+                layout="@layout/overlay"
+                android:id="@+id/routing_key_demo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overlay_tutorial_moving"
+                android:layout_marginTop="@dimen/overlay_tutorial_margin" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/overlay_tutorial_finish_button"
+        android:onClick="onClickFinishButton" />
+
+</LinearLayout>

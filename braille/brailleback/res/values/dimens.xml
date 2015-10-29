@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="overlay_pan_button_padding">5dp</dimen>
+    <dimen name="overlay_text_size">10dp</dimen>
+    <dimen name="overlay_dot_radius">2dp</dimen>
+    <dimen name="overlay_cell_width">5dp</dimen>
+    <dimen name="overlay_cell_height">15dp</dimen>
+    <dimen name="overlay_cell_padding">6.5dp</dimen>
+    <dimen name="overlay_tutorial_padding">20dp</dimen>
+    <dimen name="overlay_tutorial_margin">30dp</dimen>
+    <dimen name="overlay_tutorial_small_margin">10dp</dimen>
+    <dimen name="search_text_font_size">30dp</dimen>
+</resources>

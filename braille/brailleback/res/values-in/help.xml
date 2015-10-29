@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Geser ke kanan"</item>
+    <item msgid="992384288929754258">"Geser ke kiri"</item>
+    <item msgid="2311009411708911700">"Navigasi ke item berikutnya"</item>
+    <item msgid="4868322620432152139">"Navigasi ke item sebelumnya"</item>
+    <item msgid="713256521059720189">"Navigasi ke baris berikutnya"</item>
+    <item msgid="7111316948614107646">"Navigasi ke baris sebelumnya"</item>
+    <item msgid="1092717670413169154">"Gulir maju"</item>
+    <item msgid="2672802569950877806">"Gulir mundur"</item>
+    <item msgid="6858389246595464611">"Navigasikan ke bagian atas laman"</item>
+    <item msgid="6077703163925348890">"Navigasikan ke bagian bawah laman"</item>
+    <item msgid="880847480793051862">"Aktifkan item di bawah jari"</item>
+    <item msgid="2643484595828025643">"Tekan lama item di bawah jari"</item>
+    <item msgid="2225564744515622940">"Aktifkan item saat ini"</item>
+    <item msgid="2039335960797511513">"Tekan lama item saat ini"</item>
+    <item msgid="5703473744103522479">"Masukkan huruf braille"</item>
+    <item msgid="397805118186944475">"Aktifkan tombol kembali"</item>
+    <item msgid="2057979808256674943">"Aktifkan tombol beranda"</item>
+    <item msgid="3851017077578326256">"Buka jendela pemberitahuan"</item>
+    <item msgid="7100928240716386910">"Buka jendela aplikasi terbaru"</item>
+    <item msgid="1288748126248312152">"Aktifkan tombol enter saat mengedit teks"</item>
+    <item msgid="6030744298808090187">"Hapus mundur saat mengedit teks"</item>
+    <item msgid="4072293104009433677">"Hapus maju saat mengedit teks"</item>
+    <item msgid="5307038145607249298">"Navigasikan ke bagian selanjutnya di konten web"</item>
+    <item msgid="8804572703982019495">"Navigasikan ke bagian sebelumnya di konten web"</item>
+    <item msgid="5442875833766760122">"Navigasikan ke tautan/kontrol/bidang formulir selanjutnya di konten web"</item>
+    <item msgid="65542415754308243">"Navigasikan ke tautan/kontrol/bidang formulir sebelumnya di konten web"</item>
+    <item msgid="8658175115960567526">"Navigasikan ke daftar selanjutnya di konten web"</item>
+    <item msgid="561134957068368670">"Navigasikan ke daftar sebelumnya di konten web"</item>
+    <item msgid="4431278105955644176">"Alihkan penelusuran di mode layar"</item>
+    <item msgid="1541653246718288681">"Nyalakan/matikan menu pelabelan"</item>
+    <item msgid="3070189781205215458">"Buka bantuan keyboard BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Tekan lama <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Gunakan tombol navigasi untuk memindahkan fokus di layar."\n"Gunakan tombol braille untuk memasukkan teks di kotak edit."\n"Berikut adalah daftar lengkap perintah tombol yang didukung oleh perangkat Anda."</string>
+</resources>

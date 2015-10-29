@@ -1,0 +1,608 @@
+# @configure_input@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+# xc-xfp: when configure tests for: Xaw3d, neXtaw
+# /usr/include/X11/Constraint.h:53:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'typedef'
+# because <X11/Constraint.h> doesn't include <X11/Xfuncproto.h>
+
+Name: @PACKAGE_NAME@
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Vendor: The BRLTTY Developers
+Packager: Dave Mielke <dave@mielke.cc>
+URL: http://mielke.cc/brltty/
+Source: http://mielke.cc/brltty/releases/%{name}-%{version}.tar.gz
+
+BuildRoot: %{_tmppath}/%{name}-%{version}-InstallRoot
+%define _bindir /bin
+%define _sbindir /sbin
+%define _libdir /lib
+%define _sysconfdir /etc
+%define _systemddir /usr/lib/systemd/system
+
+Requires: libicu
+
+BuildRequires: autoconf >= 2.53
+BuildRequires: make
+BuildRequires: gcc
+BuildRequires: /bin/sh
+BuildRequires: coreutils
+BuildRequires: binutils
+BuildRequires: ldconfig
+BuildRequires: /usr/bin/awk
+BuildRequires: glibc-devel
+BuildRequires: tcl
+BuildRequires: libicu-devel
+BuildRequires: ncurses-devel
+BuildRequires: linuxdoc-tools
+BuildRequires: doxygen
+BuildRequires: bluez-libs-devel
+
+AutoProv: no
+Provides: brlapi-server
+AutoReq: yes
+
+Summary: Braille display driver for Linux/Unix.
+%description
+BRLTTY is a background process (daemon) which provides access to
+the console screen (when in text mode) for a blind person using a
+refreshable braille display.  It drives the braille display, and
+provides complete screen review functionality.  Some speech capability
+has also been incorporated.
+
+Install this package if you use a refreshable braille display.
+
+
+%package -n brltty-braille-brlapi
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+AutoProv: no
+AutoReq: yes
+
+Summary: BrlAPI braille driver for BRLTTY.
+%description -n brltty-braille-brlapi
+This package provides the BrlAPI braille driver for BRLTTY.
+
+Install this package if you need to communicate with
+another instance of BRLTTY which is actually in control
+of the braille device.
+
+
+#xc-xfp#%package -n brltty-braille-xwindow
+#xc-xfp#Version: @PACKAGE_VERSION@
+#xc-xfp#Release: 1
+#xc-xfp#Group: System Environment/Daemons
+#xc-xfp#License: GPL
+#xc-xfp#
+#xc-xfp#BuildRequires: xorg-x11-proto-devel
+#xc-xfp#BuildRequires: libX11-devel
+#xc-xfp#BuildRequires: libXt-devel
+#xc-xfp#BuildRequires: Xaw3d-devel
+#xc-xfp#
+#xc-xfp#AutoProv: no
+#xc-xfp#AutoReq: yes
+#xc-xfp#
+#xc-xfp#Summary: XWindow braille driver for BRLTTY.
+#xc-xfp#%description -n brltty-braille-xwindow
+#xc-xfp#This package provides the XWindow braille driver for BRLTTY.
+#xc-xfp#This driver presents a virtual braille device within a graphical
+#xc-xfp#user interface. It is primarily intended for sighted developers
+#xc-xfp#who don't have access to a real braille device but still wish to
+#xc-xfp#assess the accessibility of their applications.
+#xc-xfp#
+#xc-xfp#Install this package if you would like to see how usable an
+#xc-xfp#application would be by a blind person using a braille device.
+
+
+%package -n brltty-speech-espeak
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Requires: espeak
+
+BuildRequires: espeak-devel
+
+AutoProv: no
+AutoReq: yes
+Requires: espeak
+
+Summary: eSpeak speech driver for BRLTTY.
+%description -n brltty-speech-espeak
+This package provides the eSpeak speech driver for BRLTTY.
+
+Install this package if you would like to be able to use the
+eSpeak text-to-speech engine.
+
+
+%package -n brltty-speech-festival
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Requires: festival
+
+AutoProv: no
+AutoReq: yes
+Requires: festival
+
+Summary: Festival speech driver for BRLTTY.
+%description -n brltty-speech-festival
+This package provides the Festival speech driver for BRLTTY.
+
+Install this package if you would like to be able to use the
+Festival text-to-speech engine.
+
+
+%package -n brltty-speech-flite
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Requires: flite
+
+BuildRequires: flite-devel
+
+AutoProv: no
+AutoReq: yes
+Requires: flite
+
+Summary: Festival Lite speech driver for BRLTTY.
+%description -n brltty-speech-flite
+This package provides the Festival Lite speech driver for BRLTTY.
+
+Install this package if you would like to be able to use the
+Festival Lite text-to-speech engine.
+
+
+%package -n brltty-speech-speechd
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Requires: speech-dispatcher
+
+BuildRequires: speech-dispatcher-devel
+
+AutoProv: no
+AutoReq: yes
+Requires: speech-dispatcher
+
+Summary: Speech Dispatcher speech driver for BRLTTY.
+%description -n brltty-speech-speechd
+This package provides the Speech Dispatcher speech driver for BRLTTY.
+
+Install this package if you would like to be able to use the
+Speech Dispatcher text-to-speech server.
+
+
+#xc-xfp#%package -n brltty-screen-atspi
+#xc-xfp#Version: @PACKAGE_VERSION@
+#xc-xfp#Release: 1
+#xc-xfp#Group: System Environment/Daemons
+#xc-xfp#License: GPL
+#xc-xfp#
+#xc-xfp#Requires: at-spi
+#xc-xfp#
+#xc-xfp#BuildRequires: at-spi-devel
+#xc-xfp#
+#xc-xfp#AutoProv: no
+#xc-xfp#AutoReq: yes
+#xc-xfp#Requires: at-spi
+#xc-xfp#
+#xc-xfp#Summary: AT-SPI screen driver for BRLTTY.
+#xc-xfp#%description -n brltty-screen-atspi
+#xc-xfp#This package provides the AT-SPI screen driver for BRLTTY.
+#xc-xfp#
+#xc-xfp#Install this package if you would like to be able to
+#xc-xfp#access GTK-based applications via the Assistive
+#xc-xfp#Technology Service Provider Interface.
+
+
+%package -n brltty-screen-atspi2
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+Requires: dbus
+
+BuildRequires: at-spi2-core-devel
+
+AutoProv: no
+AutoReq: yes
+Requires: dbus
+
+Summary: AT-SPI2 screen driver for BRLTTY.
+%description -n brltty-screen-atspi2
+This package provides the AT-SPI2 screen driver for BRLTTY.
+
+Install this package if you would like to be able to
+access graphical applications via the D-Bus port of
+the Assistive Technology Service Provider Interface.
+
+
+%package -n brltty-screen-screen
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: System Environment/Daemons
+License: GPL
+
+AutoProv: no
+AutoReq: yes
+Requires: screen
+
+Summary: Screen screen driver for BRLTTY.
+%description -n brltty-screen-screen
+This package provides the Screen screen driver for BRLTTY.
+
+Install this package if you would like to be able to
+directly access session windows maintained by the
+screen program.
+
+
+%package -n brltty-utils
+Version: @PACKAGE_VERSION@
+Release: 1
+Group: Development/Tools
+License: GPL
+
+BuildRequires: ncurses-devel
+
+AutoProv: no
+AutoReq: yes
+
+Summary: Commands for maintaining BRLTTY data files.
+%description -n brltty-utils
+This package provides a set of commands for maintaining BRLTTY's datafiles.
+
+
+%package -n brlapi
+Version: @api_release@
+Release: 1
+Group: System Environment/Libraries
+License: LGPL
+
+AutoProv: yes
+AutoReq: yes
+
+Summary: Appliation Programming Interface for BRLTTY.
+%description -n brlapi
+This package provides the run-time support for the Application
+Programming Interface to BRLTTY.
+
+Install this package if you have an application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-devel
+Version: @api_release@
+Release: 1
+Group: Development/Libraries
+License: LGPL
+
+AutoProv: yes
+AutoReq: yes
+
+Summary: Headers, static archive, and documentation for BrlAPI.
+%description -n brlapi-devel
+This package provides the header files, static archive, shared object
+linker reference, and reference documentation for BrlAPI (the
+Application Programming Interface to BRLTTY).  It enables the
+implementation of applications which take direct advantage of a
+refreshable braille display in order to present information in ways
+which are more appropriate for blind users and/or to provide user
+interfaces which are more specifically atuned to their needs.
+
+Install this package if you're developing or maintaining an application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-java
+Version: @api_release@
+Release: 1
+Group: System Environment/Libraries
+License: LGPL
+
+BuildRequires: gcc-java
+
+AutoProv: no
+AutoReq: yes
+
+Summary: Java bindings for BrlAPI.
+%description -n brlapi-java
+This package provides the Java bindings for BrlAPI,
+which is the Application Programming Interface to BRLTTY.
+
+Install this package if you have a Java application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-ocaml
+Version: @api_release@
+Release: 1
+Group: System Environment/Libraries
+License: LGPL
+
+BuildRequires: ocaml
+BuildRequires: ocaml-findlib
+
+AutoProv: no
+AutoReq: yes
+
+Summary: OCaml bindings for BrlAPI.
+%description -n brlapi-ocaml
+This package provides the OCaml bindings for BrlAPI,
+which is the Application Programming Interface to BRLTTY.
+
+Install this package if you have an OCaml application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-python
+Version: @api_release@
+Release: 1
+Group: System Environment/Libraries
+License: LGPL
+
+BuildRequires: python
+BuildRequires: python-devel
+BuildRequires: Cython
+
+AutoProv: no
+AutoReq: yes
+
+Summary: Python bindings for BrlAPI.
+%description -n brlapi-python
+This package provides the Python bindings for BrlAPI,
+which is the Application Programming Interface to BRLTTY.
+
+Install this package if you have a Python application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-tcl
+Version: @api_release@
+Release: 1
+Group: System Environment/Libraries
+License: LGPL
+
+BuildRequires: tcl
+BuildRequires: tcl-devel
+
+AutoProv: no
+AutoReq: yes
+
+Summary: Tcl bindings for BrlAPI.
+%description -n brlapi-tcl
+This package provides the Tcl bindings for BrlAPI,
+which is the Application Programming Interface to BRLTTY.
+
+Install this package if you have a Tcl application
+which directly accesses a refreshable braille display.
+
+
+%package -n brlapi-utils
+Version: @api_release@
+Release: 1
+Group: Applications/System
+License: LGPL
+
+BuildRequires: xorg-x11-proto-devel
+BuildRequires: libX11-devel
+BuildRequires: libXtst-devel
+
+AutoProv: no
+AutoReq: yes
+
+Summary: Appliation Programming Interface for BRLTTY.
+%description -n brlapi-utils
+This package provides a set of commands for maintaining BRLTTY's datafiles.
+
+
+%prep
+# %setup -n %{name}-%{version}
+%setup -n @PACKAGE_NAME@-@PACKAGE_VERSION@
+
+%build
+%configure --disable-relocatable-install --with-install-root="${RPM_BUILD_ROOT}" --disable-gpm --without-mikropuhe --without-swift --without-theta --without-viavoice --without-libbraille --with-braille-driver=-tt,-vr
+make
+
+%install
+make install install-documents install-messages
+install -m 644 Documents/brltty.conf "${RPM_BUILD_ROOT}%{_sysconfdir}"
+install -d "${RPM_BUILD_ROOT}%{_systemddir}"
+install -m 644 Hotplug/systemd.service "${RPM_BUILD_ROOT}%{_systemddir}/brltty.service"
+%find_lang %{name}
+
+%clean
+rm -fr "${RPM_BUILD_ROOT}"
+
+
+%files -f %{name}.lang
+%defattr(-,root,root)
+%{_bindir}/brltty
+%{_libdir}/brltty
+%exclude %{_libdir}/brltty/libbrlttybba.so
+#xc-xfp#%exclude %{_libdir}/brltty/libbrlttybxw.so
+%exclude %{_libdir}/brltty/libbrlttyses.so
+%exclude %{_libdir}/brltty/libbrlttysfl.so
+%exclude %{_libdir}/brltty/libbrlttysfv.so
+%exclude %{_libdir}/brltty/libbrlttyssd.so
+#xc-xfp#%exclude %{_libdir}/brltty/libbrlttyxas.so
+%exclude %{_libdir}/brltty/libbrlttyxa2.so
+%exclude %{_libdir}/brltty/libbrlttyxsc.so
+%{_sysconfdir}/brltty
+%doc %{_mandir}/man1/brltty.1.gz
+%doc %{_docdir}/*/LICENSE*
+%doc %{_docdir}/*/README*
+%doc %{_docdir}/*/ChangeLog
+%doc %{_docdir}/*/CONTRIBUTORS
+%doc %{_docdir}/*/TODO
+%doc %{_docdir}/*/brltty.conf
+%doc %{_docdir}/*/KeyTables
+%doc %{_docdir}/*/Manual-BRLTTY
+%config(noreplace) %verify(not size md5 mtime) %{_sysconfdir}/brltty.conf
+%{_systemddir}/brltty.service
+
+%files -n brltty-braille-brlapi
+%{_libdir}/brltty/libbrlttybba.so
+
+#xc-xfp#%files -n brltty-braille-xwindow
+#xc-xfp#%{_libdir}/brltty/libbrlttybxw.so
+
+%files -n brltty-speech-espeak
+%{_libdir}/brltty/libbrlttyses.so
+
+%files -n brltty-speech-festival
+%{_libdir}/brltty/libbrlttysfv.so
+
+%files -n brltty-speech-flite
+%{_libdir}/brltty/libbrlttysfl.so
+
+%files -n brltty-speech-speechd
+%{_libdir}/brltty/libbrlttyssd.so
+
+#xc-xfp#%files -n brltty-screen-atspi
+#xc-xfp#%{_libdir}/brltty/libbrlttyxas.so
+
+%files -n brltty-screen-atspi2
+%{_libdir}/brltty/libbrlttyxa2.so
+
+%files -n brltty-screen-screen
+%{_libdir}/brltty/libbrlttyxsc.so
+
+%files -n brltty-utils
+%{_bindir}/brltty-*
+%{_bindir}/vstp
+%doc %{_mandir}/man1/vstp.1.gz
+
+%files -n brlapi
+%defattr(-,root,root)
+%{_libdir}/libbrlapi.so.*
+%doc %{_docdir}/*/Manual-BrlAPI
+
+%files -n brlapi-java
+@JAVA_JAR_DIR@/*
+@JAVA_JNI_DIR@/*
+
+%files -n brlapi-ocaml
+@OCAMLLIB@/brlapi
+
+%files -n brlapi-python
+@PYTHON_SITE_PKG@/[bB]rlapi[-.]*
+
+%files -n brlapi-tcl
+@TCL_DIR@/brlapi-@api_release@/libbrlapi_tcl.so
+@TCL_DIR@/brlapi-@api_release@/pkgIndex.tcl
+
+%files -n brlapi-devel
+%defattr(-,root,root)
+%{_libdir}/libbrlapi.a
+%{_libdir}/libbrlapi.so
+%{_includedir}/brlapi.h
+%{_includedir}/brlapi_*.h
+%{_includedir}/brltty
+%doc %{_mandir}/man3/*
+%doc %{_docdir}/*/BrlAPIref
+
+%files -n brlapi-utils
+%{_bindir}/xbrlapi
+%doc %{_mandir}/man1/xbrlapi.1.gz
+
+
+%changelog
+* Mon Apr 1 2013 Dave Mielke <dave@mielke.cc> 4.5
++  General Fixes:
+      The cursor routing algorithm is now usually almost as fast as it used to be.
+      Speech navigation now works when braille is not being used.
+      Autospeak is now forced on if speech is being used without braille.
+      Autospeak no longer considers a single character to be a completed word.
+      The input modifier commands now function as regular toggles.
+      Hangs can no longer occur when the system clock is adjusted backward.
+      Occasional delayed input with some braille devices has been resolved.
+      Poor response when using USB with some braille devices has been resolved.
+      Bogus Bluetooth connect errors (resource busy) have been resolved.
++  Alva Braille Driver:
+      The key bindings for the BC models have been reworked.
+      Secondary routing keys are now interpreted as though they were primary keys.
+      The SecondaryRoutingKeyEmulation= parameter has been added.
++  Baum Braille Driver:
+      The RefreshaBraille key bindings have been improved.
++  BrailleNote Braille Driver:
+      Key bindings are now defined within key tables rather than being hard-coded.
++  Cebra Braille Driver:
+      Bluetooth support has been added.
+      Support for the Novem braille keyboard has been added.
++  FreedomScientific Braille Driver:
+      Support for the Focus 14 has been added.
+      A key binding for CLIP_COPY has been added.
+      The definitions for the two Focus 40 rocker keys have been swapped.
++  HandyTech Braille Driver:
+      Poor performance when using an Active Braille has been resolved.
++  HIMS Braille Driver:
+      USB support for the Braille Edge has been added.
+      Newer Braille Sense models, when connected via USB, are now recognized.
+      Many key bindings for the Braille Sense and Braille Edge have been added.
++  HumanWare Braille Driver:
+      USB autodetection is now supported.
++  IrisLinux Braille Driver:
+      Removed - superceded by the Iris braille driver.
++  NinePoint Braille Driver:
+      Cebra devices are now supported by the new Cebra braille driver.
+      This driver now supports the NinePoint device.
++  Papenmeier Braille Driver:
+      Bluetooth is now supported.
+      Models EL40c, EL60c, and EL80c are now supported.
++  Seika Braille Driver:
+      Support for the Seika 80 has been added.
++  Voyager Braille Driver:
+      The key bindings have been reworked.
++  eSpeak Speech Driver:
+      Now runs in a separate thread in order to improve core performance.
++  BrlAPI Server:
+      The RetainDots= parameter has been added.
++  BrlAPI Client:
+      Version updated to 0.6.0.
+      The brlapi_writeWText() function has been added.
+      The Python bindings are now compiled by Cython (rather than with Pyrex).
+      Python 3 is now supported.
+      A file descriptor leak has been resolved.
++  Text Tables:
+      The fr-vs table has been updated.
++  Contraction Tables:
+      The en-us-g2 table has been updated.
++  Keyboard Key Tables:
+      Many bindings have been added to the laptop table.
++  Android:
+      An initial implementation is now available.
+      Runs poorly on 4.0 (ICS) but quite well on 4.1 (JB).
+      Screen navigation is supported.
+      See Documents/README.Android for details.
+

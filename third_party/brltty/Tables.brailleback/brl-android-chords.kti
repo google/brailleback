@@ -1,0 +1,30 @@
+# Key bindings in this file should be synced with brl-ht-dots.kti.
+
+# Back key
+bind \{Space}+Dot1+Dot2 KEY_ESCAPE
+# Home key
+bind \{Space}+Dot1+Dot2+Dot5 KEY_FUNCTION+0
+# Recent apps key
+bind \{Space}+Dot1+Dot2+Dot3+Dot5 KEY_FUNCTION+1
+# Notifications bar
+bind \{Space}+Dot1+Dot3+Dot4+Dot5 KEY_FUNCTION+2
+bind \{Space}+\{Dot7} KEY_BACKSPACE
+bind \{Space}+\{Dot8} KEY_ENTER
+# Keyboard help
+bind \{Space}+Dot1+Dot2+Dot3 LEARN
+# Next section
+bind \{Space}+DOT2+DOT3+DOT4 KEY_FUNCTION+6
+# Previous section
+bind \{Space}+\{Dot7}+DOT2+DOT3+DOT4 KEY_FUNCTION+7
+# Next control
+bind \{Space}+DOT1+DOT4 KEY_FUNCTION+8
+# Previous control
+bind \{Space}+\{Dot7}+DOT1+DOT4 KEY_FUNCTION+9
+# Next list
+bind \{Space}+DOT2+DOT4 KEY_FUNCTION+10
+# Previous list
+bind \{Space}+\{Dot7}+DOT2+DOT4 KEY_FUNCTION+11
+# Incremental Search
+bind \{Space}+DOT3+DOT4 KEY_FUNCTION+12
+# Braille menu
+bind \{Space}+\{Dot7}+DOT1+DOT3+DOT4 KEY_FUNCTION+13

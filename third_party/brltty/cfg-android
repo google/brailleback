@@ -1,0 +1,104 @@
+#!/bin/sh
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+androidPlatform=android-14
+androidArchitecture=arm
+hostSystem=arm-linux-androideabi
+
+programName="${0##*/}"
+programMessage() {
+   echo >&2 "${programName}: ${1}"
+}
+
+semanticError() {
+   programMessage "${1}"
+   exit 3
+}
+
+buildRoot=`pwd`
+sourceRoot=`dirname "${0}"`
+
+ndkRoot="${buildRoot}/Android/NDK"
+[ -d "${ndkRoot}" ] || {
+   [ -n "${ANDROID_NDK}" ] || {
+      semanticError "Android NDK directory not defined: ${ndkRoot}"
+   }
+
+   [  -f "${ANDROID_NDK}/ndk-build" ] || {
+      semanticError "not an Android NDK: ${ANDROID_NDK}"
+   }
+
+   programMessage "creating symbolic link: ${ndkRoot} -> ${ANDROID_NDK}"
+   ln -s "${ANDROID_NDK}" "${ndkRoot}" || exit "${?}"
+}
+
+toolchainRoot="${buildRoot}/Android/ToolChain"
+[ -d "${toolchainRoot}" ] || {
+   "${ndkRoot}/build/tools/make-standalone-toolchain.sh" \
+      --platform="${androidPlatform}" \
+      --arch="${androidArchitecture}" \
+      --install-dir="${toolchainRoot}" || exit "${?}"
+
+   buildInclude="/usr/include"
+   hostInclude="${toolchainRoot}/sysroot${buildInclude}"
+
+   for header in bluetooth
+   do
+      hostHeader="${hostInclude}/${header}"
+      [ ! -e "${hostHeader}" ] || continue;
+
+      buildHeader="${buildInclude}/${header}"
+      [ -e "${buildHeader}" ] || continue;
+
+      ln -s "${buildHeader}" "${hostHeader}" || exit "${?}"
+   done
+}
+
+export toolchainBinaries="${toolchainRoot}/bin"
+export PATH="${PATH}:${toolchainBinaries}"
+
+checkTool() {
+   eval export "${1}=\`set -- \"${toolchainBinaries}/\"*\"-$2\" && echo \"\${1}\"\`"
+}
+checkTool CC gcc
+
+export CFLAGS="-mthumb"
+export LDFLAGS="-Wl,--fix-cortex-a8"
+
+# Braille drivers already disabled:
+# il (not on Linux)
+# lb (by --without-libbraille)
+# xw (by --disable-x)
+
+"${sourceRoot}/configure" \
+   --without-keyboard-package \
+   --disable-api \
+   --with-braille-driver=-tt,-vr,al,at,bm,ce,eu,fs,hm,ht,hw,ir,mt,np,pg,pm,sk,vo \
+   --with-screen-driver=ad \
+   --without-libbraille \
+   --disable-speech-support \
+   --disable-x \
+   --disable-pcm-support \
+   --disable-midi-support \
+   --disable-fm-support \
+   --disable-icu \
+   --disable-gpm \
+   --host="${hostSystem}" \
+   "${@}"
+exit "${?}"

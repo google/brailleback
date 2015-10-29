@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Apabila BrailleBack dihidupkan, peranti anda akan bersambung ke paparan braille yang dipasangkan dan memaparkan kandungan skrin dalam braille. Kekunci pada paparan braille boleh digunakan untuk menavigasi skrin, mengaktifkan item dan memasukkan teks. Untuk mendapatkan maklumat lanjut, tekan ruang dan titik 1, 2 dan 3 (huruf l dalam braille) pada paparan anda apabila disambungkan."</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Papan kekunci perkakasan braille"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard Papan Kekunci Perkakasan Braille"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Dayakan papan kekunci perkakasan braille"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Untuk menggunakan papan kekunci perkakasan braille, anda perlu mendayakannya dalam tetapan kaedah input dan kemudian menetapkannya sebagai kaedah input lalai."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Langkau"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Buka Tetapan Kaedah Input"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Tetapkan Kaedah Input Lalai"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Untuk menggunakan papan kekunci perkakasan braille, anda perlu menetapkannya sebagai kaedah input lalai."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Buka Pemilih Kaedah Input"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Sambung ke paparan braille"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Benarkan apl menulis pada paparan braille dan membaca input papan kekunci dari paparan braille"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Grid Kosong"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Grid"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Senarai Kosong"</string>
+    <string name="type_listview" msgid="195039477703126884">"Senarai"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Kandungan Boleh Tatal Kosong"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Kandungan Boleh Tatal"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Kotak Edit"</string>
+    <string name="type_image" msgid="3688576211222019626">"Imej"</string>
+    <string name="type_button" msgid="3639574187835564558">"Butang"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Dapatkan Kawalan"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Kenalan"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Pilihan BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Peranti"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Status"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Bantuan papan kekunci"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Braille"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Jenis Braille"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Jadual braille sastera"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Meja braille komputer"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Tidak disambungkan"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Disambungkan"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Tidak tersedia"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Braille sastera"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Braille komputer"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automatik (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automatik (tiada)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Pelbagai"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Pilihan pembangun"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Tindanan pada skrin"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Papar output Braille pd skrin"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Lancarkan tutorial"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Lesen Sumber Terbuka"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Tahap output log"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Bantuan papan kekunci BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback hidup"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback mati"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Papan kekunci BrailleBack aktif"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Ketik untuk beralih kepada papan kekunci lalai"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - gred <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - gred <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Sorot ke kiri"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Sorot ke kanan"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Tutorial Tindanan"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Selesai"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Tindanan braille merangsang paparan braille boleh muat semula. Paparan ini memaparkan sel braille, bersama dengan teks yang sepadan, yang akan disampaikan pada paparan perkakasan. Anda disyorkan untuk mendayakan TalkBack dan mod penerokaan sentuh sebelum meneruskan."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Tetapan Kebolehcapaian"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Anda boleh menyorot paparan braille dengan menekan salah satu butang sorotan di sebelah teks."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Beberapa unsur mungkin dipaparkan pada paparan sekaligus. Anda boleh klik salah satu paparan dengan mengetik satu daripada sel braille dalam teks. Tindakan ini sama seperti menekan salah satu kekunci penghalaan pada paparan braille."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Jika tindanan ini meliputi unsur lain pada skrin, anda boleh mengalihkannya keluar. Tekan tindanan lama-lama dan kemudian seretnya. Tindanan ini akan beralih ke bahagian atas atau bawah skrin apabila anda melepaskan jari anda."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Tunjukkan Tutorial Tindanan"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Kami mengesyorkan anda melihat tutorial untuk tindanan pada skrin sebelum menggunakannya."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"C:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Cari: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Tutorial Cari pada Skrin"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Cari pada skrin membolehkan anda melangkau dengan cepat ke item pada skrin dengan menaip sebahagian daripada huraian teksnya. Semasa anda menaip, tumpuan akan beralih kepada item sepadan yang seterusnya."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Gunakan <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> untuk beralih ke hasil carian seterusnya dan <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> untuk beralih ke hasil carian sebelumnya. Tekan <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> untuk keluar dari mod carian dan mengekalkan tumpuan pada hasil carian. Tekan <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> untuk beralih semula ke item tumpuan yang sebelumnya."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Jangan sekali-kali tunjukkannya lagi"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Teruskan"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Tambah label tersuai"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Edit label tersuai"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Alih keluar label tersuai"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Label tersuai tidak disokong. Kemas kini talkback"</string>
+</resources>

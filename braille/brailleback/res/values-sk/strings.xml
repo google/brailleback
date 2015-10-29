@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Keď je aplikácia BrailleBack zapnutá, pripojí sa vaše zariadenie ku spárovanému hmatovému displeju a sprostredkuje obsah obrazovky v podobe Braillovho písma. Pomocou klávesov na hmatovom displeji je možné prechádzať medzi položkami na obrazovke, aktivovať ich a zadávať text. Viac informácií získate stlačením medzerníka a bodov 1, 2 a 3 (Braillov zápis písmena L) na pripojenom displeji."</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Hardvérová klávesnica s Braillovým písmom"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Sprievodca nastavením hardvérovej klávesnice s Braillovým písmom"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Povoliť hardvérovú klávesnicu s Braillovým písmom"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Ak chcete používať hardvérovú klávesnicu s Braillovým písmom, musíte ju povoliť v nastaveniach metódy vstupu a potom ju nastaviť ako predvolenú metódu vstupu."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Preskočiť"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Otvoriť nastavenia metódy vstupu"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Nastaviť predvolenú metódu vstupu"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Ak chcete používať hardvérovú klávesnicu s Braillovým písmom, musíte ju nastaviť ako predvolenú metódu vstupu."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Otvoriť výber metódy vstupu"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Pripojiť k hmatovému displeju"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Umožňuje aplikácii zapisovať výstup na hmatový displej a čítať vstup z jeho klávesnice"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Prázdna mriežka"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Mriežka"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Prázdny zoznam"</string>
+    <string name="type_listview" msgid="195039477703126884">"Zoznam"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Prázdny posúvateľný obsah"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Posúvateľný obsah"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Pole úprav"</string>
+    <string name="type_image" msgid="3688576211222019626">"Obrázok"</string>
+    <string name="type_button" msgid="3639574187835564558">"Tlačidlo"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Ovládanie hľadania"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Kontakt"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Predvoľby aplikácie BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Zariadenie"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Stav"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Pomocník klávesnice"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Braillovo písmo"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Typ Braillovho písma"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabuľka 6-bodového písma"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabuľka 8-bodového písma"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Nepripojené"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Pripojené"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Nie je k dispozícii"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"6-bodové Braillovo písmo"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"8-bodové Braillovo písmo"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automaticky (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automaticky (žiadne)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Rôzne"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Možnosti vývojára"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Prekrytie obrazovky"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Zob.výstup Brail.na obr."</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Spustiť príručku"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Licencie open source"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Zaznamenať úroveň výstupu"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Pomocník klávesnice BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback zap"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback vyp"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Klávesnica aplikácie BrailleBack je aktívna"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Klepnutím prepnete na predvolenú klávesnicu"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> – úroveň <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) – Grade <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Posunúť doľava"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Posunúť doprava"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Príručka ku prekrytiu"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Dokončiť"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Hmatové prekrytie simuluje obnoviteľný hmatový displej. Zobrazuje hmatové bunky spolu s príslušným textom, ktorý by sa zobrazil na hardvérovom displeji. Skôr ako začnete, odporúčame vám najprv povoliť funkciu TalkBack a režim preskúmania dotykom."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Nast. zjednod. ovládania."</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Hmatový displej môžete posúvať stlačením jedného z tlačidiel posúvania vedľa textu."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Na displeji sa môžu naraz zobrazovať viaceré prvky. Klepnutím na niektorú hmatovú bunku v texte na ne môžete kliknúť. Korešponduje to so stlačením jedného zo smerových klávesov na hmatovom displeji."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Ak prekrytie zakrýva iný prvok na obrazovke, môžete ho posunúť. Stlačte a podržte prekrytie a presuňte ho. Po uvoľnení prsta sa uchytí v hornej alebo dolnej časti obrazovky."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Zobraziť príručku ku prekrytiu"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Odporúčame vám, aby ste si pred použitím prekrytia obrazovky pozreli príručku."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"V:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Vyhľadávací dopyt: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Príručka Vyhľadávanie na obrazovke"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Vyhľadávanie na obrazovke vám umožňuje rýchlo prechádzať medzi položkami na obrazovke tak, že napíšte časť ich textového popisu. Počas písania sa mení zameranie vyhľadávania na ďalšie položky, ktoré sa zhodujú s hľadaným výrazom."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Ak chcete prejsť na ďalší výsledok, použite kláves <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>. Ak chcete prejsť na predchádzajúci výsledok, použite kláves <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>. Stlačením klávesa <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> ukončíte režim vyhľadávania a ponecháte zameranie na výsledku. Stlačením klávesa <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> sa vrátite na predchádzajúcu zameranú položku."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Túto správu už nezobrazovať"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Pokračovať"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Pridať vlastnú menovku"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Upraviť vlastnú menovku"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Odstrániť vlastnú menovku"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Vlastné menovky nie sú podporované. Aktualizujte funkciu TalkBack"</string>
+</resources>

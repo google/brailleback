@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Panorâmica para a direita"</item>
+    <item msgid="992384288929754258">"Panorâmica para a esquerda"</item>
+    <item msgid="2311009411708911700">"Navegar para o item seguinte"</item>
+    <item msgid="4868322620432152139">"Navegar para o item anterior"</item>
+    <item msgid="713256521059720189">"Navegar para a linha seguinte"</item>
+    <item msgid="7111316948614107646">"Navegar para a linha anterior"</item>
+    <item msgid="1092717670413169154">"Deslocar para a frente"</item>
+    <item msgid="2672802569950877806">"Deslocar para trás"</item>
+    <item msgid="6858389246595464611">"Navegar para a parte superior da página"</item>
+    <item msgid="6077703163925348890">"Navegar para a parte inferior da página"</item>
+    <item msgid="880847480793051862">"Ativar o item por baixo do dedo"</item>
+    <item msgid="2643484595828025643">"Manter o item debaixo do dedo premido"</item>
+    <item msgid="2225564744515622940">"Ativar o item atual"</item>
+    <item msgid="2039335960797511513">"Manter o item atual premido"</item>
+    <item msgid="5703473744103522479">"Introduzir um carácter em braille"</item>
+    <item msgid="397805118186944475">"Ativar o botão anterior"</item>
+    <item msgid="2057979808256674943">"Ativar o botão página inicial"</item>
+    <item msgid="3851017077578326256">"Abrir a janela de notificações"</item>
+    <item msgid="7100928240716386910">"Abrir a janela de aplicações recentes"</item>
+    <item msgid="1288748126248312152">"Ativar a tecla enter ao editar texto"</item>
+    <item msgid="6030744298808090187">"Eliminar para trás ao editar texto"</item>
+    <item msgid="4072293104009433677">"Eliminar para a frente ao editar texto"</item>
+    <item msgid="5307038145607249298">"Navegar para a secção seguinte em conteúdo Web"</item>
+    <item msgid="8804572703982019495">"Navegar para a secção anterior em conteúdo Web"</item>
+    <item msgid="5442875833766760122">"Navegar para o campo de link/controlo/formulário seguinte em conteúdo Web"</item>
+    <item msgid="65542415754308243">"Navegar para o campo de link/controlo/formulário anterior em conteúdo Web"</item>
+    <item msgid="8658175115960567526">"Navegar para a lista seguinte em conteúdo Web"</item>
+    <item msgid="561134957068368670">"Navegar para a lista anterior em conteúdo Web"</item>
+    <item msgid="4431278105955644176">"Alternar modo de pesquisa no ecrã"</item>
+    <item msgid="1541653246718288681">"Alternar menu de etiquetagem"</item>
+    <item msgid="3070189781205215458">"Abrir a ajuda do teclado BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Manter premido <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Utilize as teclas de navegação para mover o foco no ecrã."\n"Utilize as teclas em braille para introduzir texto numa caixa de edição."\n"Abaixo, encontra uma lista completa de comandos suportados pelo dispositivo."</string>
+</resources>

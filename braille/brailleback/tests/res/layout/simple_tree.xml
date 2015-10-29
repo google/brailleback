@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	<RelativeLayout
+		android:id="@+id/top"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clickable="true"
+		android:focusable="true" >
+
+		<Button
+			android:id="@+id/button1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:text="button1"
+			android:contentDescription="button1" />
+
+		<Button
+		    android:id="@+id/button2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/button3"
+		    android:layout_alignLeft="@+id/button3"
+		    android:layout_marginBottom="83dp"
+		    android:text="button2"
+		    android:contentDescription="button2" />
+
+		<Button
+		    android:id="@+id/button3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/button4"
+		    android:layout_alignLeft="@+id/button4"
+		    android:layout_marginBottom="40dp"
+		    android:text="button3"
+		    android:contentDescription="button3" />
+
+		<Button
+		    android:id="@+id/button4"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginBottom="90dp"
+		    android:text="button4"
+		    android:contentDescription="button4" />		
+
+	</RelativeLayout>
+</LinearLayout>

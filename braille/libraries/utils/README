@@ -1,0 +1,3 @@
+This project contains utility classes used in various Eyes-Free projects. It
+builds against Donut (1.6) and requires the compatutils and android_midi_lib
+projects.

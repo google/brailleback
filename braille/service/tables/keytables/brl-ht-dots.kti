@@ -1,0 +1,54 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+# Key subtable for HandyTech braille dot keys
+
+bind \{Space}+B2 TOP_LEFT
+
+bind \{Space}+\B3 FWINLT
+bind \{Space}+B6 FWINRT
+
+bind \{Space}+B4 LNUP
+bind \{Space}+B5 LNDN
+
+# Back key
+bind \{Space}+B4+B3 KEY_ESCAPE
+# Home key
+bind \{Space}+B4+B3+B6 KEY_FUNCTION+0
+# Recent apps key
+bind \{Space}+B4+B3+B2+B6 KEY_FUNCTION+1
+# Notifications bar
+bind \{Space}+B4+B2+B5+B6 KEY_FUNCTION+2
+# Keyboard help
+bind \{Space}+B4+B3+B2 LEARN
+# Next section
+bind \{Space}+B3+B2+B5 KEY_FUNCTION+6
+# Previous section
+bind \{Space}+B1+B3+B2+B5 KEY_FUNCTION+7
+# Next control
+bind \{Space}+B4+B5 KEY_FUNCTION+8
+# Previous control
+bind \{Space}+B1+B4+B5 KEY_FUNCTION+9
+# Next list
+bind \{Space}+B3+B5 KEY_FUNCTION+10
+# Previous list
+bind \{Space}+B1+B3+B5 KEY_FUNCTION+11
+# Incremental Search
+bind \{Space}+B2+B5 KEY_FUNCTION+12
+# Braille menu
+bind \{Space}+B1+B2+B4+B5 KEY_FUNCTION+13

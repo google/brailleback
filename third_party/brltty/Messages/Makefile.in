@@ -1,0 +1,62 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2013 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU General Public License, as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any
+# later version. Please see the file LICENSE-GPL for details.
+#
+# Web Page: http://mielke.cc/brltty/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+all:: objects languages
+
+COPYRIGHT_HOLDER = The BRLTTY Developers
+BUGS_ADDRESS = dave@mielke.cc
+
+TEMPLATE_EXTENSION = pot
+SOURCE_EXTENSION = po
+OBJECT_EXTENSION = mo
+
+LANGUAGE_CODES = de fr
+OBJECT_FILES = $(LANGUAGE_CODES:=.$(OBJECT_EXTENSION))
+
+%.$(OBJECT_EXTENSION): $(SRC_DIR)/%.$(SOURCE_EXTENSION)
+	msgfmt --output-file $@ $<
+
+objects: $(OBJECT_FILES)
+
+TEMPLATE_FILE = $(PACKAGE_NAME).$(TEMPLATE_EXTENSION)
+$(TEMPLATE_FILE): $(BLD_TOP)$(PGM_DIR)/cmds.auto.h
+	$(SRC_TOP)mkpot -n "$(PACKAGE_NAME)" -v "$(PACKAGE_VERSION)" -o $@ -b "$(BUGS_ADDRESS)" -c "$(COPYRIGHT_HOLDER)" $(SRC_TOP) $(BLD_TOP)
+template $(TEMPLATE_EXTENSION): $(TEMPLATE_FILE)
+
+%.$(SOURCE_EXTENSION): $(TEMPLATE_FILE)
+	msgmerge --quiet --force-po --no-wrap --sort-output --update -- $@ $(TEMPLATE_FILE)
+
+LANGUAGES_FILE = LINGUAS
+$(LANGUAGES_FILE):
+	ls -1 *.$(SOURCE_EXTENSION) | sed -e 's/\..*//' | sort >$@
+languages: $(LANGUAGES_FILE)
+
+clean::
+	-rm -f -- *.$(OBJECT_EXTENSION) *.$(TEMPLATE_EXTENSION) $(LANGUAGES_FILE) *~
+
+install:: objects install-locale-directory
+	for language in $(LANGUAGE_CODES); \
+	do \
+	   directory="$(INSTALL_LOCALE_DIRECTORY)/$${language}/LC_MESSAGES"; \
+           $(INSTALL_DIRECTORY) "$${directory}"; \
+	   $(INSTALL_DATA) "$${language}.$(OBJECT_EXTENSION)" "$${directory}/$(PACKAGE_NAME).$(OBJECT_EXTENSION)"; \
+	done
+
+uninstall::
+	-rm -f -- $(INSTALL_LOCALE_DIRECTORY)/*/*/$(PACKAGE_NAME).$(OBJECT_EXTENSION)
+

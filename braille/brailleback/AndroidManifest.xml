@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.googlecode.eyesfree.brailleback"
+      android:versionCode="28"
+      android:versionName="0.95.0-beta1">
+
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="com.googlecode.eyesfree.braille.display.PERMISSION_CONNECT" />
+
+    <!-- Required for overlays. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Required for reading/writing custom view labels. -->
+    <uses-permission android:name="com.google.android.marvin.talkback.permission.LABELING" />
+
+    <permission
+        android:name="com.googlecode.eyesfree.braille.display.PERMISSION_CONNECT"
+        android:icon="@drawable/icon"
+        android:label="@string/permlab_displayConnect"
+        android:description="@string/permdesc_displayConnect"
+        android:protectionLevel="signature" />
+
+    <!-- Hardware compatibility. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:label="@string/brailleback_setup_title"
+        android:icon="@drawable/icon"
+        android:debuggable="false"
+        android:supportsRtl="true">
+
+        <service android:name=".BrailleBackService"
+                 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+                 android:settingsActivity=".BrailleBackPreferencesActivity" 
+                 android:exported="false">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+        </service>
+
+        <service
+            android:name=".BrailleIME"
+            android:label="@string/braille_ime_name"
+            android:permission="android.permission.BIND_INPUT_METHOD" >
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+
+        <service
+            android:name="com.googlecode.eyesfree.braille.service.display.DisplayService"
+            android:permission="com.googlecode.eyesfree.braille.display.PERMISSION_CONNECT"
+            android:exported="false"
+            android:process=":service">
+            <intent-filter>
+                <action android:name="com.googlecode.eyesfree.braille.service.ACTION_DISPLAY_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".SelfBrailleService">
+            <intent-filter>
+                <action android:name="com.googlecode.eyesfree.braille.service.ACTION_SELF_BRAILLE_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.googlecode.eyesfree.braille.service.translate.TranslatorService"
+            android:exported="false"
+            android:process=":service">
+            <intent-filter>
+                <action android:name="com.googlecode.eyesfree.braille.service.ACTION_TRANSLATOR_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".BrailleBackPreferencesActivity"
+            android:title="@string/preferences_title"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.accessibilityservice.SERVICE_SETTINGS" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".KeyBindingsActivity"
+            android:title="@string/key_bindings_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+             android:name=".IMESetupWizardActivity"
+             android:label="@string/ime_setup_wizard_name"
+             android:theme="@android:style/Theme.Holo.Dialog"
+             android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".OverlayTutorialActivity"
+            android:label="@string/overlay_tutorial_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="WebViewDialog" />
+
+        <activity
+            android:name=".SearchTutorialActivity"
+            android:title="@string/search_tutorial_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

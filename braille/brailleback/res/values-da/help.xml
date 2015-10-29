@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Panorer til højre"</item>
+    <item msgid="992384288929754258">"Panorer til venstre"</item>
+    <item msgid="2311009411708911700">"Naviger til det næste element"</item>
+    <item msgid="4868322620432152139">"Naviger til det forrige element"</item>
+    <item msgid="713256521059720189">"Naviger til den næste linje"</item>
+    <item msgid="7111316948614107646">"Naviger til den forrige linje"</item>
+    <item msgid="1092717670413169154">"Rul fremad"</item>
+    <item msgid="2672802569950877806">"Rul baglæns"</item>
+    <item msgid="6858389246595464611">"Naviger til toppen af siden"</item>
+    <item msgid="6077703163925348890">"Naviger til bunden af siden"</item>
+    <item msgid="880847480793051862">"Aktivér elementet under fingeren"</item>
+    <item msgid="2643484595828025643">"Tryk længe på elementet under fingeren"</item>
+    <item msgid="2225564744515622940">"Aktivér det aktuelle element"</item>
+    <item msgid="2039335960797511513">"Tryk længe på det aktuelle element"</item>
+    <item msgid="5703473744103522479">"Indtast et brailletegn"</item>
+    <item msgid="397805118186944475">"Aktivér knappen Tilbage"</item>
+    <item msgid="2057979808256674943">"Aktivér knappen Start"</item>
+    <item msgid="3851017077578326256">"Åbn underretningsvinduet"</item>
+    <item msgid="7100928240716386910">"Åbn vinduet Seneste apps"</item>
+    <item msgid="1288748126248312152">"Aktivér Enter-tasten, når du redigerer tekst"</item>
+    <item msgid="6030744298808090187">"Slet baglæns, når du redigerer tekst"</item>
+    <item msgid="4072293104009433677">"Slet forlæns, når du redigerer tekst"</item>
+    <item msgid="5307038145607249298">"Naviger til det næste afsnit i webindhold"</item>
+    <item msgid="8804572703982019495">"Naviger til det forrige afsnit i webindhold"</item>
+    <item msgid="5442875833766760122">"Naviger til det næste link/kontrolelement/formularfelt i webindhold"</item>
+    <item msgid="65542415754308243">"Naviger til det forrige link/kontrolelement/formularfelt i webindhold"</item>
+    <item msgid="8658175115960567526">"Naviger til den næste liste i webindhold"</item>
+    <item msgid="561134957068368670">"Naviger til den forrige liste i webindhold"</item>
+    <item msgid="4431278105955644176">"Slå søgning på skærmen til"</item>
+    <item msgid="1541653246718288681">"Slå menu for etiketter til"</item>
+    <item msgid="3070189781205215458">"Åbn hjælp til BrailleBack-tastaturet"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Tryk længe på <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Brug navigationstasterne til at flytte fokus på skærmen."\n"Brug brailletasterne til at indtaste tekst i et redigeringsfelt."\n"Nedenfor er der en komplet liste over tastaturkommandoer, der understøttes af enheden."</string>
+</resources>

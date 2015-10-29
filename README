@@ -1,0 +1,237 @@
+Introduction
+============
+
+BrailleBack is an accessibility service for Android that controls a
+refreshable braille display.  It presents screen content on the braille
+display and let's the user navigate the user interface.  It also provides an
+input method that enables entering text using a braille keyboard on the
+display.  BrailleBack is distributed on the Google Play Store where it can be
+downloaded and installed.  This file contains information for developers.
+
+In particular, you will find instructions for how to build the app from source
+below.  Also, there are instructions on what to do, in addition to having
+brltty drivers, to add support for a new braille display to BrailleBack.
+
+Building BrailleBack From The Command Line
+==========================================
+
+This section contains instructions for building BrailleBack from the command
+line.  See the Android developer documentation at http://developer.android.com
+for general instructions on how to build android packages.  These build
+instructions apply to building on Linux.
+
+NOTE: There's a build script (build.sh) that automates most of the process
+for a clean build.  See below for how to use it.
+
+Prerequisites
+-------------
+
+BrailleBack has a few dependencies that need to be available before it can be
+built:
+
+* Android SDK for JellyBean (API level 16) and NDK, revision 7a or later.
+  These can be downloaded from developer.android.com/sdk.
+  You'll need the platform tools r20 or later for JellyBean.
+  Make sure that the SDK and NDK tools (android, ndk-build, etc) are
+  available in your $PATH.
+
+* Apache ant version 1.8 or later.
+
+* A checked out copy of the BrailleBack source code from GitHub
+
+Building
+--------
+
+After making sure that the dependencies are in place (see Prerequisites
+above), perform the following steps to build the BrailleBack apk.
+Please run all commands from the root of the eyes-free source tree.
+
+* If you are building on Linux, you might be able to use the shell script
+  that automates the build process.  This script builds a debug apk.
+  It performs a clean build, which takes longer than an incremental build.
+  You might want to use some of the steps below while developing.
+
+  $ ./build.sh
+
+  If the script finishes with a success message, then you're done and
+  can skp the rest of this section.  Use the adb command to install
+  the apk on a device.  Otherwise, follow and adjust the steps below for your
+  build environment.
+
+* Make sure to have a copy of brltty, version 4.5 checked out.  This can be
+  checked out from subversion as follows (run from within the eyes-free
+  directory as per above):
+  $ svn checkout svn://mielke.cc//releases/brltty-4.5 \
+    braille/service/jni/brlttywrapper/brltty
+
+* Make sure to have a copy of liblouis, version 2.6.0 checked out.  This can 
+  be checked out from Github as follows 
+  (run under directory braille/service/jni/liblouiswrapper/liblouis):
+
+  $ git clone --branch v2.6.0 https://github.com/liblouis/liblouis.git
+
+* Apply patches to the dependencies:
+  $ (cd braille/service/jni/brlttywrapper && patch -p1 < brltty.patch)
+  $ (cd braille/service/jni/liblouiswrapper && patch -p1 < liblouis.patch)
+
+* Update the local ant property files:
+  $ android update project -p libraries/utils -t android-18
+  $ android update project -p libraries/compatutils -t android-18
+  $ android update project -p braille/client -t android-18
+  $ android update project -p braille/service -t android-18
+  $ android update project -p braille/brailleback -t android-18
+
+* Build the native libraries:
+  $ (cd braille/service && ndk-build -j16)
+
+* Build the BrailleBack apk:
+  $ (cd braille/brailleback && ant debug)
+
+* Alternatively, build and install on a connected device:
+  $ (cd braille/brailleback && ant debug install)
+
+NOTE: If you try to install your own build on a device where a version of
+BrailleBack is already installed from the Google Play store, you will need to
+uninstall the package first.  The reason for that is that you are using a
+different key to sign your debug version than was used to sign the installed
+release build.  The command to uninstall BrailleBack is:
+  $ adb uninstall com.googlecode.eyesfree.brailleback
+
+Adding Support for A New Braille Display
+========================================
+
+This section details how to add support for a new braille display.
+On a high level, the following steps need to be performed:
+
+* Make sure that the display meets the requirements listed in the
+  subsection on Display Requirements below.
+
+* Include the brltty driver in the native library build.
+
+* Add the display in the braille display service source code
+  so it gets automatically detected.
+
+* Adjust keyboard maps for Android.
+
+* Test the display with actual hardware.
+
+Support for hardware braille displays is handled by a service that is separate
+from BrailleBack.  The source code for the display service is located in the
+directory braille/service in the Eyes-Free code repository.
+
+The instructions below assume that you've already built BrailleBack and
+that you have an actual device to test on.
+
+Display Requirements
+--------------------
+
+The braille display service currently supports displays connected via
+bluetooth.  Adding support for other ways of connecting such as USB would be
+useful, but is out of scope for this description.  Further, the display must
+support rfcomm (serial) bluetooth connections.
+
+The display service uses hardware drivers from brltty.  If there is no brltty
+driver for the display, that needs to be implemented and contributed
+to the brltty project (see http://www.mielke.cc/brltty).  A stable version
+of brltty is being used (see the build instructions above for which
+version is currently imported).
+
+Including The Driver In The Build
+---------------------------------
+
+The brltty native library is compiled using the Android NDK.  The source files
+for a new driver need to be added in the file:
+  braille/service/jni/brlttywrapper/Android.mk
+If not already present, add the base name of the driver directory to the list
+in the build-braille-drivers function call close to the top of this file.
+
+The new driver also needs to be listed in the file
+  braille/service/jni/brlttywrapper/brl.auto.h
+A brl_driver_XX declaration needs to be added and included in the
+driverTable array for the brltty initialization code to be able to locate
+the driver.
+
+Now it is time to compile the new driver.  Use this command:
+  $ (cd braille/service && ndk-build)
+to make sure that the native library still builds.  Since only a subset of
+brltty is used, you might encounter some unexpected compilation or linking
+errors that you will need to address.
+
+Detecting The Display
+---------------------
+
+When the driver is compiled into the native brltty library, the display
+service needs to know to use the driver for the specific display model
+being added.  For this, some code needs to be added to the file
+  braille/service/src/com/googlecode/eyesfree/braille/service/display/DeviceFinder.java
+
+Towards the end of this file, there is a list of supported bluetooth displays.
+Simply add an entry to the list and the service should detect the display when
+it is paired to the Android device.  Note that the name prefixes are
+the human-readable device names.  Ideally, they should be unique enough
+to not have conflicts with other devices.  Please refer to the
+next section for a discussion of friendly key names.
+
+Keyboard Mappings
+-----------------
+
+brltty comes with keyboard bindings for the supported displays.  These are
+written primarily for the Linux text mode use case and to provide
+a great user experience, they need to be customized for BrailleBack.
+This is done by modifying a copy of the appropriate .ktb and .kti
+files, which then get included with the BrailleBack as a .zip file
+resource.  This is handled by a few scripts in the directory
+  braille/service/tables
+See the README file in that directory for more information.
+
+One important change that need to be made for each display is to include
+the file
+  brl-android-chords.kti
+in the keymap.  This adds common mnemonic keyboard chords (space + braille
+dot keys) that are typically common across devices.
+
+To support translation of key names in the help screen and to support cases
+where the brltty internal key names don't correspond to the names in user
+documentation, user-friendly key name mappings should be added in the
+DeviceFinder class (see the previous section).  brltty key names are mapped to
+integer resource ids.  The resources for the friendly key name strings belong
+in the file:
+  braille/service/res/values/keynames.xml
+
+Testing And Debugging
+---------------------
+
+If all the above steps were implemented correctly, BrailleBack should be able
+to find and start using the display when it is paired in the bluetooth
+settings screen.  If that's not the case, try some of the debugging tips below:
+
+* Write a small app that uses the braille display service directly to not have
+  to debug with the accessibility service.  BrailleBack uses a thin client
+  library located in braille/client.  This library can be used to connect to
+  the display service for testing.
+
+* adb logcat is your friend.  Look for logs from the various classes in the
+  display service (they use the simple class name as log tags).  The native
+  C code uses log tags starting with Brltty.
+
+* Issues in brltty (including the driver and keyboard maps) might be easier to
+  debug on a development system than on a real device.
+
+* Bluetooth connectivity issues: for certain displays, a bluetooth connection
+  may be established and then disconnected within a few seconds.
+  One thing to try in this case is to set the connectSecurely flag to false
+  when constructing the NamePrefixSupportedDevice object for the display
+  in DeviceFinder.  Note that it is preferable to set this parameter
+  to true whenever possible.  See
+  http://developer.android.com/reference/android/bluetooth/BluetoothDevice.html#createInsecureRfcommSocketToServiceRecord%28java.util.UUID%29
+  for more information.
+
+In addition to using BrailleBack to make sure it works as expected, open the
+keyboard help screen (space+l on the braille display) to make sure that keys
+and commands are listed correctly.  Check that all commands that BrailleBack
+supports are listed (see braille/brailleback/res/values/help.xml for a list of
+supported commands).
+
+If this works, you are done.  Please contribute the changes back to the
+Eyes-Free project so that they can benefit Android braille users around the
+globe.
