@@ -1,0 +1,80 @@
+This directory contains the BRLTTY driver for braille displays which are
+manufactured by Handy Tech Elektronik GmbH [http://www.handytech.com/] of
+Germany. As a component of BRLTTY, this driver is released under the terms of
+the GNU Public License.
+
+This driver was originally implemented by Andreas Gross <andi@andi-bika.de>. It
+has since been extended, and is being maintained, by Dave Mielke
+<dave@mielke.cc>. Thanks to Mike Pedersen <mpedersen@mindspring.com> for his
+help with the design and testing of the Braille Star component. Thanks to Jill
+Clark <jill@handytech.com> of Handy Tech Elektronik for having graciously lent
+us a Bookworm so that its component could be tested. Thanks to Mario Lang 
+<mlang@delysid.org> for his help with the development of USB and bluetooth 
+support.
+
+A HandyTech display can be used via its serial, USB, or bluetooth interface. If
+you're using a serial connection then specify "serial:/path/to/device", e.g. 
+"serial:/dev/ttyS0". If you're using a USB connection then specify "usb:" (the
+trailing colon is important). If you're using a bluetooth connection then
+specify "bluez:address", e.g. "bluez:01:23:45:67:89:AB".
+
+Active Braille:
+---------------
+
+An external keyboard can be connected to your Active Braille via USB. The 
+keyboard is presented to the host as though it were a true HID (Human Interface 
+Device) in its own right. If you are using USB (not yet supported) to connect 
+your Active Braille to the host, most modern operating systems will 
+automatically recognize and correctly handle the keyboard. If you are using 
+Bluetooth to connect your Active Braille to the host, you will need to do some 
+additional setup to get the keyboard working.
+
+For Bluetooth on Linux: Add the Bluetooth device address and the PIN of your 
+Active Braille to the file /var/lib/bluetooth/<host-address>/pincodes so that 
+it will successfully pair with the host. Then, to enable keyboard input from 
+the Active Braille, execute the following command as root:
+
+   bluez-test-input connect 00:01:02:03:04:05
+
+Note that you will need to replace the sample Bluetooth device address in the 
+example above with that of your Active Braille.
+
+Basic Braille:
+--------------
+
+Starting with the Active Braille, Handy Tech has introduced a resistor 
+which limits the amount of power drawn via USB. This eliminates 
+excessive draining of the host's battery. This artificial reduction in 
+power consumtion has the side effect that the dots do not lower as 
+quickly. This leads to a kind of blurring when you scroll rapidly 
+through a screen. If you are a user who does a lot of rapid scrolling, 
+you will likely notice this effect. The Basic Braille allows this 
+behaviour to be configured. If you can afford to draw a little more 
+power via USB and would like to get rid of the blurring, here is how 
+to configure it:
+
+  Press all six display keys at once and hold for at least one second.
+  You will see "Config mode" on the display.
+  Now press cursor routing key 7 to toggle "HIGH USB POWER".
+  Pressing display key 6 will leave Config mode.
+
+The symmetry of the Basic Braille makes it easy to use when rotated 
+180 degrees such that the routing keys are below (rather than above) 
+the braille cells. If you would prefer to use your Basic Braille this 
+way, simply press both the first and last routing keys simultaneously 
+while in Config mode.
+
+Braille Star:
+-------------
+
+Braille Star models allow the use of an external keyboard for input. It can be
+used not only while the Braille Star is in "Notetaker" mode, i.e. while not
+connected to any external PC hardware, but also as a keyboard for the PC
+itself. Either connect the second PS/2 cable from your display to your PC
+(that's the old way), or just disable "Ext. keyboard autoselect" in the
+internal menu. This latter, much simpler, approach causes the keyboard's
+signals to be sent over whatever interface (serial, USB, or bluetooth) you're
+using to connect your display to your PC. It's particularly advantageous to use
+the external keyboard in conjunction with a bluetooth connection since this
+combination effectively transforms the Braille Star into a completely wireless
+yet fully functional braille terminal.

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Kapag naka-on ang BrailleBack, kokonekta ang iyong device sa isang nakapares na bluetooth na braille display at ipapakita ang nilalaman ng screen nang naka-braille. Maaaring gamitin ang mga key sa braille display upang mag-navigate sa screen, mag-activate ng mga item at maglagay ng teksto. Para sa higit pang impormasyon, pindutin ang space at mga tuldok na 1, 2 at 3 (ang titik l sa braille) sa iyong display kapag nakakonekta."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Magbigay ng braille output"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Braille hardware keyboard"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard ng Braille Hardware Keyboard"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Paganahin ang braille hardware keyboard"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Upang magamit ang braille hardware keyboard, kailangan mo itong paganahin sa mga setting ng pamamaraan ng pag-input at pagkatapos ay itakda ito bilang default na pamamaraan ng pag-input."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Laktawan"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Buksan ang Mga Setting ng Pamamaraan ng Pag-input"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Itakda ang Default na Pamamaraan ng Pag-input"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Upang magamit ang braille hardware keyboard, kailangan mo itong itakda bilang default na pamamaraan ng pag-input."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Buksan ang Picker ng Pamamaraan ng Pag-input"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Kumonekta sa isang braille display"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Nagbibigay-daan sa isang isang app na magsulat ng output at magbasa ng input ng keyboard mula sa isang braille display"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Walang Lamang Grid"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Grid"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Walang Lamang Listahan"</string>
+    <string name="type_listview" msgid="195039477703126884">"Listahan"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Walang Lamang Naso-scroll na Nilalaman"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Naso-scroll na Nilalaman"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Kahon para sa Pag-edit"</string>
+    <string name="type_image" msgid="3688576211222019626">"Larawan"</string>
+    <string name="type_button" msgid="3639574187835564558">"Button"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Kontrol ng Paghahanap"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Contact"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Mga Kagustuhan sa BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Device"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Katayuan"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Tulong sa Keyboard"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Braille"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Uri ng Braille"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Table ng literary braille"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Table ng computer braille"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"I-enable ang pag-wrap ng salita"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Hindi nakakonekta"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Nakakonekta"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Hindi available"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Literary braille"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Computer braille"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Auto (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Auto (wala)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Miscellaneous"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Mga opsyon ng developer"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Overlay sa screen"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Ipakita ang Braille sa screen"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Ilunsad ang tutorial"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Mga Open Source na Lisensya"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Antas ng output ng log"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Tulong sa BrailleBack Keyboard"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback on"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback off"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Aktibo ang BrailleBack keyboard"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"I-tap upang lumipat sa default na keyboard"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - grade <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - grade <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Mag-pan pakaliwa"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Mag-pan pakanan"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Tutorial sa Overlay"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Tapusin"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Nagsi-simulate ang overlay ng braille ng nare-refresh na display ng braille. Ipinapakita nito ang mga cell ng braille, kasama ang naaayong teksto, na ipinapahayag sa isang hardware display. Inirerekomenda na i-enable mo ang TalkBack at pindutin ang mode na paggalugad bago magpatuloy."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Setting ng Accessibility"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Maaari mong i-pan ang display ng  braille sa pamamagitan ng pagpindot sa isa sa mga button sa pag-pan sa tabi ng teksto."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Maaaring lumitaw ang maraming elemento sa display nang sabay-sabay. Maki-click mo ang isa sa mga ito sa pamamagitan ng pag-tap sa isa sa mga cell ng braille sa teksto. Kapareho ito ng pagpindot sa isa sa mga routing key sa display ng braille."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Kung tumatakip ang overlay sa isa pang elemento sa screen, maaari mo itong ilipat. Pindutin nang matagal ang overlay, at pagkatapos ay i-drag ito. Magsa-snap ito sa tuktok o ilalim ng screen kapag inangat mo ang iyong daliri."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Ipakita ang Tutorial sa Overlay"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Inirerekomenda namin na tingnan mo ang tutorial para sa overlay sa screen bago ito gamitin."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"S:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Hanapin: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Tutorial ng Paghahanap sa Screen"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Nagbibigay-daan sa iyo ang paghahanap sa screen na mabilis na makapunta sa mga item sa screen sa pamamagitan ng pagta-type ng bahagi ng tekstong paglalarawan ng mga ito. Habang nagta-type ka, ang susunod na katugmang item naman ang pagtutuunan."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Gamitin ang <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> upang lumipat sa susunod na resulta at <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> upang lumipat sa nakaraang resulta. Pindutin ang <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> upang umalis sa mode ng paghahanap at manatiling nakatuon sa resulta. Pindutin ang <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> upang bumalik sa item na dating pinagtutuunan."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Huwag na itong ipakitang muli"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Magpatuloy"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Magdagdag ng custom na label"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Mag-edit ng custom na label"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Mag-alis ng custom na label"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Hindi sinusuportahan ang mga custom na label. I-update ang talkback"</string>
+</resources>

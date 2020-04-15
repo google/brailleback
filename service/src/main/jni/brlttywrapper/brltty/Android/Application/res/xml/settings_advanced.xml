@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:title="@string/SETTINGS_SCREEN_ADVANCED"
+  >
+
+  <ListPreference
+    android:key="@string/PREF_KEY_KEYBOARD_TABLE"
+    android:persistent="true"
+    android:title="@string/SETTINGS_BUTTON_KEYBOARD_TABLE"
+    android:entries="@array/KEYBOARD_TABLE_LABELS"
+    android:entryValues="@array/KEYBOARD_TABLE_VALUES"
+    android:defaultValue="@string/DEFAULT_KEYBOARD_TABLE"
+   />
+
+  <ListPreference
+    android:key="@string/PREF_KEY_ATTRIBUTES_TABLE"
+    android:persistent="true"
+    android:title="@string/SETTINGS_BUTTON_ATTRIBUTES_TABLE"
+    android:entries="@array/ATTRIBUTES_TABLE_LABELS"
+    android:entryValues="@array/ATTRIBUTES_TABLE_VALUES"
+    android:defaultValue="@string/DEFAULT_ATTRIBUTES_TABLE"
+   />
+
+  <ListPreference
+    android:key="@string/PREF_KEY_LOG_LEVEL"
+    android:persistent="true"
+    android:title="@string/SETTINGS_BUTTON_LOG_LEVEL"
+    android:entries="@array/LOG_LEVEL_LABELS"
+    android:entryValues="@array/LOG_LEVEL_VALUES"
+    android:defaultValue="@string/DEFAULT_LOG_LEVEL"
+   />
+
+  <MultiSelectListPreference
+    android:key="@string/PREF_KEY_LOG_CATEGORIES"
+    android:persistent="true"
+    android:title="@string/SETTINGS_BUTTON_LOG_CATEGORIES"
+    android:entries="@array/LOG_CATEGORY_LABELS"
+    android:entryValues="@array/LOG_CATEGORY_VALUES"
+    android:defaultValue="@array/EMPTY_STRING_ARRAY"
+   />
+
+  <CheckBoxPreference
+    android:key="@string/PREF_KEY_LOG_ACCESSIBILITY_EVENTS"
+    android:persistent="true"
+    android:title="@string/SETTINGS_CHECKBOX_LOG_ACCESSIBILITY_EVENTS"
+   />
+
+  <CheckBoxPreference
+    android:key="@string/PREF_KEY_LOG_RENDERED_SCREEN"
+    android:persistent="true"
+    android:title="@string/SETTINGS_CHECKBOX_LOG_RENDERED_SCREEN"
+   />
+
+  <CheckBoxPreference
+    android:key="@string/PREF_KEY_LOG_KEYBOARD_EVENTS"
+    android:persistent="true"
+    android:title="@string/SETTINGS_CHECKBOX_LOG_KEYBOARD_EVENTS"
+   />
+</PreferenceScreen>

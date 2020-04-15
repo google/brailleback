@@ -1,0 +1,6 @@
+cbrower
+pweaver
+file://depot/google3/java/com/google/android/accessibility/OWNERS
+
+# New brltty users must have go/ise-team-yaqs approval.
+per-file allowed_users.bzl=mdb-group:ise-members

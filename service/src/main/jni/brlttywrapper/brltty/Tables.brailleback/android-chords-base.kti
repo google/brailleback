@@ -1,0 +1,38 @@
+# This is for devices without braille dot keys. Devices with braille dot keys
+# should use android-chords.kti instead.
+#
+# chord1-chord5, chord7 are required
+# chord6 is currently unused
+# chord8 is optional
+
+# Back key
+bind \{chord}+\{chord1}+\{chord2} KEY_ESCAPE
+# Home key
+bind \{chord}+\{chord1}+\{chord2}+\{chord5} KEY_FUNCTION+0
+# Recent apps key
+bind \{chord}+\{chord1}+\{chord2}+\{chord3}+\{chord5} KEY_FUNCTION+1
+# Notifications bar
+bind \{chord}+\{chord1}+\{chord3}+\{chord4}+\{chord5} KEY_FUNCTION+2
+# Keyboard help
+bind \{chord}+\{chord1}+\{chord2}+\{chord3} LEARN
+# Next section
+bind \{chord}+\{chord2}+\{chord3}+\{chord4} KEY_FUNCTION+6
+# Previous section
+bind \{chord}+\{chord7}+\{chord2}+\{chord3}+\{chord4} KEY_FUNCTION+7
+# Next control
+bind \{chord}+\{chord1}+\{chord4} KEY_FUNCTION+8
+# Previous control
+bind \{chord}+\{chord7}+\{chord1}+\{chord4} KEY_FUNCTION+9
+# Next list
+bind \{chord}+\{chord2}+\{chord4} KEY_FUNCTION+10
+# Previous list
+bind \{chord}+\{chord7}+\{chord2}+\{chord4} KEY_FUNCTION+11
+# Incremental Search
+bind \{chord}+\{chord3}+\{chord4} KEY_FUNCTION+12
+# Braille menu
+bind \{chord}+\{chord7}+\{chord1}+\{chord3}+\{chord4} KEY_FUNCTION+13
+# Braille grade toggle
+bind \{chord}+\{chord1}+\{chord2}+\{chord4}+\{chord5} DISPMD
+
+bind \{chord}+\{chord7} KEY_BACKSPACE
+ifVar chord8 bind \{chord}+\{chord8} KEY_ENTER

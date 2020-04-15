@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:title="@string/SETTINGS_SCREEN_DEVICES"
+  >
+
+  <ListPreference
+    android:key="@string/PREF_KEY_SELECTED_DEVICE"
+    android:persistent="true"
+    android:title="@string/DEVICES_BUTTON_SELECTED"
+   />
+
+  <PreferenceScreen
+    android:key="@string/PREF_KEY_ADD_DEVICE"
+    android:title="@string/DEVICES_BUTTON_ADD"
+    >
+
+    <EditTextPreference
+      android:key="@string/PREF_KEY_DEVICE_NAME"
+      android:title="@string/ADD_DEVICE_NAME"
+      android:defaultValue=""
+     />
+
+    <ListPreference
+      android:key="@string/PREF_KEY_DEVICE_METHOD"
+      android:title="@string/ADD_DEVICE_METHOD"
+      android:entries="@array/DEVICE_METHOD_LABELS"
+      android:entryValues="@array/DEVICE_METHOD_VALUES"
+      android:defaultValue="@string/DEFAULT_COMMUNICATION_METHOD"
+     />
+
+    <ListPreference
+      android:key="@string/PREF_KEY_DEVICE_IDENTIFIER"
+      android:title="@string/ADD_DEVICE_SELECT"
+      android:entries="@array/EMPTY_STRING_ARRAY"
+      android:entryValues="@array/EMPTY_STRING_ARRAY"
+     />
+
+    <ListPreference
+      android:key="@string/PREF_KEY_DEVICE_DRIVER"
+      android:title="@string/ADD_DEVICE_DRIVER"
+      android:entries="@array/BRAILLE_DRIVER_LABELS"
+      android:entryValues="@array/BRAILLE_DRIVER_VALUES"
+      android:defaultValue="@string/DEFAULT_BRAILLE_DRIVER"
+     />
+
+    <Preference
+      android:key="@string/PREF_KEY_DEVICE_ADD"
+      android:title="@string/ADD_DEVICE_DONE"
+     />
+  </PreferenceScreen>
+
+  <PreferenceScreen
+    android:key="@string/PREF_KEY_REMOVE_DEVICE"
+    android:title="@string/DEVICES_BUTTON_REMOVE"
+    >
+
+    <Preference
+      android:key="@string/PREF_KEY_REMOVE_DEVICE_ASK"
+      android:title="@string/REMOVE_DEVICE_ASK"
+     />
+
+    <Preference
+      android:key="@string/PREF_KEY_REMOVE_DEVICE_YES"
+      android:title="@string/android:yes"
+     />
+
+    <Preference
+      android:key="@string/PREF_KEY_REMOVE_DEVICE_NO"
+      android:title="@string/android:no"
+     />
+  </PreferenceScreen>
+</PreferenceScreen>

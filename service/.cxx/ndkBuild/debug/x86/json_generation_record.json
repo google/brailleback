@@ -1,0 +1,74 @@
+[
+  {
+    "level": "INFO",
+    "message": "Start JSON generation. Platform version: 16 min SDK version: x86",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "rebuilding JSON /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/.cxx/ndkBuild/debug/x86/android_gradle_build.json due to:",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "- command changed from previous, will remove stale json folder",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "removing stale contents from \u0027/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/.cxx/ndkBuild/debug/x86\u0027",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "created folder \u0027/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/.cxx/ndkBuild/debug/x86\u0027",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "executing ndkBuild Executable : /usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build\narguments : \nNDK_PROJECT_PATH\u003dnull\nAPP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk\nAPP_ABI\u003dx86\nNDK_ALL_ABIS\u003dx86\nNDK_DEBUG\u003d1\nAPP_PLATFORM\u003dandroid-16\nNDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj\nNDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib\nAPP_SHORT_COMMANDS\u003dfalse\nLOCAL_SHORT_COMMANDS\u003dfalse\n-B\n-n\njvmArgs : \n\n",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "Executable : /usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build\narguments : \nNDK_PROJECT_PATH\u003dnull\nAPP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk\nAPP_ABI\u003dx86\nNDK_ALL_ABIS\u003dx86\nNDK_DEBUG\u003d1\nAPP_PLATFORM\u003dandroid-16\nNDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj\nNDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib\nAPP_SHORT_COMMANDS\u003dfalse\nLOCAL_SHORT_COMMANDS\u003dfalse\n-B\n-n\njvmArgs : \n\n",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "done executing ndkBuild",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "write build output /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/.cxx/ndkBuild/debug/x86/build_output.txt",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "parse and convert ndk-build output to build configuration JSON",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "write command file /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/.cxx/ndkBuild/debug/x86/build_command.txt",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  },
+  {
+    "level": "INFO",
+    "message": "JSON generation completed without problems",
+    "file": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk",
+    "tag": "debug|x86"
+  }
+]

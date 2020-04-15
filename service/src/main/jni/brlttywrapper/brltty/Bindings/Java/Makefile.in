@@ -1,0 +1,122 @@
+###############################################################################
+# libbrlapi - A library providing access to braille terminals for applications.
+#
+# Copyright (C) 2006-2018 by
+#   Samuel Thibault <Samuel.Thibault@ens-lyon.org>
+#   Sébastien Hinderer <Sebastien.Hinderer@ens-lyon.org>
+#
+# libbrlapi comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+include $(SRC_TOP)bindings.mk
+
+JAVA_OK = @JAVA_OK@
+JAVAC = @JAVAC@
+JAVADOC = @JAVADOC@
+JAR = @JAR@
+
+JAVA_JAR = @JAVA_JAR@
+JAVA_JAR_DIR = @JAVA_JAR_DIR@
+JAVA_JAR_DESTDIR = $(INSTALL_ROOT)
+
+JAVA_JNI = @JAVA_JNI@
+JAVA_JNI_DIR = @JAVA_JNI_DIR@
+JAVA_JNI_HDR = @JAVA_JNI_HDR@
+JAVA_JNI_INC = @JAVA_JNI_INC@
+JAVA_JNI_FLAGS = @JAVA_JNI_FLAGS@
+JAVA_JNI_DESTDIR = $(INSTALL_ROOT)
+
+all: jar jni doc
+
+JAVA_SOURCES = $(SRC_DIR)/Brlapi.java \
+	$(SRC_DIR)/ConnectionSettings.java \
+	$(SRC_DIR)/DisplaySize.java \
+	$(SRC_DIR)/Error.java \
+	$(SRC_DIR)/Exception.java \
+	$(SRC_DIR)/Key.java \
+	$(SRC_DIR)/Native.java \
+	$(SRC_DIR)/Test.java \
+	$(SRC_DIR)/WriteArguments.java \
+	Constants.java
+
+JAVA_JNI_FILE = $(LIB_PFX)$(API_NAME)_java.$(LIB_EXT)
+jni: $(JAVA_JNI_FILE)
+
+$(JAVA_JNI_FILE): bindings.$O $(API_NAME)
+	$(MKLIB:<name>=$(API_NAME)) $@ bindings.$O $(API_LDFLAGS)
+
+bindings.$O:
+	$(CC) $(LIBCFLAGS) $(JAVA_JNI_FLAGS) -o $@ -c $(SRC_DIR)/bindings.c
+
+JAVA_JAR_FILE = $(API_NAME).jar
+jar: $(JAVA_JAR_FILE)
+
+$(JAVA_JAR_FILE): classes.made
+	$(JAR) cf $@ -C classes .
+
+classes.made: $(JAVA_SOURCES)
+	$(INSTALL_DIRECTORY) classes
+	$(JAVAC) -d classes -classpath . $(JAVA_SOURCES)
+	touch $@
+
+Constants.java: $(CONSTANTS_DEPENDENCIES)
+	$(AWK) $(CONSTANTS_ARGUMENTS) >$@
+
+doc: doc.made
+
+doc.made: $(JAVA_SOURCES)
+	$(INSTALL_DIRECTORY) doc
+	$(JAVADOC) -quiet -d doc -author -notimestamp -version -use $(JAVA_SOURCES)
+	touch $@
+
+clean::
+	-rm -f Constants.java classes.made $(JAVA_JAR_FILE) $(JAVA_JNI_FILE)
+	-rm -f -r classes
+	-rm -f doc.made
+	-rm -f -r doc
+
+install: install-jar install-jni
+
+install-jar: install-jar-$(JAVA_JAR)
+
+install-jar-yes: jar
+	$(INSTALL_DIRECTORY) $(JAVA_JAR_DESTDIR)$(JAVA_JAR_DIR)
+	$(INSTALL) $(JAVA_JAR_FILE) $(JAVA_JAR_DESTDIR)$(JAVA_JAR_DIR)
+
+install-jar-no:
+	@echo jar not installed
+
+install-jni: install-jni-$(JAVA_JNI)
+
+install-jni-yes: jni
+	$(INSTALL_DIRECTORY) $(JAVA_JNI_DESTDIR)$(JAVA_JNI_DIR)
+	$(INSTALL) $(JAVA_JNI_FILE) $(JAVA_JNI_DESTDIR)$(JAVA_JNI_DIR)
+
+install-jni-no:
+	@echo jni not installed
+
+uninstall: uninstall-jar uninstall-jni
+
+uninstall-jar: uninstall-jar-$(JAVA_JAR)
+
+uninstall-jar-yes:
+	-rm -f -- $(JAVA_JAR_DESTDIR)$(JAVA_JAR_DIR)/$(JAVA_JAR_FILE)
+
+uninstall-jar-no:
+
+uninstall-jni: uninstall-jni-$(JAVA_JNI)
+
+uninstall-jni-yes:
+	-rm -f -- $(JAVA_JNI_DESTDIR)$(JAVA_JNI_DIR)/$(JAVA_JNI_FILE)
+
+uninstall-jni-no:
+

@@ -1,0 +1,10 @@
+include ':app'
+rootProject.name='Brailleback'
+include ':client'
+include ':libraries:utils'
+include ':libraries:compatutils'
+include ':service'
+//include 'utils'
+//project(':utils').projectDir = new File('libraries/utils')
+//include 'compatutils'
+//project(':compatutils').projectDir = new File('libraries/compatutils')

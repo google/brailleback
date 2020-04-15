@@ -1,0 +1,67 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+all:: objects languages
+
+COPYRIGHT_HOLDER = The BRLTTY Developers
+LANGUAGE_CODES = de fr zh
+
+TEMPLATE_EXTENSION = pot
+SOURCE_EXTENSION = po
+OBJECT_EXTENSION = mo
+
+LANGUAGES_FILE = LINGUAS
+languages: $(LANGUAGES_FILE)
+
+$(LANGUAGES_FILE): FORCE
+	: >$@; \
+	for language in $(LANGUAGE_CODES); do \
+	echo $$language >>$@; \
+	done
+
+TEMPLATE_FILE = $(SRC_DIR)/$(PACKAGE_TARNAME).$(TEMPLATE_EXTENSION)
+template $(TEMPLATE_EXTENSION): $(TEMPLATE_FILE)
+
+$(TEMPLATE_FILE): $(BLD_TOP)$(PGM_DIR)/cmds.auto.h FORCE
+	$(SRC_TOP)mkpot -p "$(PACKAGE_TARNAME)" -n "$(PACKAGE_VERSION)" -o $@ -b "$(PACKAGE_BUGREPORT)" -c "$(COPYRIGHT_HOLDER)" $(SRC_TOP) $(BLD_TOP)
+
+SOURCE_FILES = $(LANGUAGE_CODES:=.$(SOURCE_EXTENSION))
+sources: $(SOURCE_FILES)
+
+%.$(SOURCE_EXTENSION): FORCE
+	$(MSGMERGE) --quiet --force-po --no-wrap --update -- $(SRC_DIR)/$@ $(TEMPLATE_FILE)
+
+OBJECT_FILES = $(LANGUAGE_CODES:=.$(OBJECT_EXTENSION))
+objects: $(OBJECT_FILES)
+
+%.$(OBJECT_EXTENSION):
+	$(MSGFMT) --output-file $@ $(SRC_DIR)/$(@F:.$(OBJECT_EXTENSION)=.$(SOURCE_EXTENSION))
+
+clean::
+	-rm -f -- *.$(OBJECT_EXTENSION) *~
+
+install:: objects install-locale-directory
+	for language in $(LANGUAGE_CODES); do \
+	directory="$(INSTALL_LOCALE_DIRECTORY)/$${language}/LC_MESSAGES" && \
+        $(INSTALL_DIRECTORY) "$${directory}" && \
+	$(INSTALL_DATA) "$${language}.$(OBJECT_EXTENSION)" "$${directory}/$(PACKAGE_TARNAME).$(OBJECT_EXTENSION)"; \
+	done
+
+uninstall::
+	-rm -f -- $(INSTALL_LOCALE_DIRECTORY)/*/*/$(PACKAGE_TARNAME).$(OBJECT_EXTENSION)
+

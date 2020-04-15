@@ -1,0 +1,59 @@
+Device drivers
+==============
+
+| Device marketing name         | Brltty driver code | Device name pattern | Key table          |
+| ----------------------------- | ------------------ | ------------------- | ------------------ |
+| Harpo BraillePen              | vo                 | EL12-               | vo/bp.ktb          |
+| Eurobraille Esys              | eu                 | Esys-               | eu/esys-small.ktb  |
+|                               |                    |                     | eu/esys-medium.ktb |
+|                               |                    |                     | eu/esys-large.ktb  |
+| Freedom Scientific Focus Blue | fs                 | Focus 40 BT         | fs/focus_small.ktb |
+|                               |                    | Focus 14 BT         | fs/focus_small.ktb |
+| Humanware Brailliant          | hw                 | Brailliant BT       | hw/mb1.ktb         |
+|                               |                    |                     | hw/mb2.ktb         |
+| HIMS                          | hm                 | Hansone             | [1]                |
+|                               |                    | HansoneXL           | [1]                |
+|                               |                    | BrailleSense        | hm/qwerty.ktb      |
+|                               |                    |                     | hm/pan.ktb         |
+|                               |                    |                     | hm/scroll.ktb      |
+|                               |                    | BrailleEDGE         | hm/edge.ktb        |
+|                               |                    | SmartBeetle         | hm/beetle.ktb      |
+| APH Refreshabraille           | bm                 | Refreshabraille     | bm/rb.ktb          |
+| Baum VarioConnect             | bm                 | VarioConnect        | bm/default.ktb [2] |
+|                               |                    |                     | bm/connect.ktb     |
+| Baum VarioUltra               | bm                 | VarioUltra          | bm/default.ktb [2] |
+|                               |                    |                     | bm/ultra.ktb       |
+| Papenmeier Braillex Trio      | pm                 | braillex trio       | pm/trio.ktb        |
+| Alva BC640/BC680              | al                 | Alva BC             | al/bc640.ktb       |
+|                               |                    |                     | al/bc680.ktb       |
+| HandyTech                     | ht                 | Braille Wave        | ht/wave.ktb        |
+|                               |                    | BRW                 | ht/wave.ktb        |
+|                               |                    | Braillino           | ht/brln.ktb        |
+|                               |                    | BL2                 | ht/brln.ktb        |
+|                               |                    | Braille Star 40     | ht/bs40.ktb        |
+|                               |                    | BS4                 | ht/bs40.ktb        |
+|                               |                    | Easy Braille        | ht/easy.ktb        |
+|                               |                    | EBR                 | ht/easy.ktb        |
+|                               |                    | Active Braille      | ht/ab40.ktb        |
+|                               |                    | AB4                 | ht/ab40.ktb        |
+|                               |                    | Basic Braille       | ht/bb.ktb          |
+|                               |                    | BB3                 | ht/bb.ktb          |
+|                               |                    | BB4                 | ht/bb.ktb          |
+|                               |                    | BB6                 | ht/bb.ktb          |
+| Seika Mini Note Taker         | sk                 | TSM                 | sk/ntk.ktb         |
+| Seika Braille Display         | sk                 | TS5                 | sk/bdp.ktb         |
+
+[1] Unknown; need to verify. Probably using the same key tables as BrailleSense.
+[2] Used during initial probe for Baum devices.
+
+Last updated based on Brltty 5.4 key tables.
+
+Notes
+=====
+| HIMS driver | braille.kti | common.kti | f14.kti | f18.kti | left.kti | pan.kti | qwerty.kti | right.kti | scroll.kti |
+| ----------- | ----------- | ---------- | ------- | ------- | -------- | ------- | ---------- | --------- | ---------- |
+| beetle.ktb  | X           | X          | X       |         |          | X       |            |           |            |
+| edge.ktb    | X           | X          |         | X       | X        |         |            | X         | X          |
+| pan.ktb     | X           | X          | X       |         |          | X       |            |           |            |
+| qwerty.ktb  |             | X          |         |         |          |         | X          |           | X          |
+| scroll.ktb  | X           | X          | X       |         | X        |         |            |           | X          |

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Posunúť doprava"</item>
+    <item msgid="992384288929754258">"Posunúť doľava"</item>
+    <item msgid="2311009411708911700">"Prejsť na ďalšiu položku"</item>
+    <item msgid="4868322620432152139">"Prejsť na predchádzajúcu položku"</item>
+    <item msgid="713256521059720189">"Prejsť na ďalší riadok"</item>
+    <item msgid="7111316948614107646">"Prejsť na predchádzajúci riadok"</item>
+    <item msgid="1092717670413169154">"Posunúť dopredu"</item>
+    <item msgid="2672802569950877806">"Posunúť dozadu"</item>
+    <item msgid="6858389246595464611">"Prejsť na začiatok stránky"</item>
+    <item msgid="6077703163925348890">"Prejsť na koniec stránky"</item>
+    <item msgid="880847480793051862">"Aktivovať položku pod prstom"</item>
+    <item msgid="2643484595828025643">"Stlačiť a podržať položku pod prstom"</item>
+    <item msgid="2225564744515622940">"Aktivovať aktuálnu položku"</item>
+    <item msgid="2039335960797511513">"Stlačiť a podržať aktuálnu položku"</item>
+    <item msgid="5703473744103522479">"Zadať znak Braillovho písma"</item>
+    <item msgid="397805118186944475">"Aktivovať tlačidlo Späť"</item>
+    <item msgid="2057979808256674943">"Aktivovať tlačidlo Domov"</item>
+    <item msgid="3851017077578326256">"Otvoriť okno upozornení"</item>
+    <item msgid="7100928240716386910">"Otvoriť okno nedávnych aplikácií"</item>
+    <item msgid="1288748126248312152">"Aktivovať kláves Enter pri úprave textu"</item>
+    <item msgid="6030744298808090187">"Pri úprave textu odstraňovať smerom dozadu"</item>
+    <item msgid="4072293104009433677">"Pri úprave textu odstraňovať smerom dopredu"</item>
+    <item msgid="5307038145607249298">"Prejsť na ďalšiu časť vo webovom obsahu"</item>
+    <item msgid="8804572703982019495">"Prejsť na predchádzajúcu sekciu vo webovom obsahu"</item>
+    <item msgid="5442875833766760122">"Prejsť na ďalší odkaz/ovládací prvok/pole formulára vo webovom obsahu"</item>
+    <item msgid="65542415754308243">"Prejsť na predchádzajúci odkaz/ovládací prvok/pole formulára vo webovom obsahu"</item>
+    <item msgid="8658175115960567526">"Prejsť na ďalší zoznam vo webovom obsahu"</item>
+    <item msgid="561134957068368670">"Prejsť na predchádzajúci zoznam vo webovom obsahu"</item>
+    <item msgid="4431278105955644176">"Prepnúť režim vyhľadávania na obrazovke"</item>
+    <item msgid="1541653246718288681">"Prepnúť ponuku menoviek"</item>
+    <item msgid="3873494647942879428">"Prepnite formu Braillovho písma"</item>
+    <item msgid="6558794813691083806">"Otvoriť pomocníka klávesnice BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Stlačte a podržte <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Pomocou navigačných klávesov môžete posúvať zobrazenie na obrazovke."\n"Pomocou klávesov s Braillovým písmom môžete zadávať text do poľa úprav."\n"V nasledujúcom zozname nájdete klávesové príkazy podporované vaším zariadením."</string>
+</resources>

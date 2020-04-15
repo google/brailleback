@@ -1,0 +1,1144 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+all: all-brltty all-brltty-trtxt all-brltty-ttb all-brltty-atb $(ALL_BRLTTY_CTB) all-brltty-ktb all-brltty-tune $(ALL_XBRLAPI) $(ALL_API_BINDINGS)
+all-brltty: brltty$X $(BRAILLE_DRIVERS) $(SPEECH_DRIVERS) $(SCREEN_DRIVERS)
+all-brltty-trtxt: brltty-trtxt$X
+all-brltty-ttb: brltty-ttb$X
+all-brltty-atb: brltty-atb$X
+all-brltty-ctb: brltty-ctb$X
+all-brltty-ktb: brltty-ktb$X $(BRAILLE_DRIVERS)
+all-brltty-tune: brltty-tune$X
+all-xbrlapi: xbrlapi$X
+
+everything: all all-brltest all-scrtest all-spktest $(ALL_API)
+all-brltest: brltest$X $(BRAILLE_DRIVERS)
+all-spktest: spktest$X $(SPEECH_DRIVERS)
+all-scrtest: scrtest$X $(SCREEN_DRIVERS)
+
+all-api: all-apitest
+all-apitest: apitest$X
+
+###############################################################################
+
+REVISION_HEADER = revision_identifier.h
+
+.PHONY: $(REVISION_HEADER)
+
+$(REVISION_HEADER): $(SRC_TOP)getrevid
+	-$(SRC_TOP)getrevid -s -f $@ -d unknown $(SRC_TOP)
+
+revision.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/revision.c
+
+###############################################################################
+
+program.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/program.c
+
+$(PGMPATH_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(PGMPATH_INCLUDES) -c $(SRC_DIR)/$(PGMPATH_OBJECT).c
+
+###############################################################################
+
+$(SERVICE_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(SERVICE_INCLUDES) -c $(SRC_DIR)/$(SERVICE_OBJECT).c
+
+###############################################################################
+
+options.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/options.c
+
+$(PARAMS_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(PARAMS_INCLUDES) -c $(SRC_DIR)/$(PARAMS_OBJECT).c
+
+###############################################################################
+
+$(DYNLD_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(DYNLD_INCLUDES) -c $(SRC_DIR)/$(DYNLD_OBJECT).c
+
+###############################################################################
+
+charset.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/charset.c
+
+$(CHARSET_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(CHARSET_INCLUDES) -c $(SRC_DIR)/$(CHARSET_OBJECT).c
+
+###############################################################################
+
+hostcmd.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/hostcmd.c
+
+$(HOSTCMD_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(HOSTCMD_INCLUDES) -c $(SRC_DIR)/$(HOSTCMD_OBJECT).c
+
+###############################################################################
+
+mntpt.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/mntpt.c
+
+$(MNTPT_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(MNTPT_INCLUDES) -c $(SRC_DIR)/$(MNTPT_OBJECT).c
+
+###############################################################################
+
+$(MNTFS_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(MNTFS_INCLUDES) -c $(SRC_DIR)/$(MNTFS_OBJECT).c
+
+###############################################################################
+
+kbd.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/kbd.c
+
+$(KBD_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(KBD_INCLUDES) -c $(SRC_DIR)/$(KBD_OBJECT).c
+
+kbd_keycodes.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/kbd_keycodes.c
+
+###############################################################################
+
+bell.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/bell.c
+
+$(BELL_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(BELL_INCLUDES) -c $(SRC_DIR)/$(BELL_OBJECT).c
+
+###############################################################################
+
+leds.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/leds.c
+
+$(LEDS_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(LEDS_INCLUDES) -c $(SRC_DIR)/$(LEDS_OBJECT).c
+
+###############################################################################
+
+beep.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/beep.c
+
+$(BEEP_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(BEEP_INCLUDES) -c $(SRC_DIR)/$(BEEP_OBJECT).c
+
+###############################################################################
+
+pcm.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/pcm.c
+
+$(PCM_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(PCM_INCLUDES) -c $(SRC_DIR)/$(PCM_OBJECT).c
+
+###############################################################################
+
+midi.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/midi.c
+
+$(MIDI_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(MIDI_INCLUDES) -c $(SRC_DIR)/$(MIDI_OBJECT).c
+
+###############################################################################
+
+$(FM_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(FM_INCLUDES) -c $(SRC_DIR)/$(FM_OBJECT).c
+
+###############################################################################
+
+serial.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/serial.c
+
+$(SERIAL_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(SERIAL_INCLUDES) -c $(SRC_DIR)/$(SERIAL_OBJECT).c
+
+###############################################################################
+
+usb.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb.c
+
+usb_hid.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_hid.c
+
+usb_serial.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_serial.c
+
+usb_adapters.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_adapters.c
+
+usb_cdc_acm.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_cdc_acm.c
+
+usb_belkin.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_belkin.c
+
+usb_cp2101.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_cp2101.c
+
+usb_cp2110.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_cp2110.c
+
+usb_ftdi.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/usb_ftdi.c
+
+$(USB_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(USB_INCLUDES) -c $(SRC_DIR)/$(USB_OBJECT).c
+
+###############################################################################
+
+bluetooth.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/bluetooth.c
+
+bluetooth_names.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/bluetooth_names.c
+
+$(BLUETOOTH_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(BLUETOOTH_INCLUDES) -c $(SRC_DIR)/$(BLUETOOTH_OBJECT).c
+
+###############################################################################
+
+$(PORTS_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(PORTS_INCLUDES) -c $(SRC_DIR)/$(PORTS_OBJECT).c
+
+###############################################################################
+
+$(SYSTEM_OBJECT).$O:
+	$(CC) $(LIBCFLAGS) $(SYSTEM_INCLUDES) -c $(SRC_DIR)/$(SYSTEM_OBJECT).c
+
+###############################################################################
+
+io_misc.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/io_misc.c
+
+gio.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/gio.c
+
+gio_null.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/gio_null.c
+
+gio_serial.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/gio_serial.c
+
+gio_usb.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/gio_usb.c
+
+gio_bluetooth.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/gio_bluetooth.c
+
+###############################################################################
+
+async_handle.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_handle.c
+
+async_data.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_data.c
+
+async_wait.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_wait.c
+
+async_alarm.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_alarm.c
+
+async_task.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_task.c
+
+async_io.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_io.c
+
+async_event.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_event.c
+
+async_signal.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/async_signal.c
+
+thread.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/thread.c
+
+###############################################################################
+
+log.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/log.c
+
+log_history.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/log_history.c
+
+addresses.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/addresses.c
+
+report.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/report.c
+
+file.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/file.c
+
+device.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/device.c
+
+pipe.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/pipe.c
+
+parse.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/parse.c
+
+timing.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/timing.c
+
+queue.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/queue.c
+
+rabiables.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/rabiables.c
+
+datafile.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/datafile.c
+
+variables.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/variables.c
+
+unicode.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/unicode.c
+
+lock.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/lock.c
+
+###############################################################################
+
+pid.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/pid.c
+
+###############################################################################
+
+auth.$O:
+	$(CC) $(LIBCFLAGS) $(POLKIT_INCLUDES) -c $(SRC_DIR)/auth.c
+
+dataarea.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/dataarea.c
+
+###############################################################################
+
+PREFS_OBJECTS = prefs.$O prefs_table.$O
+
+prefs.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/prefs.c
+
+prefs_table.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/prefs_table.c
+
+###############################################################################
+
+BRAILLE_OBJECTS = brl.$O brl_utils.$O brl_input.$O brl_driver.$O brl_base.$O $(BRAILLE_DRIVER_OBJECTS) $(IO_OBJECTS)
+
+brl.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brl.c
+
+brl_utils.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brl_utils.c
+
+brl_input.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brl_input.c
+
+brl_driver.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brl_driver.c
+
+brl_base.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brl_base.c
+
+###############################################################################
+
+SPEECH_OBJECTS = $(SPEECH_OBJECT) spk_thread.$O spk_driver.$O spk_base.$O $(SPEECH_DRIVER_OBJECTS)
+
+spk.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/spk.c
+
+spk_thread.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/spk_thread.c
+
+spk_input.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/spk_input.c
+
+spk_driver.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/spk_driver.c
+
+spk_base.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/spk_base.c
+
+###############################################################################
+
+SCREEN_OBJECTS = scr.$O scr_utils.$O scr_base.$O scr_main.$O scr_real.$O scr_gpm.$O scr_driver.$O routing.$O $(SCREEN_DRIVER_OBJECTS)
+
+scr.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr.c
+
+scr_utils.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_utils.c
+
+scr_base.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_base.c
+
+scr_main.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_main.c
+
+scr_real.$O: scr.auto.h
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_real.c
+
+scr_gpm.$O: scr.auto.h
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_gpm.c
+
+scr_driver.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_driver.c
+
+routing.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/routing.c
+
+###############################################################################
+
+SPECIAL_SCREEN_OBJECTS = scr_special.$O scr_frozen.$O scr_help.$O scr_menu.$O
+
+scr_special.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_special.c
+
+scr_frozen.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_frozen.c
+
+scr_help.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_help.c
+
+scr_menu.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/scr_menu.c
+
+###############################################################################
+
+ALERT_OBJECTS = alert.$O tune_build.$O message.$O $(TUNE_OBJECTS)
+
+alert.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/alert.c
+
+message.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/message.c
+
+tune.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/tune.c
+
+notes.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/notes.c
+
+notes_beep.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/notes_beep.c
+
+notes_pcm.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/notes_pcm.c
+
+notes_midi.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/notes_midi.c
+
+notes_fm.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/notes_fm.c
+
+###############################################################################
+
+TTB_OBJECTS = ttb_translate.$O ttb_compile.$O ttb_native.$O
+
+ttb_translate.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ttb_translate.c
+
+ttb_compile.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ttb_compile.c
+
+ttb_native.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ttb_native.c
+
+ttb_gnome.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ttb_gnome.c
+
+ttb_louis.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ttb_louis.c
+
+BRLTTY_TTB_OBJECTS = brltty-ttb.$O $(PROGRAM_OBJECTS) dataarea.$O $(TTB_OBJECTS) ttb_gnome.$O ttb_louis.$O
+
+brltty-ttb$X: $(BRLTTY_TTB_OBJECTS) $(BUILD_API)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_TTB_OBJECTS) $(API_REF) $(CURSES_LIBS) $(LDLIBS)
+
+brltty-ttb.$O:
+	$(CC) $(CFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/brltty-ttb.c
+
+check-text-tables: brltty-ttb$X $(API_LIB_VERSIONED)
+	@echo checking text tables
+	set -- $(SRC_TOP)$(TBL_DIR)/$(TEXT_TABLES_SUBDIRECTORY)/*$(TEXT_TABLE_EXTENSION) && \
+	for file; do \
+	LD_LIBRARY_PATH=$(BLD_DIR) \
+	./brltty-ttb$X -T$(SRC_TOP)$(TBL_DIR) $${file##*/}; \
+	done
+
+###############################################################################
+
+ATB_OBJECTS = atb_translate.$O atb_compile.$O
+
+atb_translate.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/atb_translate.c
+
+atb_compile.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/atb_compile.c
+
+BRLTTY_ATB_OBJECTS = brltty-atb.$O $(PROGRAM_OBJECTS) $(ATB_OBJECTS) dataarea.$O
+
+brltty-atb$X: $(BRLTTY_ATB_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_ATB_OBJECTS) $(LDLIBS)
+
+brltty-atb.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty-atb.c
+
+check-attributes-tables: brltty-atb$X
+	@echo checking attributes tables
+	set -- $(SRC_TOP)$(TBL_DIR)/$(ATTRIBUTES_TABLES_SUBDIRECTORY)/*$(ATTRIBUTES_TABLE_EXTENSION) && \
+	for file; do \
+	./brltty-atb$X -T$(SRC_TOP)$(TBL_DIR) $${file##*/}; \
+	done
+
+###############################################################################
+
+ctb_compile.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/ctb_compile.c
+
+ctb_translate.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/ctb_translate.c
+
+ctb_native.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ctb_native.c
+
+ctb_external.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ctb_external.c
+
+ctb_louis.$O:
+	$(CC) $(LIBCFLAGS) $(LOUIS_INCLUDES) -c $(SRC_DIR)/ctb_louis.c
+
+BRLTTY_CTB_OBJECTS = brltty-ctb.$O $(PROGRAM_OBJECTS) $(PREFS_OBJECTS) dataarea.$O $(TTB_OBJECTS) $(CTB_OBJECTS)
+
+brltty-ctb$X: $(BRLTTY_CTB_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_CTB_OBJECTS) $(LOUIS_LIBS) $(LDLIBS)
+
+brltty-ctb.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty-ctb.c
+
+check-contraction-tables: brltty-ctb$X
+	@echo checking contraction tables
+	set -- $(SRC_TOP)$(TBL_DIR)/$(CONTRACTION_TABLES_SUBDIRECTORY)/*$(CONTRACTION_TABLE_EXTENSION) && \
+	for file; do \
+	test -x $${file} || \
+	./brltty-ctb$X -T$(SRC_TOP)$(TBL_DIR) -c$${file##*/} </dev/null; \
+	done
+
+###############################################################################
+
+KTB_OBJECTS = ktb_translate.$O ktb_compile.$O ktb_list.$O ktb_cmds.$O
+
+ktb_translate.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_translate.c
+
+ktb_compile.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_compile.c
+
+ktb_list.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_list.c
+
+ktb_audit.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_audit.c
+
+ktb_cmds.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_cmds.c
+
+ktb_keyboard.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ktb_keyboard.c
+
+BRLTTY_KTB_OBJECTS = brltty-ktb.$O $(PROGRAM_OBJECTS) $(KTB_OBJECTS) ktb_audit.$O ktb_keyboard.$O $(TTB_OBJECTS) dataarea.$O drivers.$O driver.$O brl_utils.$O brl_driver.$O brl_base.$O $(BRAILLE_DRIVER_OBJECTS) $(IO_OBJECTS) $(PREFS_OBJECTS) cmd.$O cmd_queue.$O hidkeys.$O report.$O cmd_brlapi.$O
+
+brltty-ktb$X: $(BRLTTY_KTB_OBJECTS) $(BRAILLE_DRIVERS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_KTB_OBJECTS) $(BRAILLE_DRIVER_LIBRARIES) $(USB_LIBS) $(BLUETOOTH_LIBS) $(LDLIBS)
+
+brltty-ktb.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty-ktb.c
+
+check-keyboard-tables: all-brltty-ktb
+	@echo checking keyboard tables
+	set -- $(SRC_TOP)$(TBL_DIR)/$(KEYBOARD_TABLES_SUBDIRECTORY)/*$(KEY_TABLE_EXTENSION) && \
+	for file; do \
+	name=$${file##*/}; \
+	name=$${name%.*}; \
+	./brltty-ktb$X -a -D$(BLD_TOP)$(DRV_DIR) -T$(SRC_TOP)$(TBL_DIR) kbd-$$name; \
+	done
+
+check-input-tables: all-brltty-ktb
+	@echo checking input tables
+	find $(SRC_TOP)$(TBL_DIR)/$(INPUT_TABLES_SUBDIRECTORY) -name '*$(KEY_TABLE_EXTENSION)' -print | \
+	while read file; do \
+	driver=$${file%/*}; \
+	driver=$${driver##*/}; \
+	name=$${file##*/}; \
+	name=$${name%.*}; \
+	./brltty-ktb$X -a -D$(BLD_TOP)$(DRV_DIR) -T$(SRC_TOP)$(TBL_DIR) brl-$$driver-$$name; \
+	done
+
+###############################################################################
+
+api_control.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/api_control.c
+
+brlapi_server.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brlapi_server.c
+
+brlapi_keyranges.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brlapi_keyranges.c
+
+###############################################################################
+
+API_CLIENT_OBJECTS = brlapi_client.$O
+
+api: $(API_DYNAMIC_LIBRARY) $(API_ARC)
+
+api-dynamic-library-versioned: $(API_LIB_VERSIONED)
+$(API_LIB_VERSIONED): $(API_LIB)
+	$(SYMLINK) $(API_LIB) $(API_LIB_VERSIONED)
+
+api-dynamic-library: $(API_LIB)
+$(API_LIB): $(API_CLIENT_OBJECTS)
+	$(MKLIB:<name>=${API_LIB_VERSIONED}) $@ $(API_CLIENT_OBJECTS) $(API_LIBRARIES)
+
+api-dynamic-library-windows: $(API_DLL)
+$(API_DLL): $(API_CLIENT_OBJECTS)
+	-rm -f implib.a lib.def
+	$(MKLIB:<name>=${API_LIB_VERSIONED}) $@ $(API_CLIENT_OBJECTS) $(API_LIBRARIES)
+	[ ! -f implib.a ] || mv implib.a $(API_IMPLIB)
+	[ ! -f lib.def ] || mv lib.def $(API_DEF)
+
+$(API_ARC): $(API_CLIENT_OBJECTS)
+	ar rc $@ $(API_CLIENT_OBJECTS)
+	$(RANLIB) $@
+
+brlapi_client.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brlapi_client.c
+
+brlapi_constants.h: $(SRC_DIR)/brlapi_constants.awk $(COMMANDS_DEPENDENCIES)
+	$(AWK) -f $(SRC_DIR)/brlapi_constants.awk $(COMMANDS_ARGUMENTS) >$@
+
+brlapi_keytab.auto.h: $(SRC_DIR)/brlapi_keytab.awk $(COMMANDS_DEPENDENCIES)
+	$(AWK) -f $(SRC_DIR)/brlapi_keytab.awk $(COMMANDS_ARGUMENTS) >$@
+
+brlapi_brldefs.auto.h: $(SRC_DIR)/brlapi_brldefs.awk $(COMMANDS_DEPENDENCIES)
+	$(AWK) -f $(SRC_DIR)/brlapi_brldefs.awk $(COMMANDS_ARGUMENTS) >$@
+
+all-api-bindings: api
+	set -- $(API_BINDINGS); \
+	for language \
+	do (cd $(BLD_TOP)$(BND_DIR)/$$language && $(MAKE) all) || exit 1; \
+	done
+
+install-api-bindings: all-api-bindings
+	set -- $(API_BINDINGS); \
+	for language \
+	do (cd $(BLD_TOP)$(BND_DIR)/$$language && $(MAKE) install) || exit 1; \
+	done
+
+uninstall-api-bindings:
+	set -- $(API_BINDINGS); \
+	for language \
+	do (cd $(BLD_TOP)$(BND_DIR)/$$language && $(MAKE) uninstall); \
+	done
+
+###############################################################################
+
+CORE_OBJECTS = core.$O $(PROGRAM_OBJECTS) revision.$O report.$O config.$O $(SERVICE_OBJECTS) activity.$O $(PREFS_OBJECTS) profile.$O menu.$O menu_prefs.$O ses.$O status.$O update.$O blink.$O dataarea.$O $(CMD_OBJECTS) pipe.$O $(TTB_OBJECTS) $(ATB_OBJECTS) $(CTB_OBJECTS) $(KTB_OBJECTS) ktb_keyboard.$O $(KBD_OBJECTS) kbd_keycodes.$O $(BELL_OBJECTS) $(LEDS_OBJECTS) $(ALERT_OBJECTS) hidkeys.$O drivers.$O driver.$O $(SCREEN_OBJECTS) $(SPECIAL_SCREEN_OBJECTS) $(BRAILLE_OBJECTS) $(SPEECH_OBJECTS) spk_input.$O api_control.$O $(API_SERVER_OBJECTS)
+CORE_NAME = brltty
+
+brltty-core: $(CORE_OBJECTS)
+
+core.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/core.c
+
+config.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/config.c
+
+activity.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/activity.c
+
+profile.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/profile.c
+
+menu.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/menu.c
+
+menu_prefs.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/menu_prefs.c
+
+ses.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/ses.c
+
+status.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/status.c
+
+update.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/update.c
+
+blink.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/blink.c
+
+hidkeys.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/hidkeys.c
+
+drivers.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/drivers.c
+
+driver.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/driver.c
+
+###############################################################################
+
+CMD_OBJECTS = cmd.$O cmd_brlapi.$O cmd_queue.$O cmd_utils.$O cmd_clipboard.$O cmd_custom.$O cmd_input.$O cmd_keycodes.$O cmd_learn.$O cmd_miscellaneous.$O cmd_navigation.$O cmd_preferences.$O cmd_speech.$O cmd_toggle.$O cmd_touch.$O learn.$O
+
+cmd.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd.c
+
+cmd_brlapi.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_brlapi.c
+
+cmd_queue.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_queue.c
+
+cmd_utils.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/cmd_utils.c
+
+cmd_clipboard.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_clipboard.c
+
+cmd_custom.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/cmd_custom.c
+
+cmd_input.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_input.c
+
+cmd_keycodes.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_keycodes.c
+
+cmd_learn.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_learn.c
+
+cmd_miscellaneous.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_miscellaneous.c
+
+cmd_navigation.$O:
+	$(CC) $(LIBCFLAGS) $(ICU_INCLUDES) -c $(SRC_DIR)/cmd_navigation.c
+
+cmd_preferences.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_preferences.c
+
+cmd_speech.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_speech.c
+
+cmd_toggle.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_toggle.c
+
+cmd_touch.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/cmd_touch.c
+
+learn.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/learn.c
+
+###############################################################################
+
+BRLTTY_OBJECTS = brltty.$O $(CORE_OBJECTS)
+BRLTTY_LIBRARIES = $(BRAILLE_DRIVER_LIBRARIES) $(SPEECH_DRIVER_LIBRARIES) $(SCREEN_DRIVER_LIBRARIES) $(SERVICE_LIBS) $(PCM_LIBS) $(MIDI_LIBS) $(USB_LIBS) $(BLUETOOTH_LIBS) $(LOUIS_LIBS) $(POLKIT_LIBS) $(LDLIBS)
+
+brltty$X: $(BRLTTY_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_OBJECTS) $(BRLTTY_LIBRARIES)
+
+brltty.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty.c
+
+###############################################################################
+
+BRLTTY_CORE_LIB = $(LIB_PFX)$(CORE_NAME)_core.$(LIB_EXT)
+
+core-library: $(BRLTTY_CORE_LIB)
+
+$(BRLTTY_CORE_LIB): $(CORE_OBJECTS)
+	$(MKLIB:<name>=$@) $@ $(CORE_OBJECTS) $(BRLTTY_LIBRARIES)
+
+###############################################################################
+
+BRLTTY_JNI_JAR = $(CORE_NAME).jar
+BRLTTY_JNI_LIB = $(LIB_PFX)$(CORE_NAME)_jni.$(LIB_EXT)
+
+brltty-jni: $(BRLTTY_JNI_JAR) $(BRLTTY_JNI_LIB)
+
+$(BRLTTY_JNI_JAR): brltty.class
+	jar cf $@ brltty.class
+
+brltty.class: $(SRC_DIR)/brltty.java
+	javac $(SRC_DIR)/brltty.java
+
+$(BRLTTY_JNI_LIB): brltty_jni.$O $(BRLTTY_CORE_LIB)
+	$(MKLIB:<name>=$@) $@ brltty_jni.$O $(LDLIBS)
+
+brltty_jni.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/brltty_jni.c
+
+###############################################################################
+
+BRLTTY_TRTXT_OBJECTS = brltty-trtxt.$O $(PROGRAM_OBJECTS) $(TTB_OBJECTS) dataarea.$O
+
+brltty-trtxt$X: $(BRLTTY_TRTXT_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_TRTXT_OBJECTS) $(LDLIBS)
+
+brltty-trtxt.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty-trtxt.c
+
+###############################################################################
+
+BRLTEST_OBJECTS = brltest.$O $(PROGRAM_OBJECTS) report.$O $(TTB_OBJECTS) $(KTB_OBJECTS) dataarea.$O cmd.$O cmd_queue.$O drivers.$O driver.$O $(BRAILLE_OBJECTS) $(PREFS_OBJECTS) hidkeys.$O learn.$O
+
+brltest$X: $(BRLTEST_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTEST_OBJECTS) $(BRAILLE_DRIVER_LIBRARIES) $(USB_LIBS) $(BLUETOOTH_LIBS) $(LDLIBS)
+
+brltest.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltest.c
+
+###############################################################################
+
+SPKTEST_OBJECTS = spktest.$O $(PROGRAM_OBJECTS) drivers.$O driver.$O $(SPEECH_OBJECTS) $(PREFS_OBJECTS)
+
+spktest$X: $(SPKTEST_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(SPKTEST_OBJECTS) $(SPEECH_DRIVER_LIBRARIES) $(LDLIBS)
+
+spktest.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/spktest.c
+
+###############################################################################
+
+SCRTEST_OBJECTS = scrtest.$O $(PROGRAM_OBJECTS) drivers.$O driver.$O $(SCREEN_OBJECTS) report.$O
+
+scrtest$X: $(SCRTEST_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(SCRTEST_OBJECTS) $(SCREEN_DRIVER_LIBRARIES) $(LDLIBS)
+
+scrtest.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/scrtest.c
+
+###############################################################################
+
+BRLTTY_TUNE_OBJECTS = brltty-tune.$O tune_utils.$O tune_build.$O $(PROGRAM_OBJECTS) $(PREFS_OBJECTS) $(TUNE_OBJECTS) io_misc.$O
+
+brltty-tune$X: $(BRLTTY_TUNE_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $(BRLTTY_TUNE_OBJECTS) $(PCM_LIBS) $(MIDI_LIBS) $(LDLIBS)
+
+brltty-tune.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/brltty-tune.c
+
+tune_utils.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/tune_utils.c
+
+tune_build.$O:
+	$(CC) $(LIBCFLAGS) -c $(SRC_DIR)/tune_build.c
+
+###############################################################################
+
+APITEST_OBJECTS = apitest.$O $(PROGRAM_OBJECTS) cmd.$O cmd_brlapi.$O $(TTB_OBJECTS) dataarea.$O
+
+apitest$X: $(APITEST_OBJECTS) api
+	$(CC) $(LDFLAGS) -o $@ $(APITEST_OBJECTS) $(API_LIBS) $(LDLIBS)
+
+apitest.$O:
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/apitest.c
+
+###############################################################################
+
+braille-drivers: $(BUILD_API)
+	for driver in $(BRAILLE_EXTERNAL_DRIVER_NAMES); \
+	do (cd $(BLD_TOP)$(BRL_DIR)/$$driver && $(MAKE) braille-driver) || exit 1; \
+	done
+
+###############################################################################
+
+speech-drivers:
+	for driver in $(SPEECH_EXTERNAL_DRIVER_NAMES); \
+	do (cd $(BLD_TOP)$(SPK_DIR)/$$driver && $(MAKE) speech-driver) || exit 1; \
+	done
+
+###############################################################################
+
+screen-drivers:
+	for driver in $(SCREEN_EXTERNAL_DRIVER_NAMES); \
+	do (cd $(BLD_TOP)$(SCR_DIR)/$$driver && $(MAKE) screen-driver) || exit 1; \
+	done
+
+###############################################################################
+
+TEXT_TABLE_FILE = $(SRC_TOP)$(TBL_DIR)/$(TEXT_TABLES_SUBDIRECTORY)/$(TEXT_TABLE)$(TEXT_TABLE_EXTENSION)
+text.auto.h: $(TEXT_TABLE_FILE) tbl2hex$(X_FOR_BUILD)
+	./tbl2hex$(X_FOR_BUILD) -- $(TEXT_TABLE_FILE) >$@
+
+ATTRIBUTES_TABLE_FILE = $(SRC_TOP)$(TBL_DIR)/$(ATTRIBUTES_TABLES_SUBDIRECTORY)/$(ATTRIBUTES_TABLE)$(ATTRIBUTES_TABLE_EXTENSION)
+attr.auto.h: $(ATTRIBUTES_TABLE_FILE) tbl2hex$(X_FOR_BUILD)
+	./tbl2hex$(X_FOR_BUILD) -- $(ATTRIBUTES_TABLE_FILE) >$@
+
+cmds.auto.h: $(SRC_DIR)/cmds.awk $(COMMANDS_DEPENDENCIES)
+	$(AWK) -f $(SRC_DIR)/cmds.awk $(COMMANDS_ARGUMENTS) >$@
+
+brl.auto.h: $(SRC_DIR)/mkdrvtab
+	$(SRC_DIR)/mkdrvtab BrailleDriver brl_driver_ $(BRAILLE_INTERNAL_DRIVER_CODES) >$@
+
+spk.auto.h: $(SRC_DIR)/mkdrvtab
+	$(SRC_DIR)/mkdrvtab SpeechDriver spk_driver_ $(SPEECH_INTERNAL_DRIVER_CODES) >$@
+
+scr.auto.h: $(SRC_DIR)/mkdrvtab
+	$(SRC_DIR)/mkdrvtab ScreenDriver scr_driver_ $(SCREEN_INTERNAL_DRIVER_CODES) >$@
+
+###############################################################################
+
+XBRLAPI_OBJECTS = xbrlapi.$O $(PROGRAM_OBJECTS)
+
+xbrlapi$X: $(XBRLAPI_OBJECTS) api
+	$(CC) $(LDFLAGS) -o $@ $(XBRLAPI_OBJECTS) $(API_LIBS) $(XKB_LIBS) $(X11_LIBS) $(LDLIBS)
+
+xbrlapi.$O:
+	$(CC) $(CFLAGS) $(X11_INCLUDES) -c $(SRC_DIR)/xbrlapi.c
+
+###############################################################################
+
+TBL2HEX_OBJECTS_FOR_BUILD = tbl2hex.$(O_FOR_BUILD) $(PROGRAM_OBJECTS_FOR_BUILD) dataarea.$(O_FOR_BUILD) ttb_compile.$(O_FOR_BUILD) ttb_native.$(O_FOR_BUILD) atb_compile.$(O_FOR_BUILD) ctb_compile.$(O_FOR_BUILD)
+TBL2HEX_OBJECTS = $(TBL2HEX_OBJECTS_FOR_BUILD:.$(O_FOR_BUILD)=.$B)
+
+tbl2hex$(X_FOR_BUILD): $(TBL2HEX_OBJECTS)
+	$(CC_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(TBL2HEX_OBJECTS) $(LDLIBS_FOR_BUILD)
+
+###############################################################################
+
+check-braille-drivers: brltty$X braille-drivers $(API_LIB_VERSIONED)
+	@echo checking braille drivers
+	set -- $(BRAILLE_DRIVER_CODES) && \
+	for code; do \
+	LD_LIBRARY_PATH=$(BLD_DIR) \
+	./brltty -v -lwarning -N -e -f /dev/null -b $$code -s no -D "$(BLD_TOP)$(DRV_DIR)" -T "$(BLD_TOP)$(TBL_DIR)" 2>&1 || exit 11; \
+	done
+
+check-speech-drivers: brltty speech-drivers
+	@echo checking speech drivers
+	set -- $(SPEECH_DRIVER_CODES) && \
+	for code; do \
+	./brltty -v -lwarning -N -e -f /dev/null -b no -s $$code -D "$(BLD_TOP)$(DRV_DIR)" -T "$(BLD_TOP)$(TBL_DIR)" 2>&1 || exit 11; \
+	done
+
+###############################################################################
+
+check-public-headers:
+	@echo checking public headers
+	$(SRC_TOP)chkhdrs $(SRC_TOP)$(HDR_DIR)
+
+check-all: check-text-tables check-attributes-tables check-contraction-tables check-keyboard-tables check-input-tables check-braille-drivers check-speech-drivers check-public-headers
+
+###############################################################################
+
+install:: install-programs install-tables $(INSTALL_DRIVERS) install-core-headers $(INSTALL_MESSAGES) install-manpages $(INSTALL_API)
+
+install-programs: brltty$X brltty-trtxt$X brltty-ttb$X brltty-atb$X $(INSTALL_BRLTTY_CTB) brltty-ktb$X brltty-tune$X install-program-directory install-writable-directory
+	$(INSTALL_PROGRAM) brltty$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_PROGRAM) brltty-trtxt$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_PROGRAM) brltty-ttb$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_PROGRAM) brltty-atb$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_PROGRAM) brltty-ktb$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_PROGRAM) brltty-tune$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_DATA) $(BLD_TOP)config.sh $(INSTALL_PROGRAM_DIRECTORY)/brltty-config
+
+install-brltty-ctb: brltty-ctb$X install-program-directory
+	$(INSTALL_PROGRAM) brltty-ctb$X $(INSTALL_PROGRAM_DIRECTORY) 
+
+XBRLAPI_X11_AUTOSTART_FILE = 60xbrlapi
+XBRLAPI_GDM_AUTOSTART_FILE = xbrlapi.desktop
+
+install-xbrlapi: xbrlapi$X install-program-directory install-x11-autostart-directory install-gdm-autostart-directory
+	$(INSTALL_PROGRAM) xbrlapi$X $(INSTALL_PROGRAM_DIRECTORY) 
+	$(INSTALL_DATA) $(SRC_TOP)Autostart/X11/$(XBRLAPI_X11_AUTOSTART_FILE) $(INSTALL_X11_AUTOSTART_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_TOP)Autostart/gdm/$(XBRLAPI_GDM_AUTOSTART_FILE) $(INSTALL_GDM_AUTOSTART_DIRECTORY)
+
+install-tables: $(INSTALL_TEXT_TABLES) $(INSTALL_ATTRIBUTES_TABLES) $(INSTALL_CONTRACTION_TABLES) install-keyboard-tables install-input-tables
+
+install-text-tables: install-text-tables-directory
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(TEXT_TABLES_SUBDIRECTORY)/*$(TEXT_TABLE_EXTENSION) $(INSTALL_TEXT_TABLES_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(TEXT_TABLES_SUBDIRECTORY)/*$(TEXT_SUBTABLE_EXTENSION) $(INSTALL_TEXT_TABLES_DIRECTORY)
+
+install-attributes-tables: install-attributes-tables-directory
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(ATTRIBUTES_TABLES_SUBDIRECTORY)/*$(ATTRIBUTES_TABLE_EXTENSION) $(INSTALL_ATTRIBUTES_TABLES_DIRECTORY)
+	#$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(ATTRIBUTES_TABLES_SUBDIRECTORY)/*$(ATTRIBUTES_SUBTABLE_EXTENSION) $(INSTALL_ATTRIBUTES_TABLES_DIRECTORY)
+
+install-contraction-tables: install-contraction-tables-directory
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(CONTRACTION_TABLES_SUBDIRECTORY)/*$(CONTRACTION_TABLE_EXTENSION) $(INSTALL_CONTRACTION_TABLES_DIRECTORY)
+	for table in latex-access; do \
+	$(INSTALL_SCRIPT) $(SRC_TOP)$(TBL_DIR)/$(CONTRACTION_TABLES_SUBDIRECTORY)/$$table$(CONTRACTION_TABLE_EXTENSION) $(INSTALL_CONTRACTION_TABLES_DIRECTORY); \
+	done
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(CONTRACTION_TABLES_SUBDIRECTORY)/*$(CONTRACTION_SUBTABLE_EXTENSION) $(INSTALL_CONTRACTION_TABLES_DIRECTORY)
+
+install-keyboard-tables: install-keyboard-tables-directory
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(KEYBOARD_TABLES_SUBDIRECTORY)/*$(KEY_TABLE_EXTENSION) $(INSTALL_KEYBOARD_TABLES_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_TOP)$(TBL_DIR)/$(KEYBOARD_TABLES_SUBDIRECTORY)/*$(KEY_SUBTABLE_EXTENSION) $(INSTALL_KEYBOARD_TABLES_DIRECTORY)
+
+install-input-tables: install-input-tables-directory
+	cd $(SRC_TOP)$(TBL_DIR)/$(INPUT_TABLES_SUBDIRECTORY) && \
+	set -- *$(KEY_SUBTABLE_EXTENSION) */*$(KEY_TABLE_EXTENSION) */*$(KEY_SUBTABLE_EXTENSION) */*$(KEY_HELP_EXTENSION) && \
+	for file; do \
+	driver=`dirname $$file` && \
+	target=$(INSTALL_INPUT_TABLES_DIRECTORY)/$$driver && \
+	$(INSTALL_DIRECTORY) $$target && \
+	$(INSTALL_DATA) $$file $$target; \
+	done
+
+install-drivers: $(BRAILLE_DRIVERS) $(SPEECH_DRIVERS) $(SCREEN_DRIVERS) install-drivers-directory
+	$(INSTALL_PROGRAM) $(BLD_TOP)$(DRV_DIR)/*.$(MOD_EXT) $(INSTALL_DRIVERS_DIRECTORY)
+
+CORE_HEADERS = $(SRC_TOP)Headers/*.h $(BLD_TOP)config.h $(BLD_TOP)forbuild.h
+
+install-core-headers: install-include-directory
+	$(INSTALL_DATA) $(CORE_HEADERS) $(INSTALL_INCLUDE_DIRECTORY)
+
+install-messages:
+	cd $(BLD_TOP)$(MSG_DIR) && $(MAKE) install
+
+install-manpages: install-man1-directory
+	$(INSTALL_DATA) $(BLD_TOP)$(DOC_DIR)/*.1 $(INSTALL_MAN1_DIRECTORY)
+
+install-documents: install-document-directory brltty-ktb$X $(BRAILLE_DRIVERS)
+	cd $(BLD_TOP)$(DOC_DIR) && $(MAKE) all
+	$(SRC_TOP)mkdocs -o $(INSTALL_DOCUMENT_DIRECTORY) -s $(SRC_TOP) -b $(BLD_TOP) -d $(DOC_DIR) -t $(TBL_DIR)
+
+install-api: $(INSTALL_API_LIBRARIES) install-api-headers install-api-manpages install-api-key install-api-policy $(INSTALL_XBRLAPI) $(INSTALL_API_BINDINGS)
+
+install-api-libraries: $(API_LIB) $(API_ARC) install-apilib-directory install-apisoc-directory
+	$(INSTALL_PROGRAM) $(API_LIB) $(INSTALL_APILIB_DIRECTORY)/$(API_LIB).$(API_RELEASE)
+	$(SYMLINK) -f $(API_LIB).$(API_RELEASE) $(INSTALL_APILIB_DIRECTORY)/$(API_LIB)
+	$(SYMLINK) -f $(API_LIB).$(API_RELEASE) $(INSTALL_APILIB_DIRECTORY)/$(API_LIB).$(API_VERSION)
+	$(CONFLIBDIR) $(INSTALL_APILIB_DIRECTORY)
+	$(INSTALL_DATA) $(API_ARC) $(INSTALL_APILIB_DIRECTORY)
+
+install-api-libraries-windows: $(API_DLL) $(API_ARC) install-program-directory install-apilib-directory
+	$(INSTALL_PROGRAM) $(API_DLL) $(INSTALL_PROGRAM_DIRECTORY)
+	$(INSTALL_DATA) $(API_IMPLIB) $(INSTALL_APILIB_DIRECTORY)/$(API_IMPLIB_VERSIONED)
+	cd $(INSTALL_APILIB_DIRECTORY) && $(SYMLINK) -f $(API_IMPLIB_VERSIONED) $(API_IMPLIB)
+	$(INSTALL_DATA) $(API_ARC) $(INSTALL_APILIB_DIRECTORY)
+	$(INSTALL_DATA) $(API_DEF) $(INSTALL_APILIB_DIRECTORY)
+
+install-api-headers: brlapi_constants.h brlapi_brldefs.auto.h install-apihdr-directory install-include-directory
+	$(INSTALL_DATA) brlapi.h $(INSTALL_APIHDR_DIRECTORY)
+	$(INSTALL_DATA) brlapi_constants.h $(INSTALL_APIHDR_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_DIR)/brlapi_keycodes.h $(INSTALL_APIHDR_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_DIR)/brlapi_protocol.h $(INSTALL_APIHDR_DIRECTORY)
+	$(INSTALL_DATA) brlapi_brldefs.auto.h $(INSTALL_APIHDR_DIRECTORY)/brlapi_brldefs.h
+	$(INSTALL_DATA) $(SRC_DIR)/api.h $(INSTALL_INCLUDE_DIRECTORY)
+	$(INSTALL_DATA) $(SRC_DIR)/brldefs.h $(INSTALL_INCLUDE_DIRECTORY)
+
+install-api-manpages: install-man3-directory
+	cd $(BLD_TOP)$(DOC_DIR) && $(MAKE) man3
+	set -- $(BLD_TOP)$(DOC_DIR)/BrlAPIref/man/man3/brlapi_*.3 && [ -f $$1 ] || exit 0 && \
+	$(INSTALL_DATA) $$* $(INSTALL_MAN3_DIRECTORY)
+
+install-api-key:
+	file=$(sysconfdir)/$(API_AUTHFILE) && \
+	if test ! -f $$file -a -w $(sysconfdir) -a -z "$(INSTALL_ROOT)"; \
+	then umask 077 && $(SRC_DIR)/brltty-genkey $$file; fi
+
+API_POLICY_FILE = org.a11y.brlapi.policy
+install-api-policy: install-apipol-directory
+	$(INSTALL_DATA) $(SRC_TOP)Authorization/Polkit/$(API_POLICY_FILE) $(INSTALL_APIPOL_DIRECTORY)
+
+###############################################################################
+
+uninstall:: uninstall-programs uninstall-tables uninstall-drivers uninstall-messages uninstall-manpages uninstall-documents uninstall-headers uninstall-api-bindings uninstall-api-files
+
+uninstall-programs:
+	-rm -f $(INSTALL_PROGRAM_DIRECTORY)/brltty$X
+	-rm -f $(INSTALL_PROGRAM_DIRECTORY)/brltty-*
+	-rm -f $(INSTALL_PROGRAM_DIRECTORY)/xbrlapi$X
+	-rm -f $(INSTALL_X11_AUTOSTART_DIRECTORY)/$(XBRLAPI_X11_AUTOSTART_FILE)
+	-rm -f $(INSTALL_GDM_AUTOSTART_DIRECTORY)/$(XBRLAPI_GDM_AUTOSTART_FILE)
+
+uninstall-tables:
+	-rm -f -r $(INSTALL_TEXT_TABLES_DIRECTORY)
+	-rm -f -r $(INSTALL_ATTRIBUTES_TABLES_DIRECTORY)
+	-rm -f -r $(INSTALL_CONTRACTION_TABLES_DIRECTORY)
+	-rm -f -r $(INSTALL_KEYBOARD_TABLES_DIRECTORY)
+	-rm -f -r $(INSTALL_INPUT_TABLES_DIRECTORY)
+	-[ ! -d $(INSTALL_TABLES_DIRECTORY) ] || rmdir $(INSTALL_TABLES_DIRECTORY)
+	-[ ! -d $(INSTALL_WRITABLE_DIRECTORY) ] || rmdir $(INSTALL_WRITABLE_DIRECTORY)
+
+uninstall-drivers: $(UNINSTALL_API_LIBRARIES)
+	-rm -f $(INSTALL_DRIVERS_DIRECTORY)/$(LIB_NAME)*
+	-[ ! -d $(INSTALL_DRIVERS_DIRECTORY) ] || rmdir $(INSTALL_DRIVERS_DIRECTORY)
+
+uninstall-messages:
+	cd $(BLD_TOP)$(MSG_DIR) && $(MAKE) uninstall
+
+uninstall-manpages:
+	-rm -f $(INSTALL_ROOT)$(MANPAGE_DIRECTORY)/man1/brltty.1
+	-rm -f $(INSTALL_MAN3_DIRECTORY)/brlapi_*.3
+
+uninstall-documents:
+	-rm -r -f $(INSTALL_DOCUMENT_DIRECTORY)
+
+uninstall-headers:
+	-rm -f $(INSTALL_APIHDR_DIRECTORY)/brlapi.h
+	-rm -f $(INSTALL_APIHDR_DIRECTORY)/brlapi_*.h
+	-[ ! -d $(INSTALL_INCLUDE_DIRECTORY) ] || rm -f -r $(INSTALL_INCLUDE_DIRECTORY)
+
+uninstall-api-libraries:
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_LIB)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_LIB).$(API_VERSION)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_LIB).$(API_RELEASE)
+	$(CONFLIBDIR) $(INSTALL_APILIB_DIRECTORY)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_ARC)
+	-rm -f -r $(API_SOCKET_DIRECTORY)
+
+uninstall-api-libraries-windows:
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_ARC)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_IMPLIB)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_IMPLIB_VERSIONED)
+	-rm -f $(INSTALL_APILIB_DIRECTORY)/$(API_DEF)
+	-rm -f $(INSTALL_PROGRAM_DIRECTORY)/$(API_DLL)
+
+uninstall-api-files:
+	-rm -f $(INSTALL_APIPOL_DIRECTORY)/$(API_POLICY_FILE)
+
+###############################################################################
+
+install uninstall::
+	-set -- $(BRAILLE_EXTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(BRL_DIR)/$$driver && $(MAKE) $@); done
+	-set -- $(SPEECH_EXTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(SPK_DIR)/$$driver && $(MAKE) $@); done
+	-set -- $(SCREEN_EXTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(SCR_DIR)/$$driver && $(MAKE) $@); done
+
+distclean clean::
+	-set -- $(BRAILLE_EXTERNAL_DRIVER_NAMES) $(BRAILLE_INTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(BRL_DIR)/$$driver && $(MAKE) $@); done
+	-set -- $(SPEECH_EXTERNAL_DRIVER_NAMES) $(SPEECH_INTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(SPK_DIR)/$$driver && $(MAKE) $@); done
+	-set -- $(SCREEN_EXTERNAL_DRIVER_NAMES) $(SCREEN_INTERNAL_DRIVER_NAMES); \
+	for driver do (cd $(BLD_TOP)$(SCR_DIR)/$$driver && $(MAKE) $@); done
+	-set -- $(API_BINDINGS); \
+	for language do (cd $(BLD_TOP)$(BND_DIR)/$$language && $(MAKE) $@); done
+
+clean::
+	-rm -f brltty$X brltty-trtxt$X brltty-ttb$X brltty-atb$X brltty-ctb$X brltty-tune$X xbrlapi$X
+	-rm -f tbl2hex$(X_FOR_BUILD) *test$X *-static$X
+	-rm -f brlapi_constants.h *.$(LIB_EXT) *.$(LIB_EXT).* *.$(ARC_EXT) *.def *.class *.jar
+	-rm -f $(BLD_TOP)$(DRV_DIR)/*
+
+distclean::
+	-rm -f brlapi.h

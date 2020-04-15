@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Cuando BrailleBack se active, tu dispositivo se conectará a una pantalla braille bluetooth sincronizada y mostrará en braille el contenido en pantalla. Las teclas de la pantalla braille se pueden utilizar para navegar por la pantalla, activar elementos e ingresar texto. Para obtener más información, presiona la barra espaciadora y los puntos 1, 2 y 3 (la letra l en braille) en tu pantalla cuando se haya establecido conexión."</string>
+    <!-- no translation found for service_summary (8016336378969476112) -->
+    <skip />
+    <string name="braille_ime_name" msgid="819430885692057322">"Teclado con hardware braille"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Asistente para el Teclado con hardware braille"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Habilitar teclado con hardware braille"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Para utilizar el teclado con hardware braille, es necesario habilitarlo en la configuración del método de introducción y luego establecerlo como el método de introducción predeterminado."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Omitir"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Abrir la configuración de método de introducción"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Establecer método de introducción predeterminado"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Para utilizar el teclado con hardware braille, es necesario establecerlo como el método de introducción predeterminado."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Abrir el selector de método de introducción"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Conectar a una pantalla braille"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Permite que una aplicación escriba texto de salida y lea entradas del teclado desde una pantalla braille."</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Cuadrícula vacía"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Cuadrícula"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Lista vacía"</string>
+    <string name="type_listview" msgid="195039477703126884">"Lista"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Contenido desplazable vacío"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Contenido desplazable"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Cuadro de edición"</string>
+    <string name="type_image" msgid="3688576211222019626">"Imagen"</string>
+    <string name="type_button" msgid="3639574187835564558">"Botón"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Buscar control"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Contacto"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Preferencias de BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Dispositivo"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Estado"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Ayuda del teclado"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Braille"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Tipo de braille"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabla de braille literario"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabla de braille para computadora"</string>
+    <!-- no translation found for pref_braille_word_wrap_title (6481878403472323874) -->
+    <skip />
+    <string name="connstate_not_connected" msgid="3876972842771373901">"No conectado"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Conectado"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"No disponible"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Braille literario"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Braille para computadora"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automático (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automático (ninguno)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Varios"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Opciones para programadores"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Superposición en pantalla"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Salida braille en pant."</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Iniciar tutorial"</string>
+    <!-- no translation found for pref_os_license_title (1569318864930820110) -->
+    <skip />
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Nivel de salida de registro"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Ayuda del teclado de BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback act."</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback des."</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Teclado de BrailleBack activo"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Tocar para cambiar a teclado predeterminado"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g>: grado <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <!-- no translation found for table_name_variant (1753521407107091535) -->
+    <skip />
+    <!-- no translation found for table_name_variant_grade (6026910493807098640) -->
+    <skip />
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Desplazar a la izq."</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Desplazar a la der."</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Tutorial de superposición"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Finalizar"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"La superposición braille simula una pantalla braille que se puede actualizar. Muestra las celdas braille junto con el texto correspondiente que aparecería en una pantalla física. Te recomendamos que habilites TalkBack y el modo de exploración táctil antes de continuar."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Config. de accesibilidad"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Puedes presionar uno de los botones de desplazamiento ubicados al lado del texto para desplazar la pantalla braille."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Es posible que aparezcan varios elementos en la pantalla a la vez. Puedes tocar una de las celdas braille del texto para hacer clic en uno de esos elementos. Esto equivale a presionar una de las teclas de dirección en una pantalla braille."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Si la superposición cubre otro elemento de la pantalla, puedes apartarla. Mantén presionada la superposición y luego arrástrala. Cuando la sueltes, se ajustará a la parte superior o inferior de la pantalla."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Mostrar tutorial de superposición"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Te recomendamos que veas el tutorial acerca de la superposición en pantalla antes de usarla."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"B:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Búsqueda: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Buscar en el tutorial de pantalla"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"La búsqueda en pantalla te permite acceder rápidamente a elementos en la pantalla ingresando parte de su descripción de texto. A medida que escribas, se resaltará el siguiente elemento coincidente."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Usa <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> para pasar al siguiente resultado y <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> para pasar al resultado anterior. Presiona <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> para salir del modo de búsqueda y enfocarte en el resultado. Presiona <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> para regresar al elemento en el que te enfocaste anteriormente."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"No volver a mostrar esto"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Continuar"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Agregar etiqueta personalizada"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Editar etiqueta personalizada"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Eliminar etiqueta personalizada"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Las etiquetas personalizadas no son compatibles. Actualiza TalkBack."</string>
+</resources>

@@ -1,0 +1,60 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback",
+      "sdkFolder": "/usr/local/google/home/jacquelinehu/Android/Sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app",
+      "makeFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk",
+      "buildSystem": "NDK_BUILD",
+      "compilerSettingsCacheFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/.cxx",
+      "cxxFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx",
+      "ndkFolder": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669",
+      "ndkVersion": "21.0.6113669",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/debug/lib",
+    "objFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/debug/obj/local",
+    "jsonFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug",
+    "gradleBuildOutputFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/cxx/debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARMEABI_V7A",
+  "abiPlatformVersion": 23,
+  "cxxBuildFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a",
+  "jsonFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/cxx/debug/armeabi-v7a",
+  "objFolder": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a",
+  "buildCommandFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/build_command.txt",
+  "buildOutputFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/build_output.txt",
+  "modelOutputFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/build_model.json",
+  "jsonGenerationLoggingRecordFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/json_generation_record.json",
+  "compileCommandsJsonFile": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/.cxx/ndkBuild/debug/armeabi-v7a/compile_commands.json"
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Desplazarse a la derecha"</item>
+    <item msgid="992384288929754258">"Desplazarse a la izquierda"</item>
+    <item msgid="2311009411708911700">"Desplazarse al siguiente elemento"</item>
+    <item msgid="4868322620432152139">"Permite desplazarse hasta el elemento anterior."</item>
+    <item msgid="713256521059720189">"Permite desplazarse hasta la línea siguiente."</item>
+    <item msgid="7111316948614107646">"Ir a la línea anterior"</item>
+    <item msgid="1092717670413169154">"Desplazarse hacia delante"</item>
+    <item msgid="2672802569950877806">"Permite desplazarse hacia atrás."</item>
+    <item msgid="6858389246595464611">"Acceder a la parte superior de la página"</item>
+    <item msgid="6077703163925348890">"Acceder a la parte inferior de la página"</item>
+    <item msgid="880847480793051862">"Activar el elemento que se toca con el dedo"</item>
+    <item msgid="2643484595828025643">"Mantener pulsado el elemento que se toca con el dedo"</item>
+    <item msgid="2225564744515622940">"Activar el elemento actual"</item>
+    <item msgid="2039335960797511513">"Mantener pulsado el elemento actual"</item>
+    <item msgid="5703473744103522479">"Introducir un carácter braille"</item>
+    <item msgid="397805118186944475">"Activar el botón de retroceso"</item>
+    <item msgid="2057979808256674943">"Activar el botón de inicio"</item>
+    <item msgid="3851017077578326256">"Abrir la ventana de notificaciones"</item>
+    <item msgid="7100928240716386910">"Abrir la ventana de aplicaciones recientes"</item>
+    <item msgid="1288748126248312152">"Activar la tecla Intro al editar texto"</item>
+    <item msgid="6030744298808090187">"Eliminar el texto anterior al cursor"</item>
+    <item msgid="4072293104009433677">"Eliminar el texto posterior al cursor"</item>
+    <item msgid="5307038145607249298">"Acceder a la siguiente sección del contenido web"</item>
+    <item msgid="8804572703982019495">"Acceder a la sección anterior del contenido web"</item>
+    <item msgid="5442875833766760122">"Acceder al campo de formulario, control o enlace siguientes del contenido web"</item>
+    <item msgid="65542415754308243">"Acceder al campo de formulario, control o enlace anteriores del contenido web"</item>
+    <item msgid="8658175115960567526">"Acceder a la siguiente lista del contenido web"</item>
+    <item msgid="561134957068368670">"Acceder a la lista anterior del contenido web"</item>
+    <item msgid="4431278105955644176">"Alternar búsqueda en modo de pantalla"</item>
+    <item msgid="1541653246718288681">"Cambiar menú de etiquetas"</item>
+    <item msgid="3873494647942879428">"Alternar grado de braille"</item>
+    <item msgid="6558794813691083806">"Abrir la ayuda del teclado de BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Mantener presionado <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Utiliza las teclas de navegación para moverte por la pantalla."\n"Usa las teclas braille para introducir texto en un cuadro de edición."\n"A continuación se incluye una lista de comandos de teclas compatibles con el dispositivo."</string>
+</resources>

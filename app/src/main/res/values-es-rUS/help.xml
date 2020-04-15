@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- no translation found for help_commandDescriptions:30 (3873494647942879428) -->
+    <!-- no translation found for help_commandDescriptions:31 (6558794813691083806) -->
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Mantener presionadas las teclas <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Usa las teclas de navegación para mover el foco en la pantalla."\n"Usa las teclas de braille para ingresar texto en un cuadro de edición."\n"A continuación se muestra una lista completa de los comandos de teclas compatibles con tu dispositivo."</string>
+</resources>

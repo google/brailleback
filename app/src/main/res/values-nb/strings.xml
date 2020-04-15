@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Når BrailleBack er aktivert, knyttes enheten din til en sammenkoblet punktskriftskjerm med Bluetooth, og viser skjerminnholdet i punktskrift. Tastene på punktskriftskjermen kan brukes til å navigere på skjermen, aktivere elementer og skrive inn tekst. For mer informasjon trykker du på mellomromstasten og prikkene for 1, 2 og 3 (bokstaven l i punktskrift) på skjermen når du er tilkoblet."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Del punktskriftsutdata"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Maskinvaretastatur for punktskrift"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Veiledning for maskinvaretastaturet for punktskrift"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktiver maskinvaretastaturet for punktskrift"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Hvis du vil bruke maskinvaretastaturet for punktskrift må du aktivere det i innstillingene for inndatametode og deretter angi det som standard inndatametode."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Hopp over"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Åpne innstillingene for inndatametoder"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Angi standard inndatametode"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Hvis du vil bruke maskinvaretastaturet for punktskrift må du angi det som standard inndatametode."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Åpne valg av inndatametoder"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Koble til en leselist"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Lar appen skrive utdata til, og lese tastaturinndata fra, en leselist"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Tomt rutenett"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Rutenett"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Tom liste"</string>
+    <string name="type_listview" msgid="195039477703126884">"Oppføringer"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Ikke noe innhold å rulle i"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Innhold å rulle i"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Redigeringsboks"</string>
+    <string name="type_image" msgid="3688576211222019626">"Bilde"</string>
+    <string name="type_button" msgid="3639574187835564558">"Knapp"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Søkekontroll"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Kontakt"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Innstillinger for BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Enhet"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Status"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Tastaturhjelp"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Punktskrift"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Punktskrifttype"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Litterær punkttabell"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Punkttabell på datamaskin"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Slå på tekstbryting"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Ikke tilkoblet"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Tilkoblet"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Ikke tilgjengelig"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Litterær punktskrift"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Punktskrift på datamaskin"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automatisk (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automatisk (ingen)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Generelt"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Utvikleralternativer"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Overlegg på skjermen"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Vis punktskriftutdata på skjermen"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Start veiledningen"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Lisenser for åpen kildekode"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Utdatanivå for loggen"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBack-tastaturhjelp"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback er PÅ"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback er AV"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"BrailleBack-tastaturet er aktivt"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Trykk for å bytte til standardtastatur"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> – grad <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) – nivå <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Panorer mot venstre"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Panorer mot høyre"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Veiledning for overlegg"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Fullfør"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Braille-overlegget simulerer en brailleskjerm som kan oppdateres. Den viser braillecellene ved siden av den tilsvarende teksten som hadde blitt vist på en maskinvareskjerm. Vi anbefaler deg å aktivere TalkBack og modusen for utforsking ved berøring før du fortsetter."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Tilgjengelighetsinnstillinger"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Du kan panorere brailleskjermen ved å trykke på en av panoreringsknappene ved siden av teksten."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Flere elementer kan vises samtidig på skjermen. Du kan klikke på dem ved å trykke på braillecellene i teksten. Dette samsvarer med å trykke på en av rutetastene på en brailleskjerm."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Hvis overlegget dekker et annet element på skjermen, kan du flytte på det. Trykk og hold inne på overlegget, og dra det. Det festes øverst eller nederst på skjermen når du løfter fingeren."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Vis veiledningen for overlegg"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Vi anbefaler deg å se gjennom veiledningen for overlegget på skjermen før du bruker det."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"S:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Søk: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Søk på skjerm-veiledning"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Med søk på skjerm kan du kjapt gå til elementer på skjermen ved å skrive inn deler av tekstbeskrivelsen for dem. Når du skriver, flyttes fokuset til det neste samsvarende elementet."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Bruk <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> for å gå til det neste resultatet og <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> for å gå til det forrige. Trykk på <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> for å avslutte søkemodusen og holde fokuset på resultatet. Trykk på <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> for å gå til det forrige elementet du fokuserte på."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Vis aldri dette igjen"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Fortsett"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Legg til spesialtilpasset etikett"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Rediger spesialtilpasset etikett"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Fjern spesialtilpasset etikett"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Spesialtilpassede etiketter støttes ikke. Oppdater talkback"</string>
+</resources>

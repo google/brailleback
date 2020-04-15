@@ -1,0 +1,684 @@
+#!/usr/bin/env tclsh
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+source [file join [file dirname [info script]] "prologue.tcl"]
+
+proc logDriverWarning {message} {
+   logMessage warning $message
+}
+
+proc logSourceWarning {location message} {
+   logDriverWarning "$message: [dict get $location file]\[[dict get $location line]\]"
+}
+
+proc makeDecimalNumber {value} {
+   return [expr {$value + 0}]
+}
+
+proc formatDeviceIdentifier {vendor product} {
+   return [format "%04X:%04X" [makeDecimalNumber $vendor] [makeDecimalNumber $product]]
+}
+
+proc makeGenericDeviceTable {definitions} {
+   set table [dict create]
+
+   foreach definition $definitions {
+      set entry [dict create]
+
+      foreach {index property} {
+         2 vendor
+         3 product
+      } {
+         if {$index < [llength $definition]} {
+            if {[string length [set value [lindex $definition $index]]] > 0} {
+               dict set entry $property $value
+            }
+         }
+      }
+
+      dict set table [formatDeviceIdentifier [lindex $definition 0] [lindex $definition 1]] $entry
+   }
+
+   return $table
+}
+
+proc getMakeProperty {file property} {
+   set result ""
+
+   if {[catch [list open $file {RDONLY}] stream] == 0} {
+      while {[gets $stream line] >= 0} {
+         if {[regexp "^$property\\s*=\\s*(.*?)\\s*\$" $line x value]} {
+            set result $value
+            break
+         }
+      }
+
+      close $stream
+   } else {
+      writeProgramMessage $stream
+   }
+
+   return $result
+}
+
+proc getDriverProperty {driverDirectory propertyName} {
+   return [getMakeProperty [file join $driverDirectory "Makefile.in"] $propertyName]
+}
+
+proc getDriverCode {driverDirectory} {
+   return [getDriverProperty $driverDirectory DRIVER_CODE]
+}
+
+proc parseChannelDefinition {channelVariable lines location} {
+   set channel [dict create]
+   set ok 1
+
+   foreach line $lines {
+      if {[regexp {\{\s*/\*\s*(.*?)\s*\*/\s*$} $line x model]} {
+         dict set channel model $model
+         continue
+      }
+
+      if {[regexp {\.vendor\s*=\s*(\S*?)\s*,} $line x vendor]} {
+         dict set channel vendor $vendor
+      }
+
+      if {[regexp {\.product\s*=\s*(\S*?)\s*,} $line x vendor]} {
+         dict set channel product $vendor
+      }
+   }
+
+   foreach property {model vendor product} {
+      if {![dict exists $channel $property]} {
+         logSourceWarning $location "property not defined: $property"
+         set ok 0
+      }
+   }
+
+   if {$ok} {
+      foreach property {vendor product} {
+         if {[string is integer -strict [set value [dict get $channel $property]]]} {
+            dict set channel $property [makeDecimalNumber $value]
+         } else {
+            logSourceWarning $location "$property is not numeric: $value"
+            dict unset channel $property
+            set ok 0
+         }
+      }
+
+      if {$ok} {
+         uplevel 1 [list set $channelVariable $channel]
+         return 1
+      }
+   }
+
+   return 0
+}
+
+proc parseChannelDefinitions {channelsVariable lines location} {
+   upvar 1 $channelsVariable channels
+   set lineNumber [dict get $location line]
+
+   foreach lineText $lines {
+      if {[info exists definition]} {
+         if {[regexp {\}} $lineText]} {
+            if {[parseChannelDefinition channel $definition $location]} {
+               lappend channels $channel
+            }
+
+            unset definition
+         } else {
+            lappend definition $lineText
+         }
+      } elseif {[regexp {\{} $lineText]} {
+         set definition [list $lineText]
+         dict set location line $lineNumber
+      }
+
+      incr lineNumber
+   }
+}
+
+proc parseSourceFile {channelsVariable file} {
+   upvar 1 $channelsVariable channels
+
+   if {[catch [list open $file {RDONLY}] stream] == 0} {
+      set location [dict create]
+      dict set location file $file
+      set lineNumber 0
+
+      while {[gets $stream lineText] >= 0} {
+         incr lineNumber
+
+         if {[info exists definitions]} {
+            if {[regexp {^\s*END_USB_CHANNEL_DEFINITIONS} $lineText]} {
+               parseChannelDefinitions channels $definitions $location
+               unset definitions
+            } else {
+               lappend definitions $lineText
+            }
+         } elseif {[regexp {\sBEGIN_USB_CHANNEL_DEFINITIONS} $lineText]} {
+            set definitions [list]
+            dict set location line [expr {$lineNumber + 1}]
+         }
+      }
+
+      close $stream
+   } else {
+      writeProgramMessage $stream
+   }
+}
+
+proc parseSourceFiles {channelsVariable driverDirectory} {
+   upvar 1 $channelsVariable channels
+
+   foreach file [glob -directory $driverDirectory -nocomplain {*.[ch]}] {
+      parseSourceFile channels $file
+   }
+
+   return $channels
+}
+
+proc parseDriver {directory} {
+   set driver [dict create]
+   dict set driver name [set name [file tail $directory]]
+
+   set channels [list]
+
+   if {[string length [set code [getDriverCode $directory]]] > 0} {
+      dict set driver code $code
+      parseSourceFiles channels $directory
+   } else {
+      logDriverWarning "driver code not defined: $name"
+   }
+
+   dict set driver channels $channels
+   return $driver
+}
+
+proc parseDrivers {} {
+  global sourceDirectory
+
+  set drivers [list]
+
+  foreach directory [lsort [glob -directory [file join $sourceDirectory Drivers Braille] -types {d r x} -nocomplain *]] {
+     if {[llength [dict get [set driver [parseDriver $directory]] channels]] > 0} {
+        lappend drivers $driver
+     }
+  }
+
+  return $drivers
+}
+
+proc formatDeviceDescription {device} {
+   return "[dict get $device name]\[[dict get $device model]\]"
+}
+
+proc makeDeviceTable {drivers} {
+   global genericDevices
+   set deviceTable [dict create]
+   dict set deviceTable vendors [dict create]
+
+   foreach driver $drivers {
+      dict with driver {
+         foreach channel $channels {
+            dict with channel {
+               set identifier [formatDeviceIdentifier $vendor $product]
+               set device [dict create code $code name $name model $model]
+
+               if {[dict exists $deviceTable vendors $vendor products $product]} {
+                  set devices [dict get $deviceTable vendors $vendor products $product devices]
+                  logMessage notice "device specified more than once: $identifier: [formatDeviceDescription [lindex $devices 0]] & [formatDeviceDescription $device]"
+               } else {
+                  set devices [list]
+                  dict set deviceTable vendors $vendor products $product generic [dict exists $genericDevices $identifier]
+               }
+
+               lappend devices $device
+               dict set deviceTable vendors $vendor products $product devices $devices
+
+               if {[dict get $deviceTable vendors $vendor products $product generic]} {
+                  logMessage notice "generic device identifier: $identifier: [formatDeviceDescription $device]"
+               }
+            }
+         }
+      }
+   }
+
+   return $deviceTable
+}
+
+proc getSchemes {} {
+   set schemes [list]
+   set length [string length [set prefix makeLines_]]
+
+   foreach command [info procs $prefix*] {
+      lappend schemes [string range $command $length end]
+   }
+
+   return $schemes
+}
+
+proc parseFileArguments {filesArray schemes arguments} {
+   upvar 1 $filesArray files
+
+   foreach argument $arguments {
+      if {[set index [string first : $argument]] < 0} {
+         syntaxError "scheme not specified: $argument"
+      }
+
+      if {[string length [set scheme [string range $argument 0 $index-1]]] == 0} {
+         syntaxError "scheme not specified: $argument"
+      }
+
+      if {[lsearch -exact $schemes $scheme] < 0} {
+         syntaxError "unknown scheme: $scheme"
+      }
+
+      if {[string length [set path [string range $argument $index+1 end]]] == 0} {
+         syntaxError "path not specified: $argument"
+      }
+
+      if {![file exists $path]} {
+         semanticError "file not found: $path"
+      }
+
+      if {![file isfile $path]} {
+         semanticError "not a file: $path"
+      }
+
+      if {![file readable $path]} {
+         semanticError "file not readable: $path"
+      }
+
+      if {![file writable $path]} {
+         semanticError "file not writable: $path"
+      }
+
+      lappend files($scheme) $path
+   }
+}
+
+proc xmlMakeComment {comment} {
+   return "<!-- $comment -->"
+}
+
+proc makeComment_android {comment} {
+   return [xmlMakeComment $comment]
+}
+
+proc makeLines_android {vendor product drivers descriptions exclude} {
+   set lines [list]
+
+   foreach description $descriptions {
+      lappend lines [makeComment_android $description]
+   }
+
+   set line "<usb-device vendor-id=\"$vendor\" product-id=\"$product\" />"
+   if {$exclude} {
+      set line [makeComment_android $line]
+   }
+   lappend lines $line
+
+   return $lines
+}
+
+proc makeComment_hotplug {comment} {
+   return "# $comment"
+}
+
+proc makeLines_hotplug {vendor product drivers descriptions exclude} {
+   set lines [list]
+
+   foreach description $descriptions {
+      lappend lines [makeComment_hotplug $description]
+   }
+
+   set line [format "brltty 0x%04x 0x%04x 0x%04x" 3 $vendor $product]
+   if {$exclude} {
+      set line [makeComment_hotplug $line]
+   }
+   lappend lines $line
+
+   return $lines
+}
+
+proc makeComment_metainfo {comment} {
+   return [xmlMakeComment $comment]
+}
+
+proc makeLines_metainfo {vendor product drivers descriptions exclude} {
+   set lines [list]
+
+   foreach description $descriptions {
+      lappend lines [makeComment_metainfo $description]
+   }
+
+   set line [format "<modalias>usb:v%04Xp%04X*</modalias>" $vendor $product]
+   if {$exclude} {
+      set line [makeComment_metainfo $line]
+   }
+   lappend lines $line
+
+   return $lines
+}
+
+proc makeComment_udev {comment} {
+   return "# $comment"
+}
+
+proc makeLines_udev {vendor product drivers descriptions exclude} {
+   set lines [list]
+
+   foreach description $descriptions {
+      lappend lines [makeComment_udev $description]
+   }
+
+   set line [format "ENV\{PRODUCT\}==\"%x/%x/*\", ENV\{BRLTTY_BRAILLE_DRIVER\}=\"%s\", GOTO=\"brltty_usb_run\"" $vendor $product [join $drivers ,]]
+   if {$exclude} {
+      set line [makeComment_udev $line]
+   }
+   lappend lines $line
+
+   return $lines
+}
+
+proc makeComment_windows {comment} {
+   return "; $comment"
+}
+
+proc makeLines_windows {vendor product drivers descriptions exclude} {
+   set lines [list]
+   set line [format "\"\$1: %s\"=LIBUSB_DEV, USB\\VID_%04X&PID_%04X" [join $descriptions ", "] $vendor $product]
+
+   if {$exclude} {
+      set line [makeComment_windows $line]
+   }
+
+   lappend lines $line
+   return $lines
+}
+
+proc makeLines {linesArray schemes deviceTable} {
+   global genericDevices
+   upvar #0 optionValues(nogeneric) excludeGenericDevices
+
+   foreach scheme $schemes {
+      set makeLines makeLines_$scheme
+      set makeComment makeComment_$scheme
+
+      upvar 1 ${linesArray}($scheme) lines
+      set lines [list ""]
+
+      set vendors [dict get $deviceTable vendors]
+
+      foreach vendor [lsort -integer [dict keys $vendors]] {
+         set vendorEntry [dict get $vendors $vendor]
+         set products [dict get $vendorEntry products]
+
+         foreach product [lsort -integer [dict keys $products]] {
+            set productEntry [dict get $products $product]
+
+            set identifier [formatDeviceIdentifier $vendor $product]
+            lappend lines [$makeComment "Device: $identifier"]
+
+            set codes [list]
+            set descriptions [list]
+
+            foreach deviceEntry [dict get $productEntry devices] {
+               lappend codes [dict get $deviceEntry code]
+               lappend descriptions "[dict get $deviceEntry name] \[[dict get $deviceEntry model]\]"
+            }
+
+            set exclude 0
+
+            if {[dict get $productEntry generic]} {
+               lappend lines [$makeComment "Generic Identifier"]
+               set generic [dict get $genericDevices $identifier]
+
+               foreach {property header} {
+                  vendor Vendor
+                  product Product
+               } {
+                  if {[dict exists $generic $property]} {
+                     lappend lines [$makeComment "$header: [dict get $generic $property]"]
+                  }
+               }
+
+               set exclude $excludeGenericDevices
+            }
+
+            set drivers [lsort -unique $codes]
+            set descriptions [lsort $descriptions]
+
+            eval [list lappend lines] [$makeLines $vendor $product $drivers $descriptions $exclude]
+            lappend lines ""
+         }
+      }
+   }
+}
+
+proc readFile {linesVariable file} {
+   upvar 1 $linesVariable lines
+   set lines [list]
+
+   if {[catch [list open $file {RDONLY}] stream] == 0} {
+      while {[gets $stream line] >= 0} {
+         lappend lines $line
+      }
+
+      close $stream
+      return 1
+   } else {
+      writeProgramMessage $stream
+   }
+
+   return 0
+}
+
+proc writeFile {lines file} {
+   if {[catch [list open $file {WRONLY CREAT TRUNC}] stream] == 0} {
+      puts $stream [join $lines \n]
+      close $stream
+      return 1
+   } else {
+      writeProgramMessage $stream
+   }
+
+   return 0
+}
+
+proc updateFile {file newLines} {
+   upvar #0 optionValues(test) testMode
+
+   if {[readFile lines $file]} {
+      set markerSuffix "_USB_DEVICES"
+      set beginMarker "BEGIN$markerSuffix"
+      set endMarker "END$markerSuffix"
+
+      set ranges [list]
+      set range [list]
+      set index 0
+
+      foreach line $lines {
+         set location "$file\[[expr {$index + 1}]\]"
+
+         if {[regexp "\\s${beginMarker}(?:\\s+(.*?)\\s*)?\$" $line x arguments]} {
+            if {[llength $range] > 0} {
+               writeProgramMessage "nested begin marker: $location"
+               return 0
+            }
+
+            lappend range $index [lindex [regexp -inline -- {^\s*} $line] 0] [regexp -inline -all {\S+} $arguments]
+         } elseif {[regexp "\\s${endMarker}(?:\\s+.*)?\$" $line]} {
+            if {[llength $range] == 0} {
+               writeProgramMessage "missing begin marker: $location"
+               return 0
+            }
+
+            lappend range $index
+            lappend ranges $range
+            set range [list]
+         }
+
+         incr index
+      }
+
+      if {[llength $range] > 0} {
+         writeProgramMessage "missing end marker: $file\[[lindex $range 0]\]"
+         return 0
+      }
+
+      if {[llength $ranges] == 0} {
+         writeProgramMessage "no region(s) found: $file"
+         return 0
+      }
+
+      set hasChanged 0
+
+      foreach range [lreverse $ranges] {
+         set first [expr {[lindex $range 0] + 1}]
+         set prefix [lindex $range 1]
+         set argumentCount [llength [set argumentList [lindex $range 2]]]
+         set last [expr {[lindex $range 3] - 1}]
+         set count [expr {$last - $first + 1}]
+
+         set replacement [list]
+         foreach line $newLines {
+            foreach match [lreverse [regexp -inline -all -indices {\$[1-9][0-9]*} $line]] {
+               set from [lindex $match 0]
+               set to [lindex $match 1]
+               set argumentIndex [string range $line $from+1 $to]
+
+               if {[incr argumentIndex -1] < $argumentCount} {
+                  set line [string replace $line $from $to [lindex $argumentList $argumentIndex]]
+               }
+            }
+
+            if {[string length $line] > 0} {
+               set line "$prefix$line"
+            }
+
+            lappend replacement "$line"
+         }
+
+         if {!$hasChanged} {
+            if {[llength $newLines] != $count} {
+               set hasChanged 1
+            } else {
+               set index 0
+
+               while {$index < $count} {
+                  if {[string compare [lindex $lines $first+$index] [lindex $replacement $index]] != 0} {
+                     set hasChanged 1
+                     break
+                  }
+
+                  incr index
+               }
+            }
+         }
+
+         if {$hasChanged} {
+            if {$count == 0} {
+               set lines [eval [list linsert $lines $first] $replacement]
+            } else {
+               set lines [eval [list lreplace $lines $first $last] $replacement]
+            }
+         }
+      }
+
+      if {!$hasChanged} {
+         return 1
+      }
+
+      if {$testMode} {
+         writeProgramMessage "test mode - file not updated: $file"
+         return 1
+      }
+
+      if {[writeFile $lines $file]} {
+         logMessage warning "file updated: $file"
+         return 1
+      }
+   }
+
+   return 0
+}
+
+proc updateFiles {filesArray linesArray} {
+   upvar 1 $filesArray files
+   upvar 1 $linesArray lines
+
+   foreach scheme [array names files] {
+      foreach file $files($scheme) {
+         updateFile $file $lines($scheme)
+      }
+   }
+}
+
+set genericDevices [makeGenericDeviceTable {
+   {  0X0403 0X6001 
+      "Future Technology Devices International, Ltd" 
+      "FT232 USB-Serial (UART) IC"
+   }
+
+   {  0X10C4 0XEA60 
+      "Cygnal Integrated Products, Inc." 
+      "CP210x UART Bridge / myAVR mySmartUSB light"
+   }
+
+   {  0X10C4 0XEA80 
+      "Cygnal Integrated Products, Inc." 
+      "CP210x UART Bridge"
+   }
+}]
+
+set optionDefinitions {
+   {quiet     counter}
+   {verbose   counter}
+   {test      flag}
+   {nogeneric flag}
+}
+
+if {![processOptions optionValues argv $optionDefinitions]} {
+   syntaxError
+}
+
+incr logLevel $optionValues(quiet)
+incr logLevel -$optionValues(verbose)
+
+if {[llength $argv] == 0} {
+   lappend argv "android:[file join $sourceDirectory Android Application res xml usb_devices.xml]"
+   lappend argv "hotplug:[file join $sourceDirectory Autostart Hotplug brltty.usermap]"
+   lappend argv "metainfo:[file join $sourceDirectory Autostart AppStream org.a11y.brltty.metainfo.xml]"
+   lappend argv "udev:[file join $sourceDirectory Autostart Udev rules]"
+   lappend argv "windows:[file join $sourceDirectory Autostart Windows brltty-libusb.inf]"
+   lappend argv "windows:[file join $sourceDirectory Autostart Windows brltty-libusb-1.0.inf]"
+}
+
+if {[llength $argv] == 0} {
+   syntaxError "files not specified"
+}
+
+set schemes [getSchemes]
+parseFileArguments files $schemes $argv
+makeLines lines [array names files] [makeDeviceTable [parseDrivers]]
+updateFiles files lines
+exit 0

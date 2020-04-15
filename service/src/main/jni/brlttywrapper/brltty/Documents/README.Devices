@@ -1,0 +1,214 @@
+~~~~~~~~~~~~~~~~~~
+Device Identifiers
+~~~~~~~~~~~~~~~~~~
+
+.. include:: prologue.rst
+
+Description
+===========
+
+The general syntax of a device identifier is:
+
+.. parsed-literal:: qualifier:parameter=value+...
+
+More specifically, with [brackets] meaning optional, the syntax is:
+
+.. parsed-literal:: [qualifier:][parameter=]value[+parameter=value]...
+
+The qualifier specifies which class of device is being identified. It is
+separated from the rest of the device identifier by a colon (``:``). It may be
+``serial``, ``usb``, or ``bluetooth``. The qualifier is case insensitive, and
+any abbreviation may be used. For backward compatibility (to when a device
+identifier was strictly interpreted as the full path to a serial device), the
+qualifier (along with its colon delimiter) is optional, and, if it isn't
+supplied, ``serial`` is assumed.
+
+One or more parameters may be supplied after the qualifier. Each parameter is
+specified as its name and its value, in that order, separated by an equals
+(``=``) sign. Parameters are separated from one another by a plus (``+``) sign.
+Parameter names are case insensitive, and any abbreviation may be used.
+Supplying a zero-length value means to use the parameter's default value.
+
+For backward compatibility (to when device identifier parameters weren't
+supported), the first supplied parameter is special in that its name (along
+with its equals sign delimiter) is optional. If the name of the first parameter
+isn't supplied then the class-dependent parameter that most specifically
+identifies the device is assumed. These are as follows:
+
+   ==========  =======================
+   Qualifier   Assumed First Parameter
+   ----------  -----------------------
+   serial:     name=
+   usb:        serialNumber=
+   bluetooth:  address=
+   ==========  =======================
+
+It isn't possible to supply no parameters at all. Specifying only the qualifier
+is equivalent to also specifying a zero-length value for the assumed first
+parameter for that class. For example, specifying ``usb:`` is equivalent to
+specifying ``usb:serialNumber=``.
+
+An example to illustrate the optionality of both the qualifier and the name of
+the first supplied parameter: On Linux, the full path to the first serial
+device is ``/dev/ttyS0``. The following device identifiers, therefore, all
+refer to the same serial device::
+
+   serial:name=ttyS0
+   serial:ttyS0
+   ttyS0
+   name=ttyS0
+
+Serial Device Parameters
+------------------------
+
+Serial device identifiers support the following parameters:
+
+   ===============  ======================================================
+   Name             Value
+   ---------------  ------------------------------------------------------
+   ``name``         name of, relative path to, or full path to the device
+   ``baud``         the data transmission/reception rate (bits per second)
+   ``dataBits``     the number of data bits per character
+   ``stopBits``     the number of stop bits per character
+   ``parity``       ``none``, ``odd``, ``even``, ``space``, ``mark``
+   ``flowControl``  ``none``, ``hardware``
+   ===============  ======================================================
+
+All of the parameters are optional, although the ``name=`` parameter should be
+supplied. It shouldn't normally be necessary to supply any of the others,
+especially since, in most cases, the braille driver actually overrides them.
+
+``name=``
+   Specify the host device to use. It must be the name of the device, the
+   relative path to the device, or the full path to the device. If it's either
+   a name or a relative path then the host's device directory (usually ``/dev``
+   on Unix-based platforms) is used. If this parameter isn't supplied then the
+   first real serial device is assumed.
+
+``baud=``
+   Specify the speed, in bits per second, at which to communicate with the
+   device. It must be an integer. Typical values are: ``9600``, ``19200``,
+   ``38400``, ``57600``, ``115200``. If this parameter isn't supplied then
+   ``9600`` is assumed.
+
+``dataBits=``
+   Specify the number of bits to use to represent a character, not including
+   any metadata (start bit, stop bit(s), parity, etc). It must be an integer,
+   and is usually within the range ``5``-``8``. If this parameter isn't
+   supplied then ``8`` is assumed.
+
+``stopBits=``
+   Specify the number of stop bits to inject after a character has been
+   transmitted and to expect after a character has been received. It must be
+   an integer, and is usually either ``1`` (for higher speeds) or ``2`` (for
+   lower speeds). If this parameter isn't supplied then ``1`` is assumed.
+
+``parity=``
+   Specify the type of error detection to use. It must be one of: ``none``,
+   ``odd``, ``even``, ``space``, ``mark``. If this parameter isn't supplied
+   then ``none`` is assumed.
+
+``flowControl=``
+   Specify the kind of flow control to use. It must be one of: ``none``,
+   ``hardware``. If this parameter isn't supplied then ``none`` is assumed.
+
+USB Device Parameters
+---------------------
+
+USB device identifiers support the following parameters:
+
+   ======================  ===================================================
+   Name                    Value
+   ----------------------  ---------------------------------------------------
+   ``serialNumber=``       an arbitrary sequence of characters (except ``=``)
+   ``vendorIdentifier=``   an integer within the range 1-65535 (0X0001-0XFFFF)
+   ``productIdentifier=``  an integer within the range 1-65535 (0X0001-0XFFFF)
+   ``genericDevices=``     ``yes``, ``no``
+   ======================  ===================================================
+
+All of the parameters are optional. It shouldn't normally be necessary to
+supply any of them.
+
+``serialNumber=`` 
+   Specify the serial number that the device must have. The match is case
+   sensitive and must be exact. If this parameter isn't supplied then the
+   serial number of the device isn't verified.
+
+``vendorIdentifier=``
+   Specify the vendor identifier that the device must have. It must be an
+   integer within the range ``1``-``65535`` (or, in hexadecimal,
+   ``0X0001``-``0XFFFF``). If this parameter isn't supplied then the vendor
+   identifier of the device isn't verified.
+
+``productIdentifier=``
+   Specify the product identifier that the device must have. It must be an
+   integer within the range ``1``-``65535`` (or, in hexadecimal,
+   ``0X0001``-``0XFFFF``). If this parameter isn't supplied then the product
+   identifier of the device isn't verified.
+``genericDevices=``
+   Specify whether or not a device that has a generic vendor/product identifier
+   pair may be used. It's value must be either ``yes`` or ``no``. The check is
+   case insensitive, and any abbreviation may be used. If this parameter isn't
+   supplied then ``yes`` is assumed.
+
+Bluetooth Device Parameters
+---------------------------
+
+Bluetooth device identifiers support the following parameters:
+
+   =============  =============================================================
+   Name           Value
+   -------------  -------------------------------------------------------------
+   ``address=``   six two-digit hexadecimal numbers separated by ``:`` or ``-``
+   ``name=``      one or more arbitrary characters
+   ``channel=``   an integer within the range ``1``-``30``
+   ``discover=``  ``yes``, ``no``
+   ``timeout=``   an integer within the range ``1``-``59``
+   =============  =============================================================
+
+All of the parameters are optional except that
+the ``address=`` parameter is required on platforms where
+BRLTTY can't yet detect a Bluetooth device based on its name.
+It shouldn't normally be necessary to supply any of the others.
+
+BRLTTY can detect a Bluetooth device by name on the following platforms:
+
+* Android
+* Linux (if the Bluetooth version is at least 5)
+* Windows
+
+``address=``
+   Specify the Bluetooth address of the device. It must be six two-digit
+   hexadecimal numbers (the "letter" digits may be in either case) separated
+   from one another by either a colon (``:``) or a minus (``-``) sign.
+
+``name=``
+   Specify the Bluetooth name of the device. It must be one or more
+   arbitrary characters. They need only match the beginning (so not
+   necessarily all) of the name. Case is significant.
+   Only the names of paired devices are considered.
+   This parameter is ignored if the ``address=`` parameter has been specified.
+
+``channel=``
+   Specify the RFCOMM channel to use. It must be an integer within the range
+   ``1``-``30``. If this parameter isn't supplied then either a driver-supplied
+   default channel number is assumed or service discovery is performed.
+
+``discover=``
+   Specify whether or not service discovery is to be performed. In other words,
+   this parameter specifies whether or not the device is to be "asked" for the
+   RFCOMM channel number. It must be either ``yes`` or ``no``. The check is
+   case insensitive, and any abbreviation may be used. If this parameter isn't
+   supplied then whether or not service discovery is performed is decided
+   according to the following sequence of tests:
+
+   1) If the ``channel=`` parameter has been supplied, then **no**.
+   2) If the driver has requested service discovery, then **yes**.
+   3) If the driver has specified a default channel number, then **no**.
+   4) Otherwise, **yes**.
+
+``timeout=``
+   Specify the number of seconds to wait for a connection to the device to be
+   acquired. It must be an integer within the range ``1``-``59``. If this
+   parameter isn't supplied then a reasonable default is assumed.
+

@@ -1,0 +1,420 @@
+# @configure_input@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+@SET_MAKE@
+
+BUILD_ALIAS = @build_alias@
+BUILD_SYSTEM = @build@
+BUILD_CPU = @build_cpu@
+BUILD_VENDOR = @build_vendor@
+BUILD_OS = @build_os@
+
+HOST_ALIAS = @host_alias@
+HOST_SYSTEM = @host@
+HOST_CPU = @host_cpu@
+HOST_VENDOR = @host_vendor@
+HOST_OS = @host_os@
+
+TARGET_ALIAS = @target_alias@
+TARGET_SYSTEM = @target@
+TARGET_CPU = @target_cpu@
+TARGET_VENDOR = @target_vendor@
+TARGET_OS = @target_os@
+
+O = @OBJEXT@
+X = @EXEEXT@
+
+PACKAGE_TARNAME = @PACKAGE_TARNAME@
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE_STRING = @PACKAGE_STRING@
+PACKAGE_URL = @PACKAGE_URL@
+PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+
+PGM_DIR = Programs
+HDR_DIR = Headers
+DOC_DIR = Documents
+MSG_DIR = Messages
+TBL_DIR = Tables
+BRL_DIR = Drivers/Braille
+SPK_DIR = Drivers/Speech
+SCR_DIR = Drivers/Screen
+DRV_DIR = lib
+BND_DIR = Bindings
+API_LIBS = -L$(BLD_TOP)$(PGM_DIR) -lbrlapi
+
+INSTALL_ROOT = @install_root@
+EXECUTE_ROOT = @execute_root@
+
+X11_PACKAGE = @x11_package@
+X11_INCLUDES = @x11_includes@
+X11_LIBS = @x11_libs@
+
+XEXT_PACKAGE = @xext_package@
+XEXT_INCLUDES = @xext_includes@
+XEXT_LIBS = @xext_libs@
+
+XTST_PACKAGE = @xtst_package@
+XTST_INCLUDES = @xtst_includes@
+XTST_LIBS = @xtst_libs@
+
+XT_PACKAGE = @xt_package@
+XT_INCLUDES = @xt_includes@
+XT_LIBS = @xt_libs@
+
+XKB_LIBS = @xkb_libs@
+XTK_LIBS = @xtk_libs@
+
+CURSES_PACKAGE = @curses_package@
+CURSES_LIBS = @curses_libs@
+
+GUI_TOOLKIT_PACKAGE = @gui_toolkit_package@
+
+CSPI_PACKAGE = @cspi_package@
+CSPI_INCLUDES = @cspi_includes@
+CSPI_LIBS = @cspi_libs@
+
+ATSPI2_PACKAGE = @atspi2_package@
+ATSPI2_INCLUDES = @atspi2_includes@
+ATSPI2_LIBS = @atspi2_libs@
+
+GLIB2_PACKAGE = @glib2_package@
+GLIB2_INCLUDES = @glib2_includes@
+GLIB2_LIBS = @glib2_libs@
+
+DBUS_PACKAGE = @dbus_package@
+DBUS_INCLUDES = @dbus_includes@
+DBUS_LIBS = @dbus_libs@
+
+POLKIT_PACKAGE = @polkit_package@
+POLKIT_INCLUDES = @polkit_includes@
+POLKIT_LIBS = @polkit_libs@
+
+LOUIS_INCLUDES = @louis_includes@
+LOUIS_LIBS = @louis_libs@
+
+ICU_INCLUDES = @icu_includes@
+ICU_LIBS = @icu_libs@
+
+PGMPATH_PACKAGE = @pgmpath_package@
+PGMPATH_OBJECT = pgmpath_$(PGMPATH_PACKAGE)
+PGMPATH_OBJECTS = $(PGMPATH_OBJECT).$O
+PGMPATH_INCLUDES = @pgmpath_includes@
+PGMPATH_LIBS = @pgmpath_libs@
+
+SERVICE_PACKAGE = @service_package@
+SERVICE_OBJECT = service_$(SERVICE_PACKAGE)
+SERVICE_OBJECTS = $(SERVICE_OBJECT).$O
+SERVICE_INCLUDES = @service_includes@
+SERVICE_LIBS = @service_libs@
+
+PARAMS_PACKAGE = @params_package@
+PARAMS_OBJECT = params_$(PARAMS_PACKAGE)
+PARAMS_OBJECTS = $(PARAMS_OBJECT).$O
+PARAMS_INCLUDES = @params_includes@
+PARAMS_LIBS = @params_libs@
+
+DYNLD_PACKAGE = @dynld_package@
+DYNLD_OBJECT = dynld_$(DYNLD_PACKAGE)
+DYNLD_OBJECTS = $(DYNLD_OBJECT).$O
+DYNLD_INCLUDES = @dynld_includes@
+DYNLD_LIBS = @dynld_libs@
+
+CHARSET_PACKAGE = @charset_package@
+CHARSET_OBJECT = charset_$(CHARSET_PACKAGE)
+CHARSET_OBJECTS = charset.$O $(CHARSET_OBJECT).$O
+CHARSET_INCLUDES = @charset_includes@
+CHARSET_LIBS = @charset_libs@
+
+HOSTCMD_PACKAGE = @hostcmd_package@
+HOSTCMD_OBJECT = hostcmd_$(HOSTCMD_PACKAGE)
+HOSTCMD_OBJECTS = hostcmd.$O $(HOSTCMD_OBJECT).$O
+HOSTCMD_INCLUDES = @hostcmd_includes@
+HOSTCMD_LIBS = @hostcmd_libs@
+
+MNTPT_PACKAGE = @mntpt_package@
+MNTPT_OBJECT = mntpt_$(MNTPT_PACKAGE)
+MNTPT_OBJECTS = mntpt.$O $(MNTPT_OBJECT).$O
+MNTPT_INCLUDES = @mntpt_includes@
+MNTPT_LIBS = @mntpt_libs@
+
+MNTFS_PACKAGE = @mntfs_package@
+MNTFS_OBJECT = mntfs_$(MNTFS_PACKAGE)
+MNTFS_OBJECTS = $(MNTFS_OBJECT).$O
+MNTFS_INCLUDES = @mntfs_includes@
+MNTFS_LIBS = @mntfs_libs@
+
+KBD_PACKAGE = @kbd_package@
+KBD_OBJECT = kbd_$(KBD_PACKAGE)
+KBD_OBJECTS = kbd.$O $(KBD_OBJECT).$O
+KBD_INCLUDES = @kbd_includes@
+KBD_LIBS = @kbd_libs@
+
+BELL_PACKAGE = @bell_package@
+BELL_OBJECT = bell_$(BELL_PACKAGE)
+BELL_OBJECTS = bell.$O $(BELL_OBJECT).$O
+BELL_INCLUDES = @bell_includes@
+BELL_LIBS = @bell_libs@
+
+LEDS_PACKAGE = @leds_package@
+LEDS_OBJECT = leds_$(LEDS_PACKAGE)
+LEDS_OBJECTS = leds.$O $(LEDS_OBJECT).$O
+LEDS_INCLUDES = @leds_includes@
+LEDS_LIBS = @leds_libs@
+
+BEEP_PACKAGE = @beep_package@
+BEEP_OBJECT = beep_$(BEEP_PACKAGE)
+BEEP_OBJECTS = notes_beep.$O beep.$O $(BEEP_OBJECT).$O
+BEEP_INCLUDES = @beep_includes@
+BEEP_LIBS = @beep_libs@
+
+PCM_PACKAGE = @pcm_package@
+PCM_OBJECT = pcm_$(PCM_PACKAGE)
+PCM_OBJECTS = notes_pcm.$O pcm.$O $(PCM_OBJECT).$O
+PCM_INCLUDES = @pcm_includes@
+PCM_LIBS = @pcm_libs@
+
+MIDI_PACKAGE = @midi_package@
+MIDI_OBJECT = midi_$(MIDI_PACKAGE)
+MIDI_OBJECTS = notes_midi.$O midi.$O $(MIDI_OBJECT).$O
+MIDI_INCLUDES = @midi_includes@
+MIDI_LIBS = @midi_libs@
+
+FM_PACKAGE = @fm_package@
+FM_OBJECT = fm_$(FM_PACKAGE)
+FM_OBJECTS = notes_fm.$O $(FM_OBJECT).$O
+FM_INCLUDES = @fm_includes@
+FM_LIBS = @fm_libs@
+
+SERIAL_PACKAGE = @serial_package@
+SERIAL_OBJECT = serial_$(SERIAL_PACKAGE)
+SERIAL_OBJECTS = gio_serial.$O serial.$O $(SERIAL_OBJECT).$O
+SERIAL_INCLUDES = @serial_includes@
+SERIAL_LIBS = @serial_libs@
+
+USB_PACKAGE = @usb_package@
+USB_OBJECT = usb_$(USB_PACKAGE)
+USB_OBJECTS = gio_usb.$O usb.$O usb_hid.$O usb_serial.$O usb_adapters.$O usb_cdc_acm.$O usb_belkin.$O usb_cp2101.$O usb_cp2110.$O usb_ftdi.$O $(USB_OBJECT).$O
+USB_INCLUDES = @usb_includes@
+USB_LIBS = @usb_libs@
+
+BLUETOOTH_PACKAGE = @bluetooth_package@
+BLUETOOTH_OBJECT = bluetooth_$(BLUETOOTH_PACKAGE)
+BLUETOOTH_OBJECTS = gio_bluetooth.$O bluetooth.$O bluetooth_names.$O $(BLUETOOTH_OBJECT).$O
+BLUETOOTH_INCLUDES = @bluetooth_includes@
+BLUETOOTH_LIBS = @bluetooth_libs@
+
+PORTS_PACKAGE = @ports_package@
+PORTS_OBJECT = ports_$(PORTS_PACKAGE)
+PORTS_OBJECTS = $(PORTS_OBJECT).$O
+PORTS_INCLUDES = @ports_includes@
+PORTS_LIBS = @ports_libs@
+
+SYSTEM_PACKAGE = @system_package@
+SYSTEM_OBJECT = system_$(SYSTEM_PACKAGE)
+SYSTEM_OBJECTS = $(SYSTEM_OBJECT).$O $(HOSTCMD_OBJECTS)
+SYSTEM_INCLUDES = @system_includes@
+SYSTEM_LIBS = @system_libs@
+
+MOUNT_OBJECTS = $(MNTPT_OBJECTS) $(MNTFS_OBJECTS)
+IO_OBJECTS = io_misc.$O gio.$O gio_null.$O $(SERIAL_OBJECTS) $(USB_OBJECTS) $(BLUETOOTH_OBJECTS) $(MOUNT_OBJECTS)
+TUNE_OBJECTS = tune.$O notes.$O $(BEEP_OBJECTS) $(PCM_OBJECTS) $(MIDI_OBJECTS) $(FM_OBJECTS)
+ASYNC_OBJECTS = async_handle.$O async_data.$O async_wait.$O async_alarm.$O async_task.$O async_io.$O async_event.$O async_signal.$O thread.$O
+BASE_OBJECTS = log.$O log_history.$O addresses.$O file.$O device.$O parse.$O variables.$O datafile.$O unicode.$O $(CHARSET_OBJECTS) timing.$O $(ASYNC_OBJECTS) queue.$O lock.$O $(DYNLD_OBJECTS) $(PORTS_OBJECTS) $(SYSTEM_OBJECTS)
+OPTIONS_OBJECTS = options.$O $(PARAMS_OBJECTS)
+PROGRAM_OBJECTS = program.$O $(PGMPATH_OBJECTS) pid.$O $(OPTIONS_OBJECTS) $(BASE_OBJECTS)
+
+CC = @CC@
+CPPFLAGS = -I$(BLD_DIR) -I$(SRC_DIR) -I$(BLD_TOP:/=)/$(PGM_DIR) -I$(SRC_TOP:/=)/$(PGM_DIR) -I$(SRC_TOP:/=)/$(HDR_DIR) -I$(BLD_TOP:/=) -I$(SRC_TOP:/=) @CPPFLAGS@ @DEFS@
+CFLAGS = $(CPPFLAGS) @CFLAGS@
+LIBCFLAGS = $(CFLAGS) @LIBCFLAGS@
+
+CXX = @CXX@
+CXXFLAGS = $(CPPFLAGS) @CXXFLAGS@
+LIBCXXFLAGS = $(CXXFLAGS) @LIBCXXFLAGS@
+
+LD = @LD@
+LDFLAGS = @LDFLAGS@
+LDLIBS = $(ICU_LIBS) $(SYSTEM_LIBS) @LIBS@
+
+MKSHR = @MKSHR@
+MKREL = @MKREL@
+MKLIB = @MKLIB@
+CONFLIBDIR = @CONFLIBDIR@
+STRIP = @STRIP@
+RANLIB = @RANLIB@
+
+AWK = @AWK@
+SYMLINK = @LN_S@
+DOXYGEN = @DOXYGEN@
+
+PKG_CONFIG = @PKG_CONFIG@
+MSGMERGE = @MSGMERGE@
+MSGFMT = @MSGFMT@
+
+INSTALL = @INSTALL@
+INSTALL_SCRIPT = $(INSTALL)
+INSTALL_PROGRAM = $(INSTALL_SCRIPT) @INSTALL_OPTION_STRIP@
+INSTALL_DATA = $(INSTALL) -m 644
+INSTALL_DIRECTORY = $(INSTALL) -d
+
+ARC_PFX = @archive_prefix@
+ARC_EXT = @archive_extension@
+LIB_PFX = @library_prefix@
+LIB_EXT = @library_extension@
+MOD_NAME = @module_name@
+MOD_EXT = @module_extension@
+LIB_VAR = @libsearch_variable@
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+datarootdir = @datarootdir@
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+includedir = @includedir@
+oldincludedir = @oldincludedir@
+localedir = @localedir@
+infodir = @infodir@
+mandir = @mandir@
+docdir = @docdir@
+htmldir = @htmldir@
+dvidir = @dvidir@
+pdfdir = @pdfdir@
+psdir = @psdir@
+
+UPDATABLE_DIRECTORY = @UPDATABLE_DIRECTORY@
+PROGRAM_DIRECTORY = @program_directory@
+DRIVERS_DIRECTORY = @drivers_directory@
+WRITABLE_DIRECTORY = @writable_directory@
+TABLES_DIRECTORY = @tables_directory@
+MANPAGE_DIRECTORY = @manpage_directory@
+INCLUDE_DIRECTORY = @include_directory@
+GDM_AUTOSTART_DIRECTORY = @gdm_autostart_directory@
+
+MANUAL_DIRECTORIES = @brltty_manual_directories@
+
+TEXT_TABLES_SUBDIRECTORY = @TEXT_TABLES_SUBDIRECTORY@
+ATTRIBUTES_TABLES_SUBDIRECTORY = @ATTRIBUTES_TABLES_SUBDIRECTORY@
+CONTRACTION_TABLES_SUBDIRECTORY = @CONTRACTION_TABLES_SUBDIRECTORY@
+KEYBOARD_TABLES_SUBDIRECTORY = @KEYBOARD_TABLES_SUBDIRECTORY@
+INPUT_TABLES_SUBDIRECTORY = @INPUT_TABLES_SUBDIRECTORY@
+
+TEXT_TABLE_EXTENSION = @TEXT_TABLE_EXTENSION@
+TEXT_SUBTABLE_EXTENSION = @TEXT_SUBTABLE_EXTENSION@
+
+ATTRIBUTES_TABLE_EXTENSION = @ATTRIBUTES_TABLE_EXTENSION@
+ATTRIBUTES_SUBTABLE_EXTENSION = @ATTRIBUTES_SUBTABLE_EXTENSION@
+
+CONTRACTION_TABLE_EXTENSION = @CONTRACTION_TABLE_EXTENSION@
+CONTRACTION_SUBTABLE_EXTENSION = @CONTRACTION_SUBTABLE_EXTENSION@
+
+KEY_TABLE_EXTENSION = @KEY_TABLE_EXTENSION@
+KEY_SUBTABLE_EXTENSION = @KEY_SUBTABLE_EXTENSION@
+KEY_HELP_EXTENSION = @KEY_HELP_EXTENSION@
+
+PROFILES_SUBDIRECTORY = @PROFILES_SUBDIRECTORY@
+LANGUAGE_PROFILE_EXTENSION = @LANGUAGE_PROFILE_EXTENSION@
+
+BRAILLE_DRIVER_CODES = @brltty_item_codes_braille@
+BRAILLE_DRIVER_NAMES = @brltty_item_names_braille@
+BRAILLE_INTERNAL_DRIVER_CODES = @brltty_internal_codes_braille@
+BRAILLE_INTERNAL_DRIVER_NAMES = @brltty_internal_names_braille@
+BRAILLE_EXTERNAL_DRIVER_CODES = @brltty_external_codes_braille@
+BRAILLE_EXTERNAL_DRIVER_NAMES = @brltty_external_names_braille@
+BRAILLE_DRIVER_OBJECTS = @braille_driver_objects@
+BRAILLE_DRIVER_LIBRARIES = @braille_driver_libraries@
+BRAILLE_DRIVERS = @braille_drivers@
+
+LIBBRAILLE_ROOT = @libbraille_root@
+
+SPEECH_DRIVER_CODES = @brltty_item_codes_speech@
+SPEECH_DRIVER_NAMES = @brltty_item_names_speech@
+SPEECH_INTERNAL_DRIVER_CODES = @brltty_internal_codes_speech@
+SPEECH_INTERNAL_DRIVER_NAMES = @brltty_internal_names_speech@
+SPEECH_EXTERNAL_DRIVER_CODES = @brltty_external_codes_speech@
+SPEECH_EXTERNAL_DRIVER_NAMES = @brltty_external_names_speech@
+SPEECH_DRIVER_OBJECTS = @speech_driver_objects@
+SPEECH_DRIVER_LIBRARIES = @speech_driver_libraries@
+SPEECH_DRIVERS = @speech_drivers@
+
+SCREEN_DRIVER_CODES = @brltty_item_codes_screen@
+SCREEN_DRIVER_NAMES = @brltty_item_names_screen@
+SCREEN_INTERNAL_DRIVER_CODES = @brltty_internal_codes_screen@
+SCREEN_INTERNAL_DRIVER_NAMES = @brltty_internal_names_screen@
+SCREEN_EXTERNAL_DRIVER_CODES = @brltty_external_codes_screen@
+SCREEN_EXTERNAL_DRIVER_NAMES = @brltty_external_names_screen@
+SCREEN_DRIVER_OBJECTS = @screen_driver_objects@
+SCREEN_DRIVER_LIBRARIES = @screen_driver_libraries@
+SCREEN_DRIVERS = @screen_drivers@
+
+ESPEAK_ROOT = @espeak_root@
+FLITE_ROOT = @flite_root@
+FLITE_LANGUAGE = @flite_language@
+FLITE_LEXICON = @flite_lexicon@
+FLITE_VOICE = @flite_voice@
+MIKROPUHE_ROOT = @mikropuhe_root@
+SPEECHD_INCLUDES = @speechd_includes@
+SPEECHD_LIBS = @speechd_libs@
+SWIFT_ROOT = @swift_root@
+THETA_ROOT = @theta_root@
+VIAVOICE_ROOT = @viavoice_root@
+
+INSTALL_TEXT_TABLES = @install_text_tables@
+INSTALL_ATTRIBUTES_TABLES = @install_attributes_tables@
+INSTALL_CONTRACTION_TABLES = @install_contraction_tables@
+INSTALL_DRIVERS = @install_drivers@
+INSTALL_MESSAGES = @install_messages@
+
+TEXT_TABLE = @text_table@
+ATTRIBUTES_TABLE = @attributes_table@
+
+CTB_OBJECTS = @contracted_braille_objects@
+
+SPEECH_OBJECT = @speech_support_object@
+
+API_VERSION = @api_version@
+API_RELEASE = @api_release@
+API_SERVER_OBJECTS = @api_server_objects@
+API_LIBRARIES = @api_libraries@
+ALL_API = @all_api@
+BUILD_API = @build_api@
+INSTALL_API = @install_api@
+API_REF = @api_ref@
+API_DYNAMIC_LIBRARY = @api_dynamic_library@
+INSTALL_API_LIBRARIES = @install_api_libraries@
+UNINSTALL_API_LIBRARIES = @uninstall_api_libraries@
+API_AUTHFILE = @api_authkeyfile@
+API_SOCKET_DIRECTORY = @api_socket_path@
+
+API_BINDINGS = @api_bindings@
+ALL_API_BINDINGS = @all_api_bindings@
+INSTALL_API_BINDINGS = @install_api_bindings@
+
+ALL_XBRLAPI = @all_xbrlapi@
+INSTALL_XBRLAPI = @install_xbrlapi@
+
+ALL_BRLTTY_CTB = @all_brltty_ctb@
+INSTALL_BRLTTY_CTB = @install_brltty_ctb@
+

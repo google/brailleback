@@ -1,0 +1,17 @@
+Executable : /usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build
+arguments : 
+NDK_PROJECT_PATH=null
+APP_BUILD_SCRIPT=/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk
+APP_ABI=x86
+NDK_ALL_ABIS=x86
+NDK_DEBUG=1
+APP_PLATFORM=android-16
+NDK_OUT=/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj
+NDK_LIBS_OUT=/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib
+APP_SHORT_COMMANDS=false
+LOCAL_SHORT_COMMANDS=false
+-B
+-n
+jvmArgs : 
+
+Build command args:

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Якщо програму BrailleBack увімкнено, ваш пристрій під’єднається до спареного брайлівського дисплея з Bluetooth і на екрані відобразиться вміст шрифтом Брайля. За допомогою клавіш на брайлівському дисплеї можна переміщуватись екраном, активувати елементи та вводити текст. Щоб дізнатися більше, натисніть пробіл і крапки 1, 2 та 3 (літера \"l\" латинського алфавіту шрифтом Брайля) на під’єднаному дисплеї."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Показувати вивід Брайля"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Брайлівська клавіатура"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Майстер встановлення брайлівської кнопкової клавіатури"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Увімкнути брайлівську клавіатуру"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Щоб користуватися брайлівською клавіатурою, її потрібно ввімкнути в налаштуваннях, а потім зробити методом введення за умовчанням."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Пропустити"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Відкрити налаштування"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Установити метод введення за умовчанням"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Щоб користуватися брайлівською клавіатурою, її потрібно зробити методом введення за умовчанням."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Відкрити налаштування"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Під’єднатися до брайлівського дисплея"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Дозволяє програмі писати вихідні дані для брайлівського дисплея та читати дані вводу його клавіатури"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Порожня сітка"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Сітка"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Порожній список"</string>
+    <string name="type_listview" msgid="195039477703126884">"Список"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Порожнє поле для вмісту, який можна прокручувати"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Вміст, який можна прокручувати"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Вікно редагування"</string>
+    <string name="type_image" msgid="3688576211222019626">"Зображення"</string>
+    <string name="type_button" msgid="3639574187835564558">"Кнопка"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Елемент керування пошуком"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Контакт"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Налаштування BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Пристрій"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Статус"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Довідка клавіатури"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Шрифт Брайля"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Тип шрифту Брайля"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Літературна таблиця Брайля"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Комп’ютерна таблиця Брайля"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Увімкнути перенесення слів"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Не під’єднано"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Під’єднано"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Не доступно"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Літературний код шрифту Брайля"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Комп’ютерний код шрифту Брайля"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Автоматично (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Автоматично (немає)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Інше"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Опції для розробника"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Накладання на екрані"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Показувати введений текст на екрані"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Відкрити посібник"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Ліцензії відкритого коду"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Рівень виводу журналу"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Довідка клавіатури BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback увім"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback вимк"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Клавіатура BrailleBack активна"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Торкніться, щоб переключитися на клавіатуру за умовчанням"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> – рівень <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) – рівень <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Панорамування вліво"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Панорамування вправо"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Посібник із накладання"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Закінчити"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Накладання шрифту Брайля імітує оновлюваний брайлівський дисплей. На ньому відображаються брайлівські символи, а також відповідний текст, який зазвичай можна бачити на дисплеї комп’ютера. Перш ніж продовжити, радимо ввімкнути TalkBack і режим вивчення дотиком."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Налаштування доступності"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Можна панорамувати брайлівський дисплей, натиснувши одну з кнопок панорамування біля тексту."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"На дисплеї можуть одночасно відображатися декілька елементів. Можна натиснути один із них, торкнувшись брайлівського символу в тексті. Це відповідає натисканню клавіш напрямку на брайлівському дисплеї."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Якщо накладання закриває інший елемент на екрані, його можна перемістити. Натисніть і втримуйте накладання, а потім перетягніть його. Коли ви відпустите палець, накладання зафіксується вгорі або внизу сторінки."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Показати посібник"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Радимо переглянути посібник із накладання на екрані, перш ніж користуватися цією функцією."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"П:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Пошук: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Посібник із пошуку на екрані"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Пошук на екрані дозволяє швидко переходити до елементів на екрані, вводячи частину їхнього текстового опису. Під час введення ви переходитимете до наступного відповідного елемента."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Виберіть <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>, щоб перейти до наступного результату, або <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>, щоб перейти до попереднього результату. Натисніть <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>, щоб вийти з режиму пошуку та перейти до результатів. Натисніть <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>, щоб повернутися до попереднього елемента."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Більше не показувати"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Продовжити"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Додати спеціальну мітку"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Редагувати спеціальну мітку"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Вилучити спеціальну мітку"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Спеціальні мітки не підтримуються. Оновіть TalkBack"</string>
+</resources>

@@ -1,0 +1,80 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using Systemd Service Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: prologue.rst
+
+.. |configuration directory| replace:: /usr/lib
+.. |unit directory| replace:: |configuration directory|/systemd/system
+.. |wrapper directory| replace:: /sbin
+.. |build subdirectory| replace:: Autostart/Systemd
+
+Initial Setup
+=============
+
+A set of Systemd service and path units needs to be installed
+into the |unit directory| directory,
+and a wrapper script needs to be installed
+into the |wrapper directory| directory.
+A make file has been provided in order to make this easy to do.
+It can be found within the |build subdirectory| subdirectory
+of BRLTTY's build tree.
+To install all of these files, change to this subdirectory
+and run the command::
+
+  make install
+
+You then need to tell Systemd that the files have been installed.
+To do this, run the command::
+
+  systemctl daemon-reload
+
+That's all you need to do.
+Your system is now able to manage BRLTTY instances via Systemd.
+
+Managing the BRLTTY Service
+===========================
+
+Systemd manages BRLTTY instances on your system in a number of ways.
+
+USB Braille Devices
+-------------------
+
+If BRLTTY's Udev rules have also been installed
+then a BRLTTY instance will be automatically started
+when a USB braille device is connected,
+and automatically stopped when it's disconnected.
+Several braille devices can be managed in this way at the same time.
+They can be connected and disconnected at any time and in any order.
+
+The Default Instance
+--------------------
+
+The default BRLTTY instance is the one that's configured
+via the file ``/etc/brltty.conf``.
+It's managed by applying standard Systemd commands to BRLTTY's path unit.
+For example::
+
+  systemctl enable brltty.path
+  systemctl start brltty.path
+  systemctl stop brltty.path
+  systemctl disable brltty.path
+
+Additional Instances
+--------------------
+
+Additional BRLTTY instances can be managed via path instance references.
+Each of them has its own configuration file.
+
+If, for example, the name of an instance is ``iname``, then
+its Systemd path name would be ``brltty@iname``,
+its configuration file would be ``/etc/brltty_iname.conf``,
+and it'd be managed via Systemd commands like these::
+
+  systemctl enable brltty@iname.path
+  systemctl start brltty@iname.path
+  systemctl stop brltty@iname.path
+  systemctl disable brltty@iname.path
+
+Any number of instances may be managed in this way.
+

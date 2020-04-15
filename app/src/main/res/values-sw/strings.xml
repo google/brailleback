@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"BrailleBack inapowaka, kifaa chako kitaunganishwa kwenye onyesho la breli la bluetooth lililooanishwa na kuwasilisha maudhui ya skrini katika breli. Vitufe vilivyo kwenye onyesho la breli vinaweza kutumiwa kusafiri kwenye skrini, kuwasha vipengee na kuingiza maandishi. Kwa maelezo zaidi, bonyeza nafasi na nukta 1, 2 na 3 (herufi l katika breli) kwenye onyesho lako unapounganishwa."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Onyesha matokeo ya breli"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Kibodi ya maunzi ya breli"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Kigagula cha Kibodi cha Maunzi ya Breli"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Washa kibodi ya maunzi ya breli"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiwezesha katika mipangilio ya mbinu ya uingizaji na kisha uiweke kama mbinu ya uingizaji ya chaguomsingi."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Ruka"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Fungua Mipangilio ya Mbinu ya Uingizaji"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Weka Mbinu ya Uingizaji Chaguomsingi"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiweka kama mbinu ya uingizaji chaguomsingi."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Fungua Kiteuzi cha Mbinu ya Uingizaji"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Unganisha kwenye onyesho la breli"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Huruhusu programu kuandika matokeo na kusoma uingizaji wa kibodi kutoka kwenye onyesho la breli."</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Gridi Tupu"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Gridi"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Orodha Tupu"</string>
+    <string name="type_listview" msgid="195039477703126884">"Orodha"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Maudhui Matupu Yanayotembezeka"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Maudhui Yanayotembezeka"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Kikasha cha Kuhariri"</string>
+    <string name="type_image" msgid="3688576211222019626">"Picha"</string>
+    <string name="type_button" msgid="3639574187835564558">"Kitufe"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Tafuta Udhibiti"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Anwani"</string>
+    <string name="preferences_title" msgid="368535298674637475">"Mapendeleo ya BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Kifaa"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Hali"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Usaidizi wa kibodi"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Breli"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Aina ya breli"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Meza ya breli ya kawaida"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Meza ya breli ya kompyuta"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Washa kipengee cha kuonyesha maneno yote"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Halijaunganishwa"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Limeunganishwa"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Haipatikani"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"Breli ya kawaida"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Breli ya kompyuta"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"(<xliff:g id="TABLE_NAME">%1$s</xliff:g>) kiotomatiki"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"(hakuna) kiotomatiki"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Mengineyo"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Chaguo za wasanidi programu"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Gaga la kwenye skrini"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Onyesha matokeo ya Breli kwenye skrini"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Anzisha mafunzo"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Leseni za Program Huria"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Hifadhi kiwango towe"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"Usaidizi wa kibodi ya BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback imewashwa"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback imezimwa"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"Kibodi ya BrailleBack inafanya kazi"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Gusa ili ubadilishe hadi kibodi chaguomsingi"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - gredi <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - daraja la <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Pindua kushoto"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Pindua kulia"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Weka Mafunzo"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Kamilisha"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Gaga la breli huiga onyesho la breli linaloweza kuonyeshwa upya. Huonyesha seli za breli, pamoja na maandishi yanayolingana, yatakayowasilishwa kwenye onyesho la maunzi. Inapendekezwa uwashe TalkBack na uguse hali ya uchunguzaji kabla ya kuendelea."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Mipangilio ya Ufikiaji"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Unaweza kupindua onyesho la breli kwa kubonyeza mojawapo ya vitufe vya kupindua karibu na maandishi."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Vipengele kadhaa vinaweza kuonekana kwenye onyesho mara moja. Unaweza kubofya kwenye mojawapo kwa kugonga moja ya seli katika maandishi. Hii inalingana na kubonyeza kwenye mojawapo ya vitufe vya kupanga njia kwenye onyesho la breli."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Iwapo gaga linafunika kipengele kingine kwenye skrini, unaweza kuliondoa. Bonyeza gaga kwa muda mrefu, na kisha uliburute. Litapiga picha juu au chini ya skrini utakapoachilia kidole chako."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Onyesha Mafunzo ya Gaga"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Tunapendekeza kuwa utazame mafunzo ya gaga la kwenye skrini kabla ya kulitumia."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"T:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Tafuta: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Tafuta Mafunzo kwenye Skrini"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Utafutaji kwenye skrini hukuwezesha kuruka haraka hadi kwenye kipengee kwa kuchapa sehemu fupi ya maelezo ya kipengee hicho. Unapochapa, ulengaji utaenda kwenye bidhaa inayofuata inayolingana."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Tumia <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> ili kwenda kwenye matokeo yanayofuata na <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> ili kwenda kwenye matokeo ya awali. Bonyeza <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> ili kuondoka kutoka hali ya utafutaji na uendelee kulenga matokeo. Bonyeza <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> ili urudi kwenye bidhaa iliyolengwa awali."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Katu usionyeshe hii tena"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Endelea"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Ongeza lebo maalum"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Badilisha lebo maalum"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Ondoa lebo maalum"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Lebo maalum haziwezi kutumika. Sasisha talkback"</string>
+</resources>

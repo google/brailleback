@@ -1,0 +1,22 @@
+# Format: google3/devtools/metadata/metadata.proto (go/google3metadata)
+
+name: "brltty"
+description:
+  "BRLTTY is a background process (daemon) providing access to the "
+  "Linux/Unix console (when in text mode) for a blind person using a "
+  "refreshable braille display. It contains drivers for many refreshable "
+  "braille displays."
+
+third_party {
+  url {
+    type: GIT
+    value: "https://github.com/brltty/brltty.git"
+  }
+  version: "5.4 (tag BRLTTY-5.4, commit 63a9d1c6cbae7426459a8de79faaf41c121b0279)"
+  last_upgrade_date { year: 2016 month: 7 day: 25 }
+
+  # NOTE: The "local_modifications" field is entirely optional and may be
+  # removed if it's not useful for the package.
+  #     See go/thirdparty-metadata-local-modifications
+  local_modifications: "http://google3/third_party/brltty/README.google?cl=129461266"
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"Kad funkcija BrailleBack ir ieslēgta, ierīcē tiek izveidots savienojums pārī ar Bluetooth Braila displeju un ekrāna saturs tiek attēlots Braila rakstā. Braila displejā esošos taustiņus var izmantot navigācijai ekrānā, vienumu aktivizēšanai un teksta ievadei. Lai iegūtu plašāku informāciju, kad ir izveidots savienojums, displejā nospiediet atstarpes taustiņu un 1., 2. un 3. punktu (burtu “l” Braila rakstā)."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Rādīt Braila raksta izvadi"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Braila fiziskā tastatūra"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Braila fiziskās tastatūras vednis"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Braila fiziskās tastatūras iespējošana"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Lai izmantotu Braila fizisko tastatūru, iespējojiet to ievades metodes iestatījumos un pēc tam iestatiet to kā noklusējuma ievades metodi."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"Izlaist"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Atvērt ievades metodes iestatījumus"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Noklusējuma ievades metodes iestatīšana"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Lai izmantotu Braila fizisko tastatūru, tā ir jāiestata kā noklusējuma ievades metode."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Atvērt ievades metodes atlasītāju"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"Izveidot savienojumu ar Braila displeju"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"Ļauj lietotnei rakstīt tekstu Braila displejā, izmantojot tastatūru, kā arī lasīt ievadīto tekstu."</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"Tukšs režģis"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"Režģis"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"Tukšs saraksts"</string>
+    <string name="type_listview" msgid="195039477703126884">"Saraksts"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Tukšs ritināms saturs"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Ritināms saturs"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"Rediģēšanas lodziņš"</string>
+    <string name="type_image" msgid="3688576211222019626">"Attēls"</string>
+    <string name="type_button" msgid="3639574187835564558">"Poga"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Meklēšanas vadīkla"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Kontaktpersonas"</string>
+    <string name="preferences_title" msgid="368535298674637475">"BrailleBack preferences"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"Ierīce"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"Statuss"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"Tastatūras palīdzība"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"Braila raksts"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"Braila raksta veids"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"6 punktu Braila r. tabula"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Braila datorraksta tabula"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Iespējot vārdu aplaušanu"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"Nav savienots"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"Savienots"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"Nav pieejams"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"6 punktu Braila raksts"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"Braila datorraksts"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automātiski (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automātiski (nav)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Dažādi"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Izstrādātāja opcijas"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Ekrānā redzamais pārklājums"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Rādīt Braila izv. ekrānā"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Palaišanas pamācība"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Atklātā pirmkoda licences"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Žurnāla izvades līmenis"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBack tastatūras palīdzība"</string>
+    <string name="display_connected" msgid="2008600513914815101">"brlback iesl."</string>
+    <string name="shutting_down" msgid="1303701310644298807">"brlback izsl."</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"BrailleBack tastatūra ir aktīva"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Pieskarieties, lai pārslēgtos uz noklusējuma tastatūru."</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> — <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>. pakāpe"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) — <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>. pakāpe"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"Bīdīt pa kreisi"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"Bīdīt pa labi"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"Pārklājuma pamācība"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Pabeigt"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Braila raksta pārklājumā tiek simulēti atsvaidzināmi rādījumi Braila rakstā. Tajā tiek rādītas Braila raksta šūnas kopā ar atbilstošo tekstu, kas tiktu rādīts aparatūras displejā. Pirms turpināt, ieteicams iespējot funkciju TalkBack un pārlūkošanas ar pieskārienu režīmu."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Pieejamības iestatījumi"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Varat pabīdīt Braila raksta rādījumus, blakus tekstam nospiežot kādu no bīdīšanas pogām."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Displejā vienlaikus var tikt rādīti vairāki elementi. Varat noklikšķināt uz elementa, pieskaroties kādai no Braila raksta šūnām tekstā. Šāda darbība atbilst maršrutēšanas taustiņu spiešanai Braila raksta displejā."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Ja pārklājums aizsedz citu ekrāna elementu, varat to pārvietot. Nospiediet pārklājumu, turiet to nospiestu un velciet to. Atlaižot pirkstu, pārklājums tiek rādīts ekrāna augšdaļā vai apakšdaļā."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Pārklājuma pamācības rādīšana"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Pirms ekrānā redzamā pārklājuma lietošanas ieteicams skatīt pamācību."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"MR:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"Meklēšana: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"Režīma “Meklēšana ekrānā” lietošanas pamācība"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Meklēšana ekrānā ļauj ātri pāriet uz ekrānā parādītajiem vienumiem, ierakstot daļu no vienumu teksta apraksta. Rakstīšanas laikā fokuss tiks pārvietots uz nākamo atbilstošo vienumu."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Izmantojiet komandu <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>, lai pārietu uz nākamo rezultātu, un komandu <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>, lai atgrieztos pie iepriekšējā rezultāta. Nospiediet <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>, lai izietu no meklēšanas režīma un noturētu fokusu uz rezultātu. Nospiediet <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>, lai pārietu atpakaļ pie iepriekš fokusā iekļautā vienuma."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Nekad vairs nerādīt šo pamācību"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"Tālāk"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Pievienot pielāgotu iezīmi"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Rediģēt pielāgotu iezīmi"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Noņemt pielāgotu iezīmi"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Pielāgotās iezīmes netiek atbalstītas. Atjauniniet lietotni TalkBack."</string>
+</resources>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Title for the brailleback, preferences activity. -->
+    <string name="brailleback_setup_title" translatable="false">BrailleBack</string>
+
+    <!-- Displayed on the accessibility settings screen when the user has selected BrailleBack. Note that in the phrase "the letter l", the letter is a lowercase L, not an uppercase I. -->
+    <string name="service_description">When BrailleBack is on, your device will connect to a paired bluetooth braille display and present the screen content in braille. Keys on the braille display can be used to navigate the screen, activate items and enter text. For more information, press space and dots 1, 2 and 3 (the letter l in braille) on your display when connected.</string>
+
+    <!-- Displayed as subtext on the accessibility service preference in Settings. -->
+    <string name="service_summary">Provide braille output</string>
+
+    <!-- Name of the input method for typing using the braille keys on the display. -->
+    <string name="braille_ime_name">Braille hardware keyboard</string>
+
+    <!-- Title for the wizard that guides the user through the process of setting up the braille hardware keyboard. -->
+    <string name="ime_setup_wizard_name">Braille Hardware Keyboard Wizard</string>
+    <!-- Title for the step of the braille hardware keyboard wizard that lets the user know to enable the input method. -->
+    <string name="ime_setup_need_enable_title">Enable braille hardware keyboard</string>
+    <!-- Dialog message that lets the user know to enable the input method -->
+    <string name="ime_setup_need_enable_message">To use the braille hardware keyboard, you need to enable it in the input method settings and then set it as the default input method.</string>
+    <!-- Label for a button in the braille input method wizard that lets the user skip the setup. [CHAR_LIMIT=15] -->
+    <string name="ime_setup_skip">Skip</string>
+    <!-- Button in the enable braille hardware keyboard input method wizard that opens the system dialog to enable the ime. [CHAR_LIMIT=45] -->
+    <string name="ime_setup_need_enable_positive">Open Input Method Settings</string>
+    <!-- Title for the dialog that lets the user know to switch to the braille hardware keyboard input method. -->
+    <string name="ime_setup_need_default_title">Set Default Input Method</string>
+    <!-- Text for the dialog that lets the user know to switch to the braille hardware keyboard input method. -->
+    <string name="ime_setup_need_default_message">To use the braille hardware keyboard, you need to set it as the default input method.</string>
+    <!-- Label for a button in the dialog that lets the user know to switch to the braille hardware keyboard input method. Opens the system dialog that lets the user switch to an input method. [CHAR_LIMIT=60] -->
+    <string name="ime_setup_need_default_positive">Open Input Method Picker</string>
+
+    <!-- Braille display permission -->
+
+    <!-- Permission label. -->
+    <string name="permlab_displayConnect">Connect to a braille display</string>
+    <!-- Permission description. -->
+    <string name="permdesc_displayConnect">Allows an app to write output to and and read keyboad input from a braille display</string>
+
+    <string name="checkmark_not_checked" translatable="false">( )</string>
+    <string name="checkmark_checked" translatable="false">(x)</string>
+
+    <!-- Braille description for an epty grid view. -->
+    <string name="type_emptygridview">Empty Grid</string>
+    <!-- Braille description for a grid view with some content. -->
+    <string name="type_gridview">Grid</string>
+    <!-- Braille description for an empty list view. -->
+    <string name="type_emptylistview">Empty List</string>
+    <!-- Braille description for a list view with some content. -->
+    <string name="type_listview">List</string>
+    <!-- Braille description for an empty scrollable view. -->
+    <string name="type_emptyscrollview">Empty Scrollable Content</string>
+    <!-- Braille description for a scrollable view with some content. -->
+    <string name="type_scrollview">Scrollable Content</string>
+    <!-- Braille description for an editable text.  Used when the edit box has no hint text or label. -->
+    <string name="type_edittext">Edit Box</string>
+    <!-- Braille description for an unlabeled image. -->
+    <string name="type_image">Image</string>
+    <!-- Braille description for an unlabeled button. -->
+    <string name="type_button">Button</string>
+    <!-- Braille description for a seek control. -->
+    <string name="type_seekbar">Seek Control</string>
+    <!-- Braille description for a quick contact badge. -->
+    <string name="type_quickcontact">Contact</string>
+
+    <!-- Title for the BrailleBack Preferences activity. -->
+    <string name="preferences_title">BrailleBack Preferences</string>
+    <!-- Label for the Device preferences category. Contains preferences specific to a user's Braille display. [CHAR_LIMIT=45] -->
+    <string name="pref_category_device_title">Device</string>
+    <!-- Label for the status preference. [CHAR_LIMIT=45] -->
+    <string name="pref_connection_status_title">Status</string>
+    <!-- Label for the Key Bindings preference. Displays an activity that shows the user key bindings for their device. [CHAR_LIMIT=45] -->
+    <string name="pref_key_bindings_title">Keyboard help</string>
+    <!-- Label for the Braille preferences category. Contains settings for braille translation. [CHAR_LIMIT=45] -->
+    <string name="pref_category_braille_title">Braille</string>
+    <!-- Label for the braille type preference. Let's the user switch between computer and literary braille. [CHAR_LIMIT=45] -->
+    <string name="pref_braille_type_title">Braille type</string>
+    <!-- Label for the 6 dot (literary braille) preference. Pops up the list of literary braille tables. [CHAR_LIMIT=45] -->
+    <string name="pref_six_dot_braille_table_title">Literary braille table</string>
+    <!-- Label for the 8 dot (computer braille) table preference. Pops up the list of computer braille tables. [CHAR_LIMIT=45] -->
+    <string name="pref_eight_dot_braille_table_title">Computer braille table</string>
+    <!-- Label for the braille word wrap preference. Switches between enabling and disabling word wrap. [CHAR_LIMIT=45] -->
+    <string name="pref_braille_word_wrap_title">Enable word wrapping</string>
+
+    <!-- Shown under the Status preference when no braille display is connected. -->
+    <string name="connstate_not_connected">Not connected</string>
+    <!-- Shown under the Status preference when a braille display is connected. -->
+    <string name="connstate_connected">Connected</string>
+    <!-- Shown under the Status preference when the braille display service is not available. -->
+    <string name="connstate_error">Not available</string>
+
+    <!-- Label for the six dot braille type. One of the possible values of the braille type preference. -->
+    <string name="pref_braille_type_six_dot_label">Literary braille</string>
+    <!-- Label for the eight dot braille type. One of the possible values of the braille type preference. -->
+    <string name="pref_braille_type_eight_dot_label">Computer braille</string>
+    <!-- Label for the braille table preference that set the translation table from the user's locale. Contains the name of the table used with the current locale. -->
+    <string name="pref_braille_table_default_label">Auto (<xliff:g id="table_name">%1$s</xliff:g>)</string>
+    <!-- Label for the braille table preference that set the table from the user's locale when there is no table available for the current locale.  For example, if a user locale only has a 6 dot table available, then setting the table to the default for 8 dot braille will show this value in the preference. -->
+    <string name="pref_braille_table_default_none_label">Auto (none)</string>
+
+    <!-- Label for the Miscellaneous category. Contains options not in the other main categories.. [CHAR_LIMIT=25] -->
+    <string name="pref_category_miscellaneous_title">Miscellaneous</string>
+    <!-- Label for the Developer options category. Contains settings for debugging and demos. [CHAR_LIMIT=25] -->
+    <string name="pref_category_developer_title">Developer options</string>
+    <!-- Label for the On-screen overlay category. Appears within developer options. [CHAR_LIMIT=30] -->
+    <string name="pref_category_braille_overlay_title">On-screen overlay</string>
+    <!-- Label for the on-screen overlay checkbox preference. [CHAR_LIMIT=45] -->
+    <string name="pref_braille_overlay_title">Show Braille output on screen</string>
+    <!-- Clicked to launch the tutorial for the on-screen braille overlay. Appears within "on-screen overlay" category. [CHAR_LIMIT=45] -->
+    <string name="pref_braille_overlay_tutorial_title">Launch tutorial</string>
+    <!-- Label and title for Open Source Licenses Notice page. [CHAR_LIMIT=40] -->
+    <string name="pref_os_license_title">Open Source Licenses</string>
+
+    <!-- Label for the developer "log output" level preference. [CHAR_LIMIT=45] -->
+    <string name="pref_log_level_label">Log output level</string>
+
+    <!-- Title for the Key Bindings activity, which shows the user key bindings for their device. [CHAR_LIMIT=35] -->
+    <string name="key_bindings_title">BrailleBack Keyboard help</string>
+
+    <!-- Shown on the display when connected to the device. This string has a short size limit to fit on small braille displays. It should not be capitalized, because that can take up extra space on the display. [CHAR_LIMIT=12]-->
+    <string name="display_connected">brlback on</string>
+    <!-- Shown on the braille display when brailleback is being destroyed. This string has a short size limit to fit on small braille displays. It should not be capitalized, because that can take up extra space on the display. [CHAR_LIMIT=12]-->
+    <string name="shutting_down">brlback off</string>
+
+    <!-- Label shown when the BrailleBack input method is active. -->
+    <string name="braille_keyboard_active">BrailleBack keyboard active</string>
+    <!-- Label for the button that switches from the BrailleBack input method to the system keyboard. -->
+    <string name="tap_to_switch_ime">Tap to switch to default keyboard</string>
+
+    <!-- Braille table display name template.
+    Used for a 6 dot braille table when there are more than one contraction grades available.
+    Contains the locale name and the contraction grade as an integer. -->
+    <string name="table_name_grade"><xliff:g id="locale_name">%1$s</xliff:g> - grade <xliff:g id="grade_number">%2$d</xliff:g></string>
+    <!-- Braille table display name template.
+    Used for braille table which has locale variant as string.
+    Variant is any arbitrary value used to indicate variation of a locale. -->
+    <string name="table_name_variant"><xliff:g id="locale_name">%1$s</xliff:g> (<xliff:g id="variant">%2$s</xliff:g>)</string>
+    <!-- Braille table display name template.
+    Used for braille table which has locale variant as string
+    and there are more than one contraction grades available.
+    Variant is any arbitrary value used to indicate variation of a locale. -->
+    <string name="table_name_variant_grade"><xliff:g id="locale_name">%1$s</xliff:g> (<xliff:g id="variant">%2$s</xliff:g>) - grade <xliff:g id="grade_number">%3$d</xliff:g></string>
+    <!-- Label of the "pan left" button in the overlay. [CHAR_LIMIT=20] -->
+    <string name="overlay_pan_left_button">Pan left</string>
+
+    <!-- Label of the "pan right" button in the overlay. [CHAR_LIMIT=20] -->
+    <string name="overlay_pan_right_button">Pan right</string>
+
+    <!-- Title of the Braille overlay tutorial. [CHAR_LIMIT=25] -->
+    <string name="overlay_tutorial_title">Overlay Tutorial</string>
+
+    <!-- Button label to leave the on-screen overlay tutorial. [CHAR_LIMIT=25] -->
+    <string name="overlay_tutorial_finish_button">Finish</string>
+
+    <!-- Overlay tutorial introduction text. -->
+    <string name="overlay_tutorial_introduction">
+        The braille overlay simulates a refreshable braille display. It
+        displays the braille cells, along with the corresponding text, that
+        would be presented on a hardware display. It is recommended that you
+        enable TalkBack and touch exploration mode before proceeding.
+    </string>
+
+    <!-- Button label to open accessibility settings from the on-screen overlay tutorial. [CHAR_LIMIT=25] -->
+    <string name="overlay_tutorial_accessibility_settings_button">Accessibility Settings</string>
+
+    <!-- Overlay tutorial text explaining panning. -->
+    <string name="overlay_tutorial_pan">
+        You can pan the braille display by pressing one of the panning buttons
+        next to the text.
+    </string>
+
+    <!-- Overlay tutorial text explaining routing keys. -->
+    <string name="overlay_tutorial_routing_keys">
+        Multiple elements may appear on the display at once. You can click
+        on one of them by tapping one of the braille cells in the text.
+        This corresponds to pressing one of the routing keys on a braille
+        display.
+    </string>
+
+    <!-- Overlay tutorial text explaining moving the overlay. -->
+    <string name="overlay_tutorial_moving">
+        If the overlay is covering another element on the screen, you can move
+        it out of the way. Long-press the overlay, and then drag it. It will
+        snap to the top or bottom of the screen when you release your finger.
+    </string>
+
+    <!-- Title of the dialog prompting the user to view a tutorial of the
+         on-screen overlay feature. [CHAR_LIMIT=30] -->
+    <string name="overlay_tutorial_dialog_title">Show Overlay Tutorial</string>
+
+    <!-- Message of the dialog prompting the user to view a tutorial of the
+         on-screen overlay feature. -->
+    <string name="overlay_tutorial_dialog_message">
+        We recommend that you view the tutorial for the on-screen overlay
+        before using it.
+    </string>
+
+    <!-- Prefix indicating displayed text is a search result.
+         Argument is search result. Should be as short as possible to
+         accommodate smaller displays. [CHAR_LIMIT=3]-->
+    <string name="search_result_prefix">S:</string>
+
+    <!-- Label for search dialog. Argument is search text. This is shown on
+         screen in a popup window. [CHAR_LIMIT=15]-->
+    <string name="search_dialog_label">
+        Search: <xliff:g id="search_query">%1$s</xliff:g></string>
+
+    <!-- Title in search tutorial. -->
+    <string name="search_tutorial_title">Search on Screen Tutorial</string>
+
+    <!-- Instructions in search tutorial. A general overview of the search
+         feature. Arguments will be command keys-->
+    <string name="search_tutorial_instructions_general">
+        Search on screen allows you to quickly jump to items on the screen by
+        typing part of their text description. As you type, focus will move to
+        the next matching item.
+    </string>
+
+    <!-- More specific instructions in search tutorial. Includes specific
+         key commands corresponding to the braille display. May not be shown
+         if there is not display connected -->
+    <string name="search_tutorial_instructions_specific">
+        Use <xliff:g id="next_key_command">%1$s</xliff:g> to move to the next
+        result and <xliff:g id="previous_key_command">%2$s</xliff:g> to move to
+        the previous result. Press
+        <xliff:g id="enter_key_command">%3$s</xliff:g> to exit the search mode
+        and keep focus on the result. Press
+        <xliff:g id="toggle_search_key_command">%4$s</xliff:g> to move back to
+        the previously focused item.
+    </string>
+
+    <!-- Label for checkbox in search tutorial. If checked will prevent the
+         tutorial from showing up again in the future. -->
+    <string name="search_tutorial_checkbox">Never show this again</string>
+
+    <!-- Text for the button closing the search tutorial. After closing
+         the tutorial, continues onto search mode.-->
+    <string name="search_tutorial_close_button">Continue</string>
+
+    <!-- Text for menu item for adding a custom label. -->
+    <string name="menu_item_label_add">Add custom label</string>
+    <!-- Text for menu item for editing a custom label. -->
+    <string name="menu_item_label_edit">Edit custom label</string>
+    <!-- Text for menu item for removing a custom label. -->
+    <string name="menu_item_label_remove">Remove custom label</string>
+    <!-- Text for menu item for telling user to update talkback to support labels. -->
+    <string name="menu_item_update_talkback">Custom labels not supported. Update talkback</string>
+
+</resources>

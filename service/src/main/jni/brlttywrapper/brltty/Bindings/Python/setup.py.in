@@ -1,0 +1,71 @@
+# @configure_input@
+###############################################################################
+# libbrlapi - A library providing access to braille terminals for applications.
+#
+# Copyright (C) 2005-2018 by
+#   Alexis Robert <alexissoft@free.fr>
+#   Samuel Thibault <Samuel.Thibault@ens-lyon.org>
+#
+# libbrlapi comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+from distutils.core import setup, Extension
+
+if __name__ == "__main__":
+    brlapi = Extension("brlapi",
+        language = "c",
+
+        sources = [
+            "brlapi.auto.c",
+            "@srcdir@/bindings.c"
+        ],
+
+        include_dirs = [
+            "@builddir@",
+            "@srcdir@",
+            "@top_builddir@/Programs",
+            "@top_srcdir@/Programs",
+            "@top_builddir@/",
+            "@top_srcdir@/"
+        ],
+
+        library_dirs = [
+            "./@top_builddir@/Programs"
+        ],
+
+        libraries = [
+            "brlapi",
+            "pthread"
+        ],
+
+        define_macros = [
+        ],
+
+        extra_compile_args = "@CYTHON_CFLAGS@".split()
+    )
+    
+    setup(
+        name = "Brlapi",
+        version = "@api_release@",
+        description = "BrlAPI Client Bindings for Python",
+
+        author = "Alexis Robert",
+        author_email = "alexissoft@free.fr",
+
+        maintainer = "The BRLTTY Developers",
+        maintainer_email = "@PACKAGE_BUGREPORT@",
+
+        license = "LGPL 2.1",
+        url = "@PACKAGE_URL@",
+
+        ext_modules = [brlapi]
+    )

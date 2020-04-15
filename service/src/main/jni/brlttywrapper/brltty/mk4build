@@ -1,0 +1,143 @@
+#!/bin/sh
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+. "`dirname "${0}"`/prologue.sh"
+set -e
+
+inputName="config"
+outputName="forbuild"
+
+headerExtension="h"
+logExtension="log"
+makeExtension="mk"
+sedExtension="sed"
+statusExtension="status"
+
+makeInput="${inputName}.${makeExtension}"
+makeOutput="${initialDirectory}/${outputName}.${makeExtension}"
+
+sourceRoot=""
+
+while getopts ":s:" option
+do
+   case "${option}"
+   in
+      s) sourceRoot="${OPTARG}";;
+      :) syntaxError "missing value: -${OPTARG}";;
+     \?) syntaxError "unknown option: -${OPTARG}";;
+      *) syntaxError "unimplemented option: -${option}";;
+   esac
+done
+shift `expr "${OPTIND}" - 1`
+
+[ "${#}" -eq 0 ] || syntaxError "too many parameters."
+
+[ -n "${sourceRoot}" ] || sourceRoot=`dirname "${0}"`
+[ -d "${sourceRoot}" ] || semanticError "source root not found: ${sourceRoot}"
+sourceRoot=`cd "${sourceRoot}" && pwd` || exit "${?}"
+
+getMakeProperty() {
+   grep "^ *${1} *=" "${makeInput}" | sed -e 's/^[^=]*= *//' -e 's/ *$//'
+}
+
+buildSystem=`getMakeProperty BUILD_SYSTEM`
+hostSystem=`getMakeProperty HOST_SYSTEM`
+
+objectExtension='$(O_FOR_BUILD)'
+
+if [ "${hostSystem}" != "${buildSystem}" ]
+then
+   objectExtension="build.${objectExtension}"
+
+   needTemporaryDirectory
+
+   for variable in CC CFLAGS CXX CXXFLAGS LDFLAGS LDLIBS
+   do
+      unset "${variable}"
+      variableForBuild="${variable}_FOR_BUILD"
+      eval test '"${'"${variableForBuild}"'+set}"' != "set" || eval "${variable}"'="${'"${variableForBuild}"'}"'
+   done
+
+   "${sourceRoot}/configure" \
+      --disable-api \
+      --disable-gpm \
+      --disable-iconv \
+      --disable-icu \
+      --disable-x \
+      \
+      --without-libbraille \
+      --with-braille-driver=-all \
+      \
+      --disable-speech-support \
+      --with-speech-driver=-all \
+      \
+      -with-screen-driver=-all \
+      \
+      --without-pgmpath-package \
+      --without-service-package \
+      --without-params-package \
+      --without-dynld-package \
+      --without-charset-package \
+      --without-hostcmd-package \
+      --without-mntpt-package \
+      --without-mntfs-package \
+      --without-kbd-package \
+      --without-beep-package \
+      --without-pcm-package \
+      --without-midi-package \
+      --without-fm-package \
+      --without-serial-package \
+      --without-usb-package \
+      --without-bluetooth-package \
+      --without-ports-package \
+      \
+      --quiet
+fi
+
+sedScript="${outputName}.${sedExtension}"
+sed -n -e '
+s/^ *\([A-Za-z][A-Za-z_]*\) *=.*$/\1/
+t found
+d
+:found
+h
+s/^\(.*\)$/s%^\\( *\\)\\(\1\\)\\( *=\\)%\\1\\2_FOR_BUILD\\3%/p
+g
+s/^\(.*\)$/s%\\(\\$(\\)\\(\1\\)\\([):]\\)%\\1\\2_FOR_BUILD\\3%g/p
+g
+s/^\(.\)$/s%\\$\\(\1\\)%$(\\1_FOR_BUILD)%g/p
+' <"${makeInput}" >"${sedScript}"
+
+echo "\$a\\
+B = ${objectExtension}
+" >>"${sedScript}"
+
+sed <"${makeInput}" >"${makeOutput}" -f "${sedScript}"
+rm "${sedScript}"
+
+for extension in "${headerExtension}" "${logExtension}" "${statusExtension}"
+do
+   inputFile="${inputName}.${extension}"
+
+   [ ! -f "${inputFile}" ] || {
+      cp "${inputFile}" "${initialDirectory}/${outputName}.${extension}"
+   }
+done
+
+exit 0

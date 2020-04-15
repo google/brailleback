@@ -1,0 +1,155 @@
+README for the Alva Braille Driver
+
+
+Supported Hardware
+==================
+
+This driver is intended to work with any Alva braille display from the ABT3 
+(3nn), Delphi (4nn), Satellite (5nn), and Braille Controller (6nn) series. It 
+recognizes the 320, 340, 34d, 380, 382, 38D, 420, 440, 44d, 480, 544, 544t, 
+570p, 584p, 620, 632, 640 and 680; other models can be easily added. The 
+serial, USB, and Bluetooth protocols are supported; the parallel port is not. 
+
+If you want any information about Alva products, you should look at this
+web site: http://www.optelec.com
+
+
+Key Bindings
+============
+
+All the key definitions are listed in the key bindings configuration files 
+(usually found in /etc/brltty/brl-al-*). Each file corresponds to an Alva 
+model. For more information on the functions listed, see the BRLTTY manual. 
+
+For a quick start, enter the help screen by:
+
+   3nn and 4nn models: press the PROG key.
+   5nn models: press the left outer key of the right satellite keypad.
+   6nn models: press both rear ETouch keys together.
+
+Enter interactive command learn mode by:
+
+   5nn models: press the right outer key of the right satellite keypad.
+   6nn models: press the  left rear and right front ETouch keys together.
+
+Some keys found on larger display models might not be bound to any functions
+at the moment. However, it is pretty easy to add new bindings. 
+
+
+Special Considerations for the BC6xx models
+===========================================
+
+The BC6xx models have an internal menu with many configuration options.
+Unfortunately the default value for a few options are suboptimal with BRLTTY
+and you might want to consider changing those settings for a better user
+experience.  To enter the local menu press SmartPad keys 2, 3 and Down
+simultaneously.  The SmartPad direction keys are then used to select a
+setting, the center key to allow changing a setting.
+
+Repeat Keys: This determines if the braille terminal should send repeated
+key events when a key is held down. BRLTTY can already manage key repetitions
+by itself in a better way and this setting prevents BRLTTY's support from
+working properly. Therefore you should change this setting to "off".
+
+2nd Cursor Routing row: This setting allows for simulating a second row of
+cursor routing keys as found on some earlier Alva models by holding down a
+cursor routing key during a short period. This causes problems with BRLTTY's
+multi-key bindings if keys are not pressed in a particular order. To mitigate
+the problem slightly, BRLTTY considers the first and second routing key rows
+as being the same on the BC6xx, those models actually having only one such
+row of keys anyway.  It is best to use BRLTTY's ability to bind functions
+on held-down keys instead if one wishes to preserve the additional
+possibilities this setting offers. Therefore you should change this setting
+to "off".
+
+
+Port Specification
+==================
+
+This driver supports serial, USB, and Bluetooth communication only. Some 
+parallel port communication for ABT models was previously supported, but
+since that support was based on a non-GPL compatible and binary only
+library, it has been removed. When/if someone can help with providing us
+with the proper protocol information, we'll be pleased to write an open
+source parallel port driver in conformance with BRLTTY's license.
+
+Brltty's default port is usb:. If you need to specify something else please 
+follow the suggestions below.
+
+There are a number of ways to specify the port on the PC to which the display 
+is connected. Here's a summary, although you should check BRLTTY's manual for 
+all of the details.
+
+The default protocol is USB. If you'd like your brltty executable to have its 
+own unique default port then use the --with-braille-device= option of the 
+configure script in BRLTTY's top-level directory at build-time. If you'd like 
+your system to have its own unique default port regardless of which brltty 
+executable is being used then use the braille-device directive of BRLTTY's 
+configuration file (usually "/etc/brltty.conf"). If you'd like to specify a 
+specific port when invoking brltty then use the -d (or --braille-device=) 
+command line option.
+
+For a serial port, specify "serial:/path/to/device". The "serial:" qualifier is 
+optional (for backward compatibility). If a relative path is given then it's 
+anchored at "/dev" (the usual place that devices are found on a Unix-based 
+system). The following device specifications all refer to the primary serial 
+port on Linux:
+
+   serial:/dev/ttyS0
+   serial:ttyS0
+   /dev/ttyS0
+   ttyS0
+
+For a USB port, specify "usb:". BRLTTY will search for the first USB device 
+which matches the braille display driver being used. If this is inadequate, 
+e.g. if you have more than one USB braille display which require the same 
+driver, then you can refine the device specification by appending the serial 
+number of the display to it, e.g. "usb:12345".
+
+
+Serial Port Communication
+=========================
+
+By default, the ABT communicates at 9600 BPS. Although higher baud rates 
+can be used, the communication becomes unreliable creating occasional errors
+in the displayed braille. Therefore the baud rate in the local menu of your
+ABT should remain set to 9600.
+
+With serial communication, the ABT serial port must be set to alva-mode (the 
+default); see the description of 'Local Mode' in the ABT manual. The ABT serial 
+port has the same connections as the standard 9-pin serial port of an IBM PC. 
+Therefore, a cable connecting the ABT with a PC must have the following wires:
+
+9 pin (ABT)        9 pin (PC)   or    25 pin (PC)
+
+1                  1                  8 (CD)
+2                  3                  2 (TD)
+3                  2                  3 (RD)
+4                  6                  6 (DSR)
+5                  5                  7 (GND)
+6                  4                  20 (DTR)
+7                  8                  5 (CTS)
+8                  7                  4 (RTS)
+9                  9                  22 (RI)
+
+This kind of cable is called a "null modem" (or "cross over") cable. All 
+connectors are female D connectors.
+
+NOTE: Problems using the serial port may occur in some circumstances if
+the parallel port is also connected. If BRLTTY seems to work but exhibits 
+strange behaviour, then trying disconnecting the parallel port cable
+may help.
+
+
+ABT3xx Firmware Version 
+=======================
+
+BRLTTY no longer supports ABT3xx firmware versions older than 010495.
+To get the firmware version, simply power up your ABT while not connected
+to a computer. The last digits that will appear on the braille display
+correspond to the firmware version. If the firmware is too old then it
+needs to be upgraded to at least version 010495.
+
+
+Nicolas Pitre <nico@fluxnic.net>
+January 14, 2014

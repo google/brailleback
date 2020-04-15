@@ -1,0 +1,57 @@
+.TH "XBRLAPI" "1" "2018-02-01" "BrlAPI 0.6.7" "BrlAPI User's Manual"
+.SH NAME
+xbrlapi \- X11 BrlAPI helper for Linux/Unix
+.SH SYNOPSIS
+\fBxbrlapi\fR [\fIoption\fR ...]
+.SH DESCRIPTION
+.B xbrlapi
+connects to a
+.B BrlAPI
+server in order to provide it with the ID of the
+.B X11
+window which currently has focus.
+It also simulates
+.B X
+keysyms from braille key presses (else brltty would simulate them using a qwerty
+keyboard).
+.SH OPTIONS
+Options are processed sequentially from left to right.
+If an option is specified more than once,
+or in case of a conflict,
+the rightmost specification takes precedence.
+.PP
+The following options are supported:
+.TP
+\fB-b\fR [\fIhost\fR][:\fIport\fR] (\fB--brlapi=\fR)
+The
+.B BrlAPI
+server to connect to.
+.TP
+\fB-a\fR \fIstring\fR (\fB--auth=\fR)
+The
+.B BrlAPI
+authorization/authentication string.
+.TP
+\fB-d\fR \fIdisplay\fR (\fB--display=\fR)
+The
+.B X
+display to connect to.
+If not specified, the content of the
+.B DISPLAY
+environment variable is used.
+.TP
+\fB-q\fR (\fB--quiet\fR)
+Do not write any text to the braille device.
+.TP
+\fB-h\fR (\fB--help\fR)
+Print a command line usage summary and then exit.
+.TP
+\fB-H\fR (\fB--full-help\fR)
+Print a thorough command line usage summary and then exit.
+.SH "SEE ALSO"
+For more details on the purpose of
+.BR xbrlapi ,
+see
+.BR BrlAPI 's
+on-line manual at
+.RB "[" "http://brltty.com/doc/Manual-BrlAPI/English/BrlAPI-3.html" "]."

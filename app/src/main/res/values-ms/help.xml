@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="help_commandDescriptions">
+    <item msgid="618606498966330378">"Sorot ke kanan"</item>
+    <item msgid="992384288929754258">"Sorot ke kiri"</item>
+    <item msgid="2311009411708911700">"Navigasi ke item seterusnya"</item>
+    <item msgid="4868322620432152139">"Navigasi ke item sebelumnya"</item>
+    <item msgid="713256521059720189">"Navigasi ke baris seterusnya"</item>
+    <item msgid="7111316948614107646">"Navigasi ke baris sebelumnya"</item>
+    <item msgid="1092717670413169154">"Tatal ke hadapan"</item>
+    <item msgid="2672802569950877806">"Tatal ke belakang"</item>
+    <item msgid="6858389246595464611">"Navigasi ke bahagian atas halaman"</item>
+    <item msgid="6077703163925348890">"Navigasi ke bahagian bawah halaman"</item>
+    <item msgid="880847480793051862">"Aktifkan item di bawah jari"</item>
+    <item msgid="2643484595828025643">"Tekan lama-lama item di bawah jari"</item>
+    <item msgid="2225564744515622940">"Aktifkan item semasa"</item>
+    <item msgid="2039335960797511513">"Tekan lama-lama item semasa"</item>
+    <item msgid="5703473744103522479">"Masukkan aksara braille"</item>
+    <item msgid="397805118186944475">"Aktifkan butang kembali"</item>
+    <item msgid="2057979808256674943">"Aktifkan butang laman utama"</item>
+    <item msgid="3851017077578326256">"Buka tetingkap pemberitahuan"</item>
+    <item msgid="7100928240716386910">"Buka tetingkap apl terkini"</item>
+    <item msgid="1288748126248312152">"Aktifkan kekunci enter apabila mengedit teks"</item>
+    <item msgid="6030744298808090187">"Padam ke belakang apabila mengedit teks"</item>
+    <item msgid="4072293104009433677">"Padam ke hadapan apabila mengedit teks"</item>
+    <item msgid="5307038145607249298">"Navigasi ke bahagian seterusnya dalam kandungan web"</item>
+    <item msgid="8804572703982019495">"Navigasi ke bahagian sebelumnya dalam kandungan web"</item>
+    <item msgid="5442875833766760122">"Navigasi ke pautan/kawalan/medan borang seterusnya dalam kandungan web"</item>
+    <item msgid="65542415754308243">"Navigasi ke pautan/kawalan/medan borang sebelumnya dalam kandungan web"</item>
+    <item msgid="8658175115960567526">"Navigasi ke senarai seterusnya dalam kandungan web"</item>
+    <item msgid="561134957068368670">"Navigasi ke senarai sebelumnya dalam kandungan web"</item>
+    <item msgid="4431278105955644176">"Togol mod cari pada skrin"</item>
+    <item msgid="1541653246718288681">"Togol menu pelabelan"</item>
+    <item msgid="3873494647942879428">"Togol gred braille"</item>
+    <item msgid="6558794813691083806">"Buka bantuan papan kekunci BrailleBack"</item>
+  </string-array>
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Tekan lama-lama <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Gunakan kekunci navigasi untuk menggerakkan fokus pada skrin. "\n"Gunakan kekunci braille untuk memasukkan teks ke dalam kotak pengeditan. "\n"Di bawah terdapat senarai penuh arahan kekunci yang disokong oleh peranti anda."</string>
+</resources>

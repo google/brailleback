@@ -1,0 +1,94 @@
+~~~~~~~~~~~~~~~
+BRLTTY with X11
+~~~~~~~~~~~~~~~
+
+.. include:: prologue.rst
+.. _Orca: https://help.gnome.org/users/orca/stable/
+
+BRLTTY provides some support for the X11 graphical environment.
+
+Braille Input
+=============
+
+From the Braille Device
+-----------------------
+
+Some braille devices have an integrated braille keyboard. BRLTTY alone can't
+properly simulate keypresses for the X11 server because it doesn't know which
+keyboard layout the latter is using.  In order to achieve proper keyboard
+simulation, ``xbrlapi`` should be started in the background during ``X``
+session startup.
+
+By default, ``xbrlapi`` also writes the title of the current window to the
+braille device. To avoid this (since it could interfere with output from screen
+readers like `Orca`_), give the ``-q`` (quiet) option to ``xbrlapi``.
+
+From the PC Keyboard
+--------------------
+
+The PC keyboard can be used, when in X11, as a braille keyboard. This
+capability can be enabled by using the ``brai`` layout. For example::
+
+   setxkbmap -layout "us,brai" -option "grp:shift_caps_toggle,grp_led:scroll"
+
+enables both the ``US`` and the ``braille`` keyboard layouts in two different
+XKB groups), and Shift+CapsLock will switch between them. The scroll LED will
+be lit while in ``braille`` mode so that sighted users will be alerted as to
+why they may be getting unexpected output if they switch groups by accident.
+Other shortcuts and LEDs can also be used (see the XKB documentation).
+
+The default keyboard mapping for braille dots is::
+
+   f j
+   d k
+   s l
+   a ;
+
+but other layouts are also available (see the variants in XKB).
+
+Applications then need to be "told" to use the standard X11 Input Module. This
+can be done by setting::
+
+   export GTK_IM_MODULE=xim
+   export QT_IM_MODULE=xim
+   export XMODIFIERS=@im=xim
+
+This is, however, not enough for recent gnome desktops, which also need to
+run::
+
+   gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+
+The ``setxkbmap`` command (above) only enables the ``braille`` layout for the
+current session. For persistent configuration, the two groups must be
+configured properly in the system. On Debian, for example, this can be achieved
+by setting the following in ``/etc/default/keyboard``::
+
+   XKBLAYOUT="us,brai"
+   XKBOPTIONS="grp:shift_caps_toggle,grp_led:scroll"
+
+By default, the result is Unicode braille patterns because X11 doesn't know
+which braille table it should be using. To tell X11 the conversion that should
+be performed, use the ``brltty-ttb`` tool to convert your BRLTTY text table
+into an XCompose table. For example::
+
+   brltty-ttb -i ttb -o XCompose en_US /tmp/my.XCompose
+
+The ``XCompose`` table can then be enabled by::
+
+   cat /tmp/my.XCompose >> ~/.XCompose
+
+Reading the Screen
+==================
+
+BRLTTY isn't meant to be able to read a whole graphical environment as it
+doesn't have the notion of menus, buttons, etc. The `Orca`_ screen reader
+should be used instead. BRLTTY, however, has a driver that can at least review
+the textual elements (edit boxes, terminals). This is particularly useful for
+reading terminals since that's what BRLTTY is good at. This can be achieved by
+running a second BRLTTY during X11 session startup::
+
+   brltty -b ba -x as
+
+This second BRLTTY connects to the first one via BrlAPI (thanks to the ``ba``
+braille driver), and reads the screen via AtSpi (thanks to the ``as`` screen
+driver). An ``a2`` screen driver is also provided for AtSpi2 support.

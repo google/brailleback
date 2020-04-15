@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- no translation found for help_commandDescriptions:8 (6858389246595464611) -->
+    <!-- no translation found for help_commandDescriptions:9 (6077703163925348890) -->
+    <!-- no translation found for help_commandDescriptions:10 (880847480793051862) -->
+    <!-- no translation found for help_commandDescriptions:11 (2643484595828025643) -->
+    <!-- no translation found for help_commandDescriptions:12 (2225564744515622940) -->
+    <!-- no translation found for help_commandDescriptions:13 (2039335960797511513) -->
+    <!-- no translation found for help_commandDescriptions:14 (5703473744103522479) -->
+    <!-- no translation found for help_commandDescriptions:15 (397805118186944475) -->
+    <!-- no translation found for help_commandDescriptions:16 (2057979808256674943) -->
+    <!-- no translation found for help_commandDescriptions:17 (3851017077578326256) -->
+    <!-- no translation found for help_commandDescriptions:18 (7100928240716386910) -->
+    <!-- no translation found for help_commandDescriptions:19 (1288748126248312152) -->
+    <!-- no translation found for help_commandDescriptions:20 (6030744298808090187) -->
+    <!-- no translation found for help_commandDescriptions:21 (4072293104009433677) -->
+    <!-- no translation found for help_commandDescriptions:22 (5307038145607249298) -->
+    <!-- no translation found for help_commandDescriptions:23 (8804572703982019495) -->
+    <!-- no translation found for help_commandDescriptions:24 (5442875833766760122) -->
+    <!-- no translation found for help_commandDescriptions:25 (65542415754308243) -->
+    <!-- no translation found for help_commandDescriptions:26 (8658175115960567526) -->
+    <!-- no translation found for help_commandDescriptions:27 (561134957068368670) -->
+    <!-- no translation found for help_commandDescriptions:28 (4431278105955644176) -->
+    <!-- no translation found for help_commandDescriptions:29 (1541653246718288681) -->
+    <!-- no translation found for help_commandDescriptions:30 (3873494647942879428) -->
+    <!-- no translation found for help_commandDescriptions:31 (6558794813691083806) -->
+    <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
+    <string name="help_longPressTemplate" msgid="5028857601567358274">"Доўгі націск <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Выкарыстоўваць кнопкі навігацыі для перамяшчэння фокусу на экране."\n"Выкарыстоўваць клавішы шрыфту Брайля, каб увесці тэкст у поле ўводу."\n"Ніжэй прыведзены поўны спіс каманд клавіш, якія падтрымлівае ваша прылада."</string>
+</resources>

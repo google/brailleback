@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"‏وقتی BrailleBack فعال است، دستگاه شما به یک نمایشگر بریل بلوتوث مرتبط شده وصل می‌شود و محتوای صفحه را به خط بریل نشان می‌دهد. از کلیدهای روی نمایشگر بریل می‌توان برای پیمایش در صفحه، فعال کردن موارد و وارد کردن نوشتار استفاده کرد. برای کسب اطلاعات بیشتر، کلید فاصله و نقاط ۱، ۲ و ۳ (حرف ال کوچک لاتین به خط بریل) را روی نمایشگر متصل فشار دهید."</string>
+    <string name="service_summary" msgid="8016336378969476112">"ارائه خروجی بریل"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"صفحه‌کلید سخت‌افزاری بریل"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"برنامه نصب صفحه‌کلید سخت‌افزار خط بریل"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"فعال کردن صفحه‌کلید سخت‌افزاری خط بریل"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"برای استفاده از صفحه‌کلید سخت‌افزاری خط بریل، باید آن را در تنظیمات روش ورودی فعال کنید و سپس آن را به عنوان روش ورودی پیش‌فرض تنظیم نمایید."</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"رد شدن"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"باز کردن تنظیمات روش ورودی"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"تنظیم روش ورودی پیش‌فرض"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"برای استفاده از صفحه‌کلید سخت‌افزاری خط بریل، باید آن را به عنوان روش ورودی پیش‌فرض تنظیم کنید."</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"باز کردن انتخابگر روش ورودی"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"اتصال به یک نمایشگر خط بریل"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"به برنامه اجازه می‌دهد با استفاده از نمایشگر خط بریل خروجی را نوشته و ورودی صفحه‌کلید خط بریل را بخواند"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"جدول خالی"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"جدولی"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"فهرست خالی"</string>
+    <string name="type_listview" msgid="195039477703126884">"فهرست"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"محتوای قابل پیمایش خالی"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"محتوای قابل پیمایش"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"کادر ویرایش"</string>
+    <string name="type_image" msgid="3688576211222019626">"تصویر"</string>
+    <string name="type_button" msgid="3639574187835564558">"دکمه"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"کنترل جستجو"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"تماس"</string>
+    <string name="preferences_title" msgid="368535298674637475">"‏تنظیمات برگزیده BrailleBack"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"دستگاه"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"وضعیت"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"راهنمای صفحه‌کلید"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"خط بریل"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"نوع بریل"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"جدول بریل نوشتاری"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"جدول بریل رایانه‌ای"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"فعال کردن شکست خط"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"وصل نیست"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"متصل"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"در دسترس نیست"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"بریل نوشتاری"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"بریل رایانه‌ای"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"خودکار (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"خودکار (هیچ)"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"متفرقه"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"گزینه‌های برنامه‌نویس"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"هم‌پوشانی روی صفحه"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"نمایش خروجی بریل روی صفحه"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"راه‌اندازی آموزش گام به گام"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"مجوزهای منبع آزاد"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"ثبت سطح خروجی"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"‏‫راهنمای صفحه‌کلید BrailleBack"</string>
+    <string name="display_connected" msgid="2008600513914815101">"‏brlback روشن"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"‏brlbackخاموش"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"‏صفحه‌کلید BrailleBack فعال"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"برای تغییر به صفحه‌کلید پیش‌فرض ضربه بزنید"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - درجه <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - کلاس <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"حرکت به چپ"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"حرکت به راست"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"آموزش گام به گام هم‌پوشانی"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"پایان"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"‏‫هم‌پوشانی بریل یک نمایشگر بریل قابل بازخوانی را شبیه‌سازی می‌کند. این هم‌پوشانی سلول‌های بریل را به همراه نوشتار مربوطه نمایش می‌دهد که در یک نمایشگر سخت‌افزار نمایش داده خواهد شد. توصیه می‌شود قبل از اینکه ادامه بدهید، TalkBack و حالت کاوش لمسی را فعال کنید."</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"تنظیمات دسترس‌پذیری"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"می‌توانید با فشار دادن یکی از دکمه‌های حرکت واقع در کنار نوشتار، نمایشگر بریل را حرکت دهید."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"ممکن است چند چیز به صورت هم‌زمان در نمایشگر نمایش داده شود. می‌توانید با ضربه روی یکی از سلول‌های بریل در نوشتار، روی یکی از آنها کلیک کنید. این عمل مانند فشار دادن یکی از کلیدهای مسیریابی در یک نمایشگر بریل است."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"اگر هم‌پوشانی چیز دیگری را در صفحه می‌پوشاند، می‌توانید آن را کنار بزنید. هم‌پوشانی را کمی بیشتر فشار دهید و سپس آن را بکشید. وقتی انگشت خود را رها می‌کنید هم‌پوشانی فوراً به بالا یا پایین صفحه می‌رود."</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"مشاهده آموزش هم‌پوشانی"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"توصیه می‌کنیم قبل از استفاده از هم‌پوشانی، آموزش گام به گام را برای هم‌پوشانی روی صفحه مشاهده کنید."</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"ج:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"جستجو: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"آموزش گام به گام جستجو در صفحه"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"جستجو در صفحه به شما امکان می‌دهد با تایپ کردن بخشی از نوشتار توضیح موارد روی صفحه به سرعت به آنها بروید. همان‌طور که تایپ می‌کنید، فوکوس به مورد منطبق بعدی منتقل خواهد شد."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"از <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> برای حرکت به نتیجه بعدی و از <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> برای حرکت به نتیجه قبلی استفاده کنید. برای خارج شدن از حالت جستجو و نگه داشتن فوکوس بر نتیجه، <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> را فشار دهید. برای بازگشت به مورد فوکوس شده قبلی <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> را فشار دهید."</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"هرگز دوباره نشان داده نشود"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"ادامه"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"افزودن برچسب سفارشی"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"ویرایش برچسب سفارشی"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"حذف برچسب سفارشی"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"‏برچسب‌های سفارشی پشتیبانی نمی‌شوند. talkback به‌روزرسانی شود"</string>
+</resources>

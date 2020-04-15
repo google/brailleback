@@ -1,0 +1,101 @@
+{
+  "buildFiles": [
+    "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk"
+  ],
+  "cleanCommands": [
+    "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib clean"
+  ],
+  "buildTargetsCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "breu-debug-armeabi-v7a": {
+      "artifactName": "breu",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbreu.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbreu.a"
+    },
+    "bral-debug-armeabi-v7a": {
+      "artifactName": "bral",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbral.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbral.a"
+    },
+    "brht-debug-armeabi-v7a": {
+      "artifactName": "brht",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrht.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrht.a"
+    },
+    "brltty-debug-armeabi-v7a": {
+      "artifactName": "brltty",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrltty.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrltty.a"
+    },
+    "louiswrap-debug-armeabi-v7a": {
+      "artifactName": "louiswrap",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/liblouiswrap.so",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/liblouiswrap.so"
+    },
+    "louis-debug-armeabi-v7a": {
+      "artifactName": "louis",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/liblouis.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/liblouis.a"
+    },
+    "brhw-debug-armeabi-v7a": {
+      "artifactName": "brhw",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrhw.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrhw.a"
+    },
+    "brlttywrap-debug-armeabi-v7a": {
+      "artifactName": "brlttywrap",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrlttywrap.so",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrlttywrap.so"
+    },
+    "brsk-debug-armeabi-v7a": {
+      "artifactName": "brsk",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrsk.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrsk.a"
+    },
+    "brfs-debug-armeabi-v7a": {
+      "artifactName": "brfs",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrfs.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrfs.a"
+    },
+    "brpm-debug-armeabi-v7a": {
+      "artifactName": "brpm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrpm.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrpm.a"
+    },
+    "brbm-debug-armeabi-v7a": {
+      "artifactName": "brbm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrbm.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrbm.a"
+    },
+    "brvo-debug-armeabi-v7a": {
+      "artifactName": "brvo",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrvo.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrvo.a"
+    },
+    "brhm-debug-armeabi-v7a": {
+      "artifactName": "brhm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrhm.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrhm.a"
+    },
+    "brltty-android-debug-armeabi-v7a": {
+      "artifactName": "brltty-android",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/src/main/jni/Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/lib /google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrltty-android.a",
+      "abi": "armeabi-v7a",
+      "output": "/google/src/cloud/jacquelinehu/braille_braille/google3/research/android/marvin/braille/brailleback/brailleback/service/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libbrltty-android.a"
+    }
+  }
+}

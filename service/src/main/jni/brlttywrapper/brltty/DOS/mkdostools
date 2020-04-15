@@ -1,0 +1,532 @@
+#!/bin/bash -p
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+set -e
+umask 022
+shopt -s nullglob
+
+readonly autoconfOldVersion=2.13
+readonly autoconfNewVersion=2.59
+readonly automakeVersion=1.9.6
+readonly crxVersion=2.04
+
+readonly defaultArchivesSubdirectory="Archives"
+readonly defaultBuildSubdirectory="Build"
+readonly defaultInstallSubdirectory="Tools"
+readonly defaultTargetSystem="i586-pc-msdosdjgpp"
+
+function setVariable {
+   local variable="${1}"
+   local value="${2}"
+
+   eval "${variable}"'="${value}"'
+}
+
+function setArrayElement {
+   local array="${1}"
+   local index="${2}"
+   local value="${3}"
+
+   setVariable "${array}[${index}]" "${value}"
+}
+
+function defineEnumeration {
+   local array="${1}"
+   shift 1
+
+   declare -g -i -A "${array}"
+   local value=0
+
+   while [ "${#}" -gt 0 ]
+   do
+      setArrayElement "${array}" "${1}" $((value++))
+      shift 1
+   done
+
+   readonly "${array}"
+}
+
+readonly programName="${0##*/}"
+readonly programDirectory="$(realpath "$(dirname "${0}")")"
+
+function programMessage {
+   local message="${1}"
+
+   echo >&2 "${programName}: ${message}"
+}
+
+defineEnumeration logLevels error warning task step detail
+declare -i logLevel="${logLevels[task]}"
+
+function logMore {
+   ((logLevel += 1)) || :
+}
+
+function logLess {
+   ((logLevel -= 1)) || :
+}
+
+function logMessage {
+   local level="${1}"
+   local message="${2}"
+
+   local value="${logLevels[$level]}"
+
+   [ -n "${value}" ] || {
+      logMessage warning "undefined log level: ${level}"
+      value=0
+   }
+
+   [ "${value}" -gt "${logLevel}" ] || programMessage "${message}"
+}
+
+function syntaxError {
+   local message="${1}"
+
+   logMessage error "${message}"
+   exit 2
+}
+
+function semanticError {
+   local message="${1}"
+
+   logMessage error "${message}"
+   exit 3
+}
+
+function externalError {
+   local message="${1}"
+
+   logMessage error "${message}"
+   exit 4
+}
+
+function showUsage {
+   cat <<-END-OF-USAGE
+	usage: ${programName} [-option ...]
+	-h            display a usage summary (this text), and then exit
+	-q            decrease output verbosity (may be specified more than once)
+	-v            increase output verbosity (may be specified more than once)
+	-d directory  specify the ROOT directory (default is the current directory)
+	-a directory  specify the archives directory (default is ROOT/${defaultArchivesSubdirectory})
+	-b directory  specify the build directory (default is ROOT/${defaultBuildSubdirectory})
+	-i directory  specify the install directory (default is ROOT/${defaultInstallSubdirectory})
+	-t system     specify the target system (default is ${defaultTargetSystem})
+	-g version    the gcc version to build (defaults if only one is archived)
+	END-OF-USAGE
+
+   exit 0
+}
+
+function handleDirectoryOption {
+   local variable="${1}"
+   local default="${2}"
+   local name="${3}"
+
+   [ -n "${!variable}" ] || setVariable "${variable}" "${default}"
+   setVariable "${variable}" "$(realpath "${!variable}")"
+   readonly "${variable}"
+
+   [ -z "${name}" ] || logMessage detail "${name} directory: ${!variable}"
+}
+
+function logArrayElements {
+   local array="${1}"
+   local name="${2}"
+
+   message="${name} properties:"
+
+   eval local 'indeces="${!'"${array}"'[*]}"'
+   local index
+
+   for index in ${indeces}
+   do
+      local variable="${array}[${index}]"
+      message+=" ${index}=${!variable}"
+   done
+
+   logMessage detail "${message}"
+}
+
+function findHostCommand {
+   local variable="${1}"
+   shift 1
+
+   local command
+   for command
+   do
+      local path="$(type -p "${command}")"
+
+      [ -z "${path}" ] || {
+         setVariable "${variable}" "${path}"
+         export "${variable}"
+         logMessage detail "host command location: ${variable} -> ${!variable}"
+         return 0
+      }
+   done
+
+   semanticError "host command not found: ${variable} (${*})"
+}
+
+function pathChange {
+   local newPath="${1}"
+
+   export PATH="${newPath}"
+   logMessage detail "host command search path: ${PATH}"
+}
+
+function pathPrepend {
+   local directory="${1}"
+
+   pathChange "${directory}:${PATH}"
+}
+
+function makeDirectory {
+   local path="${1}"
+
+   mkdir -p "${path}"
+}
+
+function emptyDirectory {
+   local path="${1}"
+
+   rm -f -r "${path}/"*
+}
+
+function initializeDirectory {
+   local path="${1}"
+
+   makeDirectory "${path}"
+   emptyDirectory "${path}"
+}
+
+function verifyArchive {
+   local array="${1}"
+   local type="${2}"
+   local prefix="${3}"
+   local suffix="${4}"
+   local version="${5}"
+
+   declare -g -A "${array}"
+   setArrayElement "${array}" type "${type}"
+   setArrayElement "${array}" prefix "${prefix}"
+   setArrayElement "${array}" suffix "${suffix}"
+
+   local name="${prefix%-}"
+   setArrayElement "${array}" name "${name}"
+
+   local originalDirectory="${PWD}"
+   cd "${archivesDirectory}"
+   if [ -n "${version}" ]
+   then
+      local file="${prefix}${version}${suffix}"
+      [ -f "${file}" ] || semanticError "${type} archive not found: ${file}"
+   else
+      local files=("${prefix}"*"${suffix}")
+      local count="${#files[*]}"
+      ((count > 0)) || semanticError "${type} archive not found: ${name}"
+      ((count == 1)) || semanticError "${type} package with multiple archives: ${files[*]}"
+
+      local file="${files[0]}"
+      version="${file%${suffix}}"
+      version="${version:${#prefix}}"
+   fi
+   cd "${originalDirectory}"
+
+   [[ "${version}" =~ ^[0-9]{3}$ ]] && version="${version:0:1}.${version:1}"
+   setArrayElement "${array}" version "${version}" 
+
+   setArrayElement "${array}" file "${file}"
+   setArrayElement "${array}" path "${archivesDirectory}/${file}"
+
+   local source="${name}-${version}"
+   setArrayElement "${array}" source "${source}"
+
+   readonly "${array}"
+   logArrayElements "${array}" "archive"
+}
+
+function gnuVerifyArchive {
+   local array="${1}"
+   local name="${2}"
+   local version="${3}"
+
+   verifyArchive "${array}" Gnu "${name}-" ".tar.gz" "${version}"
+}
+
+function djgppVerifyArchive {
+   local array="${1}"
+   local name="${2}"
+   local type="${3}"
+   local version="${4}"
+
+   verifyArchive "${array}" DJGPP "${name}" "${type}.zip" "${version//./}"
+}
+
+function logPackageTask {
+   local array="${1}"
+   local task="${2}"
+
+   local nameVariable="${array}[name]"
+   local versionVariable="${array}[version]"
+   logMessage task "${task}: ${!nameVariable}-${!versionVariable}"
+}
+
+function unpackArchive {
+   local array="${1}"
+
+   local typeVariable="${array}[type]"
+   local pathVariable="${array}[path]"
+
+   logPackageTask "${array}" "unpacking ${!typeVariable} archive"
+   "unpackArchive_${!typeVariable}" "${!pathVariable}"
+}
+
+function unpackArchive_Gnu {
+   local path="${1}"
+
+   tar xfz "${path}"
+}
+
+function unpackArchive_DJGPP {
+   local path="${1}"
+
+   unzip -q -a "${path}"
+}
+
+function changeScriptVariable {
+   local script="${1}"
+   local variable="${2}"
+   local value="${3}"
+
+   sed -e "/^ *${variable} *=/s%=.*%='${value}'%" -i "${script}"
+}
+
+function logBuildDirectory {
+   logMessage step "build directory: ${PWD}"
+}
+
+function runBuildCommand {
+   local logFile="${1}"
+   shift 1
+
+   logMessage step "build command: ${*}"
+   "${@}" >&"${logFile}" || externalError "build error: for details, see ${PWD}/${logFile}"
+}
+
+function configurePackage {
+   local source="${1}"
+   shift 1
+
+   runBuildCommand configure.log "${source}/configure" "${@}"
+}
+
+function makePackage {
+   runBuildCommand make.log make "${@}"
+}
+
+function installPackage {
+   runBuildCommand install.log make install "${@}"
+}
+
+function buildHostPackage {
+   local array="${1}"
+   shift 1
+
+   logPackageTask "${array}" "building host package"
+
+   local sourceVariable="${array}[source]"
+   local build="${!sourceVariable}-host"
+   local prefix="$(realpath "${!sourceVariable}-install")"
+
+   makeDirectory "${build}"
+   cd "${build}"
+   logBuildDirectory
+   configurePackage "../${!sourceVariable}" --prefix="${prefix}"
+   makePackage
+   installPackage
+   cd ..
+
+   local bin="${prefix}/bin"
+   pathPrepend "${bin}"
+
+   while [ "${#}" -gt 0 ]
+   do
+      local command="${1}"
+      local variable="${2}"
+      shift 2
+
+      changeScriptVariable "${gccUnpackScript}" "${variable}" "${bin}/${command}"
+   done
+}
+
+function buildHostArchive {
+   local array="${1}"
+   shift 1
+
+   unpackArchive "${array}"
+   buildHostPackage "${array}" "${@}"
+}
+
+function buildHostAutoconf {
+   local array="${1}"
+   local autoconfVariable="${2}"
+   local autoheaderVariable="${3}"
+
+   buildHostArchive "${array}" autoconf "${autoconfVariable}" autoheader "${autoheaderVariable}"
+}
+
+function configureTargetPackage {
+   local array="${1}"
+   shift 1
+
+   local sourceVariable="${array}[source]"
+   configurePackage "../${!sourceVariable}" \
+      "--prefix=${installDirectory}" \
+      "--target=${targetSystem}" \
+      "${@}"
+}
+
+function buildTargetPackage {
+   local array="${1}"
+   shift 1
+
+   logPackageTask "${array}" "building target package"
+
+   cd gnu
+   local sourceVariable="${array}[source]"
+   local build="${!sourceVariable}-target"
+   makeDirectory "${build}"
+   cd "${build}"
+   logBuildDirectory
+   configureTargetPackage "${array}" "${@}"
+   makePackage
+   installPackage
+   cd ../..
+}
+
+rootDirectory=""
+archivesDirectory=""
+buildDirectory=""
+installDirectory=""
+
+targetSystem=""
+gccVersion=""
+
+while getopts ":hqvd:a:b:i:t:g:" option
+do
+   case "${option}"
+   in
+      h) showUsage;;
+
+      q) logLess;;
+      v) logMore;;
+
+      d) rootDirectory="${OPTARG}";;
+      a) archivesDirectory="${OPTARG}";;
+      b) buildDirectory="${OPTARG}";;
+      i) installDirectory="${OPTARG}";;
+
+      t) targetSystem="${OPTARG}";;
+      g) gccVersion="${OPTARG}";;
+
+      :) syntaxError "missing ooperand: -${OPTARG}";;
+     \?) syntaxError "unknown option: -${OPTARG}";;
+      *) syntaxError "unimplemented option: -${option}";;
+   esac
+done
+
+shift $((OPTIND - 1))
+[ "${#}" -eq 0 ] || syntaxError "too many parameters"
+
+handleDirectoryOption rootDirectory "${PWD}" "root"
+handleDirectoryOption archivesDirectory "${rootDirectory}/${defaultArchivesSubdirectory}" "archives"
+handleDirectoryOption buildDirectory "${rootDirectory}/${defaultBuildSubdirectory}" "build"
+handleDirectoryOption installDirectory "${rootDirectory}/${defaultInstallSubdirectory}" "install"
+
+[ -n "${targetSystem}" ] || targetSystem="${defaultTargetSystem}"
+readonly targetSystem
+
+pathChange "$(getconf PATH)"
+unset MAKEFLAGS
+
+logMessage task "finding host commands"
+findHostCommand CC cc gcc
+findHostCommand CXX c++ g++ cxx gxx
+findHostCommand LIBTOOL libtool
+
+logMessage task "verifying archives"
+gnuVerifyArchive gnuAutoconfOld autoconf "${autoconfOldVersion}"
+gnuVerifyArchive gnuAutoconfNew autoconf "${autoconfNewVersion}"
+gnuVerifyArchive gnuAutomake automake "${automakeVersion}"
+gnuVerifyArchive gnuBinutils binutils
+gnuVerifyArchive gnuGcc gcc "${gccVersion}"
+djgppVerifyArchive djgppGcc gcc s2 "${gnuGcc[version]}"
+djgppVerifyArchive djgppCrx djcrx "" "${crxVersion}"
+
+logMessage task "preparing build directory"
+initializeDirectory "${buildDirectory}"
+cd "${buildDirectory}"
+
+unpackArchive djgppCrx
+unpackArchive djgppGcc
+
+gccUnpackScript="unpack-gcc.sh"
+buildHostAutoconf gnuAutoconfOld AUTOCONF_OLD AUTOHEADER_OLD
+buildHostAutoconf gnuAutoconfNew AUTOCONF AUTOHEADER
+buildHostArchive gnuAutomake
+
+logMessage task "patching gcc source"
+logBuildDirectory
+chmod u=rwx,go=r "${gccUnpackScript}"
+runBuildCommand unpack-gcc.log "./${gccUnpackScript}" "$(realpath --relative-to=. "${gnuGcc["path"]}")"
+
+cd gnu
+unpackArchive gnuBinutils
+cd ..
+
+logMessage task "preparing install directory"
+initializeDirectory "${installDirectory}"
+pathPrepend "$${installDirectory}/bin"
+readonly targetDirectory="${installDirectory}/${targetSystem}"
+makeDirectory "${targetDirectory}"
+makeDirectory "${targetDirectory}/bin"
+cp -r lib "${targetDirectory}"
+cp -r include "${targetDirectory}"
+
+logMessage task "building stubify"
+cd src/stub
+logBuildDirectory
+runBuildCommand compile.log "${CC}" -O2 stubify.c -o "${targetDirectory}/bin/stubify"
+cd ../..
+
+buildTargetPackage gnuBinutils
+buildTargetPackage djgppGcc --with-headers="${targetDirectory}/include"
+
+logMessage task "creating symbolic links"
+cd "${targetDirectory}/lib"
+ln -s libstdc++.a libstdcxx.a
+ln -s libsupc++.a libsupcxx.a
+
+logMessage task "cleaning up"
+cd /
+emptyDirectory "${buildDirectory}"
+
+logMessage task "done"
+exit 0

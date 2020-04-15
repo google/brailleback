@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="service_description" msgid="3837907778560523486">"BrailleBackが有効になると、端末がペア設定先のBluetooth点字ディスプレイに接続して、画面の内容が点字で表示されます。これで、点字ディスプレイ上のキーを使用して、画面を操作したり、項目を有効にしたり、テキストを入力したりできるようになります。詳しくは、接続状態でディスプレイ上のSpaceキーとドット1、2、3（点字では文字「l」）を押してください。"</string>
+    <string name="service_summary" msgid="8016336378969476112">"点字出力を表示"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"点字ハードウェアキーボード"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"点字ハードウェアキーボードウィザード"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"点字ハードウェアキーボードを有効にする"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"点字ハードウェアキーボードを使用するには、入力方法の設定で有効にしてから、デフォルトの入力方法として設定する必要があります。"</string>
+    <string name="ime_setup_skip" msgid="4399160517982183408">"スキップ"</string>
+    <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"入力方法の設定を開く"</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"デフォルトの入力方法を設定する"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"点字ハードウェアキーボードを使用するには、デフォルトの入力方法として設定する必要があります。"</string>
+    <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"入力方法の選択ツールを開く"</string>
+    <string name="permlab_displayConnect" msgid="2251586694368462088">"点字ディスプレイに接続する"</string>
+    <string name="permdesc_displayConnect" msgid="3519598574125084994">"アプリが点字ディスプレイとの間で出力の書き込みや入力の読み取りを行うことを許可する"</string>
+    <string name="type_emptygridview" msgid="4226780230155385397">"空のグリッド"</string>
+    <string name="type_gridview" msgid="8453985146958342779">"グリッド"</string>
+    <string name="type_emptylistview" msgid="4497688410987085349">"空のリスト"</string>
+    <string name="type_listview" msgid="195039477703126884">"リスト"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"空のスクロール可能コンテンツ"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"スクロール可能コンテンツ"</string>
+    <string name="type_edittext" msgid="4305739343129651595">"編集ボックス"</string>
+    <string name="type_image" msgid="3688576211222019626">"画像"</string>
+    <string name="type_button" msgid="3639574187835564558">"ボタン"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"シーク制御"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"連絡先"</string>
+    <string name="preferences_title" msgid="368535298674637475">"BrailleBackの設定"</string>
+    <string name="pref_category_device_title" msgid="8644919099122845217">"端末"</string>
+    <string name="pref_connection_status_title" msgid="8350285056432214602">"ステータス"</string>
+    <string name="pref_key_bindings_title" msgid="1228004448435300774">"キーボードヘルプ"</string>
+    <string name="pref_category_braille_title" msgid="2900211401917503360">"点字"</string>
+    <string name="pref_braille_type_title" msgid="830832481671746224">"点字の種類"</string>
+    <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"点字（文字）表"</string>
+    <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"点字（コンピュータ）表"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"ワードラップを有効にする"</string>
+    <string name="connstate_not_connected" msgid="3876972842771373901">"未接続"</string>
+    <string name="connstate_connected" msgid="7552950461156525524">"接続"</string>
+    <string name="connstate_error" msgid="8717968034812924474">"利用不可"</string>
+    <string name="pref_braille_type_six_dot_label" msgid="1083263483756364123">"点字（文字）"</string>
+    <string name="pref_braille_type_eight_dot_label" msgid="5837018272969076058">"点字（コンピュータ）"</string>
+    <string name="pref_braille_table_default_label" msgid="1462752739972207613">"自動（<xliff:g id="TABLE_NAME">%1$s</xliff:g>）"</string>
+    <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"自動（なし）"</string>
+    <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"その他"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"開発者向けオプション"</string>
+    <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"画面オーバーレイ"</string>
+    <string name="pref_braille_overlay_title" msgid="1490370457319373830">"画面に点字出力を表示"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"チュートリアルを起動"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"オープンソースライセンス"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"ログ出力レベル"</string>
+    <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBackキーボードヘルプ"</string>
+    <string name="display_connected" msgid="2008600513914815101">"BrlBackオン"</string>
+    <string name="shutting_down" msgid="1303701310644298807">"BrlBackオフ"</string>
+    <string name="braille_keyboard_active" msgid="7094321134174837395">"BrailleBackキーボード有効"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"タップしてデフォルトキーボードに切り替える"</string>
+    <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - Grade<xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g>（<xliff:g id="VARIANT">%2$s</xliff:g>）"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g>（<xliff:g id="VARIANT">%2$s</xliff:g>） - Grade<xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>
+    <string name="overlay_pan_left_button" msgid="3970960598254323366">"左へ移動"</string>
+    <string name="overlay_pan_right_button" msgid="6982590158653468102">"右へ移動"</string>
+    <string name="overlay_tutorial_title" msgid="323686269924134028">"オーバーレイチュートリアル"</string>
+    <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"終了"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"点字オーバーレイは点字ディスプレイをシミュレーションします。ハードウェアディスプレイに表示される点字セルと対応するテキストが表示されます。初めにTalkBackとタッチガイドモードを有効にしておくことをおすすめします。"</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"ユーザー補助の設定"</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"テキストの横のパン機能ボタンのいずれかを押すと、点字ディスプレイでパン表示を行うことができます。"</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"同時に複数の要素がディスプレイに表示されることがあります。テキストで点字セルのいずれかをタップすることで、それらの要素のいずれかをクリックできます。これは、点字ディスプレイでルーティングキーを押す操作に相当します。"</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"オーバーレイによって画面上の別の要素が隠れてしまう場合は、オーバーレイを移動できます。オーバーレイを押し続けてドラッグし、指を離すと、オーバーレイは画面の上部または下部に整列します。"</string>
+    <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"オーバーレイチュートリアルの表示"</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"画面オーバーレイを使用する前にチュートリアルをご覧になることをおすすめします。"</string>
+    <string name="search_result_prefix" msgid="404457595813397708">"S:"</string>
+    <string name="search_dialog_label" msgid="1816668691365362442">"検索: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"画面内検索のチュートリアル"</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"画面上の特定の項目にすばやくジャンプしたいときは、項目のテキストの一部を入力して画面内検索を行います。入力に合わせて、フォーカスは次の一致項目に移動します。"</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"<xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>は次の検索結果に移動し、<xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>は前の検索結果に移動します。<xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>を押すと、検索モードが終了し、現在の検索結果をフォーカスし続けます。<xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>を押すと、前にフォーカスされた項目に戻ります。"</string>
+    <string name="search_tutorial_checkbox" msgid="3804049570909695877">"今後は表示しない"</string>
+    <string name="search_tutorial_close_button" msgid="6374344909522290237">"次へ"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"カスタムラベルの追加"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"カスタムラベルの編集"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"カスタムラベルの削除"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"カスタムラベルはサポートされていません。Talkbackを更新してください"</string>
+</resources>

@@ -1,0 +1,52 @@
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+UDEV_RULES_SEQUENCE = 90
+#UDEV_RULES_TYPE = all
+UDEV_RULES_TYPE = no-generic
+
+UDEV_LIBRARY_DIRECTORY = $(INSTALL_ROOT)$(libdir)/udev
+UDEV_RULES_DIRECTORY = $(UDEV_LIBRARY_DIRECTORY)/rules.d
+
+UDEV_RULES_EXTENSION = rules
+UDEV_RULES_FILE = $(UDEV_RULES_SEQUENCE)-$(PACKAGE_TARNAME).$(UDEV_RULES_EXTENSION)
+
+install-library-directory:
+	$(INSTALL_DIRECTORY) $(UDEV_LIBRARY_DIRECTORY)
+
+install-programs: install-library-directory
+	$(INSTALL_SCRIPT) $(SRC_DIR)/$(PACKAGE_TARNAME)-wrapper $(UDEV_LIBRARY_DIRECTORY)
+
+install-rules-directory:
+	$(INSTALL_DIRECTORY) $(UDEV_RULES_DIRECTORY)
+
+install-rules-all: install-programs install-rules-directory
+	$(INSTALL_DATA) $(SRC_DIR)/rules $(UDEV_RULES_DIRECTORY)/$(UDEV_RULES_FILE)
+
+install-rules-no-generic: install-rules-all
+	$(SRC_TOP)updusbdevs -quiet -quiet -nogeneric udev:$(UDEV_RULES_DIRECTORY)/$(UDEV_RULES_FILE)
+
+install: install-rules-$(UDEV_RULES_TYPE)
+
+uninstall:
+	-rm -f $(UDEV_RULES_DIRECTORY)/?*-$(PACKAGE_TARNAME).$(UDEV_RULES_EXTENSION)
+	-rm -f $(UDEV_LIBRARY_DIRECTORY)/$(PACKAGE_TARNAME)-*
+
+reload:
+	udevadm control --reload
+

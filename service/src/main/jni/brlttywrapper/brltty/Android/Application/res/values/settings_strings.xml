@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="NAVIGATION_MODE_LABEL_List">Vertical List</string>
+  <string name="NAVIGATION_MODE_LABEL_Grid">Two Dimensional Grid</string>
+
+  <string-array name="NAVIGATION_MODE_LABELS">
+    <item>@string/NAVIGATION_MODE_LABEL_List</item>
+    <item>@string/NAVIGATION_MODE_LABEL_Grid</item>
+  </string-array>
+
+  <string-array name="NAVIGATION_MODE_VALUES">
+    <item>List</item>
+    <item>Grid</item>
+  </string-array>
+
+  <string name="SPEECH_SUPPORT_LABEL_None">None</string>
+  <string name="SPEECH_SUPPORT_LABEL_Native">Native</string>
+
+  <string-array name="SPEECH_SUPPORT_LABELS">
+    <item>@string/SPEECH_SUPPORT_LABEL_None</item>
+    <item>@string/SPEECH_SUPPORT_LABEL_Native</item>
+  </string-array>
+
+  <string-array name="SPEECH_SUPPORT_VALUES">
+    <item>no</item>
+    <item>an</item>
+  </string-array>
+
+  <string name="COMMUNICATION_METHOD_LABEL_Bluetooth">Bluetooth</string>
+  <string name="COMMUNICATION_METHOD_LABEL_Usb">USB</string>
+  <string name="COMMUNICATION_METHOD_LABEL_Serial">Serial</string>
+
+  <string-array name="DEVICE_METHOD_LABELS">
+    <item>@string/COMMUNICATION_METHOD_LABEL_Bluetooth</item>
+    <item>@string/COMMUNICATION_METHOD_LABEL_Usb</item>
+    <item>@string/COMMUNICATION_METHOD_LABEL_Serial</item>
+  </string-array>
+
+  <string-array name="DEVICE_METHOD_VALUES">
+    <item>Bluetooth</item>
+    <item>Usb</item>
+    <item>Serial</item>
+  </string-array>
+
+  <string name="LOG_LEVEL_LABEL_debug">Debug</string>
+  <string name="LOG_LEVEL_LABEL_information">Information</string>
+  <string name="LOG_LEVEL_LABEL_notice">Notice</string>
+  <string name="LOG_LEVEL_LABEL_warning">Warning</string>
+  <string name="LOG_LEVEL_LABEL_error">Error</string>
+  <string name="LOG_LEVEL_LABEL_critical">Critical</string>
+  <string name="LOG_LEVEL_LABEL_alert">Alert</string>
+  <string name="LOG_LEVEL_LABEL_emergency">Emergency</string>
+
+  <string-array name="LOG_LEVEL_LABELS">
+    <item>@string/LOG_LEVEL_LABEL_debug</item>
+    <item>@string/LOG_LEVEL_LABEL_information</item>
+    <item>@string/LOG_LEVEL_LABEL_notice</item>
+    <item>@string/LOG_LEVEL_LABEL_warning</item>
+    <item>@string/LOG_LEVEL_LABEL_error</item>
+    <item>@string/LOG_LEVEL_LABEL_critical</item>
+    <item>@string/LOG_LEVEL_LABEL_alert</item>
+    <item>@string/LOG_LEVEL_LABEL_emergency</item>
+  </string-array>
+
+  <string-array name="LOG_LEVEL_VALUES">
+    <item>debug</item>
+    <item>information</item>
+    <item>notice</item>
+    <item>warning</item>
+    <item>error</item>
+    <item>critical</item>
+    <item>alert</item>
+    <item>emergency</item>
+  </string-array>
+
+  <string name="LOG_CATEGORY_LABEL_ingio">Generic Input</string>
+  <string name="LOG_CATEGORY_LABEL_inpkts">Input Packets</string>
+  <string name="LOG_CATEGORY_LABEL_outpkts">Output Packets</string>
+  <string name="LOG_CATEGORY_LABEL_brlkeys">Braille Device Key Events</string>
+  <string name="LOG_CATEGORY_LABEL_kbdkeys">Keyboard Key Events</string>
+  <string name="LOG_CATEGORY_LABEL_csrtrk">Cursor Tracking</string>
+  <string name="LOG_CATEGORY_LABEL_csrrtg">Cursor Routing</string>
+  <string name="LOG_CATEGORY_LABEL_update">Update Events</string>
+  <string name="LOG_CATEGORY_LABEL_speech">Speech Events</string>
+  <string name="LOG_CATEGORY_LABEL_async">Async Events</string>
+  <string name="LOG_CATEGORY_LABEL_server">Server Events</string>
+  <string name="LOG_CATEGORY_LABEL_serial">Serial I/O</string>
+  <string name="LOG_CATEGORY_LABEL_usb">USB I/O</string>
+  <string name="LOG_CATEGORY_LABEL_bluetooth">Bluetooth I/O</string>
+  <string name="LOG_CATEGORY_LABEL_brldrv">Braille Driver Events</string>
+  <string name="LOG_CATEGORY_LABEL_spkdrv">Speech Driver Events</string>
+  <string name="LOG_CATEGORY_LABEL_scrdrv">Screen Driver Events</string>
+
+  <string-array name="LOG_CATEGORY_LABELS">
+    <item>@string/LOG_CATEGORY_LABEL_ingio</item>
+    <item>@string/LOG_CATEGORY_LABEL_inpkts</item>
+    <item>@string/LOG_CATEGORY_LABEL_outpkts</item>
+    <item>@string/LOG_CATEGORY_LABEL_brlkeys</item>
+    <item>@string/LOG_CATEGORY_LABEL_kbdkeys</item>
+    <item>@string/LOG_CATEGORY_LABEL_csrtrk</item>
+    <item>@string/LOG_CATEGORY_LABEL_csrrtg</item>
+    <item>@string/LOG_CATEGORY_LABEL_update</item>
+    <item>@string/LOG_CATEGORY_LABEL_speech</item>
+    <item>@string/LOG_CATEGORY_LABEL_async</item>
+    <item>@string/LOG_CATEGORY_LABEL_server</item>
+    <item>@string/LOG_CATEGORY_LABEL_serial</item>
+    <item>@string/LOG_CATEGORY_LABEL_usb</item>
+    <item>@string/LOG_CATEGORY_LABEL_bluetooth</item>
+    <item>@string/LOG_CATEGORY_LABEL_brldrv</item>
+    <item>@string/LOG_CATEGORY_LABEL_spkdrv</item>
+    <item>@string/LOG_CATEGORY_LABEL_scrdrv</item>
+  </string-array>
+
+  <string-array name="LOG_CATEGORY_VALUES">
+    <item>ingio</item>
+    <item>inpkts</item>
+    <item>outpkts</item>
+    <item>brlkeys</item>
+    <item>kbdkeys</item>
+    <item>csrtrk</item>
+    <item>csrrtg</item>
+    <item>update</item>
+    <item>speech</item>
+    <item>async</item>
+    <item>server</item>
+    <item>serial</item>
+    <item>usb</item>
+    <item>bluetooth</item>
+    <item>brldrv</item>
+    <item>spkdrv</item>
+    <item>scrdrv</item>
+  </string-array>
+</resources>

@@ -1,0 +1,101 @@
+{
+  "buildFiles": [
+    "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk"
+  ],
+  "cleanCommands": [
+    "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib clean"
+  ],
+  "buildTargetsCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "bral-release-x86_64": {
+      "artifactName": "bral",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbral.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbral.a"
+    },
+    "brltty-android-release-x86_64": {
+      "artifactName": "brltty-android",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrltty-android.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrltty-android.a"
+    },
+    "brbm-release-x86_64": {
+      "artifactName": "brbm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrbm.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrbm.a"
+    },
+    "brpm-release-x86_64": {
+      "artifactName": "brpm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrpm.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrpm.a"
+    },
+    "brht-release-x86_64": {
+      "artifactName": "brht",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrht.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrht.a"
+    },
+    "brsk-release-x86_64": {
+      "artifactName": "brsk",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrsk.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrsk.a"
+    },
+    "louiswrap-release-x86_64": {
+      "artifactName": "louiswrap",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/liblouiswrap.so",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/liblouiswrap.so"
+    },
+    "brlttywrap-release-x86_64": {
+      "artifactName": "brlttywrap",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrlttywrap.so",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrlttywrap.so"
+    },
+    "louis-release-x86_64": {
+      "artifactName": "louis",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/liblouis.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/liblouis.a"
+    },
+    "brhw-release-x86_64": {
+      "artifactName": "brhw",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrhw.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrhw.a"
+    },
+    "brfs-release-x86_64": {
+      "artifactName": "brfs",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrfs.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrfs.a"
+    },
+    "brhm-release-x86_64": {
+      "artifactName": "brhm",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrhm.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrhm.a"
+    },
+    "brltty-release-x86_64": {
+      "artifactName": "brltty",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrltty.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrltty.a"
+    },
+    "brvo-release-x86_64": {
+      "artifactName": "brvo",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrvo.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbrvo.a"
+    },
+    "breu-release-x86_64": {
+      "artifactName": "breu",
+      "buildCommand": "/usr/local/google/home/jacquelinehu/Android/Sdk/ndk/21.0.6113669/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/lib /usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbreu.a",
+      "abi": "x86_64",
+      "output": "/usr/local/google/home/jacquelinehu/Documents/brailleback/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libbreu.a"
+    }
+  }
+}

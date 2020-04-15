@@ -1,0 +1,3 @@
+Android NDK: WARNING:/usr/local/google/home/jacquelinehu/Documents/brailleback/app/src/main/jni/liblouiswrapper/Android.mk:louis: LOCAL_LDLIBS is always ignored for static libraries    
+make: Nothing to be done for 'brlttywrap'.
+make: Nothing to be done for 'louiswrap'.

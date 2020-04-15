@@ -1,0 +1,89 @@
+#!/bin/bash -p
+###############################################################################
+# BRLTTY - A background process providing access to the console screen (when in
+#          text mode) for a blind person using a refreshable braille display.
+#
+# Copyright (C) 1995-2018 by The BRLTTY Developers.
+#
+# BRLTTY comes with ABSOLUTELY NO WARRANTY.
+#
+# This is free software, placed under the terms of the
+# GNU Lesser General Public License, as published by the Free Software
+# Foundation; either version 2.1 of the License, or (at your option) any
+# later version. Please see the file LICENSE-LGPL for details.
+#
+# Web Page: http://brltty.com/
+#
+# This software is maintained by Dave Mielke <dave@mielke.cc>.
+###############################################################################
+
+set -e
+readonly defaultInstance="/etc/brltty.conf"
+readonly programName="${0##*/}"
+
+programMessage() {
+  local message="${1}"
+  local level="${2}"
+
+  logger -p "daemon.${level:-info}" -t "${programName}" -- "${1}" &&
+  [ ! -t 2 ] ||
+  echo >&2 "${programName}: ${message}"
+}
+
+errorMessage() {
+  local message="${1}"
+  local code="${2}"
+
+  programMessage "${message}" err
+  exit "${code:-1}"
+}
+
+syntaxError() {
+  local message="${1}"
+
+  errorMessage "${message}" 2
+}
+
+semanticError() {
+  local message="${1}"
+
+  errorMessage "${message}" 3
+}
+
+readonly currentInstance="${BRLTTY_SYSTEMD_INSTANCE:-${defaultInstance}}"
+[ -e "${currentInstance}" ] || semanticError "instance not found: ${currentInstance}"
+[ -r "${currentInstance}" ] || semanticError "instance not readable: ${currentInstance}"
+
+if [ -c "${currentInstance}" ]
+then
+  udevMaintained=false
+
+  while read line
+  do
+    if [[ "${line}" =~ ^'N: ' ]]
+    then
+      udevMaintained=true
+    elif [[ "${line}" =~ ^'E: '([^ =]+)=(.*) ]]
+    then
+      name="${BASH_REMATCH[1]}"
+      value="${BASH_REMATCH[2]}"
+
+      [[ "${name}" =~ ^'BRLTTY_' ]] || continue
+      [ -z "${!name}" ] || continue
+
+      export "${name}=${value}"
+    fi
+  done < <((udevadm info --name="${currentInstance}" --export 2>/dev/null))
+
+  "${udevMaintained}" || semanticError "instance not maintained by udev: ${currentInstance}"
+elif [ -f "${currentInstance}" ]
+then
+  export BRLTTY_CONFIGURATION_FILE="${currentInstance}"
+else
+  semanticError "unrecognized instance type: ${currentInstance}"
+fi
+
+set -- "${BRLTTY_EXECUTABLE_PATH:-brltty}" -E ${BRLTTY_EXECUTABLE_ARGUMENTS} "${@}"
+programMessage "starting executable: ${*}" info
+exec "${@}"
+exit "${?}"
