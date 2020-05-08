@@ -10,8 +10,8 @@
     <item msgid="7111316948614107646">"Navigasi ke baris sebelumnya"</item>
     <item msgid="1092717670413169154">"Gulir maju"</item>
     <item msgid="2672802569950877806">"Gulir mundur"</item>
-    <item msgid="6858389246595464611">"Navigasikan ke bagian atas laman"</item>
-    <item msgid="6077703163925348890">"Navigasikan ke bagian bawah laman"</item>
+    <item msgid="6858389246595464611">"Navigasikan ke bagian atas halaman"</item>
+    <item msgid="6077703163925348890">"Navigasikan ke bagian bawah halaman"</item>
     <item msgid="880847480793051862">"Aktifkan item di bawah jari"</item>
     <item msgid="2643484595828025643">"Tekan lama item di bawah jari"</item>
     <item msgid="2225564744515622940">"Aktifkan item saat ini"</item>
@@ -26,13 +26,14 @@
     <item msgid="4072293104009433677">"Hapus maju saat mengedit teks"</item>
     <item msgid="5307038145607249298">"Navigasikan ke bagian selanjutnya di konten web"</item>
     <item msgid="8804572703982019495">"Navigasikan ke bagian sebelumnya di konten web"</item>
-    <item msgid="5442875833766760122">"Navigasikan ke tautan/kontrol/bidang formulir selanjutnya di konten web"</item>
-    <item msgid="65542415754308243">"Navigasikan ke tautan/kontrol/bidang formulir sebelumnya di konten web"</item>
+    <item msgid="5442875833766760122">"Navigasikan ke link/kontrol/bidang formulir selanjutnya di konten web"</item>
+    <item msgid="65542415754308243">"Navigasikan ke link/kontrol/bidang formulir sebelumnya di konten web"</item>
     <item msgid="8658175115960567526">"Navigasikan ke daftar selanjutnya di konten web"</item>
     <item msgid="561134957068368670">"Navigasikan ke daftar sebelumnya di konten web"</item>
     <item msgid="4431278105955644176">"Alihkan penelusuran di mode layar"</item>
     <item msgid="1541653246718288681">"Nyalakan/matikan menu pelabelan"</item>
-    <item msgid="3070189781205215458">"Buka bantuan keyboard BrailleBack"</item>
+    <item msgid="3873494647942879428">"Beralih tingkat braille"</item>
+    <item msgid="6558794813691083806">"Buka bantuan keyboard BrailleBack"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Tekan lama <xliff:g id="KEY_LIST">%s</xliff:g>"</string>

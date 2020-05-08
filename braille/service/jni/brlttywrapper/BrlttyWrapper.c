@@ -19,19 +19,21 @@
  * com.googlecode.eyesfree.braille.service.BrlttyWrapper.
  */
 
-#include "libbrltty.h"
-#include "brldefs.h"
-#include "alog.h"
-#include "bluetooth_android.h"
 #include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <jni.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <jni.h>
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "bluetooth_android.h"
+#include "libbrltty.h"
 
+#include "alog.h"
+#include "brl_cmds.h"
+#include "brlapi_keycodes.h"
 
 #define LOG_TAG "BrlttyWrapper_native"
 
@@ -154,7 +156,7 @@ Java_com_googlecode_eyesfree_braille_service_display_BrlttyWrapper_initNative
   nat->bluetoothAndroidConnection.data = nat;
   nat->bluetoothAndroidConnection.writeData = writeDataToDevice;
   bluetoothAndroidSetConnection(&nat->bluetoothAndroidConnection);
-  (*env)->SetIntField(env, thiz, field_mNativeData, (jint) nat);
+  (*env)->SetLongField(env, thiz, field_mNativeData, (jlong) nat);
   return JNI_TRUE;
 
 closepipe:
@@ -224,7 +226,7 @@ Java_com_googlecode_eyesfree_braille_service_display_BrlttyWrapper_stopNative(
     return;
   }
   brltty_destroy();
-  (*env)->SetIntField(env, thiz, field_mNativeData, 0);
+  (*env)->SetLongField(env, thiz, field_mNativeData, 0);
   bluetoothAndroidSetConnection(NULL);
   close(nat->pipefd[0]);
   close(nat->pipefd[1]);
@@ -389,8 +391,8 @@ Java_com_googlecode_eyesfree_braille_service_display_BrlttyWrapper_classInitNati
     return;
   }
   if (!(field_mNativeData = (*env)->GetFieldID(
-          env, clazz, "mNativeData", "I"))) {
-    LOGE("Couldn't find mNativeData field");
+          env, clazz, "nativeData", "J"))) {
+    LOGE("Couldn't find nativeData field");
     return;
   }
   if (!(field_mTablesDir = (*env)->GetFieldID(
@@ -441,7 +443,7 @@ Java_com_googlecode_eyesfree_braille_service_display_BrlttyWrapper_classInitNati
 
 static NativeData *
 getNativeData(JNIEnv* env, jobject object) {
-  return (NativeData*) (*env)->GetIntField(env, object, field_mNativeData);
+  return (NativeData*) (*env)->GetLongField(env, object, field_mNativeData);
 }
 
 static ssize_t writeDataToDevice(BluetoothAndroidConnection* conn,
@@ -513,11 +515,12 @@ initCommandTables(JNIEnv* env) {
     { "CMD_NAV_BOTTOM", BRL_CMD_BOT },
     { "CMD_SCROLL_BACKWARD", BRL_CMD_WINUP },
     { "CMD_SCROLL_FORWARD", BRL_CMD_WINDN },
-    { "CMD_SELECTION_START", BRL_BLK_CLIP_NEW },
-    { "CMD_SELECTION_END", BRL_BLK_COPY_LINE },
+    { "CMD_SELECTION_START", BRL_CMD_BLK(CLIP_NEW) },
+    { "CMD_SELECTION_END", BRL_CMD_BLK(COPY_LINE) },
     { "CMD_SELECTION_PASTE", BRL_CMD_PASTE },
-    { "CMD_BRAILLE_KEY", BRL_BLK_PASSDOTS },
+    { "CMD_BRAILLE_KEY", BRL_CMD_BLK(PASSDOTS) },
     { "CMD_HELP", BRL_CMD_LEARN },
+    { "CMD_TOGGLE_BRAILLE_GRADE", BRL_CMD_DISPMD },
   };
   brlttyCommandMap = createCommandMap(
       env, cls, namesToCommands,
@@ -647,7 +650,6 @@ mapBrlttyCommand(int brlttyCommand,
   // Mask away some flags and bits we don't care about.
   int maskedCommand;
   int brlttyArg;
-  int brlttyFlags = brlttyCommand & BRL_MSK_FLG;
   if ((brlttyCommand & BRL_MSK_BLK) != 0) {
     maskedCommand = (brlttyCommand & BRL_MSK_BLK);
     brlttyArg = BRL_ARG_GET(brlttyCommand);
@@ -655,10 +657,10 @@ mapBrlttyCommand(int brlttyCommand,
     maskedCommand = (brlttyCommand & BRL_MSK_CMD);
     brlttyArg = 0;
   }
-  if (maskedCommand == BRL_BLK_PASSKEY) {
+  if (maskedCommand == BRL_CMD_BLK(PASSKEY)) {
     *outCommand = commandMapGet(brlttyKeyMap, brlttyArg);
     *outArg = 0;
-  } else if (maskedCommand == BRL_BLK_ROUTE) {
+  } else if (maskedCommand == BRL_CMD_BLK(ROUTE)) {
     int longPress = (brlttyArg & BRLTTY_ROUTE_ARG_FLG_LONG_PRESS);
     brlttyArg &= ~BRLTTY_ROUTE_ARG_FLG_LONG_PRESS;
     if (brlttyArg >= brltty_getTextCells()) {
@@ -673,6 +675,7 @@ mapBrlttyCommand(int brlttyCommand,
     *outCommand = commandMapGet(brlttyCommandMap, maskedCommand);
     *outArg = brlttyArg;
   }
+  return 0;
 }
 
 static int

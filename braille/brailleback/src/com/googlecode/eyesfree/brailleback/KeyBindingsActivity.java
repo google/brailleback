@@ -16,6 +16,17 @@
 
 package com.googlecode.eyesfree.brailleback;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
 import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
 import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
@@ -23,26 +34,7 @@ import com.googlecode.eyesfree.braille.display.Display;
 import com.googlecode.eyesfree.braille.display.DisplayClient;
 import com.googlecode.eyesfree.brailleback.utils.BrailleKeyBindingUtils;
 import com.googlecode.eyesfree.labeling.CustomLabelManager;
-import com.googlecode.eyesfree.utils.LogUtils;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -115,15 +107,16 @@ public class KeyBindingsActivity extends Activity
         String[] descriptions =
                 getResources().getStringArray(R.array.help_commandDescriptions);
         Map<String, String> friendlyKeyNames = props.getFriendlyKeyNames();
-        BrailleKeyBinding dummyBinding = new BrailleKeyBinding();
         for (int i = 0; i < supportedCommands.length; ++i) {
             String name = supportedCommands[i];
             int command = BrailleInputEvent.stringToCommand(name);
 
-            // Labeling menu command not supported in all versions.
-            if (command == BrailleInputEvent.CMD_TOGGLE_BRAILLE_MENU
-                && Build.VERSION.SDK_INT < CustomLabelManager.MIN_API_LEVEL) {
-                continue;
+      // Labeling menu command not supported in all versions.
+      boolean labelingSupported =
+          BrailleBackService.LABELING_ENABLED
+              && (Build.VERSION.SDK_INT >= CustomLabelManager.MIN_API_LEVEL);
+      if (command == BrailleInputEvent.CMD_TOGGLE_BRAILLE_MENU && !labelingSupported) {
+        continue;
             }
 
             BrailleKeyBinding binding =

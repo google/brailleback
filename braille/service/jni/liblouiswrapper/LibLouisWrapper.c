@@ -20,11 +20,13 @@
 #include <jni.h>
 #include "alog.h"
 #include "liblouis/liblouis.h"
-#include "liblouis/louis.h"  // for MAXSTRING
+#include "liblouis/internal.h"  // for MAXSTRING
 
 #define LOG_TAG "LibLouisWrapper_Native"
 
 #define TRANSLATE_PACKAGE "com/googlecode/eyesfree/braille/translate/"
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 static jclass class_TranslationResult;
 static jmethodID method_TranslationResult_ctor;
@@ -49,23 +51,14 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_checkTabl
 jobject
 Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_translateNative
 (JNIEnv* env, jclass clazz, jstring text, jstring tableName,
- int cursorPosition) {
+ jint cursorPosition, jboolean computerBrailleAtCursor) {
   jobject ret = NULL;
   const jchar* textUtf16 = (*env)->GetStringChars(env, text, NULL);
   const jbyte* tableNameUtf8 = (*env)->GetStringUTFChars(env, tableName, NULL);
+
   int inlen = (*env)->GetStringLength(env, text);
-  // TODO: Need to do this in a buffer like usual character encoding
-  // translations, but for now we assume that double size is good enough.
-  int outlen = inlen * 2;
-  jchar* outbuf = malloc(sizeof(jchar) * outlen);
-  // Maps character position to braille cell position.
-  int* outputpos = malloc(sizeof(int) * inlen);
-  // The oposite of outputpos: maps braille cell position to
-  // character position.
-  int* inputpos = malloc(sizeof(int) * outlen);
-  if (outbuf == NULL || outputpos == NULL || inputpos == NULL) {
-    (*env)->ThrowNew(env, class_OutOfMemoryError, NULL);
-  }
+  int* outputpos = malloc(sizeof(int) * inlen); // Maps char -> cell pos.
+
   int cursoroutpos;
   int* cursorposp = NULL;
   if (cursorPosition < 0) {
@@ -74,19 +67,56 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_translate
     cursoroutpos = cursorPosition;
     cursorposp = &cursoroutpos;
   }
-  int result = lou_translate(tableNameUtf8, textUtf16, &inlen,
-                             outbuf, &outlen,
-                             NULL/*typeform*/, NULL/*spacing*/,
-                             outputpos, inputpos, cursorposp,
-                             dotsIO/*mode*/);
-  if (result == 0) {
-    LOGE("Translation failed.");
-    goto freebufs;
+
+  // See <https://crrev.com/243251> for equivalent ChromeVox implementation.
+  // Invoke liblouis.  Do this in a loop since we can't precalculate the
+  // translated size.  We start with the min allocation size (8 jchars or 16
+  // bytes); for a larger input length, we start at double the input length.
+  // We also set an arbitrary upper bound for the allocation to make sure the
+  // loop exits without running out of memory. For non-small input lengths, the
+  // loop runs up to 4 times (inlen * 2, inlen * 4, inlen * 8, inlen * 16).
+  int inused = 0;
+  int outused = 0;
+  jchar* outbuf = NULL;
+  int* inputpos = NULL; // The oposite of outputpos: maps cell -> char pos.
+  // Min buffer size is 8 jchars or 16 bytes.
+  // For non-small values of inlen, the loop repeats up to 4 times (inlen * 2,
+  // inlen * 4, inlen * 8, inlen * 16).
+  for (int outlen = MAX(8, inlen * 2), maxoutlen = inlen * 16;
+      outlen <= maxoutlen;
+      outlen *= 2) {
+    inused = inlen;
+    outused = outlen;
+
+    outbuf = realloc(outbuf, sizeof(jchar) * outlen);
+    inputpos = realloc(inputpos, sizeof(int) * outlen);
+    if (outbuf == NULL || outputpos == NULL || inputpos == NULL) {
+      (*env)->ThrowNew(env, class_OutOfMemoryError, NULL);
+    }
+
+    int result = lou_translate(tableNameUtf8, textUtf16, &inused,
+        outbuf, &outused,
+        NULL /*typeform*/, NULL /*spacing*/,
+        outputpos, inputpos, cursorposp,
+        computerBrailleAtCursor ? compbrlAtCursor | dotsIO : dotsIO);
+    if (result == 0) {
+      LOGE("Translation failed.");
+      goto freebufs;
+    }
+
+    // If all of inbuf was not consumed, the output buffer must be too small
+    // and we have to retry with a larger buffer.
+    // In addition, if all of outbuf was exhausted, there's no way to know if
+    // more space was needed, so we'll have to retry the translation in that
+    // corner case as well.
+    if (inused == inlen && outused < outlen) {
+      break;
+    }
   }
   LOGV("Successfully translated %d characters to %d cells, "
        "consuming %d characters", (*env)->GetStringLength(env, text),
-       outlen, inlen);
-  jbyteArray cellsarray = (*env)->NewByteArray(env, outlen);
+       outused, inused);
+  jbyteArray cellsarray = (*env)->NewByteArray(env, outused);
   if (cellsarray == NULL) {
     goto freebufs;
   }
@@ -95,7 +125,7 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_translate
     goto freebufs;
   }
   int i;
-  for (i = 0; i < outlen; ++i) {
+  for (i = 0; i < outused; ++i) {
     cells[i] = outbuf[i] & 0xff;
   }
   (*env)->ReleaseByteArrayElements(env, cellsarray, cells, 0);
@@ -104,15 +134,15 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_translate
     goto freebufs;
   }
   (*env)->SetIntArrayRegion(env, outputposarray, 0, inlen, outputpos);
-  jintArray inputposarray = (*env)->NewIntArray(env, outlen);
+  jintArray inputposarray = (*env)->NewIntArray(env, outused);
   if (inputposarray == NULL) {
     goto freebufs;
   }
-  (*env)->SetIntArrayRegion(env, inputposarray, 0, outlen, inputpos);
+  (*env)->SetIntArrayRegion(env, inputposarray, 0, outused, inputpos);
   if (cursorposp == NULL && cursorPosition >= 0) {
     // The cursor position was past-the-end of the input, normalize to
     // past-the-end of the output.
-    cursoroutpos = outlen;
+    cursoroutpos = outused;
   }
   ret = (*env)->NewObject(
       env, class_TranslationResult, method_TranslationResult_ctor,
@@ -122,7 +152,6 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_translate
   free(outbuf);
   free(inputpos);
   free(outputpos);
- out:
   (*env)->ReleaseStringChars(env, text, textUtf16);
   (*env)->ReleaseStringUTFChars(env, tableName, tableNameUtf8);
   return ret;
@@ -136,6 +165,7 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_backTrans
   if (!tableNameUtf8) {
     goto out;
   }
+
   int inlen = (*env)->GetArrayLength(env, cells);
   jbyte* cellsBytes = (*env)->GetByteArrayElements(env, cells, NULL);
   widechar* inbuf = malloc(sizeof(widechar) * inlen);
@@ -145,26 +175,55 @@ Java_com_googlecode_eyesfree_braille_service_translate_LibLouisWrapper_backTrans
     inbuf[i] = ((unsigned char) cellsBytes[i]) | 0x8000;
   }
   (*env)->ReleaseByteArrayElements(env, cells, cellsBytes, JNI_ABORT);
-  int outlen = inlen * 2;
-  // TODO: Need to do this in a loop like usual character encoding
-  // translations, but for now we assume that double size is good enough.
-  jchar* outbuf = malloc(sizeof(jchar) * outlen);
-  int result = lou_backTranslateString(tableNameUtf8, inbuf, &inlen,
-				   outbuf, &outlen,
-				   NULL/*typeform*/, NULL/*spacing*/,
-				   dotsIO);
-  free(inbuf);
-  if (result == 0) {
-    LOGE("Back translation failed.");
-    goto freeoutbuf;
+
+  // See <https://crrev.com/254023> for equivalent ChromeVox implementation.
+  // Invoke liblouis.  Do this in a loop since we can't precalculate the
+  // translated size.  We start with the min allocation size (8 jchars or 16
+  // bytes); for a larger input length, we start at double the input length.
+  // We also set an arbitrary upper bound for the allocation to make sure the
+  // loop exits without running out of memory. For non-small input lengths, the
+  // loop runs up to 4 times (inlen * 2, inlen * 4, inlen * 8, inlen * 16).
+  int inused = 0;
+  int outused = 0;
+  jchar* outbuf = NULL;
+  for (int outlen = MAX(8, inlen * 2), maxoutlen = inlen * 16;
+      outlen <= maxoutlen;
+      outlen *= 2) {
+    inused = inlen;
+    outused = outlen;
+
+    outbuf = realloc(outbuf, sizeof(jchar) * outlen);
+    if (outbuf == NULL) {
+      (*env)->ThrowNew(env, class_OutOfMemoryError, NULL);
+    }
+
+    int result = lou_backTranslateString(tableNameUtf8, inbuf, &inused,
+        outbuf, &outused,
+        NULL /*typeform*/, NULL /*spacing*/, dotsIO);
+    if (result == 0) {
+      LOGE("Back translation failed.");
+      goto freebufs;
+    }
+
+    // If all of inbuf was not consumed, the output buffer must be too small
+    // and we have to retry with a larger buffer.
+    // In addition, if all of outbuf was exhausted, there's no way to know if
+    // more space was needed, so we'll have to retry the translation in that
+    // corner case as well.
+    // Example: 0x1f -> "quite"; we initially allocate space for 4 chars, but
+    // we need 5. After lou_backTranslateString, inused = 1 and outused = 4.
+    // So it appears that the translation finished, but we're missing a char.
+    if (inused == inlen && outused < outlen) {
+      break;
+    }
   }
   LOGV("Successfully translated %d cells into %d characters, "
        "consuming %d cells", (*env)->GetArrayLength(env, cells),
-       outlen, inlen);
-  ret = (*env)->NewString(env, outbuf, outlen);
- freeoutbuf:
+       outused, inused);
+  ret = (*env)->NewString(env, outbuf, outused);
+ freebufs:
+  free(inbuf);
   free(outbuf);
- releasetablename:
   (*env)->ReleaseStringUTFChars(env, tableName, tableNameUtf8);
  out:
   return ret;

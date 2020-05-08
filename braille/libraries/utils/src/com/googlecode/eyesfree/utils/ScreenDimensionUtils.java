@@ -33,7 +33,7 @@ public class ScreenDimensionUtils {
     public static int getNavBarHeight(final Context context) {
         int navBarHeight;
         try {
-            /* TODO(pweaver) Identify or request robust APIs to obtain the nav bar height */
+            /* TODO: Identify or request robust APIs to obtain the nav bar height */
             final Resources resources = context.getResources();
             navBarHeight = resources.getDimensionPixelSize(
                     resources.getIdentifier("navigation_bar_height", "dimen", "android"));
@@ -52,7 +52,7 @@ public class ScreenDimensionUtils {
     public static int getStatusBarHeight(final Context context) {
         int statusBarHeight;
         try {
-            /* TODO(pweaver) Identify or request robust APIs to obtain the status bar height */
+            /* TODO: Identify or request robust APIs to obtain the status bar height */
             final Resources resources = context.getResources();
             statusBarHeight = resources.getDimensionPixelSize(
                     resources.getIdentifier("status_bar_height", "dimen", "android"));

@@ -16,29 +16,26 @@
 
 package com.googlecode.eyesfree.braille.service.display;
 
-import com.googlecode.eyesfree.braille.service.R;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
+import com.googlecode.eyesfree.braille.service.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 import java.util.Set;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * Finds supported devices among bonded devices.
  */
 public class DeviceFinder {
 
-    private static final String LOG_TAG = DeviceFinder.class.getSimpleName();
     private static final UUID SERIAL_BOARD_UUID =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String LAST_CONNECTED_DEVICE_KEY =
@@ -122,8 +119,15 @@ public class DeviceFinder {
         }
 
         List<DeviceInfo> ret = new ArrayList<DeviceInfo>();
-        Set<BluetoothDevice> bondedDevices = adapter.getBondedDevices();
+    // getBondedDevices() may contain null.
+    Set<BluetoothDevice> bondedDevices = adapter.getBondedDevices();
+    if (bondedDevices == null) {
+      return ret;
+    }
         for (BluetoothDevice dev : bondedDevices) {
+      if (dev == null) {
+        continue;
+      }
             for (SupportedDevice matcher : SUPPORTED_DEVICES) {
                 DeviceInfo matched = matcher.match(dev);
                 if (matched != null) {
@@ -187,6 +191,16 @@ public class DeviceFinder {
             }
             return null;
         }
+
+        @Override
+        public String toString() {
+          StringBuilder s = new StringBuilder();
+          s.append(mDriverCode);
+          for (Pattern p : mNameRegexes) {
+            s.append(" " + p);
+          }
+          return s.toString();
+        }
     }
 
     private static class KeyNameMapBuilder {
@@ -242,6 +256,7 @@ public class DeviceFinder {
         }
     }
 
+    // ADD_DEVICE_SUPPORT
     private static final List<SupportedDevice> SUPPORTED_DEVICES;
     static {
         // TODO: Follow up on why secure connections can't be established
@@ -317,6 +332,11 @@ public class DeviceFinder {
         l.add(new NameRegexSupportedDevice("hw", false,
                 new KeyNameMapBuilder()
                         .dots8()
+                        .add("Left", R.string.key_JoystickLeft)
+                        .add("Right", R.string.key_JoystickRight)
+                        .add("Up", R.string.key_JoystickUp)
+                        .add("Down", R.string.key_JoystickDown)
+                        .add("Press", R.string.key_JoystickCenter)
                         .routing()
                         .add("Space", R.string.key_Space)
                         .add("Power", R.string.key_brailliant_Power)
@@ -366,6 +386,24 @@ public class DeviceFinder {
                         .add("B10", R.string.key_Space)
                         .build(),
                         Pattern.compile("Refreshabraille")));
+
+        // APH Orbit Reader.
+        // Secure connections get prematurely closed 50% of the time
+        // by the Orbit Reader.
+        l.add(new NameRegexSupportedDevice("bm", false,
+                new KeyNameMapBuilder()
+                        .dots8()
+                        .add("Left", R.string.key_JoystickLeft)
+                        .add("Right", R.string.key_JoystickRight)
+                        .add("Up", R.string.key_JoystickUp)
+                        .add("Down", R.string.key_JoystickDown)
+                        .add("Press", R.string.key_JoystickCenter)
+                        .add("Display2", R.string.key_APH_AdvanceLeft)
+                        .add("Display5", R.string.key_APH_AdvanceRight)
+                        .add("Space", R.string.key_Space)
+                        .build(),
+                        Pattern.compile("Orbit")));
+
         // Baum VarioConnect
         l.add(new NameRegexSupportedDevice("bm", false,
                 new KeyNameMapBuilder()
@@ -382,6 +420,22 @@ public class DeviceFinder {
                         .add("B10", R.string.key_Space)
                         .build(),
                         Pattern.compile("VarioConnect")));
+        // Baum VarioUltra
+        l.add(new NameRegexSupportedDevice("bm", false,
+                new KeyNameMapBuilder()
+                        .dots8()
+                        .add("Left", R.string.key_JoystickLeft)
+                        .add("Right", R.string.key_JoystickRight)
+                        .add("Up", R.string.key_JoystickUp)
+                        .add("Down", R.string.key_JoystickDown)
+                        .add("Press", R.string.key_JoystickCenter)
+                        .routing()
+                        .add("Display2", R.string.key_APH_AdvanceLeft)
+                        .add("Display5", R.string.key_APH_AdvanceRight)
+                        .add("B9", R.string.key_Space)
+                        .add("B10", R.string.key_Space)
+                        .build(),
+                        Pattern.compile("VarioUltra")));
 
         // Older Brailliant, from Humanware group. Uses Baum
         // protocol. No Braille keyboard on this one. Secure

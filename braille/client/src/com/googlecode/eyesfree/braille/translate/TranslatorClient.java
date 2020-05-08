@@ -133,7 +133,12 @@ public class TranslatorClient {
         if (localService != null) {
             try {
                 if (localService.checkTable(tableId)) {
-                    return new BrailleTranslatorImpl(tableId);
+                    List<TableInfo> tables = getTables();
+                    for (TableInfo table : tables) {
+                        if (table.getId().equals(tableId)) {
+                            return new BrailleTranslatorImpl(table);
+                        }
+                    }
                 }
             } catch (RemoteException ex) {
                 Log.e(LOG_TAG, "Error in getTranslator", ex);
@@ -222,24 +227,30 @@ public class TranslatorClient {
     }
 
     private class BrailleTranslatorImpl implements BrailleTranslator {
-        private final String mTableId;
+        private final TableInfo mTableInfo;
 
-        public BrailleTranslatorImpl(String tableId) {
-            mTableId = tableId;
+        public BrailleTranslatorImpl(TableInfo tableInfo) {
+            mTableInfo = tableInfo;
         }
 
         @Override
-        public TranslationResult translate(String text, int cursorPosition) {
+        public TranslationResult translate(String text, int cursorPosition,
+                boolean computerBrailleAtCursor) {
             ITranslatorService localService = getTranslatorService();
             if (localService != null) {
                 try {
-                    return localService.translate(text, mTableId,
-                            cursorPosition);
+                    return localService.translate(text, mTableInfo.getId(),
+                            cursorPosition, computerBrailleAtCursor);
                 } catch (RemoteException ex) {
                     Log.e(LOG_TAG, "Error in translate", ex);
                 }
             }
             return null;
+        }
+        
+        @Override
+        public TranslationResult translate(String text, int cursorPosition) {
+            return translate(text, cursorPosition, false);
         }
 
         @Override
@@ -247,12 +258,17 @@ public class TranslatorClient {
             ITranslatorService localService = getTranslatorService();
             if (localService != null) {
                 try {
-                    return localService.backTranslate(cells, mTableId);
+                    return localService.backTranslate(cells, mTableInfo.getId());
                 } catch (RemoteException ex) {
                     Log.e(LOG_TAG, "Error in backTranslate", ex);
                 }
             }
             return null;
+        }
+
+        @Override
+        public TableInfo getTableInfo() {
+            return mTableInfo;
         }
 
         @Override
@@ -262,19 +278,20 @@ public class TranslatorClient {
             }
             if (o instanceof BrailleTranslatorImpl) {
                 BrailleTranslatorImpl other = (BrailleTranslatorImpl) o;
-                return mTableId.equals(other.mTableId);
+                return mTableInfo.getId().equals(other.mTableInfo.getId());
             }
             return false;
         }
 
         @Override
         public int hashCode() {
-            return mTableId.hashCode();
+            return mTableInfo.getId().hashCode();
         }
 
         @Override
         public String toString() {
-            return String.format("{BrailleTranslatorImpl %s}", mTableId);
+            return String.format("{BrailleTranslatorImpl %s}",
+                    mTableInfo.getId());
         }
     }
 

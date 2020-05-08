@@ -21,25 +21,27 @@
  * provided by the user of the library.
  */
 
-#include "prologue.h"
+#include "prologue.h"  // NOLINT Must include first
 
 #include "libbrltty.h"
-#include "brl.h"
+
+#include "async_wait.h"
+#include "brl_cmds.h"
 #include "cmd.h"
 #include "file.h"
 #include "ktb.h"
-#include "ktbdefs.h"
-#include "ktb_internal.h"
-#include "ktb_inspect.h"
+#include "ktb_types.h"
 #include "log.h"
 #include "parse.h"
-#include "touch.h"
+#include "prefs.h"
+#include "queue.h"
+#include "timing.h"
+#include "brl.h"
+#include "cmd_queue.h"
 
-// TODO: Consider making these adjustable by the user
-/* Initial delay before the first autorepeat and as long press timeout. */
-#define AUTOREPEAT_INITIAL_DELAY_MS 500
-/* Interval between autorepeats. */
-#define AUTOREPEAT_INTERVAL_MS 300
+#include "ktb_internal.h" // NOLINT Must precede ktb_inspect.h
+
+#include "ktb_inspect.h"
 
 // textStart and textCount are taken from Programs/brltty.c. We declare them
 // here so we don't have to include the entire brltty.c file.
@@ -64,12 +66,16 @@ static void* brailleSharedObject = NULL;
  * (dimensions, the display buffer etc).
  */
 static BrailleDisplay brailleDisplay;
-static RepeatState repeatState;
 
 /*
  * Array of driver-specific parameters.
  */
 static char** driverParameters = NULL;
+
+/*
+ * Queue of unprocessed commands.
+ */
+static Queue *commandQueue = NULL;
 
 /*
  * This is here to satisfy a dependency in a driver.
@@ -79,6 +85,7 @@ static char** driverParameters = NULL;
  */
 int message (const char *mode, const char *text, short flags) {
   // Ignore.
+  return 0;
 }
 
 static int
@@ -116,7 +123,7 @@ brltty_initialize (const char* driverCode, const char* brailleDevice,
   }
 
   logMessage(LOG_DEBUG, "Initializing braille driver");
-  initializeBrailleDisplay(&brailleDisplay);
+  constructBrailleDisplay(&brailleDisplay);
 
   logMessage(LOG_DEBUG, "Identifying braille driver");
   identifyBrailleDriver(braille, 1);
@@ -152,7 +159,12 @@ brltty_initialize (const char* driverCode, const char* brailleDevice,
     goto destructBraille;
   }
 
-  resetRepeatState(&repeatState);
+  // Register our command handler to capture braille key events.
+  beginCommandQueue();
+  pushCommandHandler("libbrltty-android", KTB_CTX_DEFAULT,
+    brltty_handleCommand, NULL /* destroy handler */, NULL /* data */);
+
+  commandQueue = newQueue(NULL, NULL);
 
   logMessage(LOG_NOTICE, "Successfully initialized braille driver "
              "%s on device %s", driverCode, brailleDevice);
@@ -177,86 +189,19 @@ int
 brltty_destroy(void) {
   if (braille == NULL) {
     logMessage(LOG_CRIT, "Double destruction of braille driver");
-    return;
+    return 0;
   }
+
+  deallocateQueue(commandQueue);
+  commandQueue = NULL;
+
+  popCommandHandler();
+  endCommandQueue();
+
   braille->destruct(&brailleDisplay);
   freeDriverParameters();
   braille = NULL;
-}
-
-/*
- * Handles long press for CMD_ROUTE, updating the repeat state and
- * *cmd as appropriate.  Returns non-zero if the command was handled
- * by this function and zero if autorepeat should be handling the
- * current state and command.
- */
-static int
-handleLongPress(int* cmd) {
-  TimeValue now;
-  getCurrentTime(&now);
-
-  /* Are we in the middle of a CMD_ROUTE? */
-  if ((repeatState.command & BRL_MSK_BLK) == BRL_BLK_ROUTE
-      && repeatState.timeout != 0) {
-    /* Periodic check for long press timeout (or spurious read). */
-    if (*cmd == EOF) {
-      if (millisecondsBetween(&repeatState.time, &now) > repeatState.timeout) {
-        /* Emit the long press and reset the repeat state to not
-         * cause any further commands from this key press.
-         */
-        *cmd = repeatState.command | BRLTTY_ROUTE_ARG_FLG_LONG_PRESS;
-        resetRepeatState(&repeatState);
-      }
-      return 1;
-    }
-
-    /* If we get the same command after a key press (without repeat
-     * flags), the key was released before the timeout, so this
-     * is a 'short press'.
-     */
-    if (*cmd == repeatState.command) {
-      resetRepeatState(&repeatState);
-      return 1;
-    }
-    // We were handling a routing key and got a different command.  Reset the
-    // repeat state and let the autorepeat code handle the new keystroke.
-    resetRepeatState(&repeatState);
-    return 0;
-  } else if (((*cmd & BRL_MSK_BLK) == BRL_BLK_ROUTE) &&
-             !(*cmd & BRL_FLG_REPEAT_INITIAL)) {
-    /* Not currently handling a route key press. */
-    if ((*cmd & BRL_FLG_REPEAT_DELAY) != 0) {
-      /* Initial event for the key press, set up the state
-       * with the long press timeout. */
-      repeatState.time = now;
-      repeatState.timeout = AUTOREPEAT_INITIAL_DELAY_MS;
-      repeatState.command = *cmd & ~BRL_FLG_REPEAT_MASK;
-      repeatState.started = 0;
-    } else {
-      resetRepeatState(&repeatState);
-    }
-    *cmd = BRL_CMD_NOOP;
-    return 1;
-  }
   return 0;
-}
-
-/*
- * Handles autorepeat and long press.  Implements long press
- * support for the CMD_ROUTE command and calls through to brltty's
- * autorepeat handling code for other commands.
- */
-static void
-handleRepeatAndLongPress(int* cmd) {
-  if (!handleLongPress(cmd)) {
-    /* Fall back on brltty's autorepeat functionality.
-     * The panning argument below reflects a preference in brltty
-     * whether to autorepeat while panning or not.  Since we don't have that
-     * preference in BrailleBack, this is always set to 1 here.
-     */
-    handleRepeatFlags(cmd, &repeatState, 1 /*panning*/,
-                      AUTOREPEAT_INITIAL_DELAY_MS, AUTOREPEAT_INTERVAL_MS);
-  }
 }
 
 int
@@ -264,12 +209,63 @@ brltty_readCommand(int *readDelayMillis) {
   if (braille == NULL) {
     return BRL_CMD_RESTARTBRL;
   }
-  int cmd = readBrailleCommand(&brailleDisplay, KTB_CTX_DEFAULT);
-  handleRepeatAndLongPress(&cmd);
-  if (repeatState.timeout > 0) {
-    *readDelayMillis = repeatState.timeout;
+
+  readBrailleCommand(&brailleDisplay, KTB_CTX_DEFAULT);
+
+  // Fake async by emptying the brltty event queue and then re-reading with a
+  // delay. This allows us to deal with long-press and autorepeat.
+  // TODO: Make long-pressing on routing keys work again.
+  asyncWait(1);
+  if (brailleDisplay.keyTable->release.command != BRL_CMD_NOOP ||
+        brailleDisplay.keyTable->longPress.command != BRL_CMD_NOOP) {
+    // Essentially, loop and re-read at 1/2 of the repeat interval.
+    // The interval pref is in csec; we want msec: x * 10 / 2 = x * 5.
+    *readDelayMillis = prefs.autorepeatInterval * 5;
   }
-  return cmd;
+
+  return brltty_popCommand();
+}
+
+typedef struct {
+  int command;
+} CommandQueueItem;
+
+int
+brltty_handleCommand(int command, void *data) {
+  if (!commandQueue) {
+    return 0;
+  }
+
+  CommandQueueItem *item = malloc(sizeof(CommandQueueItem));
+  if (item) {
+    item->command = command;
+
+    if (enqueueItem(commandQueue, item)) {
+      return 1;
+    } else {
+      free(item);
+    }
+  } else {
+    logMallocError();
+  }
+
+  return 0;
+}
+
+int
+brltty_popCommand() {
+  if (!commandQueue) {
+    return EOF;
+  }
+
+  CommandQueueItem *item;
+  if ((item = dequeueItem(commandQueue))) {
+    int command = item->command;
+    free(item);
+    return command;
+  }
+
+  return EOF;
 }
 
 int
@@ -315,7 +311,6 @@ createEmptyDriverParameters (void) {
     parameterNames = noNames;
   }
 
-  char **setting;
   while (parameterNames[count] != NULL) {
     ++count;
   }
@@ -337,16 +332,16 @@ freeDriverParameters() {
 
 static int
 compileKeys(const char *tablesDir) {
-  if (brailleDisplay.keyNameTables != NULL) {
+  if (brailleDisplay.keyNames != NULL) {
     char* path = getKeyTablePath(tablesDir);
     if (path == NULL) {
       logMessage(LOG_ERR, "Couldn't construct key table filename");
       return 0;
     }
     brailleDisplay.keyTable = compileKeyTable(path,
-                                              brailleDisplay.keyNameTables);
+                                              brailleDisplay.keyNames);
     if (brailleDisplay.keyTable != NULL) {
-      setKeyEventLoggingFlag(brailleDisplay.keyTable, "");
+      setLogKeyEventsFlag(brailleDisplay.keyTable, "");
     } else {
       logMessage(LOG_ERR, "Couldn't compile key table %s", path);
     }
@@ -361,7 +356,7 @@ static char *
 getKeyTablePath(const char *tablesDir) {
   char *fileName;
   const char *strings[] = {
-    "brl-", braille->definition.code, "-", brailleDisplay.keyBindings,
+    braille->definition.code, "/", brailleDisplay.keyBindings,
     KEY_TABLE_EXTENSION
   };
   fileName = joinStrings(strings, ARRAY_COUNT(strings));
@@ -412,7 +407,7 @@ listKeyBinding(const KeyBinding *binding, const KeyTable *keyTable,
   // Allow room for all modifiers, the immediate key and a terminating NULL.
   const char *keys[MAX_MODIFIERS_PER_COMBINATION + 2];
   int i;
-  const KeyCombination *combination = &binding->combination;
+  const KeyCombination *combination = &binding->keyCombination;
   for (i = 0; i < combination->modifierCount; ++i) {
     // Key values are sorted in this list for quick comparison,
     // the modifierPositions array is ordered according to how the
@@ -433,7 +428,8 @@ listKeyBinding(const KeyBinding *binding, const KeyTable *keyTable,
     keys[i++] = name;
   }
   keys[i] = NULL;
-  int ret = callback(binding->command, i, keys, 0 /*isLongPress*/, data);
+  int ret = callback(binding->primaryCommand.value, i, keys, 0 /*isLongPress*/,
+      data);
   if (!ret) {
     return ret;
   }
@@ -443,10 +439,13 @@ listKeyBinding(const KeyBinding *binding, const KeyTable *keyTable,
    * Only do this if immediatekey flag is not active since in that
    * case longpress isn't possible.
    */
-  if (((binding->command & (BRL_MSK_BLK | BRLTTY_ROUTE_ARG_FLG_LONG_PRESS))
-         == BRL_BLK_ROUTE) && !(combination->flags & KCF_IMMEDIATE_KEY)) {
-    ret = callback(binding->command | BRLTTY_ROUTE_ARG_FLG_LONG_PRESS,
-                   i, keys, 1 /*isLongPress*/, data);
+  int route = (binding->primaryCommand.value &
+      (BRL_MSK_BLK | BRLTTY_ROUTE_ARG_FLG_LONG_PRESS)) == BRL_CMD_BLK(ROUTE);
+  int immediate = combination->flags & KCF_IMMEDIATE_KEY;
+  if (route && !immediate) {
+    ret = callback(
+        binding->primaryCommand.value | BRLTTY_ROUTE_ARG_FLG_LONG_PRESS,
+        i, keys, 1 /*isLongPress*/, data);
   }
   return ret;
 }
@@ -460,8 +459,8 @@ compareValueToKeyNameEntry(const void *key, const void *element) {
 
 static const char *
 findKeyName(const KeyTable *keyTable, const KeyValue *value) {
-  const KeyNameEntry **entries = keyTable->keyNameTable;
-  int entryCount = keyTable->keyNameCount;
+  const KeyNameEntry **entries = keyTable->keyNames.table;
+  int entryCount = keyTable->keyNames.count;
   const KeyNameEntry **entry = bsearch(value, entries, entryCount,
                                       sizeof(KeyNameEntry*),
                                       compareValueToKeyNameEntry);
@@ -469,7 +468,7 @@ findKeyName(const KeyTable *keyTable, const KeyValue *value) {
     return (*entry)->name;
   } else {
     logMessage(LOG_ERR, "No key name for key [%d, %d]",
-               value->set, value->key);
+               value->group, value->number);
     return NULL;
   }
 }

@@ -18,6 +18,8 @@ package com.googlecode.eyesfree.brailleback;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
 import com.googlecode.eyesfree.widget.SimpleOverlay;
@@ -40,7 +42,11 @@ public class SearchOverlay extends SimpleOverlay implements DialogInterface {
 
         // Make overlay appear on everything it can.
         LayoutParams params = getParams();
-        params.type = LayoutParams.TYPE_SYSTEM_ERROR;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) {
+            params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        } else {
+            params.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY;
+        }
         setParams(params);
 
         setContentView(mSearchView);

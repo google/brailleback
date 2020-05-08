@@ -16,14 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
-import com.googlecode.eyesfree.braille.display.Display;
-import com.googlecode.eyesfree.utils.MotionEventUtils;
-import com.googlecode.eyesfree.utils.SharedPreferencesUtils;
-import com.googlecode.eyesfree.utils.WeakReferenceHandler;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Looper;
@@ -33,7 +25,13 @@ import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
+import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
+import com.googlecode.eyesfree.braille.display.Display;
+import com.googlecode.eyesfree.utils.MotionEventUtils;
+import com.googlecode.eyesfree.utils.SharedPreferencesUtils;
+import com.googlecode.eyesfree.utils.WeakReferenceHandler;
 import java.util.Collections;
 
 /**

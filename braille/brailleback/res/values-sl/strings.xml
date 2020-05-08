@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Ko bo aplikacija BrailleBack vklopljena, se bo vaša naprava povezala s seznanjeno Braillovo vrstico prek Bluetootha in prikazala vsebino z zaslona na Braillovi vrstici. S tipkami na Braillovi vrstici se lahko pomikate po zaslonu, aktivirate elemente in vnašate besedilo. Za več informacij pritisnite preslednico ter pike 1, 2 in 3 (črko »l« v Braillovi pisavi) na Braillovi vrstici, ko je povezana."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Omogočanje izhoda v braillovi pisavi"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Tipkovnica za Braillovo pisavo"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Čarovnik za tipkovnico za Braillovo pisavo"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Omogočanje tipkovnice za Braillovo pisavo"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Vrsta Braillove pisave"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabela knjižne Braillove pisave"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabela računalniške Braillove pisave"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Omogočanje preloma besed"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Ni povezana"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Povezana"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Ni na voljo"</string>

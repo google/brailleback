@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Wanneer BrailleBack aan is, sal jou toestel aan \'n gepaarde bluetooth-braille-vertoonbord koppel en die skerminhoud in braille vertoon. Sleutels op die braille-vertoonbord kan gebruik word om jou weg op die skerm te vind, items te aktiveer en teks in te voer. Vir meer inligting, druk die spasiebalk en punte 1, 2 en 3 (letter l in braille) op jou vertoonbord wanneer jy gekoppel is."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Verskaf braille-uitset"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braillehardeware-sleutelbord"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Braillehardeware-sleutelbordassistent"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktiveer braillehardeware-sleutelbord"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Brailletipe"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Literêre brailletabel"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Rekenaarbrailletabel"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Aktiveer woordomvouing"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Nie gekoppel nie"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Gekoppel"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nie beskikbaar nie"</string>

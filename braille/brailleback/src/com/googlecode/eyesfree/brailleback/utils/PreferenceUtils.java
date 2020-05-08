@@ -16,15 +16,14 @@
 
 package com.googlecode.eyesfree.brailleback.utils;
 
-import com.googlecode.eyesfree.brailleback.BuildConfig;
-import com.googlecode.eyesfree.brailleback.R;
-import com.googlecode.eyesfree.utils.LogUtils;
-import com.googlecode.eyesfree.utils.SharedPreferencesUtils;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import com.googlecode.eyesfree.brailleback.BuildConfig;
+import com.googlecode.eyesfree.brailleback.R;
+import com.googlecode.eyesfree.utils.LogUtils;
+import com.googlecode.eyesfree.utils.SharedPreferencesUtils;
 
 /**
  * BrailleBack-specific preference utilities.

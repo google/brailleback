@@ -16,12 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-import com.googlecode.eyesfree.braille.translate.BrailleTranslator;
-import com.googlecode.eyesfree.compat.accessibilityservice.AccessibilityServiceCompatUtils;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-import com.googlecode.eyesfree.utils.LogUtils;
-
 import android.accessibilityservice.AccessibilityService;
 import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
@@ -30,6 +24,11 @@ import android.view.KeyEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
+import com.googlecode.eyesfree.braille.translate.BrailleTranslator;
+import com.googlecode.eyesfree.compat.accessibilityservice.AccessibilityServiceCompatUtils;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
+import com.googlecode.eyesfree.utils.LogUtils;
 
 /**
  * Implements a navigation mode which interacts with the input method service.
@@ -223,7 +222,6 @@ public class IMENavigationMode implements NavigationMode, BrailleIME.Host {
         // Alternatively, we may handle these navigation commands by sending
         // "move by granularity" through the accessibility system.
         if (ime != null && mState.navigatesByTextGranularity()) {
-            AccessibilityNodeInfoCompat focusedNode = getFocusedNode();
             switch (event.getCommand()) {
                 case BrailleInputEvent.CMD_NAV_ITEM_PREVIOUS:
                     return previousAtMovementGranularity(
@@ -263,7 +261,7 @@ public class IMENavigationMode implements NavigationMode, BrailleIME.Host {
 
     @Override
     public BrailleTranslator getBrailleTranslator() {
-        return mTranslatorManager.getUncontractedTranslator();
+        return mTranslatorManager.getTranslator();
     }
 
     @Override
@@ -373,7 +371,7 @@ public class IMENavigationMode implements NavigationMode, BrailleIME.Host {
         }
     }
 
-    private boolean isImeOpen() {
+    protected boolean isImeOpen() {
         return mInputStarted && mInputViewStarted;
     }
 

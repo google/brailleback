@@ -35,6 +35,10 @@
              android:key="@string/pref_eight_dot_braille_table_key"
              android:title="@string/pref_eight_dot_braille_table_title"
              android:defaultValue="@string/table_value_default" />
+        <SwitchPreference
+             android:key="@string/pref_braille_word_wrap_key"
+             android:title="@string/pref_braille_word_wrap_title"
+             android:defaultValue="@bool/pref_braille_word_wrap_default" />
     </PreferenceCategory>
 
     <PreferenceCategory

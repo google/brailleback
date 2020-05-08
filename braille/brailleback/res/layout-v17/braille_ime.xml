@@ -12,7 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:contentDescription="@null"
-        android:src="@drawable/icon" />
+        android:src="@drawable/ic_brailleback" />
 
     <TextView
         android:id="@+id/title"

@@ -20,14 +20,9 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.googlecode.eyesfree.braille.service.BuildConfig;
 import com.googlecode.eyesfree.braille.service.R;
 import com.googlecode.eyesfree.braille.translate.TableInfo;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +31,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Loads and keeps the list of supported braille tables from xml resources.
@@ -47,6 +44,7 @@ public class TableList {
     private static final String TAG_TABLE_LIST =
             "table-list";
     private static final String TAG_TABLE = "table";
+    private static final String ATTR_ID = "id";
     private static final String ATTR_LOCALE = "locale";
     private static final Pattern LOCALE_SPLITTER =
             Pattern.compile("_", Pattern.LITERAL);
@@ -135,7 +133,7 @@ public class TableList {
                 throw new RuntimeException(p.getPositionDescription()
                         + ": dots must be either 6 or 8");
         }
-        String id = p.getIdAttribute();
+        String id = p.getAttributeValue(null, ATTR_ID);
         if (id == null) {
             throw new RuntimeException(p.getPositionDescription()
                     + ": missing id attribute");

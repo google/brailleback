@@ -2,6 +2,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Калі клавіятура BrailleBack ўключаная, прылада будзе падключацца да спалучанага Bluetooth-дысплея Брайля і прадстаўляць змесціва экрана шрыфтам Брайля. Клавішы на дысплеі Брайля можна выкарыстоўваць для навігацыі па экране, актывацыі элементаў і ўводу тэкста. Каб атрымаць дадатковую інфармацыю, націсніце прабел і кропкі 1, 2 і 3 (літара l у шрыфце Брайля) на дысплеі пры спалучэнні."</string>
+    <!-- no translation found for service_summary (8016336378969476112) -->
+    <skip />
     <string name="braille_ime_name" msgid="819430885692057322">"Апаратная клавіятура Брайля"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Майстар падлучэння апаратнай клавіятуры Брайля"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Уключыць апаратную клавіятуру Брайля"</string>
@@ -33,6 +35,8 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Шрыфт Брайля"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Літаратурная табліца Брайля"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Камп\'ютарная табліца Брайля"</string>
+    <!-- no translation found for pref_braille_word_wrap_title (6481878403472323874) -->
+    <skip />
     <string name="connstate_not_connected" msgid="3876972842771373901">"Падключэння няма"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Падключаны"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Недаступны"</string>

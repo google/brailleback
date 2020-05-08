@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Kad funkcija BrailleBack ir ieslēgta, ierīcē tiek izveidots savienojums pārī ar Bluetooth Braila displeju un ekrāna saturs tiek attēlots Braila rakstā. Braila displejā esošos taustiņus var izmantot navigācijai ekrānā, vienumu aktivizēšanai un teksta ievadei. Lai iegūtu plašāku informāciju, kad ir izveidots savienojums, displejā nospiediet atstarpes taustiņu un 1., 2. un 3. punktu (burtu “l” Braila rakstā)."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Rādīt Braila raksta izvadi"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braila fiziskā tastatūra"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Braila fiziskās tastatūras vednis"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Braila fiziskās tastatūras iespējošana"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Braila raksta veids"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"6 punktu Braila r. tabula"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Braila datorraksta tabula"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Iespējot vārdu aplaušanu"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Nav savienots"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Savienots"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nav pieejams"</string>

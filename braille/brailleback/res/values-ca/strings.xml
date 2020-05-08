@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Quan BrailleBack estigui activat, el dispositiu es connectarà a una pantalla braille amb Bluetooth sincronitzada i mostrarà el contingut de la pantalla en braille. Es poden utilitzar les tecles de la pantalla braille per navegar per la pantalla, per activar elements i per introduir text. Per obtenir més informació, premeu l\'espai i els punts 1, 2 i 3 (la lletra l en braille) a la pantalla quan estigui connectada."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Proporciona text braille"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Teclat del maquinari braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Auxiliar de teclat del maquinari braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Activa el teclat del maquinari braille"</string>
@@ -22,7 +23,7 @@
     <string name="type_edittext" msgid="4305739343129651595">"Edita el quadre"</string>
     <string name="type_image" msgid="3688576211222019626">"Imatge"</string>
     <string name="type_button" msgid="3639574187835564558">"Botó"</string>
-    <string name="type_seekbar" msgid="979094491475615458">"Control de cerca"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Control amb botó lliscant"</string>
     <string name="type_quickcontact" msgid="5224329178093450337">"Contacte"</string>
     <string name="preferences_title" msgid="368535298674637475">"Preferències de BrailleBack"</string>
     <string name="pref_category_device_title" msgid="8644919099122845217">"Dispositiu"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Tipus de braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Taula braille 6 punts"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Taula braille 8 punts"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Activa l\'ajust de línia"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"No connectat"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Connectat"</string>
     <string name="connstate_error" msgid="8717968034812924474">"No disponible"</string>
@@ -40,12 +42,12 @@
     <string name="pref_braille_table_default_label" msgid="1462752739972207613">"automàtic (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
     <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"automàtic (cap)"</string>
     <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Altres"</string>
-    <string name="pref_category_developer_title" msgid="7276576143816692867">"Opcions de desenvolupador"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Opcions per a desenvolupadors"</string>
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Superposició en pantalla"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Text braille en pantalla"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Inicia el tutorial"</string>
-    <string name="pref_os_license_title" msgid="1569318864930820110">"Llicències de codi obert"</string>
-    <string name="pref_log_level_label" msgid="3161296593165404029">"Nivell de registre de sortida"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Llicències de programari lliure"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Nivell de generació de registres"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Ajuda del teclat de BrailleBack"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback act."</string>
     <string name="shutting_down" msgid="1303701310644298807">"brlback des."</string>
@@ -68,8 +70,8 @@
     <string name="search_result_prefix" msgid="404457595813397708">"C:"</string>
     <string name="search_dialog_label" msgid="1816668691365362442">"Cerca: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
     <string name="search_tutorial_title" msgid="1035979397405903476">"Tutorial de cerca en pantalla"</string>
-    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"La cerca en pantalla us permet saltar ràpidament als elements de la pantalla: només cal que escriviu part de la descripció del text. A mesura que escriviu, es destacarà el proper element coincident."</string>
-    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Feu servir <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> per passar al resultat següent i <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> per passar al resultat anterior. Premeu <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> per sortir del mode de cerca i per destacar el resultat. Premeu <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> per tornar a l\'element destacat anterior."</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"La cerca en pantalla us permet saltar ràpidament als elements de la pantalla: només cal que escriviu part de la descripció del text. A mesura que escriviu, el focus es mourà al següent element coincident."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Feu servir <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> per passar al resultat següent i <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> per passar al resultat anterior. Premeu <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> per sortir del mode de cerca i mantenir el focus en el resultat. Premeu <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> per tornar a l\'element destacat anterior."</string>
     <string name="search_tutorial_checkbox" msgid="3804049570909695877">"No ho tornis a mostrar més"</string>
     <string name="search_tutorial_close_button" msgid="6374344909522290237">"Continua"</string>
     <string name="menu_item_label_add" msgid="7171209255969707579">"Afegeix una etiqueta personalitzada"</string>

@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"打开盲文提示后，用户的设备将会连接到已配对的蓝牙盲文显示屏，并以盲文形式呈现屏幕内容。盲文显示屏上的键可以用来导航屏幕、激活内容及输入文字。有关详情，请在连接后按显示屏上的空格键以及点 1、2、3（盲文中的字母 I）。"</string>
+    <string name="service_summary" msgid="8016336378969476112">"提供盲文输出"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"盲文硬件键盘"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"盲文硬件键盘向导"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"启用盲文硬件键盘"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"盲文类型"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"书面盲文表格"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"计算机盲文表格"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"启用文字换行功能"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"未连接"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"已连接"</string>
     <string name="connstate_error" msgid="8717968034812924474">"不可用"</string>
@@ -58,7 +60,7 @@
     <string name="overlay_pan_right_button" msgid="6982590158653468102">"向右平移"</string>
     <string name="overlay_tutorial_title" msgid="323686269924134028">"叠加层教程"</string>
     <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"完成"</string>
-    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"盲文叠加层能模拟可刷新的盲文显示屏，并可将盲文单元格以及相应的文本显示在硬件显示屏上。我们建议您先启用话语提示和触摸浏览模式，然后再继续使用该功能。"</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"盲文叠加层能模拟可刷新的盲文显示屏，并可将盲文单元格以及相应的文本显示在硬件显示屏上。我们建议您先启用 TalkBack 和触摸浏览模式，然后再继续使用该功能。"</string>
     <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"无障碍设置"</string>
     <string name="overlay_tutorial_pan" msgid="6845897761664313491">"您可以通过按文本旁边的某个平移按钮，平移盲文显示屏。"</string>
     <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"显示屏上可能会一次显示多个元素。您可以通过点按文本中的某个盲文单元格，点击其中一个元素。此操作相当于按盲文显示屏上的某个路选键。"</string>
@@ -75,5 +77,5 @@
     <string name="menu_item_label_add" msgid="7171209255969707579">"添加自定义标签"</string>
     <string name="menu_item_label_edit" msgid="3009644363444552176">"修改自定义标签"</string>
     <string name="menu_item_label_remove" msgid="6836749636921226607">"删除自定义标签"</string>
-    <string name="menu_item_update_talkback" msgid="5549071241261625208">"不支持自定义标签，请更新话语提示功能"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"不支持自定义标签，请更新话语 TalkBack"</string>
 </resources>

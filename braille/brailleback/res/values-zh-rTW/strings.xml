@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"開啟 BrailleBack 時，系統會將您的裝置連接到已配對的藍牙點字顯示器，並以點字顯示螢幕內容。您可以使用點字顯示器上的按鍵，來瀏覽螢幕、啟用項目及輸入文字。如需詳細資訊，請將裝置連接到點字顯示器後，按住點字顯示器上的空格鍵，然後同時按下第一、第二和第三點 (即英文字母「l」的點字按鍵組合)。"</string>
+    <string name="service_summary" msgid="8016336378969476112">"提供點字輸出"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"實體點字鍵盤"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"實體點字鍵盤精靈"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"啟用實體點字鍵盤"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"點字類型"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"文書點字參考表"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"電腦點字參考表"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"啟用文字換行功能"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"尚未連接"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"已連接"</string>
     <string name="connstate_error" msgid="8717968034812924474">"不支援"</string>
@@ -45,7 +47,7 @@
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"在螢幕上顯示點字輸出"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"啟動教學課程"</string>
     <string name="pref_os_license_title" msgid="1569318864930820110">"開放原始碼授權"</string>
-    <string name="pref_log_level_label" msgid="3161296593165404029">"紀錄輸出等級"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"記錄輸出等級"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBack 鍵盤說明"</string>
     <string name="display_connected" msgid="2008600513914815101">"BrlBack 開啟"</string>
     <string name="shutting_down" msgid="1303701310644298807">"BrlBack 關閉"</string>
@@ -61,7 +63,7 @@
     <string name="overlay_tutorial_introduction" msgid="732693451088628629">"點字疊層功能的用途是模擬點字顯示器，讓硬體顯示器在畫面上出現文字時，顯示相對應的點字格。使用前，建議您啟用 TalkBack 和觸控探索模式。"</string>
     <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"協助工具設定"</string>
     <string name="overlay_tutorial_pan" msgid="6845897761664313491">"只需按下文字旁邊的平移按鈕，即可平移點字疊層。"</string>
-    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"畫面上可能會一次顯示多個元素。只要輕按任一文字當中的點字格即可點選，效果等同於按下點字顯示器中的 Routing 鍵。"</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"畫面上可能會一次顯示多個元素。只要輕觸任一文字當中的點字格即可點選，效果等同於按下點字顯示器中的 Routing 鍵。"</string>
     <string name="overlay_tutorial_moving" msgid="6583235883700027279">"如果疊層蓋到了畫面中的其他元素，您可以將疊層移開，方法是按住並拖曳疊層。放開手指後，疊層即會移至螢幕頂端或底部。"</string>
     <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"顯示疊層教學課程"</string>
     <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"建議您在使用螢幕疊層功能之前，先觀看該功能的教學課程。"</string>

@@ -27,12 +27,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.RemoteException;
 import android.util.Log;
-
 import com.googlecode.eyesfree.utils.LogUtils;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -535,7 +533,7 @@ public class LabelProviderClient {
             return Collections.emptyList();
         }
 
-        final List<Label> result = new LinkedList<Label>();
+    final List<Label> result = new ArrayList<Label>();
         while (cursor.moveToNext()) {
             final Label label = getLabelFromCursorAtCurrentPosition(cursor);
             if (label != null) {
@@ -560,7 +558,7 @@ public class LabelProviderClient {
             return Collections.emptyList();
         }
 
-        final List<PackageLabelInfo> result = new LinkedList<PackageLabelInfo>();
+    final List<PackageLabelInfo> result = new ArrayList<PackageLabelInfo>();
         while (cursor.moveToNext()) {
             final PackageLabelInfo packageLabelInfo = getPackageLabelInfoFromCursor(cursor);
             if (packageLabelInfo != null) {
@@ -614,7 +612,7 @@ public class LabelProviderClient {
      * @param result The labels to log.
      */
     private void logResult(Iterable<Label> result) {
-        if (LogUtils.LOG_LEVEL >= Log.VERBOSE) {
+        if (LogUtils.shouldLog(Log.VERBOSE)) {
             final StringBuilder logMessageBuilder = new StringBuilder("Query result: [");
             for (Label label : result) {
                 logMessageBuilder.append("\n  ");

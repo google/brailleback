@@ -16,6 +16,12 @@
 
 package com.googlecode.eyesfree.brailleback;
 
+import android.accessibilityservice.AccessibilityService;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.util.Log;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.EditText;
 import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
 import com.googlecode.eyesfree.brailleback.rule.BrailleRule;
 import com.googlecode.eyesfree.brailleback.rule.BrailleRuleRepository;
@@ -25,13 +31,6 @@ import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
 import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 import com.googlecode.eyesfree.utils.LogUtils;
 import com.googlecode.eyesfree.utils.WebInterfaceUtils;
-
-import android.accessibilityservice.AccessibilityService;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.util.Log;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
 
 /**
  * Navigation mode that is based on traversing the node tree using

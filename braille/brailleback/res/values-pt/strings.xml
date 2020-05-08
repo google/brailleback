@@ -2,6 +2,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Quando o BrailleBack estiver ativado, seu dispositivo se conectará a um terminal braile pareado via Bluetooth e mostrará o conteúdo da tela em braile. As teclas no terminal braile podem ser usadas para navegar pela tela, ativar itens e inserir texto. Para mais informações, pressione a barra de espaço e os pontos um, dois e três (a letra l em braile) em seu terminal quando estiver conectado."</string>
+    <!-- no translation found for service_summary (8016336378969476112) -->
+    <skip />
     <string name="braille_ime_name" msgid="819430885692057322">"Teclado braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Assistente do teclado braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Ativar teclado braille"</string>
@@ -32,6 +34,8 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Tipo de braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabela de braille literário"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabela de braille para computador"</string>
+    <!-- no translation found for pref_braille_word_wrap_title (6481878403472323874) -->
+    <skip />
     <string name="connstate_not_connected" msgid="3876972842771373901">"Não conectado"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Conectado"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Não disponível"</string>

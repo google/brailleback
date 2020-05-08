@@ -16,8 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -27,6 +25,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
 
 /**
  * View which displays Braille dot patterns and corresponding text.
@@ -264,7 +263,7 @@ public class BrailleView extends View {
                 mPrimaryPaint.setTextScaleX(
                         (clipRight - clipLeft) / measuredWidth);
             }
-            canvas.save(Canvas.CLIP_SAVE_FLAG);
+            canvas.save();
             canvas.clipRect(clipLeft, clipTop, clipRight, clipBottom);
             canvas.drawText(mText, textStart, textEnd, x, y, mPrimaryPaint);
             canvas.restore();

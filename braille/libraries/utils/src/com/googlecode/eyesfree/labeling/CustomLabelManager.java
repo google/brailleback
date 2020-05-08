@@ -71,7 +71,7 @@ import java.util.regex.Pattern;
  *
  * @author caseyburkhardt@google.com (Casey Burkhardt)
  */
-// TODO(caseyburkhardt): Most public methods in this class should support
+// TODO: Most public methods in this class should support
 // optional callbacks.
 @TargetApi(18)
 public class CustomLabelManager implements AccessibilityEventListener {
@@ -442,7 +442,7 @@ public class CustomLabelManager implements AccessibilityEventListener {
         if (packageNames == null || packageNames.size() == 0) {
             // Since there aren't specific packages to reload, copy all the
             // keys and invalidate the entire cache.
-            // TODO(caseyburkhardt): Test this. We shouldn't need a deep copy,
+            // TODO: Test this. We shouldn't need a deep copy,
             // but double check.
             packageNames = Collections.unmodifiableSet(mLabelCache.keySet());
             mLabelCache.clear();
@@ -586,7 +586,7 @@ public class CustomLabelManager implements AccessibilityEventListener {
             return;
         }
 
-        // TODO(caseyburkhardt): Is it worth optimizing further by keeping a
+        // TODO: Is it worth optimizing further by keeping a
         // complete list of packages for which labels exist, and short
         // circuiting on the execution of the task if no labels exist for the
         // package?

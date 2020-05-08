@@ -20,6 +20,9 @@
  * Android.
  */
 
+#include "brl_types.h"
+
+// ADD_DEVICE_SUPPORT
 extern const BrailleDriver brl_driver_vo;
 extern const BrailleDriver brl_driver_eu;
 extern const BrailleDriver brl_driver_fs;

@@ -18,7 +18,7 @@
     <item msgid="2039335960797511513">"Aktuelles Element lange drücken"</item>
     <item msgid="5703473744103522479">"Ein Braillezeichen eingeben"</item>
     <item msgid="397805118186944475">"Schaltfläche \"Zurück\" aktivieren"</item>
-    <item msgid="2057979808256674943">"Schaltfläche \"Startseite\" aktivieren"</item>
+    <item msgid="2057979808256674943">"Startbildschirmtaste aktivieren"</item>
     <item msgid="3851017077578326256">"Benachrichtigungsfenster öffnen"</item>
     <item msgid="7100928240716386910">"Fenster \"Zuletzt geöffnete Apps\" öffnen"</item>
     <item msgid="1288748126248312152">"Bei der Textbearbeitung Eingabetaste aktivieren"</item>
@@ -32,9 +32,10 @@
     <item msgid="561134957068368670">"Zur vorherigen Liste im Webinhalt navigieren"</item>
     <item msgid="4431278105955644176">"Bildschirmsuche aktivieren/deaktivieren"</item>
     <item msgid="1541653246718288681">"Label-Menü wechseln"</item>
-    <item msgid="3070189781205215458">"Zur BrailleBack-Tastaturhilfe"</item>
+    <item msgid="3873494647942879428">"Braille-Kürzungsgrad aktivieren/deaktivieren"</item>
+    <item msgid="6558794813691083806">"BrailleBack-Tastaturhilfe öffnen"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"<xliff:g id="KEY_LIST">%s</xliff:g> lange drücken"</string>
-    <string name="key_bindings_instructions" msgid="123530902329533100">"Verschieben Sie den Bildschirmfokus mithilfe der Richtungstasten."\n"Geben Sie mit den Brailletasten Text in ein Bearbeitungsfeld ein."\n"Nachfolgend finden Sie eine Liste aller Tastaturbefehle, die von Ihrem Gerät unterstützt werden."</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Verschiebe den Bildschirmfokus mithilfe der Richtungstasten."\n"Gib mit den Brailletasten Text in ein Bearbeitungsfeld ein."\n"Nachfolgend findest du eine Liste aller Tastaturbefehle, die von deinem Gerät unterstützt werden."</string>
 </resources>

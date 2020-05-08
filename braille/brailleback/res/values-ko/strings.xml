@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"점자 지원이 사용 중이면 기기가 페어링된 블루투스 점자 디스플레이와 연결되고 화면 콘텐츠가 점자로 표시됩니다. 점자 디스플레이의 키를 사용하여 화면을 탐색하고 항목을 활성화하며 텍스트를 입력할 수 있습니다. 자세한 내용을 보려면 기기가 연결된 후 표시되는 디스플레이에서 스페이스바+점1+점2+점3(영문점자 l 또는 한글점자 사)을 누르세요."</string>
+    <string name="service_summary" msgid="8016336378969476112">"점자 출력 제공"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"점자 하드웨어 키보드"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"점자 하드웨어 키보드 마법사"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"점자 하드웨어 키보드 사용"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"점자 유형"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"6점 점자표"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"8점 점자표"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"단어 줄바꿈 사용"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"연결되지 않음"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"연결됨"</string>
     <string name="connstate_error" msgid="8717968034812924474">"사용할 수 없음"</string>

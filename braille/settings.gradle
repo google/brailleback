@@ -1,0 +1,6 @@
+include ':brailleback'
+rootProject.name='Brailleback'
+include ':client'
+include ':libraries:utils'
+include ':libraries:compatutils'
+include ':service'

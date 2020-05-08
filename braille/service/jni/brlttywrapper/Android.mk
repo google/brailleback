@@ -28,6 +28,7 @@ VISIBILITY=
 #----------------------------------------------------------------
 # List of brltty drivers that are included.  If adding a new driver,
 # include the directory name of the driver in the below list.
+# ADD_DEVICE_SUPPORT
 
 $(call build-braille-drivers,\
 	Voyager \
@@ -51,7 +52,7 @@ LOCAL_PATH := $(WRAPPER_PATH)
 LOCAL_MODULE    := brlttywrap
 LOCAL_LDFLAGS := $(BRLTTY_LDFLAGS)
 LOCAL_LDLIBS := -llog
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/.. $(BRLTTY_PATH)/Programs
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/.. $(BRLTTY_PATH)/Programs $(BRLTTY_PATH)/Headers
 LOCAL_SRC_FILES := BrlttyWrapper.c
 LOCAL_WHOLE_STATIC_LIBRARIES := libbrltty-android
 
@@ -66,6 +67,7 @@ LOCAL_PATH := $(WRAPPER_PATH)
 
 LOCAL_C_INCLUDES := $(BRLTTY_PATH) \
 	$(BRLTTY_PATH)/Programs \
+	$(BRLTTY_PATH)/Headers \
 	$(LOCAL_PATH)
 
 LOCAL_CFLAGS+=-DHAVE_CONFIG_H $(VISIBILITY)
@@ -74,7 +76,8 @@ LOCAL_CFLAGS+=-D__ANDROID__
 LOCAL_SRC_FILES:= \
 	libbrltty.c \
 	bluetooth_android.c \
-	sys_android.c
+	sys_android.c \
+	prefs.c
 
 LOCAL_MODULE := brltty-android
 LOCAL_WHOLE_STATIC_LIBRARIES := libbrltty
@@ -88,10 +91,12 @@ LOCAL_PATH := $(BRLTTY_PATH)
 
 LOCAL_C_INCLUDES:= $(BRLTTY_PATH) \
 	$(BRLTTY_PATH)/Programs \
+	$(BRLTTY_PATH)/Headers \
 	$(WRAPPER_PATH)
 
 LOCAL_CFLAGS+=-DHAVE_CONFIG_H $(VISIBILITY)
 LOCAL_CFLAGS+=-D__ANDROID__
+LOCAL_CFLAGS+=-std=c99
 
 LOCAL_SRC_FILES:= \
 	Programs/cmd.c \
@@ -106,28 +111,43 @@ LOCAL_SRC_FILES:= \
 
 # Base objects
 LOCAL_SRC_FILES+= \
+	Programs/addresses.c \
+	Programs/dynld_none.c \
+	Programs/log_history.c \
+  Programs/system_java.c \
 	Programs/log.c \
 	Programs/file.c \
 	Programs/device.c \
 	Programs/parse.c \
 	Programs/timing.c \
-	Programs/io_misc.c
+	Programs/variables.c \
+	Programs/thread.c \
+	Programs/report.c
 
 # Braille objects
 LOCAL_SRC_FILES+= \
-	Programs/brl.c
+	Programs/brl.c \
+	Programs/brl_base.c \
+	Programs/brl_driver.c \
+	Programs/brl_utils.c
 
 # IO objects
 LOCAL_SRC_FILES+= \
-	Programs/io_generic.c
+	Programs/io_misc.c \
+	Programs/gio.c \
+	Programs/gio_null.c \
+	Programs/gio_serial.c \
+	Programs/gio_usb.c \
+	Programs/gio_bluetooth.c
 
 # Bluetooth objects
 LOCAL_SRC_FILES+= \
 	Programs/bluetooth.c \
+	Programs/bluetooth_names.c
 
 # Other, not sure where they come from.
 LOCAL_SRC_FILES+= \
-	Programs/unicode.c \
+Programs/unicode.c \
 	Programs/queue.c \
 	Programs/serial.c \
 	Programs/serial_none.c \
@@ -135,12 +155,27 @@ LOCAL_SRC_FILES+= \
 	Programs/usb_none.c \
 	Programs/usb_hid.c \
 	Programs/usb_serial.c \
+	Programs/usb_ftdi.c \
+	Programs/usb_belkin.c \
+	Programs/usb_cp2101.c \
+	Programs/usb_cp2110.c \
+	Programs/usb_cdc_acm.c \
+	Programs/usb_adapters.c \
 	Programs/ktb_translate.c \
 	Programs/ktb_compile.c \
-	Programs/async.c \
+	Programs/ktb_list.c \
+	Programs/ktb_cmds.c \
+	Programs/async_io.c \
+	Programs/async_alarm.c \
+	Programs/async_event.c \
+	Programs/async_handle.c \
+	Programs/async_wait.c \
+	Programs/async_task.c \
+	Programs/async_data.c \
+	Programs/async_signal.c \
 	Programs/datafile.c \
 	Programs/dataarea.c \
-	Programs/touch.c \
+	Programs/cmd_queue.c \
 	Programs/hidkeys.c
 
 LOCAL_MODULE := brltty

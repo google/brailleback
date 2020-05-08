@@ -2,14 +2,15 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Apabila BrailleBack aktif, perangkat Anda akan tersambung ke tampilan braille Bluetooth yang disandingkan dan menyajikan konten layar dalam braille. Tombol di tampilan braille dapat digunakan untuk menavigasi layar, mengaktifkan item, dan memasukkan teks. Untuk informasi lebih lanjut, tekan spasi dan titik 1, 2, dan 3 (huruf l di braille) pada tampilan Anda saat tersambung."</string>
-    <string name="braille_ime_name" msgid="819430885692057322">"Keyboard perangkat keras braille"</string>
-    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard Keyboard Perangkat Keras Braille"</string>
-    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktifkan keyboard perangkat keras braille"</string>
-    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Untuk menggunakan keyboard perangkat keras braille, Anda harus mengaktifkannya di setelan metode masukan, lalu menyetelnya sebagai metode masukan default."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Sediakan output braille"</string>
+    <string name="braille_ime_name" msgid="819430885692057322">"Keyboard hardware braille"</string>
+    <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard Keyboard Hardware Braille"</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktifkan keyboard hardware braille"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Untuk menggunakan keyboard hardware braille, Anda harus mengaktifkannya di setelan metode masukan, lalu menyetelnya sebagai metode masukan default."</string>
     <string name="ime_setup_skip" msgid="4399160517982183408">"Lewati"</string>
     <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Buka Setelan Metode Masukan"</string>
     <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Setel Metode Masukan Default"</string>
-    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Untuk menggunakan keyboard perangkat keras braille, Anda harus menyetelnya sebagai metode masukan default."</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Untuk menggunakan keyboard hardware braille, Anda harus menyetelnya sebagai metode masukan default."</string>
     <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Buka Alat Pilih Metode Masukan"</string>
     <string name="permlab_displayConnect" msgid="2251586694368462088">"Menghubungkan ke tampilan braille"</string>
     <string name="permdesc_displayConnect" msgid="3519598574125084994">"Memungkinkan aplikasi menulis keluaran ke dan membaca masukan keyboard dari tampilan braille"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Jenis braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabel braille tertulis"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabel braille komputer"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Aktifkan penggabungan kata"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Tidak terhubung"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Terhubung"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Tidak tersedia"</string>
@@ -40,11 +42,11 @@
     <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Otomatis (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
     <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Otomatis (tidak ada)"</string>
     <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Lain-Lain"</string>
-    <string name="pref_category_developer_title" msgid="7276576143816692867">"Opsi pengembang"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Opsi developer"</string>
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Hamparan pada layar"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Keluaran braille tampil di layar"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Luncurkan tutorial"</string>
-    <string name="pref_os_license_title" msgid="1569318864930820110">"Lisensi Sumber Terbuka"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Lisensi Open Source"</string>
     <string name="pref_log_level_label" msgid="3161296593165404029">"Tingkat keluaran log"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Bantuan keyboard BrailleBack"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback aktf"</string>
@@ -58,11 +60,11 @@
     <string name="overlay_pan_right_button" msgid="6982590158653468102">"Geser ke kanan"</string>
     <string name="overlay_tutorial_title" msgid="323686269924134028">"Tutorial Hamparan"</string>
     <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Selesai"</string>
-    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Hamparan braille mensimulasikan tampilan braille yang dapat disegarkan. Hamparan ini menampilkan sel braille, beserta teks yang sesuai, yang akan disajikan pada layar perangkat keras. Disarankan agar Anda mengaktifkan TalkBack dan mode eksplorasi sentuhan sebelum melanjutkan."</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Hamparan braille mensimulasikan tampilan braille yang dapat disegarkan. Hamparan ini menampilkan sel braille, beserta teks yang sesuai, yang akan disajikan pada layar hardware. Disarankan agar Anda mengaktifkan TalkBack dan mode eksplorasi sentuhan sebelum melanjutkan."</string>
     <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Setelan Aksesibilitas"</string>
     <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Anda dapat menggeser tampilan braille dengan menekan salah satu tombol geser di samping teks."</string>
     <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Beberapa elemen dapat muncul di layar sekaligus. Anda dapat mengeklik salah satu diantaranya dengan menekan salah satu sel braille di dalam teks. Hal ini sama dengan menekan salah satu tombol perutean pada tampilan braille."</string>
-    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Jika hamparan menutupi elemen lain pada layar, Anda dapat memindahkannya keluar. Tekan lama hamparan, lalu seret. Hamparan akan dipaskan ke bagian atas atau bawah layar saat Anda melepaskan jari Anda."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Jika hamparan menutupi elemen lain pada layar, Anda dapat memindahkannya keluar. Tekan lama hamparan, lalu tarik. Hamparan akan dipaskan ke bagian atas atau bawah layar saat Anda melepaskan jari Anda."</string>
     <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Tampilkan Tutorial Hamparan"</string>
     <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"Sebaiknya Anda melihat tutorial untuk hamparan pada layar sebelum menggunakannya."</string>
     <string name="search_result_prefix" msgid="404457595813397708">"P:"</string>
@@ -72,8 +74,8 @@
     <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Gunakan <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> untuk berpindah ke hasil selanjutnya dan <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> untuk berpindah ke hasil sebelumnya. Tekan <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> untuk keluar dari mode penelusuran dan tetap fokus pada hasil. Tekan <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> untuk kembali ke item yang difokuskan sebelumnya."</string>
     <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Jangan tampilkan ini lagi"</string>
     <string name="search_tutorial_close_button" msgid="6374344909522290237">"Lanjutkan"</string>
-    <string name="menu_item_label_add" msgid="7171209255969707579">"Tambahkan label khusus"</string>
-    <string name="menu_item_label_edit" msgid="3009644363444552176">"Edit label khusus"</string>
-    <string name="menu_item_label_remove" msgid="6836749636921226607">"Hapus label khusus"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Tambahkan label kustom"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Edit label kustom"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Hapus label kustom"</string>
     <string name="menu_item_update_talkback" msgid="5549071241261625208">"Label khusus tidak didukung. Perbarui talkback"</string>
 </resources>

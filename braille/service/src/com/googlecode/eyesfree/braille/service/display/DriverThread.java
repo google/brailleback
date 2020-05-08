@@ -16,9 +16,6 @@
 
 package com.googlecode.eyesfree.braille.service.display;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -26,7 +23,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
-
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;

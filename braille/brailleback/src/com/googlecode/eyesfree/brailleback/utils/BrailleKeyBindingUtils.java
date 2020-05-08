@@ -16,13 +16,11 @@
 
 package com.googlecode.eyesfree.brailleback.utils;
 
+import android.content.Context;
+import android.text.TextUtils;
 import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
 import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
 import com.googlecode.eyesfree.brailleback.R;
-
-import android.content.Context;
-import android.text.TextUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

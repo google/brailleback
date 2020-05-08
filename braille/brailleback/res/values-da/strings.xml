@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Når BrailleBack er aktiveret, vil din enhed oprette forbindelse til en parret brailleskærm med bluetooth og gengive skærmens indhold i brailleskrift. Taster på brailleskærmen kan bruges til at navigere på skærmen, aktivere elementer og indtaste tekst. Du kan få flere oplysninger ved at trykke på mellemrumstasten og prikkerne 1, 2 og 3 (bogstavet l i brailleskrift) på din skærm, når den er forbundet."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Giv brailleoutput"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braillehardwaretastatur"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Guide til braillehardwaretastatur"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktivér braillehardwaretastaturet"</string>
@@ -23,7 +24,7 @@
     <string name="type_image" msgid="3688576211222019626">"Billede"</string>
     <string name="type_button" msgid="3639574187835564558">"Knap"</string>
     <string name="type_seekbar" msgid="979094491475615458">"Søgekontrolelement"</string>
-    <string name="type_quickcontact" msgid="5224329178093450337">"Kontaktperson"</string>
+    <string name="type_quickcontact" msgid="5224329178093450337">"Kontakt"</string>
     <string name="preferences_title" msgid="368535298674637475">"BrailleBack-præferencer"</string>
     <string name="pref_category_device_title" msgid="8644919099122845217">"Enhed"</string>
     <string name="pref_connection_status_title" msgid="8350285056432214602">"Status"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Brailletype"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Litterær brailletabel"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Computerbrailletabel"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Aktivér ordombrydning"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Ikke forbundet"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Forbundet"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Ikke tilgængelig"</string>

@@ -16,20 +16,23 @@
 
 package com.googlecode.eyesfree.brailleback;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.googlecode.eyesfree.braille.display.Display;
 import com.googlecode.eyesfree.braille.display.DisplayClient;
 import com.googlecode.eyesfree.braille.translate.TableInfo;
 import com.googlecode.eyesfree.brailleback.utils.PreferenceUtils;
 import com.googlecode.eyesfree.utils.LogUtils;
-
 import java.text.CollationKey;
 import java.text.Collator;
 import java.util.ArrayList;
@@ -48,8 +51,12 @@ public class BrailleBackPreferencesActivity extends PreferenceActivity
                TranslatorManager.OnTablesChangedListener,
                Preference.OnPreferenceChangeListener,
                Preference.OnPreferenceClickListener {
-    private final TableInfoComparator TABLE_INFO_COMPARATOR =
-            new TableInfoComparator();
+
+    /** Message from BrailleBackService, indicating that grade pref changed, so update display. */
+    public static final String INTENT_REFRESH_DISPLAY =
+        "com.googlecode.eyesfree.brailleback.REFRESH_DISPLAY";
+
+    private final TableInfoComparator mTableInfoComparator = new TableInfoComparator();
 
     private DisplayClient mDisplay;
     private TranslatorManager mTranslatorManager;
@@ -117,11 +124,35 @@ public class BrailleBackPreferencesActivity extends PreferenceActivity
         mTranslatorManager = new TranslatorManager(this);
         mTranslatorManager.addOnTablesChangedListener(this);
         onConnectionStateChanged(Display.STATE_NOT_CONNECTED);
+        refreshPreferences();
+        registerReceiver(mRefreshReceiver, new IntentFilter(INTENT_REFRESH_DISPLAY));
+    }
+
+    private BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
+      @Override
+      public void onReceive(Context context, Intent intent) {
+        if (TextUtils.equals(intent.getAction(), INTENT_REFRESH_DISPLAY)) {
+          refreshPreferences();
+        }
+      }
+    };
+
+    /**
+     * Refresh displayed preference value for braille type, because it may be modified outside the
+     * preferences activity.
+     */
+    private void refreshPreferences() {
+      SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+      final String prefKey = getString(R.string.pref_braille_type_key);
+      final String prefDefault = getString(R.string.pref_braille_type_six_dot_value);
+      final String prefValue = sharedPrefs.getString(prefKey, prefDefault);
+      updateListPreferenceSummary(mBrailleTypePreference, prefValue);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        unregisterReceiver(mRefreshReceiver);
         mTranslatorManager.removeOnTablesChangedListener(this);
         mTranslatorManager.shutdown();
         mDisplay.shutdown();
@@ -209,7 +240,7 @@ public class BrailleBackPreferencesActivity extends PreferenceActivity
                 tables.add(info);
             }
         }
-        Collections.sort(tables, TABLE_INFO_COMPARATOR);
+        Collections.sort(tables, mTableInfoComparator);
         CharSequence[] entryValues = new CharSequence[tables.size() + 1];
         CharSequence[] entries = new CharSequence[tables.size() + 1];
         int index = 0;
@@ -329,7 +360,7 @@ public class BrailleBackPreferencesActivity extends PreferenceActivity
     private boolean updateListPreferenceSummary(
             ListPreference listPreference, String newValue) {
         int index = listPreference.findIndexOfValue(newValue);
-        CharSequence entries[] = listPreference.getEntries();
+        CharSequence[] entries = listPreference.getEntries();
         if (index < 0 || index >= entries.length) {
             LogUtils.log(this, Log.ERROR,
                     "Unknown preference value for %s: %s",
@@ -372,4 +403,9 @@ public class BrailleBackPreferencesActivity extends PreferenceActivity
             return key;
         }
     }
+
+    protected boolean isValidFragment(String fragmentName) {
+      return false;
+    }
+
 }

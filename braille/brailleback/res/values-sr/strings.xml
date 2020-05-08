@@ -2,14 +2,15 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Када је апликација BrailleBack укључена, уређај ће се повезати са упареним Bluetooth дисплејом са Брајевом азбуком и представити садржај екрана на Брајевој азбуци. Помоћу тастера на дисплеју са Брајевом азбуком можете да се крећете по екрану, активирате ставке и уносите текст. За више информација притисните тастер за размак и тачке 1, 2 и 3 (слово л на Брајевој азбуци) на дисплеју када га повежете."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Прикажи Брајеву азбуку"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Хардверска тастатура са Брајевом азбуком"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Чаробњак за хардверску тастатуру са Брајевом азбуком"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Омогућавање хардверске тастатуре са Брајевом азбуком"</string>
-    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Да бисте користили хардверску тастатуру са Брајевом азбуком, потребно је да је омогућите у подешавањима метода уноса и да је затим подесите као подразумевани метод уноса."</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Да бисте користили хардверску тастатуру са Брајевом азбуком, треба да је омогућите у подешавањима метода уноса и да је затим подесите као подразумевани метод уноса."</string>
     <string name="ime_setup_skip" msgid="4399160517982183408">"Прескочи"</string>
     <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Отвори Подешавања метода уноса"</string>
     <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Подешавање подразумеваног метода уноса"</string>
-    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Да бисте користили хардверску тастатуру са Брајевом азбуком, потребно је да је подесите као подразумевани метод уноса."</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Да бисте користили хардверску тастатуру са Брајевом азбуком, треба да је подесите као подразумевани метод уноса."</string>
     <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Отвори Бирач метода уноса"</string>
     <string name="permlab_displayConnect" msgid="2251586694368462088">"Повезивање са екраном са Брајевом азбуком"</string>
     <string name="permdesc_displayConnect" msgid="3519598574125084994">"Дозвољава апликацији да пише знакове на екрану са Брајевом азбуком и чита тастерске уносе са њега"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Тип Брајеве азбуке"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Табела станд. Брај. азб."</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Табела рачун. Брај. азб."</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Омогући преламање речи"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Није повезано"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Повезано"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Није доступно"</string>
@@ -44,8 +46,7 @@
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Постављени елемент на екрану"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Брајеви знакови на екрану"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Покрени водич"</string>
-    <!-- no translation found for pref_os_license_title (1569318864930820110) -->
-    <skip />
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Лиценце отвореног кода"</string>
     <string name="pref_log_level_label" msgid="3161296593165404029">"Ниво излазне евиденције"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Помоћ за BrailleBack тастатуру"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback укљ."</string>
@@ -53,10 +54,8 @@
     <string name="braille_keyboard_active" msgid="7094321134174837395">"BrailleBack тастатура је активна"</string>
     <string name="tap_to_switch_ime" msgid="8521400813452643324">"Додирните да бисте пребацили на подразумевану тастатуру"</string>
     <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> – ниво <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
-    <!-- no translation found for table_name_variant (1753521407107091535) -->
-    <skip />
-    <!-- no translation found for table_name_variant_grade (6026910493807098640) -->
-    <skip />
+    <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
+    <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) – <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>. степен"</string>
     <string name="overlay_pan_left_button" msgid="3970960598254323366">"Помери налево"</string>
     <string name="overlay_pan_right_button" msgid="6982590158653468102">"Помери надесно"</string>
     <string name="overlay_tutorial_title" msgid="323686269924134028">"Водич за постав. елем."</string>

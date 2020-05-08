@@ -25,8 +25,7 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -124,7 +123,7 @@ public abstract class ExploreByTouchObjectHelper<T> extends ExploreByTouchHelper
 
     @Override
     protected final void getVisibleVirtualViewIds(List<Integer> virtualViewIds) {
-        final List<T> items = new LinkedList<T>();
+    final List<T> items = new ArrayList<T>();
         getVisibleItems(items);
 
         for (T item : items) {

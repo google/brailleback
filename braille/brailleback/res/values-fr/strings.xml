@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Lorsque l\'application BrailleBack est activée, votre appareil affiche le contenu de l\'écran sur une plage braille associée, à laquelle il est connecté via le Bluetooth. Vous pouvez parcourir l\'écran, sélectionner les options et saisir du texte à l\'aide des touches de la plage braille. Pour plus d\'informations, appuyez simultanément sur la barre d\'espace et sur les points 1, 2 et 3 (cela correspond à la lettre l en braille) de la plage lorsqu\'elle est connectée."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Afficher le texte en braille"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Clavier braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Assistant d\'installation du clavier braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Activer le clavier braille"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Type de braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Table braille à 6 points"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Table braille à 8 points"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Activer l\'habillage du texte"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Non connecté"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Connecté"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Non disponible"</string>

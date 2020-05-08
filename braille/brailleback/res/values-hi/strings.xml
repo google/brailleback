@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"ज‍ब BrailleBack चालू होता है, तो आपका डिवाइस एक युग्मित bluetooth ब्रेल डिस्प्ले से कनेक्ट होगा और ब्रेल में स्क्रीन सामग्री प्रस्तुत करेगा. ब्रेल डिस्प्ले पर मौजूद कुंजियों का स्क्रीन नेविगेट करने, आइटम सक्रिय करने और लेख डालने के लिए उपयोग किया जा सकता है. और जानकारी के लिए, कनेक्ट हो जाने पर अपने डिस्प्ले पर space और डॉट 1, 2 और 3 (ब्रेल में l अक्षर) दबाएं."</string>
+    <string name="service_summary" msgid="8016336378969476112">"ब्रेल आउटपुट दें"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"ब्रेल हार्डवेयर कीबोर्ड"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"ब्रेल हार्डवेयर कीबोर्ड विज़ार्ड"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"ब्रेल हार्डवेयर कीबोर्ड सक्षम करें"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"ब्रेल का प्रकार"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"साहित्यिक ब्रेल तालिका"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"कंप्यूटर ब्रेल तालिका"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"शब्द रैप करना चालू करें"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"कनेक्ट नहीं है"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"कनेक्ट हो गया"</string>
     <string name="connstate_error" msgid="8717968034812924474">"उपलब्ध नहीं है"</string>

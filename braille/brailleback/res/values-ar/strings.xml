@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="service_description" msgid="3837907778560523486">"‏عند تشغيل تطبيق BrailleBack، سيتم توصيل جهازك بشاشة برايل المقترنة عبر البلوتوث وعرض محتوى شاشة الجهاز بطريقة برايل. يمكن استخدام المفاتيح على شاشة برايل للتنقل في الشاشة وتنشيط العناصر وإدخال النص. لمزيد من المعلومات، اضغط على space والنقاط 1 و2 و3 (الحرف l بطريقة برايل) على الشاشة عند توصيلها."</string>
+    <string name="service_description" msgid="3837907778560523486">"‏عند تشغيل تطبيق BrailleBack، سيتم توصيل جهازك بشاشة برايل المقترنة عبر البلوتوث وعرض محتوى شاشة الجهاز بطريقة برايل. يمكن استخدام المفاتيح على شاشة برايل للتنقل في الشاشة وتفعيل العناصر وإدخال النص. لمزيد من المعلومات، اضغط على space والنقاط 1 و2 و3 (الحرف l بطريقة برايل) على الشاشة عند توصيلها."</string>
+    <string name="service_summary" msgid="8016336378969476112">"تقديم مخرجات بلغة برايل"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"لوحة مفاتيح أجهزة برايل"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"معالج لوحة مفاتيح أجهزة برايل"</string>
-    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"تمكين لوحة مفاتيح أجهزة برايل"</string>
-    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"لاستخدام لوحة مفاتيح أجهزة برايل، يلزمك تمكينها في إعدادات أسلوب الإدخال ثم تعيينها لتكون أسلوب الإدخال الافتراضي."</string>
+    <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"تفعيل لوحة مفاتيح أجهزة برايل"</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"لاستخدام لوحة مفاتيح أجهزة برايل، يلزمك تمكينها في إعدادات أسلوب الإدخال ثم تعيينها لتكون أسلوب الإدخال التلقائي."</string>
     <string name="ime_setup_skip" msgid="4399160517982183408">"تخطي"</string>
     <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"فتح إعدادات أسلوب الإدخال"</string>
-    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"تعيين أسلوب الإدخال الافتراضي"</string>
-    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"لاستخدام لوحة مفاتيح أجهزة برايل، يلزمك تعيينها لتكون أسلوب الإدخال الافتراضي."</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"تعيين أسلوب الإدخال التلقائي"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"لاستخدام لوحة مفاتيح أجهزة برايل، يلزمك تعيينها لتكون أسلوب الإدخال التلقائي."</string>
     <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"فتح منتقي أسلوب الإدخال"</string>
     <string name="permlab_displayConnect" msgid="2251586694368462088">"التوصيل بشاشة برايل"</string>
     <string name="permdesc_displayConnect" msgid="3519598574125084994">"السماح لتطبيق بالكتابة إلى شاشة برايل وقراءة إدخالات لوحة المفاتيح"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"الكتابة بطريقة برايل"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"جدول برايل الكتابي"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"جدول برايل الكمبيوتر"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"تفعيل التفاف الكلمات"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"غير متصل"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"متصل"</string>
     <string name="connstate_error" msgid="8717968034812924474">"غير متاح"</string>
@@ -50,7 +52,7 @@
     <string name="display_connected" msgid="2008600513914815101">"‏تشغيل BrlBack"</string>
     <string name="shutting_down" msgid="1303701310644298807">"‏إيقاف تشغيل BrlBack"</string>
     <string name="braille_keyboard_active" msgid="7094321134174837395">"‏لوحة مفاتيح BrailleBack نشطة"</string>
-    <string name="tap_to_switch_ime" msgid="8521400813452643324">"النقر للتبديل إلى لوحة المفاتيح الافتراضية"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"النقر للتبديل إلى لوحة المفاتيح التلقائية"</string>
     <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - درجة <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
     <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
     <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - درجة <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>

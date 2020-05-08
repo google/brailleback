@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"BrailleBack açıkken, cihazınız eşleştirilmiş bir Bluetooth braille ekranına bağlanır ve ekranın içeriğini braille alfabesiyle sunar. Ekranda gezinmek, öğeleri etkinleştirmek ve metin girmek için braille ekranındaki tuşlar kullanılabilir. Daha fazla bilgi edinmek için, bağlandığında ekranınızda boşluk ve 1, 2, 3 noktalarına (braille alfabesinde l harfi) tuşlarına basın."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Braille çıkışı sağlayın"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braille donanım klavyesi"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Braille Donanım Klavyesi Sihirbazı"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Braille donanım klavyesini etkinleştirin"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Braille türü"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Yazınsal braille tablosu"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Bilgisayar braille tablosu"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Kelime sarmayı etkinleştir"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Bağlı değil"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Bağlı"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Kullanılamaz"</string>

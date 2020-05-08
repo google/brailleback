@@ -1,39 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string-array name="help_commandDescriptions">
-    <item msgid="618606498966330378">"Mover para a direita"</item>
-    <item msgid="992384288929754258">"Mover para a esquerda"</item>
-    <item msgid="2311009411708911700">"Navegar para o próximo item"</item>
-    <item msgid="4868322620432152139">"Navegar para o item anterior"</item>
-    <item msgid="713256521059720189">"Navegar para a próxima linha"</item>
-    <item msgid="7111316948614107646">"Navegar para a linha anterior"</item>
-    <item msgid="1092717670413169154">"Rolar para a frente"</item>
-    <item msgid="2672802569950877806">"Rolar para trás"</item>
-    <item msgid="6858389246595464611">"Navega para a parte superior da página"</item>
-    <item msgid="6077703163925348890">"Navega para a parte inferior da página"</item>
-    <item msgid="880847480793051862">"Ativa o item sob o dedo"</item>
-    <item msgid="2643484595828025643">"Pressiona por alguns instantes o item sob o dedo"</item>
-    <item msgid="2225564744515622940">"Ativa o item atual"</item>
-    <item msgid="2039335960797511513">"Pressiona por alguns instantes o item atual"</item>
-    <item msgid="5703473744103522479">"Insere um caractere braile"</item>
-    <item msgid="397805118186944475">"Ativa o botão Voltar"</item>
-    <item msgid="2057979808256674943">"Ativa o botão Página inicial"</item>
-    <item msgid="3851017077578326256">"Abre a janela de notificações"</item>
-    <item msgid="7100928240716386910">"Abre a janela de aplicativos recentes"</item>
-    <item msgid="1288748126248312152">"Ativa a tecla Enter ao editar texto"</item>
-    <item msgid="6030744298808090187">"Exclui para trás ao editar texto"</item>
-    <item msgid="4072293104009433677">"Exclui para frente ao editar texto"</item>
-    <item msgid="5307038145607249298">"Navega para a próxima seção no conteúdo da Web"</item>
-    <item msgid="8804572703982019495">"Navega para a seção anterior no conteúdo da Web"</item>
-    <item msgid="5442875833766760122">"Navega para o próximo campo de link/controle/formulário no conteúdo da Web"</item>
-    <item msgid="65542415754308243">"Navega para o campo de link/controle/formulário anterior no conteúdo da Web"</item>
-    <item msgid="8658175115960567526">"Navega para a próxima lista no conteúdo da Web"</item>
-    <item msgid="561134957068368670">"Navega para a lista anterior no conteúdo da Web"</item>
-    <item msgid="4431278105955644176">"Ativa a pesquisa no modo de tela"</item>
-    <item msgid="1541653246718288681">"Alterna o menu de marcação"</item>
-    <item msgid="3070189781205215458">"Abre a ajuda do teclado do BrailleBack"</item>
-  </string-array>
+    <!-- no translation found for help_commandDescriptions:30 (3873494647942879428) -->
+    <!-- no translation found for help_commandDescriptions:31 (6558794813691083806) -->
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Pressione por alguns instantes <xliff:g id="KEY_LIST">%s</xliff:g>"</string>
     <string name="key_bindings_instructions" msgid="123530902329533100">"Use as teclas de navegação para mover o foco na tela."\n"Use as teclas braille para inserir texto em uma caixa de edição."\n"Veja abaixo uma lista completa de comandos importantes compatíveis com seu dispositivo."</string>

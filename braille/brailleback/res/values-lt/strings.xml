@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Įjungus „BrailleBack“, įrenginys bus prijungtas prie susieto „Bluetooth“ Brailio rašto ekrano ir įrenginio ekrano turinys bus pateiktas Brailio raštu. Naudojant Brailio rašto ekrano klavišus galima naršyti ekrane, aktyvinti elementus ir įvesti tekstą. Jei reikia daugiau informacijos, prisijungę ekrane paspauskite tarpo klavišą ir 1, 2 bei 3 taškus (Brailio rašto raidė „l“)."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Teikia Brailio rašto išvestį"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Aparatinė Brailio rašto klaviatūra"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Aparatinės Brailio rašto klaviatūros vediklis"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Įgalinti aparatinę Brailio rašto klaviatūrą"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Brailio rašto tipas"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Liter. Brailio r. lentelė"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Komp. Brailio r. lentelė"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Įgalinti žodžių jungimo funkciją"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Neprijungta"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Prijungta"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nepasiekiama"</string>

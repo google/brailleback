@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"När BrailleBack är aktiverat ansluts enheten till en parkopplad bluetooth-brailleskärm och innehållet på skärmen visas som brailleskrift. Tangenterna på brailleskärmen kan användas för att navigera på skärmen, aktivera objekt och mata in text. Om du vill veta mer trycker du på mellanslag + punkt 1 + punkt 2 + punkt 3 (bokstaven l i brailleskrift) på skärmen när du är ansluten."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Tillhandahåll punktskriftsutdata"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Brailletangentbord"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Guide till brailletangentbord"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktivera brailletangentbord"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Brailleskriftstyp"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabell över punktskrift"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabell över åttapunktskrift"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Aktivera ordflyttning"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Ej ansluten"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Ansluten"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Inte tillgänglig"</string>

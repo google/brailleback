@@ -33,6 +33,7 @@
     <item>CMD_LIST_PREVIOUS</item>
     <item>CMD_TOGGLE_INCREMENTAL_SEARCH</item>
     <item>CMD_TOGGLE_BRAILLE_MENU</item>
+    <item>CMD_TOGGLE_BRAILLE_GRADE</item>
     <item>CMD_HELP</item>
   </string-array>
 
@@ -68,6 +69,7 @@
     <item>Navigate to previous list in web content</item>
     <item>Toggle search on screen mode</item>
     <item>Toggle labeling menu</item>
+    <item>Toggle braille grade</item>
     <item>Open the BrailleBack keyboard help</item>
   </string-array>
 

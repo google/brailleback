@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Når BrailleBack er aktivert, knyttes enheten din til en sammenkoblet punktskriftskjerm med Bluetooth, og viser skjerminnholdet i punktskrift. Tastene på punktskriftskjermen kan brukes til å navigere på skjermen, aktivere elementer og skrive inn tekst. For mer informasjon trykker du på mellomromstasten og prikkene for 1, 2 og 3 (bokstaven l i punktskrift) på skjermen når du er tilkoblet."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Del punktskriftsutdata"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Maskinvaretastatur for punktskrift"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Veiledning for maskinvaretastaturet for punktskrift"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Aktiver maskinvaretastaturet for punktskrift"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Punktskrifttype"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Litterær punkttabell"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Punkttabell på datamaskin"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Slå på tekstbryting"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Ikke tilkoblet"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Tilkoblet"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Ikke tilgjengelig"</string>

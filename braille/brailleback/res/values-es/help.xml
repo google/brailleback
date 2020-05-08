@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"Acceder a la lista anterior del contenido web"</item>
     <item msgid="4431278105955644176">"Alternar búsqueda en modo de pantalla"</item>
     <item msgid="1541653246718288681">"Cambiar menú de etiquetas"</item>
-    <item msgid="3070189781205215458">"Abrir la ayuda del teclado de BrailleBack"</item>
+    <item msgid="3873494647942879428">"Alternar grado de braille"</item>
+    <item msgid="6558794813691083806">"Abrir la ayuda del teclado de BrailleBack"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Mantener presionado <xliff:g id="KEY_LIST">%s</xliff:g>"</string>

@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"‏כאשר BrailleBack מופעל, המכשיר שלך יחובר לצג ברייל מותאם של Bluetooth ויציג את תוכן המסך בכתב ברייל. ניתן להשתמש במקשים של צג הברייל כדי לנווט במסך, להפעיל פריטים ולהזין טקסט. למידע נוסף, הקש על מקש הרווח ועל הנקודות 1, 2 ו-3 (האות l בברייל) בצג שלך כאשר אתה מחובר."</string>
+    <string name="service_summary" msgid="8016336378969476112">"מתן פלט בברייל"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"מקלדת חומרה בכתב ברייל"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"אשף מקלדת החומרה בכתב ברייל"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"הפעל מקלדת חומרה בכתב ברייל"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"סוג ברייל"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"טבלת ברייל ספרותי"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"טבלת ברייל מחשב"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"הפעלה של גלישת טקסט"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"לא מחובר"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"מחובר"</string>
     <string name="connstate_error" msgid="8717968034812924474">"לא זמין"</string>
@@ -43,7 +45,7 @@
     <string name="pref_category_developer_title" msgid="7276576143816692867">"אפשרויות למפתחים"</string>
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"שכבת-על במסך"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"הצג פלט ברייל על המסך"</string>
-    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"הפעל מערך שיעור"</string>
+    <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"הפעל מדריך"</string>
     <string name="pref_os_license_title" msgid="1569318864930820110">"רישיונות קוד פתוח"</string>
     <string name="pref_log_level_label" msgid="3161296593165404029">"רמה של פלט רישום ביומן"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"‏עזרה של מקלדת BrailleBack"</string>
@@ -67,7 +69,7 @@
     <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"אנחנו ממליצים לך לצפות במדריך בנושא שכבת-על במסך לפני שתתחיל להשתמש בה."</string>
     <string name="search_result_prefix" msgid="404457595813397708">"S:"</string>
     <string name="search_dialog_label" msgid="1816668691365362442">"חיפוש: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
-    <string name="search_tutorial_title" msgid="1035979397405903476">"מערך שיעור לחיפוש על גבי המסך"</string>
+    <string name="search_tutorial_title" msgid="1035979397405903476">"מדריך לחיפוש על גבי המסך"</string>
     <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"חיפוש על גבי המסך מאפשר לך לדלג במהירות לפריטים על גבי המסך על ידי הקלדת חלק מתיאור הטקסט שלהם. תוך כדי הקלדה, המיקוד יעבור לפריט התואם הבא."</string>
     <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"השתמש ב-<xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> כדי לעבור לתוצאה הבאה וב-<xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> כדי לעבור לתוצאה הקודמת. הקש על <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> כדי לצאת ממצב החיפוש ולהשאיר את המיקוד על התוצאה. הקש <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> כדי לעבור בחזרה לפריט הקודם שנמצא במיקוד."</string>
     <string name="search_tutorial_checkbox" msgid="3804049570909695877">"לעולם אל תציג זאת שוב"</string>

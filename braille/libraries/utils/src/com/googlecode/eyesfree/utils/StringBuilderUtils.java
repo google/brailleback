@@ -18,7 +18,6 @@ package com.googlecode.eyesfree.utils;
 
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-
 import java.util.List;
 
 public class StringBuilderUtils {
@@ -130,7 +129,8 @@ public class StringBuilderUtils {
         }
 
         final StringBuilder hex = new StringBuilder(bytes.length * 2);
-        int nibble1, nibble2;
+    int nibble1;
+    int nibble2;
         for (byte b : bytes) {
             nibble1 = (b >>> 4) & 0xf;
             nibble2 = b & 0xf;

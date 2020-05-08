@@ -16,9 +16,8 @@
 
 package com.googlecode.eyesfree.braille.service.translate;
 
-import com.googlecode.eyesfree.braille.translate.TranslationResult;
-
 import android.util.Log;
+import com.googlecode.eyesfree.braille.translate.TranslationResult;
 
 /**
  * Wraps the liblouis functions to translate to and from braille.
@@ -62,9 +61,10 @@ public class LibLouisWrapper {
      * resulting byte array.
      */
     public static TranslationResult translate(String text, String tableName,
-            int cursorPosition) {
+            int cursorPosition, boolean computerBrailleAtCursor) {
         synchronized (LibLouisWrapper.class) {
-            return translateNative(text, tableName, cursorPosition);
+            return translateNative(text, tableName, cursorPosition,
+                    computerBrailleAtCursor);
         }
     }
 
@@ -80,7 +80,8 @@ public class LibLouisWrapper {
     // to exist.
 
     private static native TranslationResult translateNative(String text,
-            String tableName, int cursorPosition);
+            String tableName, int cursorPosition,
+            boolean computerBrailleAtCursor);
     private static native String backTranslateNative(byte[] dotPatterns,
             String tableName);
     private static native boolean checkTableNative(String tableName);

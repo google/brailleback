@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Όταν είναι ενεργοποιημένο το BrailleBack, η συσκευή σας θα συνδέεται με μια συζευγμένη οθόνη bluetooth braille και θα παρουσιάζει το περιεχόμενο της οθόνης σε braille. Τα πλήκτρα της οθόνης braille μπορούν να χρησιμοποιηθούν για πλοήγηση στην οθόνη, ενεργοποίηση στοιχείων και εισαγωγή κειμένου. Για περισσότερες πληροφορίες, πατήστε το πλήκτρο διαστήματος και τις κουκκίδες 1, 2 και 3 (το γράμμα l στη μέθοδο braille) στην οθόνη σας κατά τη σύνδεση."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Εισαγωγή εξόδου μπράιγ"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Πληκτρολόγιο υλικού Braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Οδηγός πληκτρολογίου υλικού Braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Ενεργοποίηση πληκτρολογίου υλικού braille"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Τύπος Braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Πίνακας Braille 6 κουκ."</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Πίνακας Braille 8 κουκ."</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Ενεργοποίηση αναδίπλωσης λέξεων"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Δεν έχει συνδεθεί"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Έχει συνδεθεί"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Δεν είναι διαθέσιμη"</string>

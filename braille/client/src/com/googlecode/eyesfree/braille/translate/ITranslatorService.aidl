@@ -44,10 +44,13 @@ interface ITranslatorService {
      * Translates {@code text} into braille according to the given
      * {@code tableId}.  {@code cursorPosition}, if non-negative, will be
      * mapped to the corresponding position in the translation result.
+     * If {@code computerBrailleAtCursor} is set, then the word underneath the
+     * cursor will be expanded into computer braille (if using a literary
+     * braille table).
      * Returns null on fatal translation errors.
      */
     TranslationResult translate(String text, String tableId,
-            int cursorPosition);
+            int cursorPosition, boolean computerBrailleAtCursor);
 
     /**
      * Translates braille cells into text according to the given table

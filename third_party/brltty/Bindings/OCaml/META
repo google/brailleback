@@ -1,5 +1,0 @@
-requires = "unix"
-description = "Bindings for the libbrlapi braille enabling library"
-archive(byte) = "brlapi.cma"
-archive(native) = "brlapi.cmxa"
-version = "0.1"

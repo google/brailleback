@@ -27,6 +27,16 @@ public interface BrailleTranslator {
      * {@code cursorPosition}, if positive, will be mapped to the corresponding
      * position in the output.  This is sometimes more accurate than the
      * position maps in the {@link TranslationResult}.
+     * If {@code computerBrailleAtCursor} is set, then the word underneath the
+     * cursor will be expanded into computer braille (if using a literary
+     * braille table).
+     */
+    TranslationResult translate(String text, int cursorPosition,
+            boolean computerBrailleAtCursor);
+    
+    /**
+     * Convenience overload for calling {@link #translate(String, int, boolean)}
+     * without expansion of computer braille at the cursor.
      */
     TranslationResult translate(String text, int cursorPosition);
 
@@ -35,4 +45,7 @@ public interface BrailleTranslator {
      * is returned.  Returns {@code null} on error.
      */
     String backTranslate(byte[] cells);
+
+    /** Returns information about the braille table used for translation. */
+    TableInfo getTableInfo();
 }

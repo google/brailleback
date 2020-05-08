@@ -16,14 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback.rule;
 
-import com.googlecode.eyesfree.brailleback.BrailleBackService;
-import com.googlecode.eyesfree.brailleback.FocusFinder;
-import com.googlecode.eyesfree.brailleback.R;
-import com.googlecode.eyesfree.brailleback.utils.LabelingUtils;
-import com.googlecode.eyesfree.brailleback.utils.StringUtils;
-import com.googlecode.eyesfree.labeling.CustomLabelManager;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
@@ -35,6 +27,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.QuickContactBadge;
+import com.googlecode.eyesfree.brailleback.BrailleBackService;
+import com.googlecode.eyesfree.brailleback.FocusFinder;
+import com.googlecode.eyesfree.brailleback.R;
+import com.googlecode.eyesfree.brailleback.utils.LabelingUtils;
+import com.googlecode.eyesfree.brailleback.utils.StringUtils;
+import com.googlecode.eyesfree.labeling.CustomLabelManager;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 
 /**
  * Default rule that adds the text of the node and a check mark if
@@ -53,8 +52,17 @@ class DefaultBrailleRule implements BrailleRule {
             Context context,
             AccessibilityNodeInfoCompat node) {
         int oldLength = result.length();
-        CharSequence text =
-                LabelingUtils.getNodeText(node, getLabelManager());
+
+        CharSequence text = null;
+
+        AccessibilityNodeInfoCompat labeledBy = node.getLabeledBy();
+        if (labeledBy != null) {
+            text = LabelingUtils.getNodeText(labeledBy, getLabelManager());
+            labeledBy.recycle();
+        }
+        if (text == null) {
+            text = LabelingUtils.getNodeText(node, getLabelManager());
+        }
         if (text == null) {
             text = "";
         }

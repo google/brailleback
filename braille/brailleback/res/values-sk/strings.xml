@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="service_description" msgid="3837907778560523486">"Keď je aplikácia BrailleBack zapnutá, pripojí sa vaše zariadenie ku spárovanému hmatovému displeju a sprostredkuje obsah obrazovky v podobe Braillovho písma. Pomocou klávesov na hmatovom displeji je možné prechádzať medzi položkami na obrazovke, aktivovať ich a zadávať text. Viac informácií získate stlačením medzerníka a bodov 1, 2 a 3 (Braillov zápis písmena L) na pripojenom displeji."</string>
+    <string name="service_description" msgid="3837907778560523486">"Keď je aplikácia BrailleBack zapnutá, pripojí sa vaše zariadenie ku spárovanému hmatovému displeju a sprostredkuje obsah obrazovky v podobe Braillovho písma. Pomocou klávesov na hmatovom displeji je možné prechádzať medzi položkami na obrazovke, aktivovať ich a zadávať text. Ďalšie informácie získate stlačením medzerníka a bodov 1, 2 a 3 (Braillov zápis písmena L) na pripojenom displeji."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Poskytnúť výstup Braillovho zariadenia"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Hardvérová klávesnica s Braillovým písmom"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Sprievodca nastavením hardvérovej klávesnice s Braillovým písmom"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Povoliť hardvérovú klávesnicu s Braillovým písmom"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Typ Braillovho písma"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabuľka 6-bodového písma"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabuľka 8-bodového písma"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Povoliť zalomenie slov"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Nepripojené"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Pripojené"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nie je k dispozícii"</string>
@@ -40,7 +42,7 @@
     <string name="pref_braille_table_default_label" msgid="1462752739972207613">"Automaticky (<xliff:g id="TABLE_NAME">%1$s</xliff:g>)"</string>
     <string name="pref_braille_table_default_none_label" msgid="1448225003385606644">"Automaticky (žiadne)"</string>
     <string name="pref_category_miscellaneous_title" msgid="1296461419739225100">"Rôzne"</string>
-    <string name="pref_category_developer_title" msgid="7276576143816692867">"Možnosti vývojára"</string>
+    <string name="pref_category_developer_title" msgid="7276576143816692867">"Pre vývojárov"</string>
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Prekrytie obrazovky"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Zob.výstup Brail.na obr."</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Spustiť príručku"</string>

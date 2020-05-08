@@ -29,7 +29,11 @@ define ev-build-braille-driver
 include $$(CLEAR_VARS)
 LOCAL_PATH := $$(BRLTTY_PATH)
 DRIVER_PATH := $$(DRIVER_BASE_PATH)/$1
-LOCAL_C_INCLUDES := $$(BRLTTY_PATH) $$(BRLTTY_PATH)/Programs $$(WRAPPER_PATH)
+LOCAL_C_INCLUDES := \
+	$$(BRLTTY_PATH) \
+	$$(BRLTTY_PATH)/Programs \
+	$$(BRLTTY_PATH)/Headers \
+	$$(WRAPPER_PATH)
 # Set by the included make file if the sources are not the standard one.
 SRC_FILES := $$(empty)
 # Clear variables that should be set by the included make file.
@@ -51,6 +55,7 @@ LOCAL_CFLAGS := $$(VISIBILITY) \
 	'-DDRIVER_VERSION="$$(DRIVER_VERSION)"' \
 	'-DDRIVER_DEVELOPERS="$$(DRIVER_DEVELOPERS)"' \
 	-DHAVE_CONFIG_H
+LOCAL_CFLAGS+=-std=c99
 include $$(BUILD_STATIC_LIBRARY)
 DRIVER_MODULES += $$(LOCAL_MODULE)
 endef

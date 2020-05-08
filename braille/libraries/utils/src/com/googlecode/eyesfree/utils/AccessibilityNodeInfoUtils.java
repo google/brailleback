@@ -22,9 +22,8 @@ import android.os.Build;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.TextUtils;
 import android.util.Log;
-
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 import com.googlecode.eyesfree.compat.CompatUtils;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -802,6 +801,35 @@ public class AccessibilityNodeInfoUtils {
     }
 
     /**
+     * Returns {@code true} if the node supports at least one of the specified actions. To check
+     * whether a node supports multiple actions, combine them using the {@code |} (logical OR)
+     * operator.
+     *
+     * <p>Note: this method will check against the getActions() method of AccessibilityNodeInfo,
+     * which will not contain information for actions introduced in API level 21 or later.
+     *
+     * @param node The node to check.
+     * @param actions The actions to check.
+     * @return {@code true} if at least one action is supported.
+     */
+     public static boolean supportsAnyAction(AccessibilityNodeInfoCompat node,
+            AccessibilityAction... actions) {
+        if (node != null) {
+            // Unwrap the node and compare AccessibilityActions because AccessibilityActions, unlike
+            // AccessibilityActionCompats, are static (so checks for equality work correctly).
+            final List<AccessibilityAction> supportedActions = node.unwrap().getActionList();
+
+            for (AccessibilityAction action : actions) {
+                if (supportedActions.contains(action)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Returns the result of applying a filter using breadth-first traversal.
      *
      * @param context The parent context.
@@ -1013,33 +1041,37 @@ public class AccessibilityNodeInfoUtils {
         }
     };
 
-    /**
-     * Filter that defines which types of views should be auto-scrolled.
-     * Generally speaking, only accepts views that are capable of showing
-     * partially-visible data.
-     * <p>
-     * Accepts the following classes (and sub-classes thereof):
-     * <ul>
-     * <li>{@link android.widget.AbsListView} (and Samsung's TwAbsListView)
-     * <li>{@link android.widget.AbsSpinner}
-     * <li>{@link android.widget.ScrollView}
-     * <li>{@link android.widget.HorizontalScrollView}
-     * </ul>
-     * <p>
-     * Specifically excludes {@link android.widget.AdapterViewAnimator} and
-     * sub-classes, since they represent overlapping views. Also excludes
-     * {@link android.support.v4.view.ViewPager} since it exclusively represents
-     * off-screen views.
-     */
-    private static final NodeFilter FILTER_AUTO_SCROLL = new NodeFilter() {
+  /**
+   * Filter that defines which types of views should be auto-scrolled. Generally speaking, only
+   * accepts views that are capable of showing partially-visible data.
+   *
+   * <p>Accepts the following classes (and sub-classes thereof):
+   *
+   * <ul>
+   *   <li>{@link android.widget.AbsListView} (and Samsung's TwAbsListView)
+   *   <li>{@link android.widget.AbsSpinner}
+   *   <li>{@link android.widget.ScrollView}
+   *   <li>{@link android.widget.HorizontalScrollView}
+   * </ul>
+   *
+   * <p>Specifically excludes {@link android.widget.AdapterViewAnimator} and sub-classes, since they
+   * represent overlapping views. Also excludes {@link androidx.viewpager.widget.ViewPager} since it
+   * exclusively represents off-screen views.
+   */
+  private static final NodeFilter FILTER_AUTO_SCROLL =
+      new NodeFilter() {
         @Override
         public boolean accept(Context context, AccessibilityNodeInfoCompat node) {
-            return AccessibilityNodeInfoUtils.nodeMatchesAnyClassByType(context, node,
-                    android.widget.AbsListView.class, android.widget.AbsSpinner.class,
-                    android.widget.ScrollView.class, android.widget.HorizontalScrollView.class,
-                    CLASS_TOUCHWIZ_TWABSLISTVIEW);
+          return AccessibilityNodeInfoUtils.nodeMatchesAnyClassByType(
+              context,
+              node,
+              android.widget.AbsListView.class,
+              android.widget.AbsSpinner.class,
+              android.widget.ScrollView.class,
+              android.widget.HorizontalScrollView.class,
+              CLASS_TOUCHWIZ_TWABSLISTVIEW);
         }
-    };
+      };
 
     private static final NodeActionFilter FILTER_SCROLL_FORWARD = new NodeActionFilter(
             AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD);

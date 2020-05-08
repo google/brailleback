@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"በድር ይዘት ውስጥ ወደ ቀዳሚው ዝርዝር ያስሱ"</item>
     <item msgid="4431278105955644176">"በማያ ገጽ ሁነታ ላይ ፍለጋን ያብሩ/ያጥፉ"</item>
     <item msgid="1541653246718288681">"መለያ የማድረጊያ ምናሌን ለዋውጥ"</item>
-    <item msgid="3070189781205215458">"የBrailleBack ቁልፍ ሰሌዳ እገዛን ክፈት"</item>
+    <item msgid="3873494647942879428">"የብሬይል ደረጃን ቀያይር"</item>
+    <item msgid="6558794813691083806">"የBrailleBack ቁልፍ ሰሌዳ እገዛን ይክፈቱ"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"<xliff:g id="KEY_LIST">%s</xliff:g>ን ለረምጅ ጊዜ ይጫኑት"</string>

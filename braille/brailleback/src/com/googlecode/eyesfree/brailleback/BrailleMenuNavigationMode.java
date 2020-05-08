@@ -16,13 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-import com.googlecode.eyesfree.labeling.CustomLabelManager;
-import com.googlecode.eyesfree.labeling.Label;
-import com.googlecode.eyesfree.labeling.LabelOperationUtils;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
 import android.accessibilityservice.AccessibilityService;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -36,9 +29,14 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-
-import java.util.List;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
+import com.googlecode.eyesfree.labeling.CustomLabelManager;
+import com.googlecode.eyesfree.labeling.Label;
+import com.googlecode.eyesfree.labeling.LabelOperationUtils;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Navigation mode for going through menu items shown specially on the
@@ -329,7 +327,7 @@ public class BrailleMenuNavigationMode implements NavigationMode {
                     unwrapped.getViewIdResourceName());
         boolean hasParseableId = (parsedId != null);
 
-        // TODO(caseyburkhardt): There are a number of views that have a
+        // TODO: There are a number of views that have a
         // different resource namespace than their parent application. It's
         // likely we'll need to refine the database structure to accommodate
         // these while also allowing the user to modify them through TalkBack

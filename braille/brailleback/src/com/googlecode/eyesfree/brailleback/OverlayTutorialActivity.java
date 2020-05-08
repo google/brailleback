@@ -16,14 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -36,6 +28,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.View;
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Activity which guides new users through the use of the on-screen overlay.

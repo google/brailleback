@@ -35,16 +35,15 @@ built:
   Make sure that the SDK and NDK tools (android, ndk-build, etc) are
   available in your $PATH.
 
-* Apache ant version 1.8 or later.
-
 * A checked out copy of the BrailleBack source code from GitHub
 
 Building
 --------
-
 After making sure that the dependencies are in place (see Prerequisites
 above), perform the following steps to build the BrailleBack apk.
 Please run all commands from the root of the eyes-free source tree.
+
+* Modify local.properties. Specify your Sdk and Ndk path.
 
 * If you are building on Linux, you might be able to use the shell script
   that automates the build process.  This script builds a debug apk.
@@ -54,41 +53,37 @@ Please run all commands from the root of the eyes-free source tree.
   $ ./build.sh
 
   If the script finishes with a success message, then you're done and
-  can skp the rest of this section.  Use the adb command to install
+  can skip the rest of this section.  Use the adb command to install
   the apk on a device.  Otherwise, follow and adjust the steps below for your
   build environment.
 
-* Make sure to have a copy of brltty, version 4.5 checked out.  This can be
-  checked out from subversion as follows (run from within the eyes-free
-  directory as per above):
-  $ svn checkout svn://mielke.cc//releases/brltty-4.5 \
-    braille/service/jni/brlttywrapper/brltty
+* Make sure to have a copy of brltty, version 5.6 checked out and copy 
+  Drivers, Headers, Programs folders to braille/service/jni/brlttywrapper/brltty.
+  This can be checked out from Github :
 
-* Make sure to have a copy of liblouis, version 2.6.0 checked out.  This can 
-  be checked out from Github as follows 
-  (run under directory braille/service/jni/liblouiswrapper/liblouis):
+  $ git clone --branch BRLTTY-5.6 https://github.com/brltty/brltty.git
 
-  $ git clone --branch v2.6.0 https://github.com/liblouis/liblouis.git
+* Make sure to have a copy of liblouis, version 3.4.0 checked out and copy
+  liblouis and tables folders to braille/service/jni/liblouiswrapper/liblouis.  
+  This can be checked out from Github as follows :
+
+  $ git clone --branch v3.4.0 https://github.com/liblouis/liblouis.git
+
+* Run ./autogen && ./configure for these two libraries.
+
+* Make sure to have a copy of android-midi-lib and copy source code under java to 
+  braille/libraries/utils/src
+
+  $ git clone https://github.com/LeffelMania/android-midi-lib.git
 
 * Apply patches to the dependencies:
-  $ (cd braille/service/jni/brlttywrapper && patch -p1 < brltty.patch)
-  $ (cd braille/service/jni/liblouiswrapper && patch -p1 < liblouis.patch)
-
-* Update the local ant property files:
-  $ android update project -p libraries/utils -t android-18
-  $ android update project -p libraries/compatutils -t android-18
-  $ android update project -p braille/client -t android-18
-  $ android update project -p braille/service -t android-18
-  $ android update project -p braille/brailleback -t android-18
-
-* Build the native libraries:
-  $ (cd braille/service && ndk-build -j16)
+  $ patch -p1 < brltty.patch
+  $ patch -p1 < liblouis.patch
 
 * Build the BrailleBack apk:
-  $ (cd braille/brailleback && ant debug)
+  Under the braille directory, run:
 
-* Alternatively, build and install on a connected device:
-  $ (cd braille/brailleback && ant debug install)
+  $ ./gradlew assembDebug
 
 NOTE: If you try to install your own build on a device where a version of
 BrailleBack is already installed from the Google Play store, you will need to

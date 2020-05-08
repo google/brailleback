@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Якщо програму BrailleBack увімкнено, ваш пристрій під’єднається до спареного брайлівського дисплея з Bluetooth і на екрані відобразиться вміст шрифтом Брайля. За допомогою клавіш на брайлівському дисплеї можна переміщуватись екраном, активувати елементи та вводити текст. Щоб дізнатися більше, натисніть пробіл і крапки 1, 2 та 3 (літера \"l\" латинського алфавіту шрифтом Брайля) на під’єднаному дисплеї."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Показувати вивід Брайля"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Брайлівська клавіатура"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Майстер встановлення брайлівської кнопкової клавіатури"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Увімкнути брайлівську клавіатуру"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Тип шрифту Брайля"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Літературна таблиця Брайля"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Комп’ютерна таблиця Брайля"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Увімкнути перенесення слів"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Не під’єднано"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Під’єднано"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Не доступно"</string>
@@ -44,7 +46,7 @@
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Накладання на екрані"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Показувати введений текст на екрані"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Відкрити посібник"</string>
-    <string name="pref_os_license_title" msgid="1569318864930820110">"Ліцензії ПЗ з відкритим кодом"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Ліцензії відкритого коду"</string>
     <string name="pref_log_level_label" msgid="3161296593165404029">"Рівень виводу журналу"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Довідка клавіатури BrailleBack"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback увім"</string>

@@ -16,10 +16,9 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.accessibility.AccessibilityEvent;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
 
 /**
  * Keeps track of the current navigation mode and dispatches events

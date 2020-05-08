@@ -16,9 +16,8 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.utils.FeedbackController;
-
 import android.content.Context;
+import com.googlecode.eyesfree.utils.FeedbackController;
 
 /**
  * Provides 'out of band feedback', that is feedback that is typically
@@ -37,7 +36,8 @@ public class FeedbackManager {
     public static final int TYPE_DISPLAY_DISCONNECTED = 4;
     public static final int TYPE_COMMAND_FAILED = 5;
     public static final int TYPE_UNKNOWN_COMMAND = 6;
-    private static final int NUM_TYPES = TYPE_UNKNOWN_COMMAND + 1;
+    public static final int TYPE_GRADE_6_DOT = 7;
+    public static final int TYPE_GRADE_8_DOT = 8;
     private static final int[] TYPES_TO_RESOURCE_IDS = {
         R.raw.complete,
         R.raw.chime_down,
@@ -46,6 +46,8 @@ public class FeedbackManager {
         R.raw.display_disconnected,
         R.raw.double_beep,
         R.raw.double_beep,
+        R.raw.grade_6_dot,
+        R.raw.grade_8_dot,
     };
 
     private FeedbackController mFeedbackController;
@@ -58,7 +60,7 @@ public class FeedbackManager {
     }
 
     public void emitFeedback(int type) {
-        if (type < 0 || type >= NUM_TYPES) {
+        if (type < 0 || TYPES_TO_RESOURCE_IDS.length <= type) {
             return;
         }
         mFeedbackController.playSound(TYPES_TO_RESOURCE_IDS[type]);

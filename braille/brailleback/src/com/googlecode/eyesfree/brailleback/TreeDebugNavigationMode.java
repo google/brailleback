@@ -43,7 +43,7 @@ public class TreeDebugNavigationMode implements NavigationMode {
     private final FeedbackManager mFeedbackManager;
     private final BrailleBackService mService;
 
-    // TODO(kristianm): Could keep current nodes in inactive Windows in an LRU
+    // TODO: Could keep current nodes in inactive Windows in an LRU
     // cache to give a better user experience when switching
     // between windows.
     /**

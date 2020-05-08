@@ -16,14 +16,12 @@
 
 package com.googlecode.eyesfree.braille.service.display;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.service.R;
-
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.res.Resources;
 import android.util.Log;
-
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.service.R;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;

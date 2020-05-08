@@ -16,11 +16,9 @@
 
 package com.googlecode.eyesfree.braille.service.display;
 
+import android.content.res.Resources;
 import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
 import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
-
-import android.content.res.Resources;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +50,7 @@ public class BrlttyWrapper {
     private final DeviceFinder.DeviceInfo mDeviceInfo;
     /** Native pointer to C struct */
     @SuppressWarnings("unused")
-    private int mNativeData;
+    private long nativeData;
 
     /**
      * Constructs a {@link BrlttyWrapper}.  {@code driverThread} is used

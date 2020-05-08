@@ -16,11 +16,9 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.utils.MotionEventUtils;
-import com.googlecode.eyesfree.widget.SimpleOverlay;
-
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
@@ -29,6 +27,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
+import com.googlecode.eyesfree.utils.MotionEventUtils;
+import com.googlecode.eyesfree.widget.SimpleOverlay;
 
 /**
  * Overlay that can be long-pressed, and then dragged to the top or bottom of
@@ -60,11 +60,7 @@ public class DraggableOverlay extends SimpleOverlay {
         mTouchSlopSquare = touchSlop * touchSlop;
 
         // Configure the overlay window.
-        mWindowParams = getParams();
-        mWindowParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
-        mWindowParams.format = PixelFormat.TRANSPARENT;
-        mWindowParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-        mWindowParams.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mWindowParams = createOverlayParams();
         mWindowParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         mWindowParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         mWindowParams.gravity = DEFAULT_GRAVITY;
@@ -81,15 +77,24 @@ public class DraggableOverlay extends SimpleOverlay {
         mTouchStealingView = new View(context);
         mTouchStealingView.setOnHoverListener(mInternalListener);
         mTouchStealingView.setOnTouchListener(mInternalListener);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        WindowManager.LayoutParams lp = createOverlayParams();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        lp.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
+        mTouchStealingLayoutParams = lp;
+    }
+
+    private static WindowManager.LayoutParams createOverlayParams() {
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) {
+            lp.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        } else {
+            lp.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY;
+        }
         lp.format = PixelFormat.TRANSPARENT;
         lp.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
         lp.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        lp.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
-        mTouchStealingLayoutParams = lp;
+        return lp;
     }
 
     private void startDragging(MotionEvent event) {
@@ -107,7 +112,7 @@ public class DraggableOverlay extends SimpleOverlay {
                 HapticFeedbackConstants.LONG_PRESS);
     }
 
-    private void stopDragging(MotionEvent event) {
+    private void stopDragging() {
         if (!mDragging) {
             return;
         }
@@ -131,7 +136,7 @@ public class DraggableOverlay extends SimpleOverlay {
         mWindowManager.removeViewImmediate(mTouchStealingView);
     }
 
-    private void cancelDragging(MotionEvent event) {
+    private void cancelDragging() {
         if (!mDragging) {
             return;
         }
@@ -189,7 +194,7 @@ public class DraggableOverlay extends SimpleOverlay {
                     if (view != mTouchStealingView) {
                         touchStartX = event.getRawX();
                         touchStartY = event.getRawY();
-                        long timeout = TAP_TIMEOUT + LONG_PRESS_TIMEOUT;
+                        long timeout = (long) TAP_TIMEOUT + LONG_PRESS_TIMEOUT;
                         mHandler.sendMessageAtTime(
                                 mHandler.obtainMessage(MSG_LONG_PRESS, event),
                                 event.getEventTime() + timeout);
@@ -199,13 +204,13 @@ public class DraggableOverlay extends SimpleOverlay {
                 case MotionEvent.ACTION_UP:
                     mHandler.removeMessages(MSG_LONG_PRESS);
                     if (view == mTouchStealingView) {
-                        stopDragging(event);
+                        stopDragging();
                     }
                     break;
 
                 case MotionEvent.ACTION_CANCEL:
                     mHandler.removeMessages(MSG_LONG_PRESS);
-                    cancelDragging(event);
+                    cancelDragging();
                     break;
 
                 case MotionEvent.ACTION_MOVE:

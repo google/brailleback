@@ -16,13 +16,6 @@
 
 package com.googlecode.eyesfree.braille.service.display;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-import com.googlecode.eyesfree.braille.display.IBrailleService;
-import com.googlecode.eyesfree.braille.display.IBrailleServiceCallback;
-import com.googlecode.eyesfree.braille.service.R;
-import com.googlecode.eyesfree.braille.utils.ZipResourceExtractor;
-
 import android.app.Service;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -35,12 +28,21 @@ import android.os.Message;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
-
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
+import com.googlecode.eyesfree.braille.display.IBrailleService;
+import com.googlecode.eyesfree.braille.display.IBrailleServiceCallback;
+import com.googlecode.eyesfree.braille.service.R;
+import com.googlecode.eyesfree.braille.utils.ZipResourceExtractor;
 import java.io.File;
 
 /**
  * An Andorid service that connects to braille displays and exposes a unified
  * interface to other Apps.
+ *
+ * DisplayService contains ReadThread.
+ * ReadThread contains DriverThread and DeviceFinder.
+ * DriverThread contains BrlttyWrapper.
  */
 public class DisplayService extends Service
         implements DriverThread.OnInputEventListener {
@@ -461,7 +463,8 @@ public class DisplayService extends Service
                 case MSG_DISCONNECT_BRAILLE:
                     disconnectBraille();
                     break;
-            }
+        default: // fall out
+      }
         }
 
         private void handleRegisterCallback(IBrailleServiceCallback callback) {

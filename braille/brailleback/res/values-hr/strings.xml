@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Kada se uključi aplikacija BrailleBack, vaš se uređaj povezuje s uparenim Bluetooth brajičnim zaslonom i prikazuje sadržaj zaslona na brajici. Tipke na brajičnom zaslonu mogu se upotrebljavati za kretanje zaslonom, aktiviranje stavaka i unos teksta. Za više informacija pritisnite razmaknicu i točkice 1, 2 i 3 (slovo \"l\" na brajici) na zaslonu kada se povežete."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Omogućivanje brajičnog izlaza"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Hardverska brajična tipkovnica"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Čarobnjak hardverske brajične tipkovnice"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Omogućivanje hardverske brajične tipkovnice"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Vrsta brajice"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tablica standardne brajice"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tablica računalne brajice"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Omogući prelamanje teksta"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Nije povezan"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Povezan"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nije dostupan"</string>
@@ -45,7 +47,7 @@
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Prikaži brajicu na zaslonu"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Vodič za pokretanje"</string>
     <string name="pref_os_license_title" msgid="1569318864930820110">"Licence otvorenog izvornog koda"</string>
-    <string name="pref_log_level_label" msgid="3161296593165404029">"Izlazna razina zapisnika"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Opširnost zapisnika"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Pomoć za tipkovnicu za BrailleBack"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback uklj."</string>
     <string name="shutting_down" msgid="1303701310644298807">"brlback isk."</string>

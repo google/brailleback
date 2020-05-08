@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"ウェブコンテンツの前のリストに移動する"</item>
     <item msgid="4431278105955644176">"画面の検索モードに切り替える"</item>
     <item msgid="1541653246718288681">"ラベル設定メニューを切り替える"</item>
-    <item msgid="3070189781205215458">"BrailleBackキーボードヘルプを開く"</item>
+    <item msgid="3873494647942879428">"点字のグレードを切り替えます"</item>
+    <item msgid="6558794813691083806">"BrailleBack キーボードのヘルプを開きます"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"<xliff:g id="KEY_LIST">%s</xliff:g>を押し続ける"</string>

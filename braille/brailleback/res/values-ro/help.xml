@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"Navigați la lista anterioară din conținutul web"</item>
     <item msgid="4431278105955644176">"Comutați la modul Căutare pe ecran"</item>
     <item msgid="1541653246718288681">"Afișați/ascundeți meniul de etichetare"</item>
-    <item msgid="3070189781205215458">"Deschideți secțiunea de ajutor pentru tastatura BrailleBack"</item>
+    <item msgid="3873494647942879428">"Comutați nivelul braille"</item>
+    <item msgid="6558794813691083806">"Deschideți secțiunea de ajutor pentru tastatura BrailleBack"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Apăsați lung <xliff:g id="KEY_LIST">%s</xliff:g>"</string>

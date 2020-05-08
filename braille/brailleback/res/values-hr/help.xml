@@ -8,7 +8,7 @@
     <item msgid="4868322620432152139">"Prelazak na prethodnu stavku"</item>
     <item msgid="713256521059720189">"Prelazak na sljedeći redak"</item>
     <item msgid="7111316948614107646">"Prelazak na prethodni redak"</item>
-    <item msgid="1092717670413169154">"Pomicanje unaprijed"</item>
+    <item msgid="1092717670413169154">"Pomicanje naprijed"</item>
     <item msgid="2672802569950877806">"Pomicanje unatrag"</item>
     <item msgid="6858389246595464611">"Prelazak na vrh stranice"</item>
     <item msgid="6077703163925348890">"Prelazak na dno stranice"</item>
@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"Prelazak na prethodni popis u web-sadržaju"</item>
     <item msgid="4431278105955644176">"Uključivanje/isključivanje načina pretraživanja na zaslonu"</item>
     <item msgid="1541653246718288681">"Prikazivanje/sakrivanje izbornika za označavanje"</item>
-    <item msgid="3070189781205215458">"Otvaranje pomoći za tipkovnicu aplikacije BrailleBack"</item>
+    <item msgid="3873494647942879428">"Promjena oblika brajice"</item>
+    <item msgid="6558794813691083806">"Otvaranje pomoći za tipkovnicu aplikacije BrailleBack"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Dugi pritisak na <xliff:g id="KEY_LIST">%s</xliff:g>"</string>

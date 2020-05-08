@@ -106,6 +106,19 @@ int
 brltty_getStatusCells(void);
 
 /*
+ * Handles a command that resulted from a keypress.
+ */
+int
+brltty_handleCommand(int command, void *data);
+
+/*
+ * Pops the top command off of the command queue, or returns EOF if the queue
+ * is empty.
+ */
+int
+brltty_popCommand();
+
+/*
  * Callback used with brltty_listKeyMap.
  */
 typedef int (*KeyMapEntryCallback)(int command, int keyCount,
@@ -117,6 +130,7 @@ typedef int (*KeyMapEntryCallback)(int command, int keyCount,
  * List the keyboard bindings loaded for the currently connected
  * display.  Invokes the callback for each key binding.
  * data is part of the closure for the callback.
+ */
 int
 brltty_listKeyMap(KeyMapEntryCallback callback, void* data);
 

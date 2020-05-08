@@ -7,6 +7,9 @@
     <!-- Displayed on the accessibility settings screen when the user has selected BrailleBack. Note that in the phrase "the letter l", the letter is a lowercase L, not an uppercase I. -->
     <string name="service_description">When BrailleBack is on, your device will connect to a paired bluetooth braille display and present the screen content in braille. Keys on the braille display can be used to navigate the screen, activate items and enter text. For more information, press space and dots 1, 2 and 3 (the letter l in braille) on your display when connected.</string>
 
+    <!-- Displayed as subtext on the accessibility service preference in Settings. -->
+    <string name="service_summary">Provide braille output</string>
+
     <!-- Name of the input method for typing using the braille keys on the display. -->
     <string name="braille_ime_name">Braille hardware keyboard</string>
 
@@ -76,6 +79,8 @@
     <string name="pref_six_dot_braille_table_title">Literary braille table</string>
     <!-- Label for the 8 dot (computer braille) table preference. Pops up the list of computer braille tables. [CHAR_LIMIT=45] -->
     <string name="pref_eight_dot_braille_table_title">Computer braille table</string>
+    <!-- Label for the braille word wrap preference. Switches between enabling and disabling word wrap. [CHAR_LIMIT=45] -->
+    <string name="pref_braille_word_wrap_title">Enable word wrapping</string>
 
     <!-- Shown under the Status preference when no braille display is connected. -->
     <string name="connstate_not_connected">Not connected</string>

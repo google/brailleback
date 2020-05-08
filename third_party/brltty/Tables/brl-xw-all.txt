@@ -1,3 +1,0 @@
-Help: XWindow (graphical user interface)
-
-No help available for this driver.

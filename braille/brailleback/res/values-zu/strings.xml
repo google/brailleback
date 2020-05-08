@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Uma i-BrailleBack ivuliwe, idivayisi yakho izoxhumeka kusibonisi se-braille esine-bluetooth ebhanqiwe bese ithula okuqukethwe kwesikrini nge-braille. Okhiye kusibonisi se-braille bangasetshenziswa ekuzuleni kusikrini, yenza kusebenze izinto uphinde ufake umbhalo. Ukuze uthole ulwazi olungaphezulu, chofoza isikhala namachashaza angu-1, 2 no-3 (uhlamvu olungu-l ku-braille) kusibonisi uma kuxhunyiwe."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Nikezela ngokuphumayo kwe-braille"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Ikhibhodi yezingxenyekazi zekhmpyutha ye-braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Isilekeleli sekhibhodi yezingxenyekazi zekhompyutha se-braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Nika amandla ikhibhodi yezingxenyekazi zekhmpyutha ye-braille"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Uhlobo lwe-Braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Ithebula lokuloba le-braille"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Ithebula lekhompyutha ye-braille"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Nika amandla ukuvala igama"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Akuxhunyiwe"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Kuxhunyiwe"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Akutholakali"</string>

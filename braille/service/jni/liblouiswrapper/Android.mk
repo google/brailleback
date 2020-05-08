@@ -27,6 +27,7 @@ LOCAL_LDLIBS := -llog -landroid
 LOCAL_MODULE := louiswrap
 LOCAL_SRC_FILES := LibLouisWrapper.c
 LOCAL_C_INCLUDES := $(WRAPPER_PATH)/.. $(LIBLOUIS_PATH)
+LOCAL_CFLAGS=-std=c99
 LOCAL_WHOLE_STATIC_LIBRARIES := liblouis
 
 include $(BUILD_SHARED_LIBRARY)
@@ -38,13 +39,18 @@ include $(CLEAR_VARS)
 
 LOCAL_PATH := $(LIBLOUIS_PATH)
 LOCAL_LDLIBS := -llog -landroid
+LOCAL_CFLAGS += -std=c99 -DTABLESDIR='"__non_existent_path__"'
 LOCAL_MODULE := louis
 LOCAL_SRC_FILES := \
-	liblouis/compileTranslationTable.c \
-	liblouis/logging.c \
-	liblouis/lou_backTranslateString.c \
-	liblouis/lou_translateString.c \
-	liblouis/wrappers.c
+  liblouis/compileTranslationTable.c \
+  liblouis/logging.c \
+  liblouis/lou_backTranslateString.c \
+  liblouis/lou_translateString.c \
+  liblouis/commonTranslationFunctions.c \
+  liblouis/maketable.c \
+  liblouis/metadata.c \
+  liblouis/pattern.c \
+  liblouis/utils.c
 LOCAL_C_INCLUDES := $(WRAPPER_PATH)/.. $(WRAPPER_PATH)
 
 include $(BUILD_STATIC_LIBRARY)

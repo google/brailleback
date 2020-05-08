@@ -16,13 +16,14 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.translate.BrailleTranslator;
-import com.googlecode.eyesfree.utils.LogUtils;
+import static com.googlecode.eyesfree.brailleback.BrailleBackService.DOT7;
+import static com.googlecode.eyesfree.brailleback.BrailleBackService.DOT8;
 
 import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -38,8 +39,11 @@ import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
-
+import com.googlecode.eyesfree.braille.translate.BrailleTranslator;
+import com.googlecode.eyesfree.braille.translate.TableInfo;
+import com.googlecode.eyesfree.utils.LogUtils;
 import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
 
 /**
  * Input method service for keys from the connected braille display.
@@ -118,6 +122,7 @@ public class BrailleIME extends InputMethodService {
     public static final int DIRECTION_FORWARD = 1;
     public static final int DIRECTION_BACKWARD = -1;
     private static final int MAX_REQUEST_CHARS = 1000;
+    private static final int MAX_COMPOSE_DOTS = 1000;
     /** Marks the extent of the editable text. */
     private static final MarkingSpan EDIT_TEXT_SPAN = new MarkingSpan();
     /** Marks the extent of the action button. */
@@ -141,10 +146,27 @@ public class BrailleIME extends InputMethodService {
      */
     private int mSelectionEnd;
     /**
+     * Start of the currently-composing braille word when typing using a
+     * literary braille table.
+     */
+    private int mComposingStart;
+    /**
+     * End (exclusive) of the currently-composing braille word when typing using
+     * a literary braille table. Should correspond to the current cursor
+     * position.
+     */
+    private int mComposingEnd;
+    /**
      * The text that is shown on the display.  Might be only part of the
      * full edit field if it is larger than {@code MAX_REQUEST_CHARS}.
      */
     private StringBuilder mCurrentText = new StringBuilder();
+    /**
+     * Buffer storing the currently-composing braille dots for contracted
+     * braille.
+     */
+    private final ByteBuffer mComposingBraille =
+            ByteBuffer.allocate(MAX_COMPOSE_DOTS);
 
     public static BrailleIME getActiveInstance() {
         return sInstance != null ? sInstance.get() : null;
@@ -154,9 +176,16 @@ public class BrailleIME extends InputMethodService {
         sHost = host != null ? new WeakReference<Host>(host) : null;
     }
 
+    private static boolean doesTableNeedComposition(TableInfo info) {
+        // Assume that six-dot (literary) braille needs composition but
+        // eight-dot (computer) braille is immediate.
+        return !info.isEightDot();
+    }
+
     /** Constructor for general use. */
     public BrailleIME() {
         mHost = null;
+        mComposingBraille.clear();
     }
 
     /** Constructor for testing. Allows using a non-global host object. */
@@ -188,6 +217,7 @@ public class BrailleIME extends InputMethodService {
         // to another one, so clear the state here as well.
         mExtractedText = null;
         updateCurrentText();
+        mComposingBraille.clear();
         sInstance = null;
 
         Host host = getHost();
@@ -236,6 +266,7 @@ public class BrailleIME extends InputMethodService {
         }
         updateCurrentText();
         updateDisplay();
+        mComposingBraille.clear();
 
         Host host = getHost();
         if (host != null) {
@@ -249,6 +280,7 @@ public class BrailleIME extends InputMethodService {
         LogUtils.log(this, Log.VERBOSE, "onFinishInput");
         mExtractedText = null;
         updateCurrentText();
+        mComposingBraille.clear();
 
         Host host = getHost();
         if (host != null) {
@@ -330,6 +362,16 @@ public class BrailleIME extends InputMethodService {
                     (newSelEnd > len ? len : newSelEnd);
             mSelectionStart = newSelStart;
             mSelectionEnd = newSelEnd;
+            mComposingStart = candidatesStart;
+            mComposingEnd = candidatesEnd;
+
+            // If we're composing but the selection isn't a single cursor at
+            // the end of the composing text, then cancel composing.
+            if ((candidatesEnd != newSelStart || newSelStart != newSelEnd)
+                    && mComposingBraille.position() != 0) {
+                cancelComposingText();
+            }
+
             updateDisplay();
         }
     }
@@ -377,6 +419,7 @@ public class BrailleIME extends InputMethodService {
             return false;
         }
 
+        cancelComposingText();
         int actionId = ei.actionId;
         if (actionId != 0) {
             return ic.performEditorAction(actionId);
@@ -417,15 +460,42 @@ public class BrailleIME extends InputMethodService {
      * through an input connection.
      */
     public boolean sendAndroidKey(int keyCode) {
+        if (mComposingBraille.position() > 0 && keyCode == KeyEvent.KEYCODE_DEL) {
+            // Delete the last composing dot and update composing text.
+            mComposingBraille.position(mComposingBraille.position() - 1);
+
+            BrailleTranslator translator =
+                getCurrentBrailleTranslator();
+            InputConnection ic = getCurrentInputConnection();
+            if (translator == null || ic == null) {
+                LogUtils.log(this, Log.WARN, "missing translator %s or IC %s",
+                        translator, ic);
+                return false;
+            }
+
+            updateComposingText(translator, ic);
+            return true;
+        }
+
+        cancelComposingText();
         return emitFeedbackOnFailure(
             sendAndroidKeyInternal(keyCode),
             FeedbackManager.TYPE_COMMAND_FAILED);
     }
 
     public boolean handleBrailleKey(int dots) {
-        return emitFeedbackOnFailure(
-            handleBrailleKeyInternal(dots),
-            FeedbackManager.TYPE_COMMAND_FAILED);
+        BrailleTranslator translator = getCurrentBrailleTranslator();
+        boolean sixDot = translator != null
+                && !translator.getTableInfo().isEightDot();
+        if (sixDot && dots == DOT7) {
+            return sendAndroidKey(KeyEvent.KEYCODE_DEL);
+        } else if (sixDot && dots == DOT8) {
+            return sendAndroidKey(KeyEvent.KEYCODE_ENTER);
+        } else {
+            return emitFeedbackOnFailure(
+                handleBrailleKeyInternal(dots),
+                FeedbackManager.TYPE_COMMAND_FAILED);
+        }
     }
 
     public void updateDisplay() {
@@ -465,9 +535,16 @@ public class BrailleIME extends InputMethodService {
         }
         DisplaySpans.addSelection(text,
             editStart + mSelectionStart, editStart + mSelectionEnd);
+        if (0 <= mComposingStart && mComposingStart < mComposingEnd
+                && mComposingEnd <= mCurrentText.length()) {
+            DisplaySpans.addBraille(text,
+                    editStart + mComposingStart, editStart + mComposingEnd,
+                    mComposingBraille);
+        }
         displayManager.setContent(
             new DisplayManager.Content(text)
                 .setPanStrategy(DisplayManager.Content.PAN_CURSOR)
+                .setEditable(true)
                 .setSplitParagraphs(isMultiLineField()));
     }
 
@@ -529,7 +606,9 @@ public class BrailleIME extends InputMethodService {
         }
         int textLen = mCurrentText.length();
         pos = (pos < 0) ? 0 : ((pos <= textLen) ? pos : textLen);
-        return ic.setSelection(pos, pos);
+        int off = mExtractedText != null ? mExtractedText.startOffset : 0;
+        int cursor = off + pos;
+        return ic.setSelection(cursor, cursor);
     }
 
     private boolean sendAndroidKeyInternal(int keyCode) {
@@ -559,12 +638,103 @@ public class BrailleIME extends InputMethodService {
                     translator, ic);
             return false;
         }
+
+        // TODO: Handle unknown dots (e.g. liblouis gives "\4568/").
+        if (doesTableNeedComposition(translator.getTableInfo())) {
+            mComposingBraille.put((byte) dots);
+            // TODO: Handle word breaks properly for non-English,
+            // where there might not be spaces (empty cell) between words.
+            if (dots == 0 || mComposingBraille.position() == MAX_COMPOSE_DOTS) {
+                // Finish composition (error if cannot translate).
+                return finishComposingText(translator, ic);
+            } else {
+                // Continue composing (OK if cannot translate).
+                updateComposingText(translator, ic);
+                return true;
+            }
+        } else {
+            return handleBrailleKeySimple(dots, translator, ic);
+        }
+    }
+
+    private boolean handleBrailleKeySimple(int dots,
+            @NonNull BrailleTranslator translator,
+            @NonNull InputConnection ic) {
         CharSequence text = translator.backTranslate(
             new byte[] {(byte) dots});
         if (!TextUtils.isEmpty(text)) {
             return ic.commitText(text, 1);
         }
         return true;
+    }
+
+    /**
+     * Updates the composing text based on the braille dots composed thus far,
+     * and maintains the composing state of the editor.
+     * Returns {@code true} if the current string of braille dots could be
+     * translated into text, otherwise {@code false}.
+     */
+    private boolean updateComposingText(@NonNull BrailleTranslator translator,
+            @NonNull InputConnection ic) {
+        if (mComposingBraille.position() == 0) {
+            return ic.commitText("", 1);
+        }
+
+        String text = translator.backTranslate(getComposingBrailleArray());
+        if (TextUtils.isEmpty(text)) {
+            return ic.setComposingText("\u00A0", 1);
+        } else {
+            return ic.setComposingText(text, 1);
+        }
+    }
+
+    /**
+     * Updates the composing text and commits it to the editor. Returns
+     * {@code true} if the pending braille dots could be translated into text,
+     * otherwise {@code false}.
+     */
+    private boolean finishComposingText(@NonNull BrailleTranslator translator,
+            @NonNull InputConnection ic) {
+        if (mComposingBraille.position() == 0) {
+            return true;
+        }
+
+        String text = translator.backTranslate(getComposingBrailleArray());
+        mComposingBraille.clear();
+
+        // Commit the final text if we could translate; otherwise, clear the
+        // composing text.
+        if (TextUtils.isEmpty(text)) {
+            ic.commitText("", 1);
+            return false;
+        } else {
+            return ic.commitText(text, 1);
+        }
+    }
+
+    /**
+     * Cancels the text composition by leaving the already-composed text there
+     * and clearing the composition state. Use this when the user tries to
+     * interact with the edit field before composition has finished.
+     */
+    private boolean cancelComposingText() {
+        InputConnection ic = getCurrentInputConnection();
+        if (ic == null) {
+            LogUtils.log(this, Log.WARN, "missing IC %s", ic);
+            return false;
+        }
+
+        mComposingBraille.clear();
+        return ic.finishComposingText();
+    }
+
+    private byte[] getComposingBrailleArray() {
+        int len = mComposingBraille.position();
+        byte[] dotsArray = new byte[len];
+        mComposingBraille.position(0);
+        mComposingBraille.get(dotsArray, 0, len);
+        mComposingBraille.position(len);
+        return dotsArray;
     }
 
     private Host getHost() {

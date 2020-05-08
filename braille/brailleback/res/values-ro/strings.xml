@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Când aplicația BrailleBack este activă, dispozitivul se va conecta la un afișaj braille conectat prin bluetooth și va afișa în braille conținutul ecranului. Cu tastele de pe afișajul braille puteți să navigați pe ecran, să activați diferite elemente și să introduceți text. Pentru mai multe informații, când sunteți conectat(ă) apăsați pe tasta de spațiu și punctele 1, 2 și 3 (litera l în braille) de pe afișaj."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Oferiți rezultatul Braille"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Tastatură hardware braille"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Aplicație-asistent pentru tastatura hardware braille"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Activați tastatura hardware braille"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Tip de braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabel braille literar"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabel braille computer"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Activați gruparea cuvintelor"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Neconectat"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Conectat"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Nedisponibil"</string>

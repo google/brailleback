@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="service_description" msgid="3837907778560523486">"Wanneer BrailleBack is ingeschakeld, maakt uw apparaat verbinding met een gekoppelde Bluetooth-brailleleesregel en wordt de scherminhoud weergegeven in braille. Met de toetsen op de brailleleesregel kan worden genavigeerd op het scherm, kunnen items worden geactiveerd en tekst worden ingevoerd. Voor meer informatie drukt u op de spatietoets en punten 1, 2 en 3 (de letter l in braille) op de leesregel wanneer er verbinding is gemaakt."</string>
+    <string name="service_description" msgid="3837907778560523486">"Wanneer BrailleBack is ingeschakeld, maakt je apparaat verbinding met een gekoppelde Bluetooth-brailleleesregel en wordt de scherminhoud weergegeven in braille. Met de toetsen op de brailleleesregel kan worden genavigeerd op het scherm, kunnen items worden geactiveerd en tekst worden ingevoerd. Voor meer informatie druk je op de spatietoets en punten 1, 2 en 3 (de letter l in braille) op de leesregel wanneer er verbinding is gemaakt."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Braille-uitvoer leveren"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Fysiek brailletoetsenbord"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard voor fysiek brailletoetsenbord"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Fysiek brailletoetsenbord inschakelen"</string>
-    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Als u het fysieke brailletoetsenbord wilt gebruiken, moet u dit inschakelen via de instellingen voor invoermethoden en het toetsenbord vervolgens instellen als standaardinvoermethode."</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Als je het fysieke brailletoetsenbord wilt gebruiken, moet je dit inschakelen via de instellingen voor invoermethoden en het toetsenbord vervolgens instellen als standaardinvoermethode."</string>
     <string name="ime_setup_skip" msgid="4399160517982183408">"Deze stap overslaan"</string>
     <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Instellingen voor invoermethoden openen"</string>
     <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Standaardinvoermethode instellen"</string>
-    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Als u het fysieke brailletoetsenbord wilt gebruiken, moet u dit instellen als uw standaardinvoermethode."</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Als je het fysieke brailletoetsenbord wilt gebruiken, moet je dit instellen als je standaardinvoermethode."</string>
     <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Kiezer voor invoermethoden openen"</string>
     <string name="permlab_displayConnect" msgid="2251586694368462088">"Verbinden met een braillescherm"</string>
     <string name="permdesc_displayConnect" msgid="3519598574125084994">"Hiermee kan een app uitvoer schrijven naar en toetsenbordinvoer lezen van een braillescherm"</string>
@@ -17,12 +18,12 @@
     <string name="type_gridview" msgid="8453985146958342779">"Raster"</string>
     <string name="type_emptylistview" msgid="4497688410987085349">"Lege lijst"</string>
     <string name="type_listview" msgid="195039477703126884">"Lijst"</string>
-    <string name="type_emptyscrollview" msgid="8276432333933865406">"Lege scrolbare inhoud"</string>
-    <string name="type_scrollview" msgid="800452819520995482">"Scrolbare inhoud"</string>
+    <string name="type_emptyscrollview" msgid="8276432333933865406">"Lege scrolbare content"</string>
+    <string name="type_scrollview" msgid="800452819520995482">"Scrolbare content"</string>
     <string name="type_edittext" msgid="4305739343129651595">"Bewerkingsvak"</string>
     <string name="type_image" msgid="3688576211222019626">"Afbeelding"</string>
     <string name="type_button" msgid="3639574187835564558">"Knop"</string>
-    <string name="type_seekbar" msgid="979094491475615458">"Zoekregeling"</string>
+    <string name="type_seekbar" msgid="979094491475615458">"Scrollbar"</string>
     <string name="type_quickcontact" msgid="5224329178093450337">"Contact"</string>
     <string name="preferences_title" msgid="368535298674637475">"BrailleBack-voorkeuren"</string>
     <string name="pref_category_device_title" msgid="8644919099122845217">"Apparaat"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Type braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Literaire brailletabel"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Computerbrailletabel"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Tekstterugloop inschakelen"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Niet verbonden"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Verbonden"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Niet beschikbaar"</string>
@@ -58,17 +60,17 @@
     <string name="overlay_pan_right_button" msgid="6982590158653468102">"Naar rechts schuiven"</string>
     <string name="overlay_tutorial_title" msgid="323686269924134028">"Overlaytraining"</string>
     <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Voltooien"</string>
-    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"De braille-overlay simuleert een brailledisplay dat kan worden vernieuwd. De overlay geeft de braillecellen weer, samen met de bijbehorende tekst, die zouden worden gepresenteerd op een hardwaredisplay. We raden u aan TalkBack en de modus voor verkennen via aanraking in te schakelen voordat u doorgaat."</string>
+    <string name="overlay_tutorial_introduction" msgid="732693451088628629">"De braille-overlay simuleert een brailledisplay dat kan worden vernieuwd. De overlay geeft de braillecellen weer, samen met de bijbehorende tekst, die zouden worden gepresenteerd op een hardwaredisplay. We raden je aan TalkBack en de modus voor verkennen via aanraking in te schakelen voordat je doorgaat."</string>
     <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Toegankelijkheidsinstell."</string>
-    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"U kunt het brailledisplay schuiven door op een van de schuifknoppen naast de tekst te drukken."</string>
-    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Er kunnen meerdere elementen tegelijk op het display worden weergegeven. U kunt op een van de elementen klikken door op een van de braillecellen in de tekst te tikken. Dit komt overeen met drukken op een van de routeringstoetsen op een brailledisplay."</string>
-    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Als de overlay een ander element op het scherm bedekt, kunt u de overlay aan de kant schuiven. Druk lang op de overlay en versleep de overlay. De overlay wordt vastgezet aan de boven- of onderkant van het scherm wanneer u uw vinger van het scherm haalt."</string>
+    <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Je kunt het brailledisplay schuiven door op een van de schuifknoppen naast de tekst te drukken."</string>
+    <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Er kunnen meerdere elementen tegelijk op het display worden weergegeven. Je kunt op een van de elementen klikken door op een van de braillecellen in de tekst te tikken. Dit komt overeen met drukken op een van de routeringstoetsen op een brailledisplay."</string>
+    <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Als de overlay een ander element op het scherm bedekt, kun je de overlay aan de kant schuiven. Druk lang op de overlay en versleep de overlay. De overlay wordt vastgezet aan de boven- of onderkant van het scherm wanneer je je vinger van het scherm haalt."</string>
     <string name="overlay_tutorial_dialog_title" msgid="4114032130535945266">"Overlaytraining weergeven"</string>
-    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"We raden u aan de training voor de schermoverlay te bekijken voordat u de overlay gaat gebruiken."</string>
+    <string name="overlay_tutorial_dialog_message" msgid="8623281534692086379">"We raden je aan de training voor de schermoverlay te bekijken voordat je de overlay gaat gebruiken."</string>
     <string name="search_result_prefix" msgid="404457595813397708">"Z"</string>
     <string name="search_dialog_label" msgid="1816668691365362442">"Zoeken: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
     <string name="search_tutorial_title" msgid="1035979397405903476">"Training voor Zoeken op scherm"</string>
-    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Met Zoeken op scherm kunt u snel naar items op het scherm springen door een gedeelte van de tekst te typen. Terwijl u typt, wordt de focus verplaatst naar het volgende overeenkomende item."</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Met Zoeken op scherm kun je snel naar items op het scherm springen door een gedeelte van de tekst te typen. Terwijl je typt, wordt de focus verplaatst naar het volgende overeenkomende item."</string>
     <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Gebruik <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g> om naar het volgende resultaat te gaan en <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g> om naar het vorige resultaat te gaan. Druk op <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g> om de zoekmodus te sluiten en de focus op het resultaat te houden. Druk op <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g> om terug te gaan naar het vorige geselecteerde item."</string>
     <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Nooit meer tonen"</string>
     <string name="search_tutorial_close_button" msgid="6374344909522290237">"Doorgaan"</string>

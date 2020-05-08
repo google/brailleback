@@ -26,6 +26,7 @@
 
 """Copies files and dependencies for bundling as a raw resource."""
 
+from __future__ import print_function
 import fnmatch
 import getopt
 import os.path
@@ -43,7 +44,7 @@ def main():
   try:
     opts, args = getopt.getopt(sys.argv[1:], "nX:",
                                ["dry-run", "exclude="])
-  except getopt.GetoptError, msg:
+  except getopt.GetoptError as msg:
     Usage(msg)
   dryrun = False
   excluded = []
@@ -61,19 +62,19 @@ def main():
   tocopy = set()
   for filename in args[:-1]:
     if MatchesAny(os.path.basename(filename), excluded):
-      print "Skipping:", filename
+      print("Skipping:", filename)
       continue
     tocopy.add(filename)
     tocopy.update(GetDeps(filename))
   for filename in tocopy:
-    print "Copying:", filename
+    print("Copying:", filename)
     if not dryrun:
       shutil.copy(filename, destdir)
 
 
 def Die(why):
   """Print an error message and exit."""
-  print >>sys.stderr, why
+  print(why, file=sys.stderr)
   sys.exit(1)
 
 

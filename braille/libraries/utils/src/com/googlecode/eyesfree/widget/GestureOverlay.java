@@ -23,9 +23,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
-
 import com.googlecode.eyesfree.compat.view.MotionEventCompatUtils;
-
 import java.lang.reflect.Method;
 
 /**
@@ -103,7 +101,8 @@ public class GestureOverlay extends View {
 
     private boolean edgeGesture = false;
 
-    int leftEdge, rightEdge;
+  int leftEdge;
+  int rightEdge;
 
     private DoubleTapHandler tapHandler;
 

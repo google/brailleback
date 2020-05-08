@@ -16,12 +16,12 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.utils.LogUtils;
-
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.util.Log;
+import com.googlecode.eyesfree.utils.LogUtils;
+import java.nio.ByteBuffer;
 
 /**
  * Static utilities for text spans that control how text is displayed on the
@@ -37,6 +37,28 @@ public class DisplaySpans {
      * Marks a text selection or cursor on the display.
      */
     public static class SelectionSpan { }
+
+    /**
+     * Associates a span of text with a specific braille translation.
+     */
+    public static class BrailleSpan {
+        public final byte[] braille;
+
+        /**
+         * Constructs a BrailleSpan whose {@code braille} member is populated
+         * from the contents of a {@link ByteBuffer}, from index 0 to the
+         * current {@link ByteBuffer#position()} (exclusive).
+         */
+        public BrailleSpan(ByteBuffer buffer) {
+            int len = buffer.position();
+            this.braille = new byte[len];
+
+            // Copy buffer from [0, position) and then restore buffer state.
+            buffer.position(0);
+            buffer.get(this.braille, 0, len);
+            buffer.position(len);
+        }
+    }
 
     /**
      * Marks a region of {@code spanned} as having focus.
@@ -58,7 +80,25 @@ public class DisplaySpans {
         } else {
             flags = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
         }
+    // If start and end are out of order... swap start and end. Required by setSpan().
+    if (end < start) {
+      int oldStart = start;
+      start = end;
+      end = oldStart;
+    }
         spannable.setSpan(new SelectionSpan(), start, end, flags);
+    }
+
+    /**
+     * Marks a portion of {@code spannable} as being represented by the cells
+     * in {@code buffer} from [0, position). When rendering braille, this
+     * portion should not be translated, but should be represented by the given
+     * cells.
+     */
+    public static void addBraille(Spannable spannable, int start, int end,
+            ByteBuffer buffer) {
+        spannable.setSpan(new BrailleSpan(buffer), start, end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
     /**
@@ -115,9 +155,8 @@ public class DisplaySpans {
             return;
         }
         Spanned spanned = (Spanned) chars;
-        AccessibilityNodeInfoCompat spans[] =
-                spanned.getSpans(0, spanned.length(),
-                        AccessibilityNodeInfoCompat.class);
+    AccessibilityNodeInfoCompat[] spans =
+        spanned.getSpans(0, spanned.length(), AccessibilityNodeInfoCompat.class);
         for (AccessibilityNodeInfoCompat node : spans) {
             LogUtils.log(DisplaySpans.class, Log.VERBOSE, chars.subSequence(
                 spanned.getSpanStart(node),

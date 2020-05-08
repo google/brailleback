@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Když je aplikace BrailleBack zapnutá, připojí se vaše zařízení ke spárovanému hmatovému displeji a zprostředkuje obsah obrazovky v podobě Braillova písma. Pomocí kláves na hmatovém displeji lze přecházet mezi položkami na obrazovce, aktivovat je a zadávat text. Další informace získáte stisknutím mezerníku a bodů 1, 2 a 3 (Braillův zápis písmena „L“) na připojeném displeji."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Výstup braillova písma"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Klávesnice hmat. displeje"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Průvodce nastavením klávesnice hmatového displeje"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Povolit klávesnici hmatového displeje"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Typ Braillova písma"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabulka 6bodového písma"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabulka 8bodového písma"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Povolit zalamování řádků"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Nepřipojeno"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Připojeno"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Není k dispozici"</string>
@@ -44,7 +46,7 @@
     <string name="pref_category_braille_overlay_title" msgid="1947056854402684698">"Překryvná vrstva na obrazovku"</string>
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Zobr. Braill. písmo na obrazovce"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Spustit výukový program"</string>
-    <string name="pref_os_license_title" msgid="1569318864930820110">"Licence na software s otev. zdroj. kódem"</string>
+    <string name="pref_os_license_title" msgid="1569318864930820110">"Licence open source"</string>
     <string name="pref_log_level_label" msgid="3161296593165404029">"Zaznamenat výstupní úroveň"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"BrailleBack – nápověda klávesnice"</string>
     <string name="display_connected" msgid="2008600513914815101">"brlback zap"</string>

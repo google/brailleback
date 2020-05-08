@@ -2,14 +2,15 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"BrailleBack inapowaka, kifaa chako kitaunganishwa kwenye onyesho la breli la bluetooth lililooanishwa na kuwasilisha maudhui ya skrini katika breli. Vitufe vilivyo kwenye onyesho la breli vinaweza kutumiwa kusafiri kwenye skrini, kuwasha vipengee na kuingiza maandishi. Kwa maelezo zaidi, bonyeza nafasi na nukta 1, 2 na 3 (herufi l katika breli) kwenye onyesho lako unapounganishwa."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Onyesha matokeo ya breli"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Kibodi ya maunzi ya breli"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Kigagula cha Kibodi cha Maunzi ya Breli"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Washa kibodi ya maunzi ya breli"</string>
-    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiwezesha katika mipangilio ya mbinu ya uingizaji na kisha uiweke kama mbinu ya uingizaji ya chaguo-msingi."</string>
+    <string name="ime_setup_need_enable_message" msgid="8737455883604029146">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiwezesha katika mipangilio ya mbinu ya uingizaji na kisha uiweke kama mbinu ya uingizaji ya chaguomsingi."</string>
     <string name="ime_setup_skip" msgid="4399160517982183408">"Ruka"</string>
     <string name="ime_setup_need_enable_positive" msgid="7265430214257219110">"Fungua Mipangilio ya Mbinu ya Uingizaji"</string>
-    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Weka Mbinu ya Uingizaji Chaguo-msingi"</string>
-    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiweka kama mbinu ya uingizaji chaguo-msingi."</string>
+    <string name="ime_setup_need_default_title" msgid="3966077707390872268">"Weka Mbinu ya Uingizaji Chaguomsingi"</string>
+    <string name="ime_setup_need_default_message" msgid="1795926966023907502">"Ili kutumia kibodi ya maunzi ya breli, unahitaji kuiweka kama mbinu ya uingizaji chaguomsingi."</string>
     <string name="ime_setup_need_default_positive" msgid="8994613547123179413">"Fungua Kiteuzi cha Mbinu ya Uingizaji"</string>
     <string name="permlab_displayConnect" msgid="2251586694368462088">"Unganisha kwenye onyesho la breli"</string>
     <string name="permdesc_displayConnect" msgid="3519598574125084994">"Huruhusu programu kuandika matokeo na kusoma uingizaji wa kibodi kutoka kwenye onyesho la breli."</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Aina ya breli"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Meza ya breli ya kawaida"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Meza ya breli ya kompyuta"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Washa kipengee cha kuonyesha maneno yote"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Halijaunganishwa"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Limeunganishwa"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Haipatikani"</string>
@@ -50,7 +52,7 @@
     <string name="display_connected" msgid="2008600513914815101">"brlback imewashwa"</string>
     <string name="shutting_down" msgid="1303701310644298807">"brlback imezimwa"</string>
     <string name="braille_keyboard_active" msgid="7094321134174837395">"Kibodi ya BrailleBack inafanya kazi"</string>
-    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Gonga ili ubadilishe hadi kibodi chaguo-msingi"</string>
+    <string name="tap_to_switch_ime" msgid="8521400813452643324">"Gusa ili ubadilishe hadi kibodi chaguomsingi"</string>
     <string name="table_name_grade" msgid="6813487904718787264">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> - gredi <xliff:g id="GRADE_NUMBER">%2$d</xliff:g>"</string>
     <string name="table_name_variant" msgid="1753521407107091535">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>)"</string>
     <string name="table_name_variant_grade" msgid="6026910493807098640">"<xliff:g id="LOCALE_NAME">%1$s</xliff:g> (<xliff:g id="VARIANT">%2$s</xliff:g>) - daraja la <xliff:g id="GRADE_NUMBER">%3$d</xliff:g>"</string>

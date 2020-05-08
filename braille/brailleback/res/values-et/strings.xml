@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Kui BrailleBack on sisse lülitatud, siis loob seade ühenduse seotud Bluetoothi Braille\'i ekraaniga ja esitab ekraani sisu Braille\'i kirjas. Braille\'i ekraani klahve saab kasutada ekraanil navigeerimiseks, üksuste aktiveerimiseks ja teksti sisestamiseks. Lisateabe saamiseks vajutage ühendatud ekraanil tühikuklahvi ja punkte 1, 2 ja 3 (l-täht Braille\'i kirjas)."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Braille\' väljundi esitamine"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braille\'i riistvaraklaviatuur"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Braille\'i riistvaraklaviatuuri viisard"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Braille\'i riistvaraklaviatuuri lubamine"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Braille\'i tüüp"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Kirjakeele-Braille\'i tabel"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Arvuti-Braille\'i tabel"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Sõna murdmise lubamine"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Pole ühendatud"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Ühendatud"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Pole saadaval"</string>

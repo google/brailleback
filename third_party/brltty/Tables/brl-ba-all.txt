@@ -1,3 +1,0 @@
-Help: BrlAPI (client)
-
-No help available for this driver.

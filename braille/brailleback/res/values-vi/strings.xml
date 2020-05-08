@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Khi BrailleBack được bật, thiết bị của bạn sẽ kết nối với màn hình chữ nổi bluetooth được ghép nối và hiển thị nội dung màn hình bằng chữ nổi. Các phím trên màn hình chữ nổi có thể được sử dụng để điều hướng màn hình, kích hoạt mục và nhập văn bản. Để biết thêm thông tin, nhấn dấu cách và các dấu chấm 1, 2 và 3 (chữ cái l trong chữ nổi) trên màn hình của bạn khi được kết nối."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Cung cấp đầu ra chữ nổi"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Bàn phím phần cứng chữ nổi"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Trình hướng dẫn bàn phím phần cứng chữ nổi"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Bật bàn phím phần cứng chữ nổi"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Loại chữ nổi"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Bảng chữ nổi văn học"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Bảng chữ nổi máy tính"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Bật xuống dòng tự động"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Chưa kết nối"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Đã kết nối"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Không khả dụng"</string>
@@ -45,7 +47,7 @@
     <string name="pref_braille_overlay_title" msgid="1490370457319373830">"Hiển thị chữ nổi đầu ra trên màn hình"</string>
     <string name="pref_braille_overlay_tutorial_title" msgid="6443284526953091708">"Chạy hướng dẫn"</string>
     <string name="pref_os_license_title" msgid="1569318864930820110">"Giấy phép nguồn mở"</string>
-    <string name="pref_log_level_label" msgid="3161296593165404029">"Mức ghi đầu ra"</string>
+    <string name="pref_log_level_label" msgid="3161296593165404029">"Mức đầu ra của nhật ký"</string>
     <string name="key_bindings_title" msgid="7481545872884477026">"Trợ giúp bàn phím BrailleBack"</string>
     <string name="display_connected" msgid="2008600513914815101">"bật brlback"</string>
     <string name="shutting_down" msgid="1303701310644298807">"tắt brlback"</string>
@@ -59,7 +61,7 @@
     <string name="overlay_tutorial_title" msgid="323686269924134028">"Hướng dẫn về lớp phủ"</string>
     <string name="overlay_tutorial_finish_button" msgid="8190984135613253372">"Hoàn tất"</string>
     <string name="overlay_tutorial_introduction" msgid="732693451088628629">"Lớp phủ chữ nổi braille mô phỏng màn hình chữ nổi braille có thể làm mới. Lớp phủ này hiển thị các ô chữ nổi braille cùng với văn bản tương ứng sẽ được chiếu trên màn hình phần cứng. Chúng tôi khuyên bạn nên bật TalkBack và chạm vào chế độ khám phá trước khi tiếp tục."</string>
-    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Cài đặt trợ năng"</string>
+    <string name="overlay_tutorial_accessibility_settings_button" msgid="7614097829221431291">"Hỗ trợ tiếp cận"</string>
     <string name="overlay_tutorial_pan" msgid="6845897761664313491">"Bạn có thể xoay màn hình chữ nổi braille bằng cách nhấn vào một trong các nút xoay bên cạnh văn bản."</string>
     <string name="overlay_tutorial_routing_keys" msgid="4226607385598426316">"Nhiều phần tử có thể xuất hiện trên màn hình cùng lúc. Bạn có thể nhấp vào một trong các phần tử đó bằng cách chạm vào một trong các ô chữ nổi braille trong văn bản. Tác vụ này tương ứng với tác vụ nhấn vào một trong các phím định tuyến trên màn hình chữ nổi braille."</string>
     <string name="overlay_tutorial_moving" msgid="6583235883700027279">"Nếu lớp phủ đang che một phần tử khác trên màn hình thì bạn có thể di chuyển lớp phủ đó ra chỗ khác. Nhấn và giữ lớp phủ rồi kéo lớp phủ đó. Lớp phủ này sẽ bám theo phần đầu hoặc phần cuối của màn hình khi bạn nhả ngón tay."</string>

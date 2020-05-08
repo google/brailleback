@@ -16,6 +16,11 @@
 
 package com.googlecode.eyesfree.braille.service.translate;
 
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
 import com.googlecode.eyesfree.braille.service.R;
 import com.googlecode.eyesfree.braille.translate.ITranslatorService;
 import com.googlecode.eyesfree.braille.translate.ITranslatorServiceCallback;
@@ -23,13 +28,6 @@ import com.googlecode.eyesfree.braille.translate.TableInfo;
 import com.googlecode.eyesfree.braille.translate.TranslationResult;
 import com.googlecode.eyesfree.braille.translate.TranslatorClient;
 import com.googlecode.eyesfree.braille.utils.ZipResourceExtractor;
-
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.util.Log;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -173,7 +171,7 @@ public class TranslatorService extends Service {
 
         @Override
         public TranslationResult translate(String text, String tableId,
-                int cursorPosition) {
+                int cursorPosition, boolean computerBrailleAtCursor) {
             if (text == null) {
                 Log.e(LOG_TAG, "Received null text in translate");
                 return null;
@@ -190,7 +188,8 @@ public class TranslatorService extends Service {
                 Log.e(LOG_TAG, "Unknown table id in translate: " + tableId);
                 return null;
             }
-            return LibLouisWrapper.translate(text, tableName, cursorPosition);
+            return LibLouisWrapper.translate(text, tableName, cursorPosition,
+                    computerBrailleAtCursor);
         }
 
         @Override

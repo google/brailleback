@@ -1,3 +1,0 @@
-Help: Virtual (client/server)
-
-No help available for this driver.

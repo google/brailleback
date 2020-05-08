@@ -1,3 +1,0 @@
-Help: Libbraille (wrapper)
-
-No help available for this driver.

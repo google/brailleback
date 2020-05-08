@@ -22,13 +22,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.TextUtils;
-
 import com.googlecode.eyesfree.compat.CompatUtils;
-import com.googlecode.eyesfree.utils.ClassLoadingManager;
-
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -122,8 +119,7 @@ public class AutomationUtils {
             AccessibilityNodeInfoCompat root, CharSequence className, String text) {
         final List<AccessibilityNodeInfoCompat> nodes =
                 root.findAccessibilityNodeInfosByText(text);
-        final List<AccessibilityNodeInfoCompat> results =
-                new LinkedList<AccessibilityNodeInfoCompat>();
+    final List<AccessibilityNodeInfoCompat> results = new ArrayList<AccessibilityNodeInfoCompat>();
 
         for (AccessibilityNodeInfoCompat node : nodes) {
             if (nodeMatchesFilter(context, node, className, text)) {

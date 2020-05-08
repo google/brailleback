@@ -16,15 +16,14 @@
 
 package com.googlecode.eyesfree.brailleback.rule;
 
-import com.googlecode.eyesfree.brailleback.R;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
 import android.content.Context;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.Editable;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ScrollView;
+import com.googlecode.eyesfree.brailleback.R;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 
 /**
  * Rule for formatting certain large vertical containers (such as lists

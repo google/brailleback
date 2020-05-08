@@ -32,7 +32,8 @@
     <item msgid="561134957068368670">"Перейти до попереднього списку у веб-вмісті"</item>
     <item msgid="4431278105955644176">"Увімкнути режим пошуку на екрані"</item>
     <item msgid="1541653246718288681">"Увімкнути чи вимкнути меню створення міток"</item>
-    <item msgid="3070189781205215458">"Відкрити довідку клавіатури BrailleBack"</item>
+    <item msgid="3873494647942879428">"Змінити рівень шрифту Брайля"</item>
+    <item msgid="6558794813691083806">"Відкрити довідку клавіатури BrailleBack"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"Натисніть і утримуйте <xliff:g id="KEY_LIST">%s</xliff:g>"</string>

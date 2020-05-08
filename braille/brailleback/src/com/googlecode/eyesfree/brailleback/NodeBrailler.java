@@ -16,13 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.brailleback.rule.BrailleRule;
-import com.googlecode.eyesfree.brailleback.rule.BrailleRuleRepository;
-import com.googlecode.eyesfree.brailleback.utils.StringUtils;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-import com.googlecode.eyesfree.utils.LogUtils;
-
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
@@ -31,7 +24,12 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.Log;
-
+import com.googlecode.eyesfree.brailleback.rule.BrailleRule;
+import com.googlecode.eyesfree.brailleback.rule.BrailleRuleRepository;
+import com.googlecode.eyesfree.brailleback.utils.StringUtils;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
+import com.googlecode.eyesfree.utils.LogUtils;
 import java.util.ArrayList;
 
 /**

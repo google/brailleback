@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"เมื่อเปิดใช้ BrailleBack อุปกรณ์ของคุณจะเชื่อมต่อกับจอภาพอักษรเบรลล์ที่จับคู่ผ่านบลูทูธ และแสดงเนื้อหาของหน้าจอเป็นอักษรเบรลล์ คุณสามารถใช้แป้นบนจอภาพอักษรเบรลล์ควบคุมการเดินทางไปยังส่วนต่างๆ ในหน้าจอ เปิดใช้งานรายการ และป้อนข้อความได้ สำหรับข้อมูลเพิ่มเติม กด Space และจุด 1, 2 และ 3 (ตัวอักษร l ในอักษรเบรลล์) บนจอภาพเมื่อเชื่อมต่อแล้ว"</string>
+    <string name="service_summary" msgid="8016336378969476112">"แสดงอักษรเบรลล์"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"แป้นพิมพ์อักษรเบรลล์"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"วิซาร์ดแป้นพิมพ์อักษรเบรลล์"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"เปิดใช้งานแป้นพิมพ์อักษรเบรลล์"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"ประเภทของอักษรเบรลล์"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"ตารางอักษรเบรลล์ทั่วไป"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"ตารางอักษรเบรลล์คอมฯ"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"เปิดใช้การตัดคำ"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"ไม่ได้เชื่อมต่อ"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"เชื่อมต่อแล้ว"</string>
     <string name="connstate_error" msgid="8717968034812924474">"ไม่พร้อมใช้งาน"</string>

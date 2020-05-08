@@ -18,7 +18,7 @@
     <item msgid="2039335960797511513">"Het huidige item ingedrukt houden"</item>
     <item msgid="5703473744103522479">"Een brailleteken opgeven"</item>
     <item msgid="397805118186944475">"De knop \'Vorige\' activeren"</item>
-    <item msgid="2057979808256674943">"De knop \'Startpagina\' activeren"</item>
+    <item msgid="2057979808256674943">"De knop \'Homepage\' activeren"</item>
     <item msgid="3851017077578326256">"Het meldingenvenster openen"</item>
     <item msgid="7100928240716386910">"Het venster met recente apps openen"</item>
     <item msgid="1288748126248312152">"De Enter-toets activeren tijdens het bewerken van tekst"</item>
@@ -32,9 +32,10 @@
     <item msgid="561134957068368670">"Naar vorige lijst navigeren in webinhoud"</item>
     <item msgid="4431278105955644176">"Modus \'Zoeken op scherm\' in-/uitschakelen"</item>
     <item msgid="1541653246718288681">"Labelmenu in-/uitschakelen"</item>
-    <item msgid="3070189781205215458">"De BrailleBack-help voor het toetsenbord openen"</item>
+    <item msgid="3873494647942879428">"Brailleniveau schakelen"</item>
+    <item msgid="6558794813691083806">"De BrailleBack-help voor het toetsenbord openen"</item>
   </string-array>
     <string name="help_keyBindingDelimiter" msgid="1140579260785499060">" + "</string>
     <string name="help_longPressTemplate" msgid="5028857601567358274">"<xliff:g id="KEY_LIST">%s</xliff:g> ingedrukt houden"</string>
-    <string name="key_bindings_instructions" msgid="123530902329533100">"Gebruik de navigatietoetsen om de focus op het scherm te verplaatsen."\n"Gebruik de brailletoetsen om tekst op te geven in een tekstvak."\n"Hieronder staat een volledige lijst met sneltoetsen die door uw apparaat worden ondersteund."</string>
+    <string name="key_bindings_instructions" msgid="123530902329533100">"Gebruik de navigatietoetsen om de focus op het scherm te verplaatsen."\n"Gebruik de brailletoetsen om tekst op te geven in een tekstvak."\n"Hieronder staat een volledige lijst met sneltoetsen die door je apparaat worden ondersteund."</string>
 </resources>

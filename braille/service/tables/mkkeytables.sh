@@ -27,8 +27,8 @@ fi
 
 dstdir="$basedir/res/raw"
 mkdir -p $dstdir
-
+cd $srcdir
 echo "Creating archive..."
-zip -j -9 -q "$dstdir/keytables.zip" "$srcdir/"*.k??
+zip -9 -q -r "../$dstdir/keytables.zip" ./**/*.k?? ./*.k??
 
 echo "Keyboard table archive successfully created."

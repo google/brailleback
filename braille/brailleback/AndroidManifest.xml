@@ -16,11 +16,12 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.googlecode.eyesfree.brailleback"
-      android:versionCode="28"
-      android:versionName="0.95.0-beta1">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.googlecode.eyesfree.brailleback"
+      android:versionCode="32"
+      android:versionName="0.97.0">
 
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="18" />
+    <uses-sdk android:targetSdkVersion="26" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -34,7 +35,7 @@
 
     <permission
         android:name="com.googlecode.eyesfree.braille.display.PERMISSION_CONNECT"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_brailleback"
         android:label="@string/permlab_displayConnect"
         android:description="@string/permdesc_displayConnect"
         android:protectionLevel="signature" />
@@ -46,8 +47,8 @@
 
     <application
         android:label="@string/brailleback_setup_title"
-        android:icon="@drawable/icon"
-        android:debuggable="false"
+        android:icon="@drawable/ic_brailleback"
+        tools:replace="android:icon, android:label"
         android:supportsRtl="true">
 
         <service android:name=".BrailleBackService"
@@ -104,7 +105,8 @@
         <activity
             android:name=".BrailleBackPreferencesActivity"
             android:title="@string/preferences_title"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop"
+            tools:ignore="ManifestResource">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.accessibilityservice.SERVICE_SETTINGS" />
@@ -113,7 +115,8 @@
 
         <activity
             android:name=".KeyBindingsActivity"
-            android:title="@string/key_bindings_title" >
+            android:title="@string/key_bindings_title"
+            tools:ignore="ManifestResource">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -144,7 +147,8 @@
 
         <activity
             android:name=".SearchTutorialActivity"
-            android:title="@string/search_tutorial_title" >
+            android:title="@string/search_tutorial_title"
+            tools:ignore="ManifestResource">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

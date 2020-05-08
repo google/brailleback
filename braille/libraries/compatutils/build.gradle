@@ -1,0 +1,73 @@
+// This buildscript{} block configures the code driving the build
+buildscript {
+    /**
+     * The nested repositories{} block declares that this build uses the
+     * jcenter repository.
+     */
+    repositories {
+        google()
+        jcenter()
+    }
+
+    /**
+     * This block declares a dependency on the 3.6.0 version
+     * of the Gradle plugin for the buildscript.
+     */
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.0'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+    }
+
+    /**
+     * This nested sourceSets block points the source code directories to the
+     * existing folders in the project, instead of using the default new
+     * organization.
+     */
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        /**
+         * Move the build types to build-types/<type>
+         * For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+         * This moves them out of them default location under src/<type>/... which would
+         * conflict with src/ being used by the main source set.
+         * Adding new build types or product flavors should be accompanied
+         * by a similar customization.
+         */
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+dependencies {
+    implementation 'com.android.support:support-v4:28.0.0'
+}

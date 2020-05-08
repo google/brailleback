@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Po uruchomieniu aplikacji BrailleBack telefon łączy się ze sparowanym wyświetlaczem brajlowskim z modułem Bluetooth i prezentuje zawartość ekranu brajlem. Możesz użyć klawiszy wyświetlacza brajlowskiego do poruszania się po ekranie, aktywowania elementów i wpisywania tekstu. Aby uzyskać więcej informacji, naciśnij spację oraz kropki 1, 2 i 3 (litera l brajlem) na podłączonym wyświetlaczu."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Pokaż wyjście brajla"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Klawiatura brajlowska"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Kreator sprzętowej klawiatury brajlowskiej"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Włącz klawiaturę brajlowską"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Typ brajla"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Tabela brajla literackiego"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Tabela brajla komputerowego"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"Włącz zawijanie wyrazów"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Niepodłączony"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Podłączony"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Niedostępny"</string>
@@ -68,12 +70,12 @@
     <string name="search_result_prefix" msgid="404457595813397708">"W:"</string>
     <string name="search_dialog_label" msgid="1816668691365362442">"Szukaj: <xliff:g id="SEARCH_QUERY">%1$s</xliff:g>"</string>
     <string name="search_tutorial_title" msgid="1035979397405903476">"Samouczek wyszukiwania na ekranie"</string>
-    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Wyszukiwanie na ekranie pozwala szybko przechodzić do elementów na ekranie przez wprowadzenie części ich opisu tekstowego. Podczas pisania fokus przesuwa się na kolejny pasujący element."</string>
-    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Użyj <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>, by przejść do następnego wyniku i <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>, by przejść do poprzedniego wyniku. Naciśnij <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>, by wyjść z trybu wyszukiwania i pozostawić fokus na wyniku. Naciśnij <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>, by powrócić do poprzednio aktywowanego elementu."</string>
+    <string name="search_tutorial_instructions_general" msgid="6818519646574055310">"Wyszukiwanie na ekranie pozwala szybko przechodzić do elementów na ekranie przez wprowadzenie części ich opisu tekstowego. Podczas pisania zaznaczenie przesuwa się na kolejny pasujący element."</string>
+    <string name="search_tutorial_instructions_specific" msgid="6238171239009571192">"Użyj <xliff:g id="NEXT_KEY_COMMAND">%1$s</xliff:g>, by przejść do następnego wyniku i <xliff:g id="PREVIOUS_KEY_COMMAND">%2$s</xliff:g>, by przejść do poprzedniego wyniku. Naciśnij <xliff:g id="ENTER_KEY_COMMAND">%3$s</xliff:g>, by wyjść z trybu wyszukiwania i pozostawić zaznaczenie na wyniku. Naciśnij <xliff:g id="TOGGLE_SEARCH_KEY_COMMAND">%4$s</xliff:g>, by powrócić do poprzednio aktywowanego elementu."</string>
     <string name="search_tutorial_checkbox" msgid="3804049570909695877">"Nie pokazuj tego ponownie"</string>
     <string name="search_tutorial_close_button" msgid="6374344909522290237">"Dalej"</string>
-    <string name="menu_item_label_add" msgid="7171209255969707579">"Dodaj etykietę niestandardową"</string>
-    <string name="menu_item_label_edit" msgid="3009644363444552176">"Edytuj etykietę niestandardową"</string>
-    <string name="menu_item_label_remove" msgid="6836749636921226607">"Usuń etykietę niestandardową"</string>
-    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Etykiety niestandardowe nie są obsługiwane. Zaktualizuj Informowanie mową"</string>
+    <string name="menu_item_label_add" msgid="7171209255969707579">"Dodaj etykietę własną"</string>
+    <string name="menu_item_label_edit" msgid="3009644363444552176">"Edytuj etykietę własną"</string>
+    <string name="menu_item_label_remove" msgid="6836749636921226607">"Usuń etykietę własną"</string>
+    <string name="menu_item_update_talkback" msgid="5549071241261625208">"Etykiety niestandardowe nie są obsługiwane. Zaktualizuj TalkBack"</string>
 </resources>

@@ -19,30 +19,29 @@
  * have on Android.
  */
 
-#include "prologue.h"
+#include "prologue.h"  // NOLINT Must include first
 
+#include "alert.h"
+#include "ktb_types.h"
+#include "program.h"
 #include "system.h"
 
-#include "sys_prog_none.h"
+/* program. c */
+void
+registerProgramMemory (const char *name, void *pointer) {
+}
 
-#include "sys_boot_none.h"
+void
+onProgramExit (const char *name, ProgramExitHandler *handler, void *data) {
+}
 
-#include "sys_exec_none.h"
+/* scr.c */
+KeyTableCommandContext
+getScreenCommandContext (void) {
+  return KTB_CTX_DEFAULT;
+}
 
-#include "sys_mount_none.h"
-
-#ifdef ENABLE_SHARED_OBJECTS
-#include "sys_shlib_none.h"
-#endif /* ENABLE_SHARED_OBJECTS */
-
-#include "sys_beep_none.h"
-
-#ifdef ENABLE_PCM_SUPPORT
-#include "sys_pcm_none.h"
-#endif /* ENABLE_PCM_SUPPORT */
-
-#ifdef ENABLE_MIDI_SUPPORT
-#include "sys_midi_none.h"
-#endif /* ENABLE_MIDI_SUPPORT */
-
-#include "sys_ports_none.h"
+/* alert.c */
+void
+alert (AlertIdentifier identifier) {
+}

@@ -16,16 +16,6 @@
 
 package com.googlecode.eyesfree.brailleback;
 
-import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
-import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
-import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
-import com.googlecode.eyesfree.braille.display.Display;
-import com.googlecode.eyesfree.braille.display.DisplayClient;
-import com.googlecode.eyesfree.brailleback.utils.BrailleKeyBindingUtils;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +25,14 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
+import com.googlecode.eyesfree.braille.display.BrailleDisplayProperties;
+import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
+import com.googlecode.eyesfree.braille.display.BrailleKeyBinding;
+import com.googlecode.eyesfree.braille.display.Display;
+import com.googlecode.eyesfree.braille.display.DisplayClient;
+import com.googlecode.eyesfree.brailleback.utils.BrailleKeyBindingUtils;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoRef;
+import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 import java.util.ArrayList;
 import java.util.Map;
 

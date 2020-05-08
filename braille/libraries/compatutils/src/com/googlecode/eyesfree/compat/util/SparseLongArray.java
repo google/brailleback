@@ -225,7 +225,9 @@ public class SparseLongArray implements Cloneable {
     }
 
     private static int binarySearch(int[] a, int start, int len, long key) {
-        int high = start + len, low = start - 1, guess;
+    int high = start + len;
+    int low = start - 1;
+    int guess;
 
         while (high - low > 1) {
             guess = (high + low) / 2;

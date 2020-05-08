@@ -49,7 +49,7 @@
          id="hr-comp8"
          locale="hr"
          dots="8"
-         fileName="hr.ctb" />
+         fileName="hr-g1.ctb" />
 
     <!-- Czech -->
     <table
@@ -64,13 +64,13 @@
          id="da-comp8"
          locale="da"
          dots="8"
-         fileName="da-dk-g18.utb" />
+         fileName="da-dk-g18.ctb" />
     <table
          id="da-g1"
          locale="da"
          dots="6"
          grade="1"
-         fileName="da-dk-g16.utb" />
+         fileName="da-dk-g16.ctb" />
   <table
          id="da-g2"
          locale="da"
@@ -84,7 +84,7 @@
          locale="nl"
          dots="6"
          grade="1"
-         fileName="Nl-Nl-g1.utb" />
+         fileName="nl-NL-g0.utb" />
 
     <!-- English -->
     <table
@@ -135,7 +135,7 @@
          dots="6"
          grade="2"
          fileName="en-us-g2.ctb" />
-    
+
     <!-- Estonian -->
     <table
          id="et-comp8"
@@ -232,7 +232,7 @@
          locale="el"
          dots="6"
          grade="1"
-         fileName="gr-gr-g1.utb" />
+         fileName="el.ctb" />
 
     <!-- Hebrew -->
     <table
@@ -295,7 +295,7 @@
          dots="6"
          grade="2"
          fileName="ko-g2.ctb" />
- 
+
     <!-- Latvian -->
     <table
          id="lv-g1"
@@ -316,7 +316,7 @@
          id="nb-comp8"
          locale="nb"
          dots="8"
-         fileName="no-no.ctb" />
+         fileName="no-no-comp8.ctb" />
     <table
          id="nb-g0"
          locale="nb"

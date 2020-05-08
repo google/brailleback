@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"BrailleBackが有効になると、端末がペア設定先のBluetooth点字ディスプレイに接続して、画面の内容が点字で表示されます。これで、点字ディスプレイ上のキーを使用して、画面を操作したり、項目を有効にしたり、テキストを入力したりできるようになります。詳しくは、接続状態でディスプレイ上のSpaceキーとドット1、2、3（点字では文字「l」）を押してください。"</string>
+    <string name="service_summary" msgid="8016336378969476112">"点字出力を表示"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"点字ハードウェアキーボード"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"点字ハードウェアキーボードウィザード"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"点字ハードウェアキーボードを有効にする"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"点字の種類"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"点字（文字）表"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"点字（コンピュータ）表"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"ワードラップを有効にする"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"未接続"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"接続"</string>
     <string name="connstate_error" msgid="8717968034812924474">"利用不可"</string>

@@ -16,26 +16,28 @@
 
 package com.googlecode.eyesfree.brailleback;
 
+import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
 import com.googlecode.eyesfree.braille.display.BrailleInputEvent;
 import com.googlecode.eyesfree.braille.display.Display;
 import com.googlecode.eyesfree.brailleback.rule.BrailleRuleRepository;
 import com.googlecode.eyesfree.brailleback.utils.PreferenceUtils;
 import com.googlecode.eyesfree.labeling.CustomLabelManager;
 import com.googlecode.eyesfree.labeling.PackageRemovalReceiver;
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
 import com.googlecode.eyesfree.utils.LogUtils;
-
-import android.accessibilityservice.AccessibilityService;
-import android.accessibilityservice.AccessibilityServiceInfo;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.util.Log;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
 
 /**
  * An accessibility service that provides feedback through a braille
@@ -62,21 +64,24 @@ public class BrailleBackService
     public static final int DOT7 = 0x40;
     public static final int DOT8 = 0x80;
 
-    private static BrailleBackService sInstance;
+  public static final boolean LABELING_ENABLED = false;
 
-    private FeedbackManager mFeedbackManager;
-    private TranslatorManager mTranslatorManager;
-    private DisplayManager mDisplayManager;
-    private SelfBrailleManager mSelfBrailleManager;
-    private NodeBrailler mNodeBrailler;
-    private BrailleRuleRepository mRuleRepository;
-    private FocusTracker mFocusTracker;
-    private IMEHelper mIMEHelper;
-    private ModeSwitcher mModeSwitcher;
-    private SearchNavigationMode mSearchNavigationMode;
-    private BrailleMenuNavigationMode mBrailleMenuNavigationMode;
-    private CustomLabelManager mLabelManager;
-    private PackageRemovalReceiver mPackageReceiver;
+  private static BrailleBackService instance;
+
+  private FeedbackManager feedbackManager;
+  private TranslatorManager translatorManager;
+  private DisplayManager displayManager;
+  private SelfBrailleManager selfBrailleManager;
+  private NodeBrailler nodeBrailler;
+  private BrailleRuleRepository ruleRepository;
+  private FocusTracker focusTracker;
+  private IMEHelper imeHelper;
+  private ModeSwitcher modeSwitcher;
+  private SearchNavigationMode searchNavigationMode;
+  private BrailleMenuNavigationMode brailleMenuNavigationMode;
+  protected IMENavigationMode imeNavigationMode;
+  private CustomLabelManager labelManager;
+  private PackageRemovalReceiver packageReceiver;
 
     /** Set if the infrastructure is initialized. */
     private boolean isInfrastructureInitialized;
@@ -87,39 +92,39 @@ public class BrailleBackService
      */
     private static final int SWITCH_NAVIGATION_MODE_DOTS = DOT7 | DOT8;
 
-    /** {@link Handler} for executing messages on the service main thread. */
-    private final Handler mHandler = new Handler() {
+  /** {@link Handler} for executing messages on the service main thread. */
+  private final Handler handler =
+      new Handler() {
         @Override
         public void handleMessage(Message message) {
-            switch (message.what) {
-                case WHAT_START:
-                    updateServiceInfo();
-                    initializeDependencies();
-                    return;
-            }
+          switch (message.what) {
+            case WHAT_START:
+              updateServiceInfo();
+              initializeDependencies();
+              return;
+            default: // fall out
+          }
         }
-    };
+      };
 
     @Override
     public void onConnectionStateChanged(int state) {
-        if (!mDisplayManager.isSimulatedDisplay()) {
+    if (!displayManager.isSimulatedDisplay()) {
             if (state == Display.STATE_NOT_CONNECTED) {
-                mFeedbackManager.emitFeedback(
-                    FeedbackManager.TYPE_DISPLAY_DISCONNECTED);
+        feedbackManager.emitFeedback(FeedbackManager.TYPE_DISPLAY_DISCONNECTED);
             } else if (state == Display.STATE_CONNECTED) {
-                mFeedbackManager.emitFeedback(
-                    FeedbackManager.TYPE_DISPLAY_CONNECTED);
+        feedbackManager.emitFeedback(FeedbackManager.TYPE_DISPLAY_CONNECTED);
             }
         }
-        if (mFocusTracker != null) {
-            mFocusTracker.onConnectionStateChanged(state);
+    if (focusTracker != null) {
+      focusTracker.onConnectionStateChanged(state);
         }
     }
 
     @Override
     public void onMappedInputEvent(BrailleInputEvent event,
             DisplayManager.Content content) {
-        if (mModeSwitcher == null) {
+    if (modeSwitcher == null) {
             return;
         }
         // Global commands can't be overriden.
@@ -129,18 +134,21 @@ public class BrailleBackService
         if (BuildConfig.DEBUG
                 && event.getCommand() == BrailleInputEvent.CMD_BRAILLE_KEY
                 && event.getArgument() == SWITCH_NAVIGATION_MODE_DOTS) {
-            mModeSwitcher.switchMode();
+      modeSwitcher.switchMode();
             return;
         }
         if (event.getCommand() == BrailleInputEvent.CMD_TOGGLE_BRAILLE_MENU) {
-            if (mBrailleMenuNavigationMode.isActive()) {
-                mModeSwitcher.overrideMode(null);
+      if (!LABELING_ENABLED) {
+        return;
+      }
+      if (brailleMenuNavigationMode.isActive()) {
+        modeSwitcher.overrideMode(null);
             } else {
-                mModeSwitcher.overrideMode(mBrailleMenuNavigationMode);
+        modeSwitcher.overrideMode(brailleMenuNavigationMode);
             }
             return;
         }
-        if (mModeSwitcher.onMappedInputEvent(event, content)) {
+    if (modeSwitcher.onMappedInputEvent(event, content)) {
             return;
         }
         // Check native case after navigation mode handler to allow navigation
@@ -151,10 +159,43 @@ public class BrailleBackService
             startSearchWithTutorial();
             return;
         }
-        if (mIMEHelper.onInputEvent(event)) {
+    if (imeHelper.onInputEvent(event)) {
             return;
         }
-        mFeedbackManager.emitFeedback(FeedbackManager.TYPE_UNKNOWN_COMMAND);
+        if (event.getCommand() == BrailleInputEvent.CMD_TOGGLE_BRAILLE_GRADE) {
+            // Read current grade preference.
+            Context context = this;
+            SharedPreferences sharedPreferences =
+                    PreferenceManager.getDefaultSharedPreferences(context);
+            final String prefKey = context.getString(R.string.pref_braille_type_key);
+            final String prefValueDefault = "";
+            final String prefValueOld = sharedPreferences.getString(prefKey, prefValueDefault);
+            final String prefValue6Dot =
+                    context.getString(R.string.pref_braille_type_six_dot_value);
+            final String prefValue8Dot =
+                    context.getString(R.string.pref_braille_type_eight_dot_value);
+
+            // Toggle and store new computer/literary grade preference.
+            final String prefValueNew =
+                    TextUtils.equals(prefValueOld, prefValue6Dot) ? prefValue8Dot : prefValue6Dot;
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            prefEditor.putString(prefKey, prefValueNew);
+            prefEditor.apply();
+
+            // Play audio indicator of grade.
+            final int audioId = TextUtils.equals(prefValueNew, prefValue6Dot)
+                    ? FeedbackManager.TYPE_GRADE_6_DOT
+                    : FeedbackManager.TYPE_GRADE_8_DOT;
+      feedbackManager.emitFeedback(audioId);
+
+            // If showing preference screen... update displayed preference.
+            Intent refreshPrefIntent =
+                new Intent(BrailleBackPreferencesActivity.INTENT_REFRESH_DISPLAY);
+            sendBroadcast(refreshPrefIntent);
+
+            return;
+        }
+    feedbackManager.emitFeedback(FeedbackManager.TYPE_UNKNOWN_COMMAND);
     }
 
     private boolean handleGlobalCommands(BrailleInputEvent event) {
@@ -179,7 +220,7 @@ public class BrailleBackService
                 return false;
         }
         if (!success) {
-            mFeedbackManager.emitFeedback(FeedbackManager.TYPE_COMMAND_FAILED);
+      feedbackManager.emitFeedback(FeedbackManager.TYPE_COMMAND_FAILED);
         }
         // Don't fall through even if the command failed, we own these
         // commands.
@@ -188,42 +229,37 @@ public class BrailleBackService
 
     @Override
     public void onPanLeftOverflow(DisplayManager.Content content) {
-        if (mModeSwitcher != null
-                && !mModeSwitcher.onPanLeftOverflow(content)) {
-            mFeedbackManager.emitFeedback(
-                FeedbackManager.TYPE_NAVIGATE_OUT_OF_BOUNDS);
+    if (modeSwitcher != null && !modeSwitcher.onPanLeftOverflow(content)) {
+      feedbackManager.emitFeedback(FeedbackManager.TYPE_NAVIGATE_OUT_OF_BOUNDS);
         }
     }
 
     @Override
     public void onPanRightOverflow(DisplayManager.Content content) {
-        if (mModeSwitcher != null
-                && !mModeSwitcher.onPanRightOverflow(content)) {
-            mFeedbackManager.emitFeedback(
-                FeedbackManager.TYPE_NAVIGATE_OUT_OF_BOUNDS);
+    if (modeSwitcher != null && !modeSwitcher.onPanRightOverflow(content)) {
+      feedbackManager.emitFeedback(FeedbackManager.TYPE_NAVIGATE_OUT_OF_BOUNDS);
         }
     }
 
     @Override
     public void onServiceConnected() {
-        sInstance = this;
+    instance = this;
         PreferenceUtils.initLogLevel(this);
         if (isInfrastructureInitialized) {
             return;
         }
 
-        mHandler.sendEmptyMessage(WHAT_START);
+    handler.sendEmptyMessage(WHAT_START);
         // We are in an initialized state now.
         isInfrastructureInitialized = true;
     }
 
     @Override
     public void onDestroy() {
-        sInstance = null;
+    instance = null;
         super.onDestroy();
-        if (mDisplayManager != null) {
-            mDisplayManager.setContent(
-                new DisplayManager.Content(getString(R.string.shutting_down)));
+    if (displayManager != null) {
+      displayManager.setContent(new DisplayManager.Content(getString(R.string.shutting_down)));
 
             // We are not in an initialized state anymore.
             isInfrastructureInitialized = false;
@@ -235,15 +271,12 @@ public class BrailleBackService
     public void onAccessibilityEvent(AccessibilityEvent event) {
         LogUtils.log(this, Log.VERBOSE, "Event: %s", event.toString());
         LogUtils.log(this, Log.VERBOSE, "Node: %s", event.getSource());
-        if (mIMEHelper != null) {
-            mIMEHelper.onAccessibilityEvent(event);
+    if (modeSwitcher != null) {
+      modeSwitcher.onObserveAccessibilityEvent(event);
+      modeSwitcher.onAccessibilityEvent(event);
         }
-        if (mModeSwitcher != null) {
-            mModeSwitcher.onObserveAccessibilityEvent(event);
-            mModeSwitcher.onAccessibilityEvent(event);
-        }
-        if (mLabelManager != null) {
-            mLabelManager.onAccessibilityEvent(event);
+    if (labelManager != null) {
+      labelManager.onAccessibilityEvent(event);
         }
     }
 
@@ -254,8 +287,8 @@ public class BrailleBackService
 
     @Override
     public void onConfigurationChanged(Configuration newConfiguration) {
-        if (mTranslatorManager != null) {
-            mTranslatorManager.onConfigurationChanged(newConfiguration);
+    if (translatorManager != null) {
+      translatorManager.onConfigurationChanged(newConfiguration);
         }
     }
 
@@ -266,12 +299,12 @@ public class BrailleBackService
 
     @Override
     public void onSearchFinished() {
-        mModeSwitcher.overrideMode(null);
+    modeSwitcher.overrideMode(null);
     }
 
     @Override
     public void onMenuClosed() {
-        mModeSwitcher.overrideMode(null);
+    modeSwitcher.overrideMode(null);
     }
 
     /**
@@ -279,11 +312,11 @@ public class BrailleBackService
      * first.
      */
     public void startSearchMode() {
-        mModeSwitcher.overrideMode(mSearchNavigationMode);
+    modeSwitcher.overrideMode(searchNavigationMode);
     }
 
     private void startSearchWithTutorial() {
-        mSearchNavigationMode.setInitialNodeToCurrent();
+    searchNavigationMode.setInitialNodeToCurrent();
         // Try to start the search tutorial activity first. Only if it
         // doesn't start do we activate search mode.
         if (SearchTutorialActivity.tryStartActivity(this)) {
@@ -295,21 +328,26 @@ public class BrailleBackService
     private void initializeDependencies() {
         // Must initialize label manager before navigation modes.
         initializeLabelManager();
-        mFeedbackManager = new FeedbackManager(this);
-        mTranslatorManager = new TranslatorManager(this);
-        mSelfBrailleManager = new SelfBrailleManager();
-        mRuleRepository = new BrailleRuleRepository(this);
-        mNodeBrailler = new NodeBrailler(this,
-                mRuleRepository, mSelfBrailleManager);
+    feedbackManager = new FeedbackManager(this);
+    translatorManager = new TranslatorManager(this);
+    selfBrailleManager = new SelfBrailleManager();
+    ruleRepository = new BrailleRuleRepository(this);
+    nodeBrailler = new NodeBrailler(this, ruleRepository, selfBrailleManager);
         initializeDisplayManager();
         initializeNavigationMode();
-        mIMEHelper = new IMEHelper(this);
-        mFocusTracker = new FocusTracker(this);
-        mFocusTracker.register();
+    imeHelper = new IMEHelper(this);
+    focusTracker = new FocusTracker(this);
+    focusTracker.register();
     }
 
     private void updateServiceInfo() {
+        // Publicize service meta-data stating that this service does braille. Would be done in
+        // accessibility service config if it supported accessibilityFeedbackType FEEDBACK_BRAILLE.
         AccessibilityServiceInfo info = getServiceInfo();
+        if (info == null) {
+          LogUtils.log(this, Log.ERROR, "getServiceInfo() returned null");
+          return;
+        }
         info.feedbackType |= AccessibilityServiceInfo.FEEDBACK_BRAILLE;
         setServiceInfo(info);
     }
@@ -317,7 +355,7 @@ public class BrailleBackService
     private void initializeLabelManager() {
         if (Build.VERSION.SDK_INT >= CustomLabelManager.MIN_API_LEVEL) {
             try {
-                mLabelManager = new CustomLabelManager(this);
+        labelManager = new CustomLabelManager(this);
             } catch (SecurityException e) {
                 // Don't use labeling features if there's a permission denial
                 // due to a key mismatch
@@ -325,92 +363,93 @@ public class BrailleBackService
                         "Not using labeling due to permission denial.");
             }
 
-            if (mLabelManager != null) {
-                mPackageReceiver = new PackageRemovalReceiver();
-                registerReceiver(
-                        mPackageReceiver, mPackageReceiver.getFilter());
-                mLabelManager.ensureDataConsistency();
+      if (labelManager != null) {
+        packageReceiver = new PackageRemovalReceiver();
+        registerReceiver(packageReceiver, packageReceiver.getFilter());
+        labelManager.ensureDataConsistency();
             }
         }
     }
 
     private void initializeDisplayManager() {
-        mDisplayManager = new DisplayManager(mTranslatorManager,
-                this /*context*/,
-                this /*panOverflowListener*/,
-                this /*connectionStateChangeListener*/,
-                this /*inputEventListener*/);
-        mDisplayManager.setContent(
-            new DisplayManager.Content(getString(R.string.display_connected)));
+    displayManager =
+        new DisplayManager(
+            translatorManager,
+            this /*context*/,
+            this /*panOverflowListener*/,
+            this /*connectionStateChangeListener*/,
+            this /*inputEventListener*/);
+    displayManager.setContent(new DisplayManager.Content(getString(R.string.display_connected)));
     }
 
     private void initializeNavigationMode() {
-        DefaultNavigationMode defaultNavigationMode =
-                new DefaultNavigationMode(
-                        mDisplayManager,
-                        this,
-                        mFeedbackManager,
-                        mSelfBrailleManager,
-                        mNodeBrailler,
-                        mRuleRepository);
-        IMENavigationMode imeNavigationMode = new IMENavigationMode(
-                defaultNavigationMode, this, mDisplayManager, mFeedbackManager,
-                mSelfBrailleManager, mTranslatorManager);
-        BrailleIME.setSingletonHost(imeNavigationMode);
-        mModeSwitcher = new ModeSwitcher(
-            imeNavigationMode,
-            new TreeDebugNavigationMode(
-                mDisplayManager,
-                mFeedbackManager,
-                this));
-        mModeSwitcher.onActivate();
+    DefaultNavigationMode defaultNavigationMode =
+        new DefaultNavigationMode(
+            displayManager,
+            this,
+            feedbackManager,
+            selfBrailleManager,
+            nodeBrailler,
+            ruleRepository);
+    IMENavigationMode newImeNavMode =
+        new IMENavigationMode(
+            defaultNavigationMode,
+            this,
+            displayManager,
+            feedbackManager,
+            selfBrailleManager,
+            translatorManager);
+    imeNavigationMode = newImeNavMode;
+    BrailleIME.setSingletonHost(newImeNavMode);
+    modeSwitcher =
+        new ModeSwitcher(
+            newImeNavMode, new TreeDebugNavigationMode(displayManager, feedbackManager, this));
+    modeSwitcher.onActivate();
 
-        // Create separate SearchNavigationMode.
-        mSearchNavigationMode = new SearchNavigationMode(
-            mDisplayManager,
+    // Create separate SearchNavigationMode.
+    searchNavigationMode =
+        new SearchNavigationMode(
+            displayManager,
             this /*accessibilityService*/,
-            mFeedbackManager,
-            mTranslatorManager,
-            mSelfBrailleManager,
-            mNodeBrailler,
+            feedbackManager,
+            translatorManager,
+            selfBrailleManager,
+            nodeBrailler,
             this /*searchStateListener*/,
-            mLabelManager);
+            labelManager);
 
-        // Create separate BrailleMenuNavigationMode.
-        mBrailleMenuNavigationMode = new BrailleMenuNavigationMode(
-            mDisplayManager,
+    // Create separate BrailleMenuNavigationMode.
+    brailleMenuNavigationMode =
+        new BrailleMenuNavigationMode(
+            displayManager,
             this /*accessibilityService*/,
-            mFeedbackManager,
-            mLabelManager,
+            feedbackManager,
+            labelManager,
             this /*brailleMenuListener*/);
     }
 
     private void shutdownDependencies() {
-        if (mDisplayManager != null) {
-            mDisplayManager.shutdown();
-            mDisplayManager = null;
+    if (displayManager != null) {
+      displayManager.shutdown();
+      displayManager = null;
         }
-        if (mTranslatorManager != null) {
-            mTranslatorManager.shutdown();
-            mTranslatorManager = null;
+    if (translatorManager != null) {
+      translatorManager.shutdown();
+      translatorManager = null;
         }
-        // TODO: Shut down feedback manager and braille translator
-        // when those classes have shutdown methods.
-        if (mIMEHelper != null) {
-            mIMEHelper.destroy();
-            mIMEHelper = null;
+    // TODO: Shut down feedback manager and braille translator
+    // when those classes have shutdown methods.
+    if (focusTracker != null) {
+      focusTracker.unregister();
+      focusTracker = null;
         }
-        if (mFocusTracker != null) {
-            mFocusTracker.unregister();
-            mFocusTracker = null;
+    if (labelManager != null) {
+      labelManager.shutdown();
+      labelManager = null;
         }
-        if (mLabelManager != null) {
-            mLabelManager.shutdown();
-            mLabelManager = null;
-        }
-        if (mPackageReceiver != null) {
-            unregisterReceiver(mPackageReceiver);
-            mPackageReceiver = null;
+    if (packageReceiver != null) {
+      unregisterReceiver(packageReceiver);
+      packageReceiver = null;
         }
 
         BrailleIME.setSingletonHost(null);
@@ -426,11 +465,11 @@ public class BrailleBackService
     }
 
     public static BrailleBackService getActiveInstance() {
-        return sInstance;
+    return instance;
     }
 
     public CustomLabelManager getLabelManager() {
-        return mLabelManager;
+    return labelManager;
     }
 
     /**
@@ -442,6 +481,6 @@ public class BrailleBackService
     public void invalidateNode(AccessibilityNodeInfo node) {
         AccessibilityNodeInfoCompat wrapped =
                 new AccessibilityNodeInfoCompat(node);
-        mModeSwitcher.onInvalidateAccessibilityNode(wrapped);
+    modeSwitcher.onInvalidateAccessibilityNode(wrapped);
     }
 }

@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="service_description" msgid="3837907778560523486">"Kapag naka-on ang BrailleBack, kokonekta ang iyong device sa isang nakapares na bluetooth na braille display at ipapakita ang nilalaman ng screen nang naka-braille. Maaaring gamitin ang mga key sa braille display upang mag-navigate sa screen, mag-activate ng mga item at maglagay ng teksto. Para sa higit pang impormasyon, pindutin ang space at mga tuldok na 1, 2 at 3 (ang titik l sa braille) sa iyong display kapag nakakonekta."</string>
+    <string name="service_summary" msgid="8016336378969476112">"Magbigay ng braille output"</string>
     <string name="braille_ime_name" msgid="819430885692057322">"Braille hardware keyboard"</string>
     <string name="ime_setup_wizard_name" msgid="3001767325395835523">"Wizard ng Braille Hardware Keyboard"</string>
     <string name="ime_setup_need_enable_title" msgid="4607530771880167657">"Paganahin ang braille hardware keyboard"</string>
@@ -32,6 +33,7 @@
     <string name="pref_braille_type_title" msgid="830832481671746224">"Uri ng Braille"</string>
     <string name="pref_six_dot_braille_table_title" msgid="4612604998154279310">"Table ng literary braille"</string>
     <string name="pref_eight_dot_braille_table_title" msgid="1960546664278216814">"Table ng computer braille"</string>
+    <string name="pref_braille_word_wrap_title" msgid="6481878403472323874">"I-enable ang pag-wrap ng salita"</string>
     <string name="connstate_not_connected" msgid="3876972842771373901">"Hindi nakakonekta"</string>
     <string name="connstate_connected" msgid="7552950461156525524">"Nakakonekta"</string>
     <string name="connstate_error" msgid="8717968034812924474">"Hindi available"</string>

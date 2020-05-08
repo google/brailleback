@@ -78,6 +78,23 @@ public class SharedPreferencesUtils {
     }
 
     /**
+     * Returns the value of an integer preference.
+     *
+     * @param prefs Shared preferences from which to obtain the value.
+     * @param res Resources from which to obtain the key and default value.
+     * @param keyResId Resource identifier for the key.
+     * @param defaultResId Resource identifier for the default value.
+     * @return The preference value, or the default value if not set.
+     */
+    public static int getIntPref(SharedPreferences prefs, Resources res, int keyResId,
+            int defaultResId) {
+        if (defaultResId == 0) {
+            throw new IllegalArgumentException("defaultResId should not be 0");
+        }
+        return prefs.getInt(res.getString(keyResId), res.getInteger(defaultResId));
+    }
+
+    /**
      * Returns the value of a boolean preference.
      *
      * @param prefs Shared preferences from which to obtain the value.
@@ -119,6 +136,21 @@ public class SharedPreferencesUtils {
         final SharedPreferences.Editor editor = prefs.edit();
         editor.putString(res.getString(keyResId), value);
         editor.commit();
+    }
+
+    /**
+     * Stores the value of an integer preference.
+     *
+     * @param prefs Shared preferences from which to obtain the value.
+     * @param res Resources from which to obtain the key and default value.
+     * @param keyResId Resource identifier for the key.
+     * @param value The value to store.
+     */
+    public static void putIntPref(
+            SharedPreferences prefs, Resources res, int keyResId, int value) {
+        final SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(res.getString(keyResId), value);
+        editor.apply();
     }
 
     /**
